@@ -1,6 +1,6 @@
 # TouchVG-Android
 
-This is a lightweight 2D vector drawing framework for Android.
+This is a lightweight 2D vector drawing framework using [TouchVGCore](https://github.com/touchvg/TouchVGCore) for Android.
 
 Features described in [Online document](http://touchvg.github.io). Please visit [TouchVGTest](https://github.com/touchvg/TouchVGTest-Android) to see more examples.
 

@@ -1047,7 +1047,7 @@ public class ViewHelperImpl implements IViewHelper{
                         mView.getView().removeCallbacks(this);
                         mView.onPause();
                         mView.stop(listener);
-                        layout.removeViews(0, layout.getChildCount() - 1);  // Except imageView
+                        layout.removeAllViews();
                         mView = null;
                     }
                 });
