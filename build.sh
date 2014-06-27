@@ -5,10 +5,10 @@
 # Type `./build.sh APP_ABI=x86` to build for the x86 Emulator.
 #
 
-if [ ! -f ../TouchVGCore/android/build.sh ] ; then
-    git clone https://github.com/touchvg/TouchVGCore ../TouchVGCore
+if [ ! -f ../vgcore/android/build.sh ] ; then
+    git clone https://github.com/touchvg/vgcore ../vgcore
 fi
 
-cd ../TouchVGCore/android; sh build.sh $1 $2; cd ../../TouchVG-Android
+cd ../vgcore/android; sh build.sh $1 $2; cd ../../vgandroid
 
 cd TouchVG/jni; sh build.sh $1 $2; cd ../..

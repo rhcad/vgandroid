@@ -1,6 +1,6 @@
-# TouchVG-Android
+# TouchVG for Android
 
-This is a lightweight 2D vector drawing framework using [TouchVGCore](https://github.com/touchvg/TouchVGCore) for Android.
+This is a lightweight 2D vector drawing framework using [TouchVGCore](https://github.com/touchvg/vgcore) for Android.
 
 Features described in [Online document](http://touchvg.github.io). Please visit [TouchVGTest](https://github.com/touchvg/TouchVGTest-Android) to see more examples.
 
@@ -11,7 +11,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
-- [TouchVGCore](https://github.com/touchvg/TouchVGCore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
 - [svg-android](https://github.com/japgolly/svg-android) (Apache): Vector graphics support for Android.
 - [simple-svg](http://code.google.com/p/simple-svg) (BSD): A C++ header file for creating SVG files.
 - [rapidjson](https://github.com/Kanma/rapidjson) (MIT): A fast JSON parser/generator for C++ with both SAX/DOM style API.
@@ -52,7 +52,7 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
   
   - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
 
-- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/TouchVG-Android/archive/prebuilt.zip) and extract to `yourapp/libs`.
+- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and extract to `yourapp/libs`.
 
 -  Regenerate libtouchvg.so and JNI classes:
 

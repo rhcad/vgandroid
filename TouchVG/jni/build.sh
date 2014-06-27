@@ -11,24 +11,24 @@ if [ "$1"x = "-swig"x ] || [ ! -f touchvg_java_wrap.cpp ] ; then # Make JNI clas
     swig -c++ -java -package rhcad.touchvg.core -D__ANDROID__ \
         -outdir ../src/rhcad/touchvg/core \
         -o touchvg_java_wrap.cpp \
-        -I../../../TouchVGCore/core/include \
-        -I../../../TouchVGCore/core/include/canvas \
-        -I../../../TouchVGCore/core/include/graph \
-        -I../../../TouchVGCore/core/include/cmd \
-        -I../../../TouchVGCore/core/include/storage \
-        -I../../../TouchVGCore/core/include/geom \
-        -I../../../TouchVGCore/core/include/shape \
-        -I../../../TouchVGCore/core/include/cmdobserver \
-        -I../../../TouchVGCore/core/include/cmdbase \
-        -I../../../TouchVGCore/core/include/test \
-        -I../../../TouchVGCore/core/include/view \
-        -I../../../TouchVGCore/core/include/cmdbasic \
-        -I../../../TouchVGCore/core/include/shapedoc \
-        -I../../../TouchVGCore/core/include/jsonstorage \
-        -I../../../TouchVGCore/core/include/cmdmgr \
-        -I../../../TouchVGCore/core/include/record \
-        -I../../../TouchVGCore/core/src/view \
-          ../../../TouchVGCore/core/src/view/touchvg.swig
+        -I../../../vgcore/core/include \
+        -I../../../vgcore/core/include/canvas \
+        -I../../../vgcore/core/include/graph \
+        -I../../../vgcore/core/include/cmd \
+        -I../../../vgcore/core/include/storage \
+        -I../../../vgcore/core/include/geom \
+        -I../../../vgcore/core/include/shape \
+        -I../../../vgcore/core/include/cmdobserver \
+        -I../../../vgcore/core/include/cmdbase \
+        -I../../../vgcore/core/include/test \
+        -I../../../vgcore/core/include/view \
+        -I../../../vgcore/core/include/cmdbasic \
+        -I../../../vgcore/core/include/shapedoc \
+        -I../../../vgcore/core/include/jsonstorage \
+        -I../../../vgcore/core/include/cmdmgr \
+        -I../../../vgcore/core/include/record \
+        -I../../../vgcore/core/src/view \
+          ../../../vgcore/core/src/view/touchvg.swig
     python replacejstr.py
     #python addlog.py
 fi
