@@ -22,9 +22,8 @@ import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.View;
 
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGBuilder;
-import com.larvalabs.svgandroid.SVGParseException;
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
 
 //! 图像对象缓存类
 public class ImageCache extends Object {
@@ -175,7 +174,11 @@ public class ImageCache extends Object {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && id != 0) {
-            drawable = addSVG(new SVGBuilder().readFromResource(res, id), name);
+            try {
+                drawable = addSVG(SVG.getFromResource(res, id), name);
+            } catch (SVGParseException e) {
+                e.printStackTrace();
+            }
         }
 
         return drawable;
@@ -216,11 +219,13 @@ public class ImageCache extends Object {
         if (drawable == null && name.endsWith(".svg")) {
             try {
                 final InputStream data = new FileInputStream(new File(filename));
-                drawable = addSVG(new SVGBuilder().readFromInputStream(data), name);
+                drawable = addSVG(SVG.getFromInputStream(data), name);
                 data.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SVGParseException e) {
                 e.printStackTrace();
             }
         }
@@ -228,19 +233,14 @@ public class ImageCache extends Object {
         return drawable;
     }
 
-    private Drawable addSVG(SVGBuilder builder, String name) {
+    private Drawable addSVG(SVG svg, String name) {
         Drawable drawable = null;
 
-        try {
-            final SVG svg = builder.build();
-            final Picture picture = svg.getPicture();
+        final Picture picture = svg.renderToPicture();
 
-            if (picture != null && picture.getWidth() > 0) {
-                drawable = svg.getDrawable();
-                addToCache(name, drawable);
-            }
-        } catch (SVGParseException e) {
-            e.printStackTrace();
+        if (picture != null && picture.getWidth() > 0) {
+            drawable = new PictureDrawable(picture);
+            addToCache(name, drawable);
         }
 
         return drawable;

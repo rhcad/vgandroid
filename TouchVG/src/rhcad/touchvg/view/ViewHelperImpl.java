@@ -43,7 +43,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 14;
+    private static final int JARVERSION = 15;
     private BaseGraphView mView;
 
     static {

@@ -12,7 +12,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
 - [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [svg-android](https://github.com/japgolly/svg-android) (Apache): Vector graphics support for Android.
+- [AndroidSVG](https://code.google.com/p/androidsvg) (Apache): SVG rendering library for Android.
 - [simple-svg](http://code.google.com/p/simple-svg) (BSD): A C++ header file for creating SVG files.
 - [rapidjson](https://github.com/Kanma/rapidjson) (MIT): A fast JSON parser/generator for C++ with both SAX/DOM style API.
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
