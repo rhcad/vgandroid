@@ -37,7 +37,7 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
 
 - Enter the directory of this project, then type `./build.sh` to generate libtouchvg.so and JNI classes.
 
-  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH on Windows.
+  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
   
   - Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to PATH.
   
