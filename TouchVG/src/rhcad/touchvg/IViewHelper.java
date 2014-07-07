@@ -234,6 +234,12 @@ public interface IViewHelper {
     //! 导出静态图形到SVG文件，自动添加后缀名.svg
     public boolean exportSVG(String filename);
 
+    //! 用SVG路径的d坐标序列创建或设置图形形状
+    public int importSVGPath(int sid, String d);
+
+    //! 输出SVG路径的d坐标序列
+    public String exportSVGPath(int sid);
+
     //! 返回图形总数
     public int getShapeCount();
 

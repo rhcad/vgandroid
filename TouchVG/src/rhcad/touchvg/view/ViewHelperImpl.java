@@ -647,6 +647,27 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public int importSVGPath(int sid, String d) {
+        if (mView != null && d != null) {
+            sid = mView.coreView().importSVGPath(mView.coreView().backShapes(), sid, d);
+            if (sid != 0) {
+                mView.viewAdapter().regenAll(true);
+                return sid;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public String exportSVGPath(int sid) {
+        final StringCallback c = new StringCallback();
+        if (mView != null) {
+            mView.coreView().exportSVGPath2(c, mView.coreView().backShapes(), sid);
+        }
+        return c.toString();
+    }
+
+    @Override
     public int getShapeCount() {
         return mView != null ? mView.coreView().getShapeCount() : 0;
     }
