@@ -368,8 +368,18 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public boolean zoomToExtent(float margin) {
+        return mView != null && mView.coreView().zoomToExtent(margin);
+    }
+
+    @Override
     public boolean zoomToModel(float x, float y, float w, float h) {
         return mView != null && mView.coreView().zoomToModel(x, y, w, h);
+    }
+
+    @Override
+    public boolean zoomToModel(float x, float y, float w, float h, float margin) {
+        return mView != null && mView.coreView().zoomToModel(x, y, w, h, margin);
     }
 
     @Override

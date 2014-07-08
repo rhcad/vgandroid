@@ -153,8 +153,14 @@ public interface IViewHelper {
     //! 放缩显示全部内容
     public boolean zoomToExtent();
 
+    //! 放缩显示全部内容
+    public boolean zoomToExtent(float margin);
+
     //! 放缩显示指定范围到视图区域
     public boolean zoomToModel(float x, float y, float w, float h);
+
+    //! 放缩显示指定范围到视图区域
+    public boolean zoomToModel(float x, float y, float w, float h, float margin);
 
     //! 视图坐标转为模型坐标
     public PointF displayToModel(float x, float y);
