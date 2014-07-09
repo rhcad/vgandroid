@@ -683,6 +683,11 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public int getUnlockedShapeCount() {
+        return mView != null ? mView.coreView().getUnlockedShapeCount() : 0;
+    }
+
+    @Override
     public int getSelectedCount() {
         return mView != null ? mView.coreView().getSelectedShapeCount() : 0;
     }
@@ -827,6 +832,15 @@ public class ViewHelperImpl implements IViewHelper{
             synchronized (mView.coreView()) {
                 mView.getImageCache().clear();
                 mView.coreView().clear();
+            }
+        }
+    }
+
+    @Override
+    public void eraseView() {
+        if (mView != null) {
+            synchronized (mView.coreView()) {
+                mView.coreView().setCommand("erasewnd");
             }
         }
     }

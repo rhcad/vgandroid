@@ -249,6 +249,9 @@ public interface IViewHelper {
     //! 返回图形总数
     public int getShapeCount();
 
+    //! 返回未锁定的图形的个数
+    public int getUnlockedShapeCount();
+
     //! 返回选中的图形个数
     public int getSelectedCount();
 
@@ -291,8 +294,11 @@ public interface IViewHelper {
     //! 保存图形到JSON文件，自动添加后缀名.vg，支持多线程
     public boolean saveToFile(String vgfile);
 
-    //! 清除所有图形
+    //! 清除所有图形，含锁定的图形
     public void clearShapes();
+
+    //! 清除当前视图区域内的未锁定的图形
+    public void eraseView();
 
     //! 在默认位置插入一个程序资源中的SVG图像(id=R.raw.name)
     public int insertSVGFromResource(String name);
