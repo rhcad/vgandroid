@@ -11,7 +11,7 @@ public class ShapeRunnable implements Runnable {
     protected boolean mStopping = false;
     protected GiCoreView mCoreView;
     private Object mMonitor = new Object();
-    protected int[] mPending = new int[60]; // {tick,doc,shapes}
+    protected int[] mPending = new int[60]; // {tick,change,doc,shapes}
 
     public ShapeRunnable(String path, int type, GiCoreView coreView) {
         this.mPath = path;
@@ -57,22 +57,24 @@ public class ShapeRunnable implements Runnable {
     }
 
     public final void requestRecord(int command) {
-        requestRecord(command, 0, 0);
+        requestRecord(command, 0, 0, 0);
     }
 
-    public final void requestRecord(int tick, int doc, int shapes) {
+    public final void requestRecord(int tick, int change, int doc, int shapes) {
         synchronized (mPending) {
             int i = 0;
-            for (; i < mPending.length && mPending[i] != 0; i += 3) {
+            for (; i < mPending.length && mPending[i] != 0; i += 4) {
             }
-            if (i + 2 < mPending.length) {
+            if (i + 3 < mPending.length) {
                 mPending[i] = tick;
-                mPending[i + 1] = doc;
-                mPending[i + 2] = shapes;
+                mPending[i + 1] = change;
+                mPending[i + 2] = doc;
+                mPending[i + 3] = shapes;
             } else {
                 GiCoreView.releaseDoc(doc);
                 GiCoreView.releaseShapes(shapes);
                 tick = 0;
+                change = 0;
                 doc = 0;
                 shapes = 0;
             }
@@ -89,7 +91,7 @@ public class ShapeRunnable implements Runnable {
     protected void afterStopped(boolean normal) {
     }
 
-    protected void process(int tick, int doc, int shapes) {
+    protected void process(int tick, int change, int doc, int shapes) {
     }
 
     @Override
@@ -123,7 +125,7 @@ public class ShapeRunnable implements Runnable {
     }
 
     private void process() {
-        int tick = 0, doc = 0, shapes = 0;
+        int tick = 0, change = 0, doc = 0, shapes = 0;
         boolean loop = true;
         int nextTick = 0;
 
@@ -131,12 +133,15 @@ public class ShapeRunnable implements Runnable {
             synchronized (mPending) {
                 while (loop) {
                     tick = mPending[0];
-                    doc = mPending[1];
-                    shapes = mPending[2];
+                    change = mPending[1];
+                    doc = mPending[2];
+                    shapes = mPending[3];
 
-                    for (int i = 3; i < mPending.length; i++) {
-                        mPending[i - 3] = mPending[i];
-                        mPending[i] = 0;
+                    for (int i = 4; i + 3 < mPending.length; i += 4) {
+                        for (int j = 0; j < 4; j++) {
+                            mPending[i + j - 4] = mPending[i + j];
+                            mPending[i + j] = 0;
+                        }
                     }
                     nextTick = mPending[0];
                     loop = (doc == 0 && shapes != 0 && nextTick != 0);
@@ -145,7 +150,7 @@ public class ShapeRunnable implements Runnable {
                     }
                 }
             }
-            process(tick, doc, shapes);
+            process(tick, change, doc, shapes);
             if (nextTick == 0) {
                 synchronized (mPending) {
                     nextTick = mPending[0];
@@ -159,8 +164,8 @@ public class ShapeRunnable implements Runnable {
         synchronized (mPending) {
             for (int i = 0; i < mPending.length; i++) {
                 if (mPending[i] != 0) {
-                    GiCoreView.releaseDoc(mPending[i + 1]);
-                    GiCoreView.releaseShapes(mPending[i + 2]);
+                    GiCoreView.releaseDoc(mPending[i + 2]);
+                    GiCoreView.releaseShapes(mPending[i + 3]);
                 }
             }
         }

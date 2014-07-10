@@ -594,15 +594,17 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
 
                     if (mUndoing != null && changed) {
                         int tick0 = mCoreView.getRecordTick(true, getTick());
+                        int change0 = mCoreView.getChangeCount();
                         int doc0 = mCoreView.acquireFrontDoc();
-                        mUndoing.requestRecord(tick0, doc0, 0);
+                        mUndoing.requestRecord(tick0, change0, doc0, 0);
                     }
                 }
                 if (mRecorder != null && changed) {
                     int tick1 = mCoreView.getRecordTick(false, getTick());
+                    int change1 = mCoreView.getChangeCount();
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, change1, doc1, shapes1);
                 }
             }
             if (mRender != null) {
@@ -618,14 +620,16 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
 
                 if (mUndoing != null) {
                     int tick0 = mCoreView.getRecordTick(true, getTick());
+                    int change0 = mCoreView.getChangeCount();
                     int doc0 = mCoreView.acquireFrontDoc();
-                    mUndoing.requestRecord(tick0, doc0, 0);
+                    mUndoing.requestRecord(tick0, change0, doc0, 0);
                 }
                 if (mRecorder != null) {
                     int tick1 = mCoreView.getRecordTick(false, getTick());
+                    int change1 = mCoreView.getChangeCount();
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, change1, doc1, shapes1);
                 }
             }
             if (mDynDrawRender != null) {
@@ -645,7 +649,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
                     if (mRecorder != null) {
                         int tick1 = mCoreView.getRecordTick(false, getTick());
                         int shapes1 = mCoreView.acquireDynamicShapes();
-                        mRecorder.requestRecord(tick1, 0, shapes1);
+                        mRecorder.requestRecord(tick1, 0, 0, shapes1);
                     }
                 }
             }
