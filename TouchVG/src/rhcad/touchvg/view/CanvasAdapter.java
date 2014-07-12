@@ -121,21 +121,32 @@ public class CanvasAdapter extends GiCanvas {
         if (width > 0) {
             mPen.setStrokeWidth(width);
         }
+        if (style >= 0) {
+            int linecap = style & kLineCapMask;
 
-        if (style >= 0 && style <= 4) {
-            if (style == 1) {
-                this.makeLinePattern(DASH, width, phase);
-            } else if (style == 2) {
-                this.makeLinePattern(DOT, width, phase);
-            } else if (style == 3) {
-                this.makeLinePattern(DASH_DOT, width, phase);
-            } else if (style == 4) {
-                this.makeLinePattern(DASH_DOTDOT, width, phase);
-            } else {
-                this.mEffects = null;
+            style = style & kLineDashMask;
+            if (style >= 0 && style <= 4) {
+                if (style == 1) {
+                    this.makeLinePattern(DASH, width, phase);
+                } else if (style == 2) {
+                    this.makeLinePattern(DOT, width, phase);
+                } else if (style == 3) {
+                    this.makeLinePattern(DASH_DOT, width, phase);
+                } else if (style == 4) {
+                    this.makeLinePattern(DASH_DOTDOT, width, phase);
+                } else {
+                    this.mEffects = null;
+                }
+                mPen.setPathEffect(this.mEffects);
             }
-            mPen.setPathEffect(this.mEffects);
-            mPen.setStrokeCap(this.mEffects != null ? Paint.Cap.BUTT : Paint.Cap.ROUND);
+            if ((linecap & kLineCapButt) != 0)
+                mPen.setStrokeCap(Paint.Cap.BUTT);
+            else if ((linecap & kLineCapRound) != 0)
+                mPen.setStrokeCap(Paint.Cap.ROUND);
+            else if ((linecap & kLineCapSquare) != 0)
+                mPen.setStrokeCap(Paint.Cap.SQUARE);
+            else
+                mPen.setStrokeCap((style > 0 && style < 5) ? Paint.Cap.BUTT : Paint.Cap.ROUND);
         }
     }
 
