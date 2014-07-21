@@ -14,6 +14,9 @@ import android.view.View;
 
 //! 绘图视图接口
 public interface IGraphView {
+    public static final int kGestureTap = 2;            //!< 单指单击
+    public static final int kGestureDblTap = 3;         //!< 单指双击
+    public static final int kGesturePress = 4;          //!< 单指长按
 
     //! 返回视图回调适配器对象
     public View getView();
@@ -116,6 +119,12 @@ public interface IGraphView {
         public void onGraphViewDetached();
     }
 
+    //! 绘图手势(kGesturePress 等)的通知
+    public static interface OnDrawGestureListener {
+        public boolean onPreGesture(int gestureType, float x, float y);
+        public void onPostGesture(int gestureType, float x, float y);
+    }
+
     //! 添加当前命令改变的观察者
     public void setOnCommandChangedListener(OnCommandChangedListener listener);
 
@@ -142,4 +151,7 @@ public interface IGraphView {
 
     //! 添加上下文按钮点击的观察者
     public void setOnContextActionListener(OnContextActionListener listener);
+
+    //! 添加绘图手势的观察者
+    public void setOnGestureListener(OnDrawGestureListener listener);
 }

@@ -32,7 +32,7 @@ import android.view.View;
  * 
  * 建议使用FrameLayout作为容器创建绘图视图，使用LinearLayout将无法显示上下文操作按钮。
  */
-public class StdGraphView extends View implements BaseGraphView, GestureNotify {
+public class StdGraphView extends View implements BaseGraphView {
     protected static final String TAG = "touchvg";
     protected ImageCache mImageCache;                       // 图像对象缓存
     protected CanvasAdapter mCanvasAdapter;                 // onDraw用的画布适配器
@@ -71,7 +71,7 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         ViewUtil.onAddView(this);
     }
 
-    //! 放大镜视图的构造函数
+    //! 放大镜视图(mainView有效)或临时视图(mainView=nil)的构造函数
     public StdGraphView(Context context, BaseGraphView mainView) {
         super(context);
         mImageCache = mainView != null ? mainView.getImageCache() : new ImageCache();
@@ -81,7 +81,7 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
             mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
                     mainView.coreView(), mainView.viewAdapter());
         } else {
-            mCoreView = GiCoreView.createView(mViewAdapter);
+            mCoreView = GiCoreView.createView(mViewAdapter, GiCoreView.kNoCmdType);
         }
         initView(context);
     }
@@ -588,17 +588,7 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
     }
 
     @Override
-    public boolean onPreLongPress(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreSingleTap(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreDoubleTap(MotionEvent e) {
-        return false;
+    public void setOnGestureListener(OnDrawGestureListener listener) {
+        mViewAdapter.setOnGestureListener(listener);
     }
 }

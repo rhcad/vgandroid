@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import rhcad.touchvg.IGraphView.OnCommandChangedListener;
 import rhcad.touchvg.IGraphView.OnContentChangedListener;
 import rhcad.touchvg.IGraphView.OnContextActionListener;
+import rhcad.touchvg.IGraphView.OnDrawGestureListener;
 import rhcad.touchvg.IGraphView.OnDynamicChangedListener;
 import rhcad.touchvg.IGraphView.OnFirstRegenListener;
 import rhcad.touchvg.IGraphView.OnSelectionChangedListener;
@@ -29,7 +30,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 //! 视图回调适配器
-public abstract class BaseViewAdapter extends GiView {
+public abstract class BaseViewAdapter extends GiView implements OnDrawGestureListener {
     protected static final String TAG = "touchvg";
     private ContextAction mAction;
     private boolean mActionEnabled = true;
@@ -42,6 +43,7 @@ public abstract class BaseViewAdapter extends GiView {
     private ArrayList<OnShapeDeletedListener> shapeDeletedListeners;
     private ArrayList<OnShapeClickedListener> shapeClickedListeners;
     private ArrayList<OnContextActionListener> contextActionListeners;
+    private ArrayList<OnDrawGestureListener> gestureListeners;
     private ArrayList<OnPlayingListener> playingListeners;
     protected UndoRunnable mUndoing;
     protected RecordRunnable mRecorder;
@@ -285,6 +287,32 @@ public abstract class BaseViewAdapter extends GiView {
         if (mCmdObserver == null) {
             mCmdObserver = new CmdObserverDelegate();
             cmdView().getCmdSubject().registerObserver(mCmdObserver);
+        }
+    }
+
+    public void setOnGestureListener(OnDrawGestureListener listener) {
+        if (this.gestureListeners == null)
+            this.gestureListeners = new ArrayList<OnDrawGestureListener>();
+        this.gestureListeners.add(listener);
+    }
+
+    @Override
+    public boolean onPreGesture(int gestureType, float x, float y) {
+        if (gestureListeners != null) {
+            for (OnDrawGestureListener listener : gestureListeners) {
+                if (listener.onPreGesture(gestureType, x, y))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onPostGesture(int gestureType, float x, float y) {
+        if (gestureListeners != null) {
+            for (OnDrawGestureListener listener : gestureListeners) {
+                listener.onPostGesture(gestureType, x, y);
+            }
         }
     }
 

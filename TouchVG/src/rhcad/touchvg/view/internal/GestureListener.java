@@ -4,11 +4,12 @@
 
 package rhcad.touchvg.view.internal;
 
+import rhcad.touchvg.IGraphView;
+import rhcad.touchvg.IGraphView.OnDrawGestureListener;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.GiGestureState;
 import rhcad.touchvg.core.GiGestureType;
 import rhcad.touchvg.core.GiView;
-import rhcad.touchvg.view.GestureNotify;
 import android.util.Log;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -27,7 +28,7 @@ public class GestureListener extends SimpleOnGestureListener {
     private static final int XY_COUNT = 20;         // 待分发的移动轨迹点数*2
     private GiCoreView mCoreView;                   // 内核视图分发器
     private GiView mAdapter;                        // 视图回调适配器
-    private Object mView;                           // 所在视图
+    private int mListenerType = 0;                  // OnDrawGestureListener 类型
     private int mMoving = M_STOPPED;                // 移动状态
     private int mFingerCount;                       // 上一次的触摸点数
     private int mXYCount = 0;                       // mPoints值个数
@@ -44,7 +45,6 @@ public class GestureListener extends SimpleOnGestureListener {
     public GestureListener(GiCoreView coreView, GiView adapter, Object view) {
         mCoreView = coreView;
         mAdapter = adapter;
-        mView = view;
     }
 
     protected void finalize() {
@@ -54,7 +54,6 @@ public class GestureListener extends SimpleOnGestureListener {
     public void release() {
         mCoreView = null;
         mAdapter = null;
-        mView = null;
     }
 
     public void setGestureEnabled(boolean enabled) {
@@ -284,14 +283,16 @@ public class GestureListener extends SimpleOnGestureListener {
 
     @Override
     public void onLongPress(MotionEvent e) {
-        final GestureNotify notify = getNotify();
+        final OnDrawGestureListener notify = getNotify();
 
-        if (notify != null && notify.onPreLongPress(e)) {
+        if (notify != null && notify.onPreGesture(IGraphView.kGesturePress, e.getX(), e.getY())) {
         } else if (mXYCount > 1             // onDown called
                 && mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
                         GiGestureState.kGiGestureBegan, e.getX(), e.getY())) {
             mXYCount = 0;
             mMoving = M_PRESS_MOVING;
+            if (notify != null)
+                notify.onPostGesture(IGraphView.kGesturePress, e.getX(), e.getY());
         } else if (mMoving == M_STARTED) {  // onDown 后还未移动
             mMoving = M_READY_MOVE;         // onTouch 中将开始移动
         }
@@ -299,14 +300,17 @@ public class GestureListener extends SimpleOnGestureListener {
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
-        final GestureNotify notify = getNotify();
+        final OnDrawGestureListener notify = getNotify();
 
         if (mCoreView == null)
             return false;
-        if (notify != null && notify.onPreSingleTap(e))
+        if (notify != null && notify.onPreGesture(IGraphView.kGestureTap, e.getX(), e.getY()))
             return true;
         synchronized (mCoreView) {
-            return mXYCount > 1 && onTap(mPoints[0], mPoints[1]);
+            boolean ret = mXYCount > 1 && onTap(mPoints[0], mPoints[1]);
+            if (notify != null)
+                notify.onPostGesture(IGraphView.kGestureTap, e.getX(), e.getY());
+            return ret;
         }
     }
 
@@ -326,26 +330,37 @@ public class GestureListener extends SimpleOnGestureListener {
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         boolean ret = mXYCount > 1;
-        final GestureNotify notify = getNotify();
+        final OnDrawGestureListener notify = getNotify();
 
         if (mCoreView == null)
             return false;
-        if (ret && (notify == null || !notify.onPreDoubleTap(e))) {
+        if (ret && (notify == null || !notify.onPreGesture(IGraphView.kGestureDblTap, e.getX(), e.getY()))) {
             ret = mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
                     GiGestureState.kGiGesturePossible, mPoints[0], mPoints[1])
                     && mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
                             GiGestureState.kGiGestureEnded, e.getX(), e.getY());
+            if (notify != null)
+                notify.onPostGesture(IGraphView.kGestureDblTap, e.getX(), e.getY());
         }
         mXYCount = 0;
 
         return ret;
     }
 
-    private GestureNotify getNotify() {
-        try {
-            return (GestureNotify) mView;
-        } catch (Exception e) {
-            return null;
+    private final OnDrawGestureListener getNotify() {
+        OnDrawGestureListener listener = null;
+
+        if (mListenerType == 0) {
+            try {
+                listener = (OnDrawGestureListener) mAdapter;
+                mListenerType = 1;
+            } catch (Exception e) {
+                mListenerType = -1;
+            }
+        } else if (mListenerType > 0) {
+            listener = (OnDrawGestureListener) mAdapter;
         }
+
+        return listener;
     }
 }

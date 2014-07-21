@@ -37,7 +37,7 @@ import android.view.View;
  * Graphics view with media overlay surface placed behind its window.
  * It uses a surface view placed on top of its window to draw dynamic shapes.
  */
-public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNotify {
+public class SFGraphView extends SurfaceView implements BaseGraphView {
     protected static final String TAG = "touchvg";
     protected GiCoreView mCoreView;
     protected SFViewAdapter mViewAdapter;
@@ -91,7 +91,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
             mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
                     mainView.coreView(), mainView.viewAdapter());
         } else {
-            mCoreView = GiCoreView.createView(mViewAdapter);
+            mCoreView = GiCoreView.createView(mViewAdapter, GiCoreView.kNoCmdType);
         }
         initView(context);
     }
@@ -896,17 +896,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
     }
 
     @Override
-    public boolean onPreLongPress(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreSingleTap(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreDoubleTap(MotionEvent e) {
-        return false;
+    public void setOnGestureListener(OnDrawGestureListener listener) {
+        mViewAdapter.setOnGestureListener(listener);
     }
 }
