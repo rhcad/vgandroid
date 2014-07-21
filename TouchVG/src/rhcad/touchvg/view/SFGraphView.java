@@ -84,11 +84,15 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
 
     public SFGraphView(Context context, BaseGraphView mainView) {
         super(context);
-        mImageCache = mainView.getImageCache();
+        mImageCache = mainView != null ? mainView.getImageCache() : new ImageCache();
         createAdapter(context, null);
         mMainView = mainView;
-        mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
-                mainView.coreView(), mainView.viewAdapter());
+        if (mainView != null) {
+            mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
+                    mainView.coreView(), mainView.viewAdapter());
+        } else {
+            mCoreView = GiCoreView.createView(mViewAdapter);
+        }
         initView(context);
     }
 
@@ -136,6 +140,15 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
 
     @Override
     protected void onDetachedFromWindow() {
+        tearDown();
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    public void tearDown() {
+        if (mViewAdapter == null)
+            return;
+
         final LogHelper log = new LogHelper();
 
         ViewUtil.onRemoveView(this);
@@ -170,16 +183,14 @@ public class SFGraphView extends SurfaceView implements BaseGraphView, GestureNo
             mImageCache.clear();
             mImageCache = null;
         }
-        if (mViewAdapter != null) {
-            synchronized (GiCoreView.class) {
-                final LogHelper log2 = new LogHelper("GiCoreView.class synchronized");
-                mCoreView.destoryView(mViewAdapter);
-                mViewAdapter.delete();
-                mViewAdapter = null;
-                mCoreView.release();
-                mCoreView = null;
-                log2.r();
-            }
+        synchronized (GiCoreView.class) {
+            final LogHelper log2 = new LogHelper("GiCoreView.class synchronized");
+            mCoreView.destoryView(mViewAdapter);
+            mViewAdapter.delete();
+            mViewAdapter = null;
+            mCoreView.release();
+            mCoreView = null;
+            log2.r();
         }
         if (mGestureListener != null) {
             mGestureListener.release();

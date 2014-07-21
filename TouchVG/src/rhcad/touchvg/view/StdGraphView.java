@@ -74,11 +74,15 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
     //! 放大镜视图的构造函数
     public StdGraphView(Context context, BaseGraphView mainView) {
         super(context);
-        mImageCache = mainView.getImageCache();
+        mImageCache = mainView != null ? mainView.getImageCache() : new ImageCache();
         createAdapter(context, null);
         mMainView = mainView;
-        mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
-                mainView.coreView(), mainView.viewAdapter());
+        if (mainView != null) {
+            mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
+                    mainView.coreView(), mainView.viewAdapter());
+        } else {
+            mCoreView = GiCoreView.createView(mViewAdapter);
+        }
         initView(context);
     }
 
@@ -239,6 +243,15 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
 
     @Override
     protected void onDetachedFromWindow() {
+        tearDown();
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    public void tearDown() {
+        if (mViewAdapter == null)
+            return;
+
         ViewUtil.onRemoveView(this);
         mViewAdapter.stop(null);
 
@@ -260,14 +273,12 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
             mCachedBitmap.recycle();
             mCachedBitmap = null;
         }
-        if (mViewAdapter != null) {
-            synchronized (GiCoreView.class) {
-                mCoreView.destoryView(mViewAdapter);
-                mViewAdapter.delete();
-                mViewAdapter = null;
-                mCoreView.delete();
-                mCoreView = null;
-            }
+        synchronized (GiCoreView.class) {
+            mCoreView.destoryView(mViewAdapter);
+            mViewAdapter.delete();
+            mViewAdapter = null;
+            mCoreView.delete();
+            mCoreView = null;
         }
         if (mCanvasAdapter != null) {
             mCanvasAdapter.delete();
@@ -283,8 +294,6 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         }
         mGestureDetector = null;
         mMainView = null;
-
-        super.onDetachedFromWindow();
     }
 
     //! 视图回调适配器

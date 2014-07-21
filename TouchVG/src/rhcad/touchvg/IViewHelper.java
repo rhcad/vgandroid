@@ -73,6 +73,9 @@ public interface IViewHelper {
     //! 在指定的布局中创建放大镜视图，并记下此视图
     public ViewGroup createMagnifierView(Context context, ViewGroup layout, IGraphView mainView);
 
+    //! 创建不使用交互命令的临时隐藏视图，用完调用 close() 释放
+    public void createDummyView(Context context, int width, int height);
+
     //! [状态无关]设置额外的上下文操作按钮的图像ID数组，其动作序号从40起
     public void setExtraContextImages(Context context, int[] ids);
 

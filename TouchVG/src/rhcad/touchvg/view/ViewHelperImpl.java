@@ -202,6 +202,14 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public void createDummyView(Context context, int width, int height) {
+        final StdGraphView view = new StdGraphView(context, (BaseGraphView)null);
+        view.layout(0, 0, width, height);
+        mView = view;
+        mView.coreView().onSize(internalAdapter(), width, height);
+    }
+
+    @Override
     public void setExtraContextImages(Context context, int[] ids) {
         ResourceUtil.setExtraContextImages(context, ids);
     }
@@ -1099,7 +1107,10 @@ public class ViewHelperImpl implements IViewHelper{
             } else {
                 mView.onPause();
                 mView.stop(listener);
-                ((ViewGroup) mView.getView().getParent()).removeAllViews();
+                if (layout != null)
+                    layout.removeAllViews();
+                else
+                    mView.tearDown();
                 mView = null;
             }
         }
