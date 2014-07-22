@@ -16,4 +16,7 @@ public interface BaseGraphView extends IGraphView {
 
     //! 返回图像对象缓存
     public ImageCache getImageCache();
+
+    //! 销毁数据，内部调用
+    public void tearDown();
 }

@@ -12,7 +12,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
 - [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
-- [svg-android](https://github.com/japgolly/svg-android) (Apache): Vector graphics support for Android.
+- [AndroidSVG](https://code.google.com/p/androidsvg) (Apache): SVG rendering library for Android.
 - [simple-svg](http://code.google.com/p/simple-svg) (BSD): A C++ header file for creating SVG files.
 - [rapidjson](https://github.com/Kanma/rapidjson) (MIT): A fast JSON parser/generator for C++ with both SAX/DOM style API.
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
@@ -37,7 +37,7 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
 
 - Enter the directory of this project, then type `./build.sh` to generate libtouchvg.so and JNI classes.
 
-  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/), and add the location to PATH on Windows.
+  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
   
   - Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to PATH.
   

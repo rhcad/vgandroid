@@ -202,6 +202,14 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public void createDummyView(Context context, int width, int height) {
+        final StdGraphView view = new StdGraphView(context, (BaseGraphView)null);
+        view.layout(0, 0, width, height);
+        mView = view;
+        mView.coreView().onSize(internalAdapter(), width, height);
+    }
+
+    @Override
     public void setExtraContextImages(Context context, int[] ids) {
         ResourceUtil.setExtraContextImages(context, ids);
     }
@@ -368,8 +376,18 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public boolean zoomToExtent(float margin) {
+        return mView != null && mView.coreView().zoomToExtent(margin);
+    }
+
+    @Override
     public boolean zoomToModel(float x, float y, float w, float h) {
         return mView != null && mView.coreView().zoomToModel(x, y, w, h);
+    }
+
+    @Override
+    public boolean zoomToModel(float x, float y, float w, float h, float margin) {
+        return mView != null && mView.coreView().zoomToModel(x, y, w, h, margin);
     }
 
     @Override
@@ -647,8 +665,34 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public int importSVGPath(int sid, String d) {
+        if (mView != null && d != null) {
+            sid = mView.coreView().importSVGPath(mView.coreView().backShapes(), sid, d);
+            if (sid != 0) {
+                mView.viewAdapter().regenAll(true);
+                return sid;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public String exportSVGPath(int sid) {
+        final StringCallback c = new StringCallback();
+        if (mView != null) {
+            mView.coreView().exportSVGPath2(c, mView.coreView().backShapes(), sid);
+        }
+        return c.toString();
+    }
+
+    @Override
     public int getShapeCount() {
         return mView != null ? mView.coreView().getShapeCount() : 0;
+    }
+
+    @Override
+    public int getUnlockedShapeCount() {
+        return mView != null ? mView.coreView().getUnlockedShapeCount() : 0;
     }
 
     @Override
@@ -796,6 +840,15 @@ public class ViewHelperImpl implements IViewHelper{
             synchronized (mView.coreView()) {
                 mView.getImageCache().clear();
                 mView.coreView().clear();
+            }
+        }
+    }
+
+    @Override
+    public void eraseView() {
+        if (mView != null) {
+            synchronized (mView.coreView()) {
+                mView.coreView().setCommand("erasewnd");
             }
         }
     }
@@ -1054,7 +1107,10 @@ public class ViewHelperImpl implements IViewHelper{
             } else {
                 mView.onPause();
                 mView.stop(listener);
-                ((ViewGroup) mView.getView().getParent()).removeAllViews();
+                if (layout != null)
+                    layout.removeAllViews();
+                else
+                    mView.tearDown();
                 mView = null;
             }
         }

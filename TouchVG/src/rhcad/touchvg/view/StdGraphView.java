@@ -32,7 +32,7 @@ import android.view.View;
  * 
  * 建议使用FrameLayout作为容器创建绘图视图，使用LinearLayout将无法显示上下文操作按钮。
  */
-public class StdGraphView extends View implements BaseGraphView, GestureNotify {
+public class StdGraphView extends View implements BaseGraphView {
     protected static final String TAG = "touchvg";
     protected ImageCache mImageCache;                       // 图像对象缓存
     protected CanvasAdapter mCanvasAdapter;                 // onDraw用的画布适配器
@@ -71,14 +71,18 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         ViewUtil.onAddView(this);
     }
 
-    //! 放大镜视图的构造函数
+    //! 放大镜视图(mainView有效)或临时视图(mainView=nil)的构造函数
     public StdGraphView(Context context, BaseGraphView mainView) {
         super(context);
-        mImageCache = mainView.getImageCache();
+        mImageCache = mainView != null ? mainView.getImageCache() : new ImageCache();
         createAdapter(context, null);
         mMainView = mainView;
-        mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
-                mainView.coreView(), mainView.viewAdapter());
+        if (mainView != null) {
+            mCoreView = GiCoreView.createMagnifierView(mViewAdapter,
+                    mainView.coreView(), mainView.viewAdapter());
+        } else {
+            mCoreView = GiCoreView.createView(mViewAdapter, GiCoreView.kNoCmdType);
+        }
         initView(context);
     }
 
@@ -239,6 +243,15 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
 
     @Override
     protected void onDetachedFromWindow() {
+        tearDown();
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    public void tearDown() {
+        if (mViewAdapter == null)
+            return;
+
         ViewUtil.onRemoveView(this);
         mViewAdapter.stop(null);
 
@@ -260,14 +273,12 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
             mCachedBitmap.recycle();
             mCachedBitmap = null;
         }
-        if (mViewAdapter != null) {
-            synchronized (GiCoreView.class) {
-                mCoreView.destoryView(mViewAdapter);
-                mViewAdapter.delete();
-                mViewAdapter = null;
-                mCoreView.delete();
-                mCoreView = null;
-            }
+        synchronized (GiCoreView.class) {
+            mCoreView.destoryView(mViewAdapter);
+            mViewAdapter.delete();
+            mViewAdapter = null;
+            mCoreView.delete();
+            mCoreView = null;
         }
         if (mCanvasAdapter != null) {
             mCanvasAdapter.delete();
@@ -283,8 +294,6 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         }
         mGestureDetector = null;
         mMainView = null;
-
-        super.onDetachedFromWindow();
     }
 
     //! 视图回调适配器
@@ -320,22 +329,29 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         @Override
         public void regenAll(boolean changed) {
             if (mCoreView != null && !mCoreView.isPlaying()) {
-                if (!mCoreView.isUndoLoading()) {
-                    if (changed || mViewAdapter.getRegenCount() == 0)
-                        mCoreView.submitBackDoc(mViewAdapter, changed);
-                    mCoreView.submitDynamicShapes(mViewAdapter);
+                int changeCount = mCoreView.getChangeCount();
+                int tick1 = mCoreView.getRecordTick(false, getTick());
 
-                    if (mUndoing != null && changed) {
-                        int tick0 = mCoreView.getRecordTick(true, getTick());
-                        int doc0 = mCoreView.acquireFrontDoc();
-                        mUndoing.requestRecord(tick0, doc0, 0);
+                if (!mCoreView.isUndoLoading()) {
+                    if (changed || mViewAdapter.getRegenCount() == 0) {
+                        mCoreView.submitBackDoc(mViewAdapter, changed);
+                        mCoreView.submitDynamicShapes(mViewAdapter);
+
+                        if (mUndoing != null && changed) {
+                            int tick0 = mCoreView.getRecordTick(true, getTick());
+                            int doc0 = mCoreView.acquireFrontDoc();
+                            mUndoing.requestRecord(tick0, changeCount, doc0, 0);
+                        }
+                        if (mRecorder != null && changed) {
+                            int doc1 = mCoreView.acquireFrontDoc();
+                            int shapes1 = mCoreView.acquireDynamicShapes();
+                            mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
+                        }
                     }
-                }
-                if (mRecorder != null && changed) {
-                    int tick1 = mCoreView.getRecordTick(false, getTick());
+                } else if (mRecorder != null && changed) {
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
                 }
             }
             if (mCachedBitmap != null
@@ -351,19 +367,21 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
         @Override
         public void regenAppend(int sid, int playh) {
             if (mCoreView != null && !mCoreView.isPlaying()) {
+                int changeCount = mCoreView.getChangeCount();
+
                 mCoreView.submitBackDoc(mViewAdapter, true);
                 mCoreView.submitDynamicShapes(mViewAdapter);
 
                 if (mUndoing != null) {
                     int tick0 = mCoreView.getRecordTick(true, getTick());
                     int doc0 = mCoreView.acquireFrontDoc();
-                    mUndoing.requestRecord(tick0, doc0, 0);
+                    mUndoing.requestRecord(tick0, changeCount, doc0, 0);
                 }
                 if (mRecorder != null) {
                     int tick1 = mCoreView.getRecordTick(false, getTick());
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
                 }
             }
             if (mCachedBitmap != null && !mRegenning) {
@@ -391,7 +409,7 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
                     if (mRecorder != null) {
                         int tick1 = mCoreView.getRecordTick(false, getTick());
                         int shapes1 = mCoreView.acquireDynamicShapes();
-                        mRecorder.requestRecord(tick1, 0, shapes1);
+                        mRecorder.requestRecord(tick1, 0, 0, shapes1);
                     }
                 }
             }
@@ -575,17 +593,7 @@ public class StdGraphView extends View implements BaseGraphView, GestureNotify {
     }
 
     @Override
-    public boolean onPreLongPress(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreSingleTap(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onPreDoubleTap(MotionEvent e) {
-        return false;
+    public void setOnGestureListener(OnDrawGestureListener listener) {
+        mViewAdapter.setOnGestureListener(listener);
     }
 }

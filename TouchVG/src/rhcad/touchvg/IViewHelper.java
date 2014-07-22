@@ -73,6 +73,9 @@ public interface IViewHelper {
     //! 在指定的布局中创建放大镜视图，并记下此视图
     public ViewGroup createMagnifierView(Context context, ViewGroup layout, IGraphView mainView);
 
+    //! 创建不使用交互命令的临时隐藏视图，用完调用 close() 释放
+    public void createDummyView(Context context, int width, int height);
+
     //! [状态无关]设置额外的上下文操作按钮的图像ID数组，其动作序号从40起
     public void setExtraContextImages(Context context, int[] ids);
 
@@ -153,8 +156,14 @@ public interface IViewHelper {
     //! 放缩显示全部内容
     public boolean zoomToExtent();
 
+    //! 放缩显示全部内容
+    public boolean zoomToExtent(float margin);
+
     //! 放缩显示指定范围到视图区域
     public boolean zoomToModel(float x, float y, float w, float h);
+
+    //! 放缩显示指定范围到视图区域
+    public boolean zoomToModel(float x, float y, float w, float h, float margin);
 
     //! 视图坐标转为模型坐标
     public PointF displayToModel(float x, float y);
@@ -234,8 +243,17 @@ public interface IViewHelper {
     //! 导出静态图形到SVG文件，自动添加后缀名.svg
     public boolean exportSVG(String filename);
 
+    //! 用SVG路径的d坐标序列创建或设置图形形状
+    public int importSVGPath(int sid, String d);
+
+    //! 输出SVG路径的d坐标序列
+    public String exportSVGPath(int sid);
+
     //! 返回图形总数
     public int getShapeCount();
+
+    //! 返回未锁定的图形的个数
+    public int getUnlockedShapeCount();
 
     //! 返回选中的图形个数
     public int getSelectedCount();
@@ -279,8 +297,11 @@ public interface IViewHelper {
     //! 保存图形到JSON文件，自动添加后缀名.vg，支持多线程
     public boolean saveToFile(String vgfile);
 
-    //! 清除所有图形
+    //! 清除所有图形，含锁定的图形
     public void clearShapes();
+
+    //! 清除当前视图区域内的未锁定的图形
+    public void eraseView();
 
     //! 在默认位置插入一个程序资源中的SVG图像(id=R.raw.name)
     public int insertSVGFromResource(String name);
