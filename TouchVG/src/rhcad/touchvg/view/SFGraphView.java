@@ -599,8 +599,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
         public void regenAll(boolean changed) {
             if (mCoreView != null && !mCoreView.isPlaying()) {
                 if (!mCoreView.isUndoLoading()) {
-                    if (changed || mViewAdapter.getRegenCount() == 0)
-                        mCoreView.submitBackDoc(mViewAdapter, changed);
+                    mCoreView.submitBackDoc(mViewAdapter, changed);
                     mCoreView.submitDynamicShapes(mViewAdapter);
 
                     if (mUndoing != null && changed) {
