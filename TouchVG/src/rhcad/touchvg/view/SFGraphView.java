@@ -598,23 +598,29 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
         @Override
         public void regenAll(boolean changed) {
             if (mCoreView != null && !mCoreView.isPlaying()) {
-                if (!mCoreView.isUndoLoading()) {
-                    mCoreView.submitBackDoc(mViewAdapter, changed);
-                    mCoreView.submitDynamicShapes(mViewAdapter);
+                int changeCount = mCoreView.getChangeCount();
+                int tick1 = mCoreView.getRecordTick(false, getTick());
 
-                    if (mUndoing != null && changed) {
-                        int tick0 = mCoreView.getRecordTick(true, getTick());
-                        int change0 = mCoreView.getChangeCount();
-                        int doc0 = mCoreView.acquireFrontDoc();
-                        mUndoing.requestRecord(tick0, change0, doc0, 0);
+                if (!mCoreView.isUndoLoading()) {
+                    if (changed || mViewAdapter.getRegenCount() == 0) {
+                        mCoreView.submitBackDoc(mViewAdapter, changed);
+                        mCoreView.submitDynamicShapes(mViewAdapter);
+
+                        if (mUndoing != null && changed) {
+                            int tick0 = mCoreView.getRecordTick(true, getTick());
+                            int doc0 = mCoreView.acquireFrontDoc();
+                            mUndoing.requestRecord(tick0, changeCount, doc0, 0);
+                        }
+                        if (mRecorder != null && changed) {
+                            int doc1 = mCoreView.acquireFrontDoc();
+                            int shapes1 = mCoreView.acquireDynamicShapes();
+                            mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
+                        }
                     }
-                }
-                if (mRecorder != null && changed) {
-                    int tick1 = mCoreView.getRecordTick(false, getTick());
-                    int change1 = mCoreView.getChangeCount();
+                } else if (mRecorder != null && changed) {
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, change1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
                 }
             }
             if (mRender != null) {
@@ -625,21 +631,21 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
         @Override
         public void regenAppend(int sid, int playh) {
             if (mCoreView != null && !mCoreView.isPlaying()) {
+                int changeCount = mCoreView.getChangeCount();
+
                 mCoreView.submitBackDoc(mViewAdapter, true);
                 mCoreView.submitDynamicShapes(mViewAdapter);
 
                 if (mUndoing != null) {
                     int tick0 = mCoreView.getRecordTick(true, getTick());
-                    int change0 = mCoreView.getChangeCount();
                     int doc0 = mCoreView.acquireFrontDoc();
-                    mUndoing.requestRecord(tick0, change0, doc0, 0);
+                    mUndoing.requestRecord(tick0, changeCount, doc0, 0);
                 }
                 if (mRecorder != null) {
                     int tick1 = mCoreView.getRecordTick(false, getTick());
-                    int change1 = mCoreView.getChangeCount();
                     int doc1 = mCoreView.acquireFrontDoc();
                     int shapes1 = mCoreView.acquireDynamicShapes();
-                    mRecorder.requestRecord(tick1, change1, doc1, shapes1);
+                    mRecorder.requestRecord(tick1, changeCount, doc1, shapes1);
                 }
             }
             if (mDynDrawRender != null) {
