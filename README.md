@@ -1,6 +1,7 @@
 # TouchVG for Android
 
 This is a lightweight 2D vector drawing framework using [TouchVGCore](https://github.com/touchvg/vgcore) for Android.
+It uses `android.graphics` and `android.view` packages to render shapes and handle touches.
 
 Features described in [Online document](http://touchvg.github.io). Please visit [TouchVG Demo](https://github.com/touchvg/vgandroid-demo) to see more examples.
 
@@ -13,8 +14,6 @@ This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the foll
 
 - [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
 - [AndroidSVG](https://code.google.com/p/androidsvg) (Apache): SVG rendering library for Android.
-- [simple-svg](http://code.google.com/p/simple-svg) (BSD): A C++ header file for creating SVG files.
-- [rapidjson](https://github.com/Kanma/rapidjson) (MIT): A fast JSON parser/generator for C++ with both SAX/DOM style API.
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
 - [SWIG](https://github.com/swig/swig) (GPL): Use the tool to generate the glue code for Java and C#.
 
