@@ -267,7 +267,7 @@ public class ImageCache extends Object {
 
         if (srcfile.exists() && !destfile.exists()) {
             if (!destfile.getParentFile().exists()) {
-                destfile.getParentFile().mkdirs();
+                destfile.getParentFile().mkdir();
             }
             try {
                 fis = new FileInputStream(srcfile);

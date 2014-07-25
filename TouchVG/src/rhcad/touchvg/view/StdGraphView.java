@@ -16,6 +16,7 @@ import rhcad.touchvg.view.internal.ResourceUtil;
 import rhcad.touchvg.view.internal.ViewUtil;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -45,6 +46,7 @@ public class StdGraphView extends View implements BaseGraphView {
     private boolean mRegenning = false;                     // 是否正在regenAll
     private Bitmap mCachedBitmap;                           // 缓存快照
     private Bitmap mRegenBitmap;                            // 渲染线程用的缓存位图
+    private int mDrawCount;                                 // onDraw 次数
     private int mBkColor = Color.TRANSPARENT;               // 背景色
     private IGraphView mMainView;                           // 本视图为放大镜时对应的主视图
 
@@ -126,6 +128,7 @@ public class StdGraphView extends View implements BaseGraphView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        mDrawCount++;
         mCoreView.onSize(mViewAdapter, getWidth(), getHeight());
         if (mCachedBitmap != null) {
             drawShapes(canvas, mCanvasAdapter, true);
@@ -182,17 +185,15 @@ public class StdGraphView extends View implements BaseGraphView {
     }
 
     private boolean regen(boolean fromRegenAll) {
-        if (getWidth() < 2 || getHeight() < 2 || mRegenning) {
+        if (mDrawCount == 0 || getWidth() < 2 || getHeight() < 2 || mRegenning) {
             return true;
         }
 
         try {
             if (mCachedBitmap == null) {
-                mCachedBitmap = Bitmap.createBitmap(getWidth(), getHeight(),
-                        Bitmap.Config.ARGB_8888);
+                mCachedBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
             } else if (mRegenBitmap == null) {
-                mRegenBitmap = Bitmap
-                        .createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+                mRegenBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -522,29 +523,35 @@ public class StdGraphView extends View implements BaseGraphView {
 
     @Override
     public Bitmap snapshot(boolean transparent) {
-        if (mCachedBitmap == null) {
-            mCachedBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        if (mCachedBitmap != null && transparent == (mBkColor == Color.TRANSPARENT)) {
             synchronized (mCachedBitmap) {
-                mCoreView.onSize(mViewAdapter, getWidth(), getHeight());
-                mCachedBitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
-                drawShapes(new Canvas(mCachedBitmap), mCanvasAdapter, false);
+                return mCachedBitmap.copy(Config.ARGB_8888, false);
             }
         }
-        return mCachedBitmap;
+
+        final Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        final CanvasAdapter canvasAdapter = new CanvasAdapter(this, mImageCache);
+
+        bitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
+        int n = drawShapes(new Canvas(bitmap), canvasAdapter, false);
+        Log.d(TAG, "snapshot: " + getWidth() + "x" + getHeight() + ", " + n + " shapes");
+        canvasAdapter.delete();
+
+        return bitmap;
     }
 
     @Override
     public Bitmap snapshot(int doc, int gs, boolean transparent) {
-        if (mCachedBitmap == null) {
-            mCachedBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-            synchronized (mCachedBitmap) {
-                mCoreView.onSize(mViewAdapter, getWidth(), getHeight());
-                mCachedBitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
-                final Longs docs = new Longs(doc, 0);
-                drawShapes(docs, gs, null, new Canvas(mCachedBitmap), mCanvasAdapter, false);
-            }
-        }
-        return mCachedBitmap;
+        final Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        final CanvasAdapter canvasAdapter = new CanvasAdapter(this, mImageCache);
+        final Longs docs = new Longs(doc, 0);
+
+        bitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
+        int n = drawShapes(docs, gs, null, new Canvas(bitmap), canvasAdapter, false);
+        Log.d(TAG, "snapshot: " + getWidth() + "x" + getHeight() + ", " + n + " shapes");
+        canvasAdapter.delete();
+
+        return bitmap;
     }
 
     @Override
