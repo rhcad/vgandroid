@@ -27,6 +27,7 @@ import com.caverock.androidsvg.SVGParseException;
 
 //! 图像对象缓存类
 public class ImageCache extends Object {
+    public static final boolean USE_SVG = false;        // Use androidsvg-xxx.jar?
     private static final String TAG = "touchvg";
     public static final String BITMAP_PREFIX = "bmp:";
     public static final String SVG_PREFIX = "svg:";
@@ -170,12 +171,18 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个程序资源中的SVG图像
+    @SuppressWarnings("unused")
     public Drawable addSVG(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
-        if (drawable == null && id != 0) {
+        if (drawable == null && id != 0 && USE_SVG) {
             try {
-                drawable = addSVG(SVG.getFromResource(res, id), name);
+                final Picture picture = SVG.getFromResource(res, id).renderToPicture();
+
+                if (picture != null && picture.getWidth() > 0) {
+                    drawable = new PictureDrawable(picture);
+                    addToCache(name, drawable);
+                }
             } catch (SVGParseException e) {
                 e.printStackTrace();
             }
@@ -213,13 +220,19 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个SVG文件的图像
+    @SuppressWarnings("unused")
     public Drawable addSVGFile(String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
-        if (drawable == null && name.endsWith(".svg")) {
+        if (drawable == null && name.endsWith(".svg") && USE_SVG) {
             try {
                 final InputStream data = new FileInputStream(new File(filename));
-                drawable = addSVG(SVG.getFromInputStream(data), name);
+                final Picture picture = SVG.getFromInputStream(data).renderToPicture();
+
+                if (picture != null && picture.getWidth() > 0) {
+                    drawable = new PictureDrawable(picture);
+                    addToCache(name, drawable);
+                }
                 data.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -228,19 +241,6 @@ public class ImageCache extends Object {
             } catch (SVGParseException e) {
                 e.printStackTrace();
             }
-        }
-
-        return drawable;
-    }
-
-    private Drawable addSVG(SVG svg, String name) {
-        Drawable drawable = null;
-
-        final Picture picture = svg.renderToPicture();
-
-        if (picture != null && picture.getWidth() > 0) {
-            drawable = new PictureDrawable(picture);
-            addToCache(name, drawable);
         }
 
         return drawable;
