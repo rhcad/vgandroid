@@ -34,16 +34,14 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
 
 # How to Compile
 
-- Enter the directory of this project, then type `./build.sh` to generate libtouchvg.so and JNI classes.
-
-  - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
+- Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
   
   - Need to add the [NDK](http://developer.android.com/tools/sdk/ndk/index.html) installation location to PATH.
   
   - If the error `build/gmsl/__gmsl:512: *** non-numeric second argument to wordlist function` occurs, then open the `build/gmsl/__gmsl` file in the NDK installation directory, and change line 512 to:
      `int_encode = $(__gmsl_tr1)$(wordlist 1,$(words $1),$(__gmsl_input_int))`
 
-   - MSYS is recommended on Windows.
+   - MSYS is recommended on Windows to run UNIX commands.
 
 - Import this project in eclipse, then build  `touchvg` project.
 
@@ -60,6 +58,8 @@ Welcome to the Chinese QQ group `192093613` to discuss and share.
    - Type `./build.sh APP_ABI=x86` to build for the x86 (Intel Atom) Emulator.
    
    - Type `./build.sh -swig` to regenerate the kernel JNI classes.
+   
+   - Need to install the lastest version of [SWIG](http://sourceforge.net/projects/swig/files/) 3.0, and add the location to PATH on Windows. SWIG 2.x may can't parse UTF-8 header files on Windows.
 
 # How to Debug native code
 

@@ -48,7 +48,5 @@ CppDepend*
 *.cdproj
 *.ch*
 *.hh*
-*_wrap.*
-TouchVG/src/rhcad/touchvg/core
 output
 *.so
