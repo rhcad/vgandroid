@@ -10,7 +10,9 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 ## How to Compile
 
-- Don't want to build libtouchvg.so and jar? Then you can download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip) and and extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs` or `yourapp/libs`.
+- Don't want to build libtouchvg.so and jar?
+  1. Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  2. Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs` or `yourapp/libs`.
 
 - Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
   
