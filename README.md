@@ -10,9 +10,10 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 ## How to Compile
 
-- Don't want to build libtouchvg.so and jar?
-  1. Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
-  2. Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs` or `yourapp/libs`.
+- Don't want to build libtouchvg.so and jar ?
+  - Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  - Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs` or `yourapp/libs`.
+  - Import this project in eclipse. Android SDK version in the project.properties may need to modify according to your installation.
 
 - Enter the directory of this project, then type `./build.sh` to clone and build libraries needed.
   
@@ -25,7 +26,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 - Import this project in eclipse, then build  `touchvg` project.
 
-  - Android SDK version of the projects may need to modify according to your installation.
+  - Android SDK version in the project.properties may need to modify according to your installation.
   
   - Recommend using the newer [ADT Bundle](http://developer.android.com/sdk/index.html) to avoid complex configuration.
 
