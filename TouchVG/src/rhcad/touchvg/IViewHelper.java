@@ -165,7 +165,7 @@ public interface IViewHelper {
     //! 放缩显示指定范围到视图区域
     public boolean zoomToModel(float x, float y, float w, float h, float margin);
 
-    //! 放缩显示指定范围到视图区域
+    //! 图形向右上平移显示，像素单位
     public boolean zoomPan(float dxPixel, float dyPixel);
 
     //! 视图坐标转为模型坐标
