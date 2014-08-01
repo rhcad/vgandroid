@@ -320,6 +320,14 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_zoomToModel__SWIG_1(swigCPtr, this, x, y, w, h);
   }
 
+  public boolean zoomPan(float dxPixel, float dyPixel, boolean adjust) {
+    return touchvgJNI.MgCoreView_zoomPan__SWIG_0(swigCPtr, this, dxPixel, dyPixel, adjust);
+  }
+
+  public boolean zoomPan(float dxPixel, float dyPixel) {
+    return touchvgJNI.MgCoreView_zoomPan__SWIG_1(swigCPtr, this, dxPixel, dyPixel);
+  }
+
   public GiContext getContext(boolean forChange) {
     return new GiContext(touchvgJNI.MgCoreView_getContext(swigCPtr, this, forChange), false);
   }

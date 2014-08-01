@@ -1934,6 +1934,8 @@ public class touchvgJNI {
   public final static native boolean MgCoreView_zoomToExtent__SWIG_1(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_zoomToModel__SWIG_0(long jarg1, MgCoreView jarg1_, float jarg2, float jarg3, float jarg4, float jarg5, float jarg6);
   public final static native boolean MgCoreView_zoomToModel__SWIG_1(long jarg1, MgCoreView jarg1_, float jarg2, float jarg3, float jarg4, float jarg5);
+  public final static native boolean MgCoreView_zoomPan__SWIG_0(long jarg1, MgCoreView jarg1_, float jarg2, float jarg3, boolean jarg4);
+  public final static native boolean MgCoreView_zoomPan__SWIG_1(long jarg1, MgCoreView jarg1_, float jarg2, float jarg3);
   public final static native long MgCoreView_getContext(long jarg1, MgCoreView jarg1_, boolean jarg2);
   public final static native void MgCoreView_setContext__SWIG_0(long jarg1, MgCoreView jarg1_, int jarg2);
   public final static native void MgCoreView_setContext__SWIG_1(long jarg1, MgCoreView jarg1_, long jarg2, GiContext jarg2_, int jarg3, int jarg4);
@@ -1988,6 +1990,7 @@ public class touchvgJNI {
   public final static native int GiCoreView_getGestureType(long jarg1, GiCoreView jarg1_);
   public final static native int GiCoreView_getGestureState(long jarg1, GiCoreView jarg1_);
   public final static native int GiCoreView_getVersion();
+  public final static native boolean GiCoreView_isZoomEnabled(long jarg1, GiCoreView jarg1_, long jarg2, GiView jarg2_);
   public final static native void GiCoreView_setZoomEnabled(long jarg1, GiCoreView jarg1_, long jarg2, GiView jarg2_, boolean jarg3);
   public final static native int GiCoreView_exportSVG__SWIG_0(long jarg1, GiCoreView jarg1_, int jarg2, int jarg3, String jarg4);
   public final static native int GiCoreView_exportSVG__SWIG_1(long jarg1, GiCoreView jarg1_, long jarg2, GiView jarg2_, String jarg3);

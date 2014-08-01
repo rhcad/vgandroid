@@ -391,6 +391,11 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public boolean zoomPan(float dxPixel, float dyPixel) {
+        return mView != null && mView.coreView().zoomPan(dxPixel, dyPixel);
+    }
+
+    @Override
     public PointF displayToModel(float x, float y) {
         final Floats pt = new Floats(x, y);
         if (mView != null && mView.coreView().displayToModel(pt)) {

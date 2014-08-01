@@ -174,6 +174,10 @@ public class GiCoreView extends MgCoreView {
     return touchvgJNI.GiCoreView_getVersion();
   }
 
+  public boolean isZoomEnabled(GiView view) {
+    return touchvgJNI.GiCoreView_isZoomEnabled(swigCPtr, this, GiView.getCPtr(view), view);
+  }
+
   public void setZoomEnabled(GiView view, boolean enabled) {
     touchvgJNI.GiCoreView_setZoomEnabled(swigCPtr, this, GiView.getCPtr(view), view, enabled);
   }
