@@ -43,7 +43,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 15;
+    private static final int JARVERSION = 16;
     private BaseGraphView mView;
 
     static {
@@ -388,6 +388,11 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public boolean zoomToModel(float x, float y, float w, float h, float margin) {
         return mView != null && mView.coreView().zoomToModel(x, y, w, h, margin);
+    }
+
+    @Override
+    public boolean zoomPan(float dxPixel, float dyPixel) {
+        return mView != null && mView.coreView().zoomPan(dxPixel, dyPixel);
     }
 
     @Override
@@ -895,11 +900,11 @@ public class ViewHelperImpl implements IViewHelper{
         final File file = new File(filename);
         final File pf = file.getParentFile();
 
-        if (!pf.exists() && !pf.mkdirs()) {
+        if (!pf.exists() && !pf.mkdir()) {
             Log.e(TAG, "Fail to create folder: " + pf.getPath());
             return false;
         }
-        if (isDirectory && !file.exists() && !file.mkdirs()) {
+        if (isDirectory && !file.exists() && !file.mkdir()) {
             Log.e(TAG, "Fail to create folder: " + filename);
             return false;
         }

@@ -274,8 +274,14 @@ public class CanvasAdapter extends GiCanvas {
     }
 
     public Bitmap getHandleBitmap(int type) {
-        return (mHandleIDs != null && type >= 0 && type < mHandleIDs.length && mView != null) ? BitmapFactory
-                .decodeResource(mView.getResources(), mHandleIDs[type]) : null;
+        if (mHandleIDs != null && type >= 0 && type < mHandleIDs.length && mView != null) {
+            return BitmapFactory.decodeResource(mView.getResources(), mHandleIDs[type]);
+        }
+        if (type > 10 && mView != null) {
+            int id = ResourceUtil.getDrawableIDFromName(mView.getContext(), "vgdot" + type);
+            return BitmapFactory.decodeResource(mView.getResources(), id);
+        }
+        return null;
     }
 
     @Override
