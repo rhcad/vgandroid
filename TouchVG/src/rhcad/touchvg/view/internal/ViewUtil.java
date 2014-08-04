@@ -5,9 +5,13 @@ import java.util.List;
 
 import rhcad.touchvg.view.BaseGraphView;
 
+//! 记录当前视图和所有视图对象的辅助类
 public class ViewUtil {
     private static BaseGraphView mActiveView;
     private static List<BaseGraphView> mViews = new ArrayList<BaseGraphView>();
+
+    private ViewUtil() {
+    }
 
     public static void onAddView(BaseGraphView view) {
         mViews.add(view);

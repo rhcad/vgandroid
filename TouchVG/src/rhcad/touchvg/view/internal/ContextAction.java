@@ -7,7 +7,6 @@ import rhcad.touchvg.core.Floats;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.Ints;
 import android.content.Context;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +18,6 @@ import android.widget.RelativeLayout.LayoutParams;
 
 //! 绘图视图的上下文操作布局类
 public class ContextAction {
-    private static final String TAG = "touchvg";
     private static final int EXTRA_ACTION_BEGIN = 40;
     private GiCoreView mCoreView;
     private View mView;
@@ -34,10 +32,6 @@ public class ContextAction {
         this.mCoreView = core;
         this.mView = view;
         mDensity = view.getContext().getApplicationContext().getResources().getDisplayMetrics().density;
-    }
-
-    protected void finalize() {
-        Log.d(TAG, "ContextAction finalize");
     }
 
     public void release() {

@@ -27,11 +27,12 @@ import com.caverock.androidsvg.SVGParseException;
 
 //! 图像对象缓存类
 public class ImageCache extends Object {
-    public static final boolean USE_SVG = false;        // Use androidsvg-xxx.jar?
+    // USE_SVG=true: Uses androidsvg-xxx.jar
+    public static final boolean USE_SVG = false;
     private static final String TAG = "touchvg";
     public static final String BITMAP_PREFIX = "bmp:";
     public static final String SVG_PREFIX = "svg:";
-    private static final int CACHE_SIZE = 2 * 1024 * 1024; // 2MB
+    private static final int CACHE_SIZE = 2 * 1024 * 1024;
     private LruCache<String, Drawable> mCache;
     private String mPath;
     private String mPlayPath;
@@ -39,16 +40,13 @@ public class ImageCache extends Object {
     public ImageCache() {
     }
 
-    protected void finalize() {
-        Log.d(TAG, "ImageCache finalize");
-    }
-
     private boolean createCache() {
         try {
             mCache = new LruCache<String, Drawable>(CACHE_SIZE) {
                 @Override
                 protected int sizeOf(String key, Drawable d) {
-                    int size = 1; // TODO: SVG size?
+                    // TODO: SVG size?
+                    int size = 1;
                     if (d.getClass().isInstance(BitmapDrawable.class)) {
                         size = ((BitmapDrawable) d).getBitmap().getByteCount();
                     }
@@ -113,17 +111,19 @@ public class ImageCache extends Object {
             mCache.evictAll();
     }
 
-    //! 查找图像对象
+    // ! 查找图像对象
     public Drawable getImage(View view, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && view != null) {
-            if (name.indexOf(BITMAP_PREFIX) == 0) { // R.drawable.resName
+            if (name.indexOf(BITMAP_PREFIX) == 0) {
+                // is R.drawable.resName
                 final String resName = name.substring(BITMAP_PREFIX.length());
                 int id = view.getResources().getIdentifier(resName, "drawable",
                         view.getContext().getPackageName());
                 drawable = this.addBitmap(view.getResources(), id, name);
-            } else if (name.indexOf(SVG_PREFIX) == 0) { // R.raw.resName
+            } else if (name.indexOf(SVG_PREFIX) == 0) {
+                // is R.raw.resName
                 final String resName = name.substring(SVG_PREFIX.length());
                 int id = view.getResources().getIdentifier(resName, "raw",
                         view.getContext().getPackageName());
@@ -184,7 +184,7 @@ public class ImageCache extends Object {
                     addToCache(name, drawable);
                 }
             } catch (SVGParseException e) {
-                e.printStackTrace();
+                Log.e(TAG, "SVGParseException: " + e.getMessage());
             }
         }
 
@@ -235,11 +235,11 @@ public class ImageCache extends Object {
                 }
                 data.close();
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                Log.e(TAG, "File not found: " + e.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, "IO exception: " + e.getMessage());
             } catch (SVGParseException e) {
-                e.printStackTrace();
+                Log.e(TAG, "SVGParseException: " + e.getMessage());
             }
         }
 
@@ -286,7 +286,7 @@ public class ImageCache extends Object {
                     try {
                         fis.close();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, "IO exception: " + e.getMessage());
                     }
                 }
                 if (fos != null) {
@@ -294,7 +294,7 @@ public class ImageCache extends Object {
                         fos.close();
                     } catch (IOException e) {
                         ret = false;
-                        e.printStackTrace();
+                        Log.e(TAG, "IO exception: " + e.getMessage());
                     }
                 }
             }

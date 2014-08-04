@@ -11,17 +11,13 @@ public class ShapeRunnable implements Runnable {
     protected boolean mStopping = false;
     protected GiCoreView mCoreView;
     private Object mMonitor = new Object();
-    protected int[] mPending = new int[60]; // {tick,change,doc,shapes}
+    protected int[] mPending = new int[60];
 
     public ShapeRunnable(String path, int type, GiCoreView coreView) {
         this.mPath = path;
         this.mType = type;
         this.mCoreView = coreView;
         coreView.addRef();
-    }
-
-    protected void finalize() {
-        Log.d(TAG, "ShapeRunnable finalize, type=" + mType);
     }
 
     public String getPath() {
@@ -44,7 +40,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 mMonitor.wait(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Log.w(TAG, e.getMessage());
             }
         }
         log.r();
@@ -61,9 +57,12 @@ public class ShapeRunnable implements Runnable {
     }
 
     public final void requestRecord(int tick, int change, int doc, int shapes) {
+        boolean released = false;
+
         synchronized (mPending) {
             int i = 0;
-            for (; i < mPending.length && mPending[i] != 0; i += 4) {
+            while (i < mPending.length && mPending[i] != 0) {
+                i += 4;
             }
             if (i + 3 < mPending.length) {
                 mPending[i] = tick;
@@ -73,13 +72,10 @@ public class ShapeRunnable implements Runnable {
             } else {
                 GiCoreView.releaseDoc(doc);
                 GiCoreView.releaseShapes(shapes);
-                tick = 0;
-                change = 0;
-                doc = 0;
-                shapes = 0;
+                released = true;
             }
         }
-        if (tick != 0) {
+        if (tick != 0 && !released) {
             requestProcess();
         }
     }
@@ -89,9 +85,11 @@ public class ShapeRunnable implements Runnable {
     }
 
     protected void afterStopped(boolean normal) {
+        Log.d(TAG, "empty afterStopped");
     }
 
     protected void process(int tick, int change, int doc, int shapes) {
+        Log.d(TAG, "empty process");
     }
 
     @Override
@@ -100,7 +98,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 process();
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.w(TAG, e.getMessage());
             }
         }
 
@@ -118,7 +116,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 this.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Log.w(TAG, e.getMessage());
             }
         }
         return !mStopping;
@@ -136,13 +134,8 @@ public class ShapeRunnable implements Runnable {
                     change = mPending[1];
                     doc = mPending[2];
                     shapes = mPending[3];
+                    popFirst4Items();
 
-                    for (int i = 4; i + 3 < mPending.length; i += 4) {
-                        for (int j = 0; j < 4; j++) {
-                            mPending[i + j - 4] = mPending[i + j];
-                            mPending[i + j] = 0;
-                        }
-                    }
                     nextTick = mPending[0];
                     loop = (doc == 0 && shapes != 0 && nextTick != 0);
                     if (loop) {
@@ -157,6 +150,15 @@ public class ShapeRunnable implements Runnable {
                 }
             }
             loop = (nextTick != 0);
+        }
+    }
+
+    private void popFirst4Items() {
+        for (int i = 4; i + 3 < mPending.length; i += 4) {
+            for (int j = 0; j < 4; j++) {
+                mPending[i + j - 4] = mPending[i + j];
+                mPending[i + j] = 0;
+            }
         }
     }
 

@@ -4,7 +4,7 @@
 
 package rhcad.touchvg;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.MgView;
@@ -106,18 +106,10 @@ public interface IViewHelper {
     //! 设置像素单位的线宽，总是为正数
     public void setStrokeWidth(int w);
 
-    public final static int SOLID_LINE  = 0;
-    public final static int DASH_LINE   = 1;
-    public final static int DOT_LINE    = 2;
-    public final static int DASH_DOT    = 3;
-    public final static int DASH_DOT_DOT = 4;
-    public final static int NULL_LINE   = 5;
-    public static final int MAX_LINESTYLE = 5;
-
-    //! 返回线型(SOLID_LINE,DASH_LINE..NULL_LINE)
+    //! 返回线型(Const.SOLID_LINE,DASH_LINE..NULL_LINE)
     public int getLineStyle();
 
-    //! 设置线型(SOLID_LINE,DASH_LINE..NULL_LINE)
+    //! 设置线型(Const.SOLID_LINE,DASH_LINE..NULL_LINE)
     public void setLineStyle(int style);
 
     //! 返回线条颜色，忽略透明度分量，0 表示不画线条
@@ -346,7 +338,7 @@ public interface IViewHelper {
     public int findShapeByTag(int tag);
 
     //! 遍历有容纳图像的图形对象
-    public ArrayList<Bundle> getImageShapes();
+    public List<Bundle> getImageShapes();
 
     //! 返回图像文件的默认路径
     public String getImagePath();
