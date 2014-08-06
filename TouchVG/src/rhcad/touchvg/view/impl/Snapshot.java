@@ -113,7 +113,7 @@ public class Snapshot {
                     Log.d(FileUtil.TAG, "savePNG: " + filename + ", " + ret + ", " + bmp.getWidth()
                             + "x" + bmp.getHeight());
                 } catch (Exception e) {
-                    Log.e(FileUtil.TAG, "savePNG fail: " + e.getMessage());
+                    Log.e(FileUtil.TAG, "savePNG fail", e);
                 }
             }
         }

@@ -261,7 +261,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                     try {
                         mView.mCanvasAdapter.wait(1000);
                     } catch (InterruptedException e) {
-                        Log.w(TAG, e.getMessage());
+                        Log.w(TAG, "Render stop", e);
                     }
                 }
                 mView = null;
@@ -277,7 +277,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                     try {
                         this.wait();
                     } catch (InterruptedException e) {
-                        Log.w(TAG, e.getMessage());
+                        Log.w(TAG, "Render run", e);
                     }
                 }
                 if (mView != null && !mView.mCoreView.isStopping()) {
@@ -316,7 +316,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
-                    Log.w(TAG, e.getMessage());
+                    Log.w(TAG, "notUseOnDraw", e);
                 }
                 ((Activity) mView.getContext()).runOnUiThread(new Runnable() {
                     @Override
@@ -339,7 +339,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                 canvas = holder.lockCanvas();
                 count = drawInRender(canvas);
             } catch (Exception e) {
-                Log.w(TAG, "Fail to render on the canvas: " + e.getMessage());
+                Log.w(TAG, "Fail to render on the canvas", e);
             } finally {
                 if (canvas != null) {
                     holder.unlockCanvasAndPost(canvas);
@@ -425,7 +425,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                 try {
                     mView.mDynDrawCanvas.wait(1000);
                 } catch (InterruptedException e) {
-                    Log.w(TAG, e.getMessage());
+                    Log.w(TAG, "stop DynRender", e);
                 }
             }
             log.r();
@@ -478,7 +478,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                     try {
                         this.wait();
                     } catch (InterruptedException e) {
-                        Log.w(TAG, e.getMessage());
+                        Log.w(TAG, "DynRender run", e);
                     }
                 }
                 if (mView != null && !mView.mCoreView.isStopping()) {
@@ -528,7 +528,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
                     }
                 }
             } catch (Exception e) {
-                Log.w(TAG, "dynrender fail: " + e.getMessage());
+                Log.w(TAG, "dynrender fail", e);
             } finally {
                 if (canvas != null) {
                     mHolder.unlockCanvasAndPost(canvas);

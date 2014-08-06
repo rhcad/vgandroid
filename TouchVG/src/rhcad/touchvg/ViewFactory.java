@@ -4,15 +4,17 @@
 
 package rhcad.touchvg;
 
+import android.util.Log;
 import android.view.ViewGroup;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.view.ViewHelperImpl;
 
 //! 绘图视图工厂类
 public class ViewFactory {
+    private static final String TAG = "touchvg";
 
     static {
-        System.loadLibrary("touchvg");
+        System.loadLibrary(TAG);
     }
 
     private ViewFactory() {
@@ -37,6 +39,7 @@ public class ViewFactory {
             }
             return createHelper((IGraphView) layout.getChildAt(0));
         } catch (ClassCastException e) {
+            Log.w(TAG, "The layout is not kind of IGraphView", e);
             return null;
         }
     }

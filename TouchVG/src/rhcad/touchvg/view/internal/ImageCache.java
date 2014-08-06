@@ -54,7 +54,7 @@ public class ImageCache extends Object {
                 }
             };
         } catch (NoClassDefFoundError e) {
-            Log.e(TAG, "Need android-support-v4.jar in application");
+            Log.e(TAG, "Need android-support-v4.jar in application", e);
         }
         return mCache != null;
     }
@@ -78,37 +78,40 @@ public class ImageCache extends Object {
     }
 
     public static int getWidth(Drawable drawable) {
+        int w = 0;
         try {
-            return ((BitmapDrawable) drawable).getBitmap().getWidth();
+            w = ((BitmapDrawable) drawable).getBitmap().getWidth();
         } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(w)", e);
+            try {
+                w = ((PictureDrawable) drawable).getPicture().getWidth();
+            } catch (ClassCastException e2) {
+                Log.i(TAG, "Not PictureDrawable(w)", e);
+            }
         }
-
-        try {
-            return ((PictureDrawable) drawable).getPicture().getWidth();
-        } catch (ClassCastException e) {
-        }
-
-        return 0;
+        return w;
     }
 
     public static int getHeight(Drawable drawable) {
+        int h = 0;
         try {
-            return ((BitmapDrawable) drawable).getBitmap().getHeight();
+            h = ((BitmapDrawable) drawable).getBitmap().getHeight();
         } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(h)", e);
+            try {
+                h = ((PictureDrawable) drawable).getPicture().getHeight();
+            } catch (ClassCastException e2) {
+                Log.i(TAG, "Not PictureDrawable(h)", e);
+            }
         }
-
-        try {
-            return ((PictureDrawable) drawable).getPicture().getHeight();
-        } catch (ClassCastException e) {
-        }
-
-        return 0;
+        return h;
     }
 
     //! 清除所有资源
     public void clear() {
-        if (mCache != null)
+        if (mCache != null) {
             mCache.evictAll();
+        }
     }
 
     // ! 查找图像对象
@@ -141,8 +144,9 @@ public class ImageCache extends Object {
     private String getImagePath(String name) {
         if (mPlayPath != null && !mPlayPath.isEmpty()) {
             final File f = new File(mPlayPath, name);
-            if (f.exists())
+            if (f.exists()) {
                 return f.getPath();
+            }
         }
         if (mPath != null && !mPath.isEmpty()) {
             final File f = new File(mPath, name);
@@ -184,7 +188,7 @@ public class ImageCache extends Object {
                     addToCache(name, drawable);
                 }
             } catch (SVGParseException e) {
-                Log.e(TAG, "SVGParseException: " + e.getMessage());
+                Log.e(TAG, "Parse resource fail", e);
             }
         }
 
@@ -235,11 +239,11 @@ public class ImageCache extends Object {
                 }
                 data.close();
             } catch (FileNotFoundException e) {
-                Log.e(TAG, "File not found: " + e.getMessage());
+                Log.e(TAG, "File not found", e);
             } catch (IOException e) {
-                Log.e(TAG, "IO exception: " + e.getMessage());
+                Log.e(TAG, "SVG read fail", e);
             } catch (SVGParseException e) {
-                Log.e(TAG, "SVGParseException: " + e.getMessage());
+                Log.e(TAG, "Parse file fail", e);
             }
         }
 
@@ -280,21 +284,20 @@ public class ImageCache extends Object {
                 }
                 ret = true;
             } catch (Exception e) {
-                Log.e(TAG, e.getMessage());
+                Log.e(TAG, "IO exception", e);
             } finally {
                 if (fis != null) {
                     try {
                         fis.close();
                     } catch (IOException e) {
-                        Log.e(TAG, "IO exception: " + e.getMessage());
+                        Log.e(TAG, "close fis", e);
                     }
                 }
                 if (fos != null) {
                     try {
                         fos.close();
                     } catch (IOException e) {
-                        ret = false;
-                        Log.e(TAG, "IO exception: " + e.getMessage());
+                        Log.e(TAG, "close fos", e);
                     }
                 }
             }

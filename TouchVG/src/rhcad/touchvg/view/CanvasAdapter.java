@@ -263,7 +263,7 @@ public class CanvasAdapter extends GiCanvas {
             ret = mCanvas.clipPath(mPath);
         } catch (UnsupportedOperationException e) {
             // GLES20Canvas, >=api11
-            Log.w(TAG, e.getMessage());
+            Log.w(TAG, "Unsupported operation: clipPath", e);
             if (mView != null) {
                 // 改为软实现后下次绘制才生效(need API11 or above)
                 mView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -311,15 +311,16 @@ public class CanvasAdapter extends GiCanvas {
             int height = ImageCache.getHeight(drawable);
 
             mat.postTranslate(-0.5f * width, -0.5f * height);
-         // degree to radian
-            mat.postRotate(-angle * 180.f / 3.1415926f);    
+            // degree to radian
+            mat.postRotate(-angle * 180.f / 3.1415926f);
             mat.postScale(w / width, h / height);
             mat.postTranslate(xc, yc);
 
             try {
                 BitmapDrawable b = (BitmapDrawable) drawable;
                 mCanvas.drawBitmap(b.getBitmap(), mat, null);
-            } catch (ClassCastException e) {
+            } catch (ClassCastException e1) {
+                Log.v(TAG, "Not BitmapDrawable", e1);
                 try {
                     PictureDrawable p = (PictureDrawable) drawable;
                     mCanvas.concat(mat);
@@ -329,9 +330,10 @@ public class CanvasAdapter extends GiCanvas {
 
                     return true;
                 } catch (ClassCastException e2) {
+                    Log.v(TAG, "Not PictureDrawable", e2);
                 } catch (UnsupportedOperationException e3) {
                     // GLES20Canvas, >=api11
-                    Log.w(TAG, "Unsupported operation: " + e3.getMessage());
+                    Log.w(TAG, "Unsupported operation", e3);
                     if (mView != null) {
                         // 改为软实现后下次绘制才生效
                         mView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);

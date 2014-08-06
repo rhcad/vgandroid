@@ -31,6 +31,7 @@ public class ResourceUtil {
         try {
             return ctx.getResources().getResourceEntryName(id);
         } catch (Exception e) {
+            Log.w(TAG, "getResName fail", e);
             return null;
         }
     }

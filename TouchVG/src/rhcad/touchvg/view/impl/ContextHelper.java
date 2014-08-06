@@ -53,7 +53,7 @@ public class ContextHelper {
 
         if (vc.isValid()) {
             ret = vc.coreView().setCommand(name, params);
-            Log.d(FileUtil.TAG, "setCommand " + name + params + ": " + ret);
+            Log.d(FileUtil.TAG, "setCommand(" + name + "): " + ret + params);
         }
         return ret;
     }
@@ -504,7 +504,7 @@ public class ContextHelper {
                 state.putString(KEY_PLAYFILE, playFile);
             }
             if (saveToFile(vc, filename, vc.coreView().backDoc())) {
-                Log.d(FileUtil.TAG, "Auto save to " + filename);
+                Log.d(FileUtil.TAG, "Auto save playing to " + filename);
                 state.putString(KEY_BAKFILE, filename);
             }
         } else {

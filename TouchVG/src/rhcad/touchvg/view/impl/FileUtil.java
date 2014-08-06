@@ -24,7 +24,7 @@ public class FileUtil {
         final File pf = file.getParentFile();
 
         if (!pf.exists() && !pf.mkdir()) {
-            Log.e(TAG, "Fail to create folder: " + pf.getPath());
+            Log.e(TAG, "Fail to create parent folder: " + pf.getPath());
             return false;
         }
         if (isDirectory && !file.exists() && !file.mkdir()) {

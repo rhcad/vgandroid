@@ -4,6 +4,8 @@ import android.util.Log;
 
 public class LogHelper {
     private static final String TAG = "vgstack";
+    private static final String RETURN0 = "Return";
+    private static final String RETURN1 = "Return ";
     private static int level;
 
     public LogHelper() {
@@ -19,24 +21,24 @@ public class LogHelper {
 
     public void r() {
         level--;
-        Log.d(TAG, addHead(getStackTrace(1).insert(0, "Return")).toString());
+        Log.d(TAG, addHead(getStackTrace(1).insert(0, RETURN0)).toString());
     }
 
     public boolean r(boolean ret) {
         level--;
-        Log.d(TAG, addHead(getStackTrace(1).insert(0, "Return " + ret)).toString());
+        Log.d(TAG, addHead(getStackTrace(1).insert(0, RETURN1 + ret)).toString());
         return ret;
     }
 
     public int r(int ret) {
         level--;
-        Log.d(TAG, addHead(getStackTrace(1).insert(0, "Return " + ret)).toString());
+        Log.d(TAG, addHead(getStackTrace(1).insert(0, RETURN1 + ret)).toString());
         return ret;
     }
 
     public String r(String ret) {
         level--;
-        Log.d(TAG, addHead(getStackTrace(1).insert(0, "Return")).toString());
+        Log.d(TAG, addHead(getStackTrace(1).insert(0, RETURN0)).toString());
         return ret;
     }
 

@@ -40,7 +40,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 mMonitor.wait(1000);
             } catch (InterruptedException e) {
-                Log.w(TAG, e.getMessage());
+                Log.w(TAG, "wait stop", e);
             }
         }
         log.r();
@@ -98,7 +98,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 process();
             } catch (Exception e) {
-                Log.w(TAG, e.getMessage());
+                Log.w(TAG, "ShapeRunnable run", e);
             }
         }
 
@@ -116,7 +116,7 @@ public class ShapeRunnable implements Runnable {
             try {
                 this.wait();
             } catch (InterruptedException e) {
-                Log.w(TAG, e.getMessage());
+                Log.w(TAG, "waitProcess", e);
             }
         }
         return !mStopping;

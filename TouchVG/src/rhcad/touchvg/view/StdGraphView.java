@@ -213,7 +213,7 @@ public class StdGraphView extends View implements BaseGraphView {
                 mRegenBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Config.ARGB_8888);
             }
         } catch (Exception e) {
-            Log.w(TAG, "Fail to create the cached bitmap: " + e.getMessage());
+            Log.w(TAG, "Fail to create the cached bitmap", e);
         }
     }
 
@@ -236,7 +236,7 @@ public class StdGraphView extends View implements BaseGraphView {
                 postInvalidate();
             }
         } catch (Exception e) {
-            Log.w(TAG, "Fail to draw on the cached bitmap: " + e.getMessage());
+            Log.w(TAG, "Fail to draw on the cached bitmap", e);
         }
         mRegenBitmap = null;
         mRegenning = false;
@@ -504,7 +504,7 @@ public class StdGraphView extends View implements BaseGraphView {
 
         bitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
         int n = drawShapes(new Canvas(bitmap), canvasAdapter, false);
-        Log.d(TAG, "snapshot: " + getWidth() + "x" + getHeight() + ", " + n + " shapes");
+        Log.d(TAG, "snapshot: " + n);
         canvasAdapter.delete();
 
         return bitmap;
@@ -518,7 +518,7 @@ public class StdGraphView extends View implements BaseGraphView {
 
         bitmap.eraseColor(transparent ? Color.TRANSPARENT : mBkColor);
         int n = drawShapes(docs, gs, null, new Canvas(bitmap), canvasAdapter, false);
-        Log.d(TAG, "snapshot: " + getWidth() + "x" + getHeight() + ", " + n + " shapes");
+        Log.d(TAG, "snapshot(doc): " + n);
         canvasAdapter.delete();
 
         return bitmap;

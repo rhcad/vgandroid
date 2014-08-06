@@ -10,6 +10,7 @@ import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.GiGestureState;
 import rhcad.touchvg.core.GiGestureType;
 import rhcad.touchvg.core.GiView;
+import android.util.Log;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -17,6 +18,7 @@ import android.view.View;
 
 //! Android绘图手势识别类
 public class GestureListener extends SimpleOnGestureListener {
+    private static final String TAG = "touchvg";
     private static final int M_STOPPED = 0;
     private static final int M_STARTED = 1;
     private static final int M_READY_MOVE = 2;
@@ -369,6 +371,7 @@ public class GestureListener extends SimpleOnGestureListener {
                 mListenerType = 1;
             } catch (Exception e) {
                 mListenerType = -1;
+                Log.d(TAG, "The adapter is not kind of OnDrawGestureListener", e);
             }
         } else if (mListenerType > 0) {
             listener = (OnDrawGestureListener) mAdapter;
