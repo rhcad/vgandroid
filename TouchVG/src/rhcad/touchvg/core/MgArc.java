@@ -35,10 +35,6 @@ public class MgArc extends MgBaseShape {
     super.delete();
   }
 
-  public MgArc() {
-    this(touchvgJNI.new_MgArc(), true);
-  }
-
   public static MgArc create() {
     long cPtr = touchvgJNI.MgArc_create();
     return (cPtr == 0) ? null : new MgArc(cPtr, false);
@@ -117,8 +113,8 @@ public class MgArc extends MgBaseShape {
     return touchvgJNI.MgArc_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgArc_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgArc_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -215,10 +211,6 @@ public class MgArc extends MgBaseShape {
 
   public boolean setCenterRadius(Point2d center, float radius, float startAngle, float sweepAngle) {
     return touchvgJNI.MgArc_setCenterRadius(swigCPtr, this, Point2d.getCPtr(center), center, radius, startAngle, sweepAngle);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgArc_isCurve(swigCPtr, this);
   }
 
 }

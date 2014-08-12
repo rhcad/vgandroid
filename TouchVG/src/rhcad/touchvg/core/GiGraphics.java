@@ -296,12 +296,12 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawQuadSplines__SWIG_2(swigCPtr, this, GiContext.getCPtr(ctx), ctx, count, Point2d.getCPtr(ctlpts), ctlpts);
   }
 
-  public boolean drawPath(GiContext ctx, GiPath path, boolean fill, boolean modelUnit) {
-    return touchvgJNI.GiGraphics_drawPath__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, GiPath.getCPtr(path), path, fill, modelUnit);
+  public boolean drawPath(GiContext ctx, MgPath path, boolean fill, boolean modelUnit) {
+    return touchvgJNI.GiGraphics_drawPath__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, MgPath.getCPtr(path), path, fill, modelUnit);
   }
 
-  public boolean drawPath(GiContext ctx, GiPath path, boolean fill) {
-    return touchvgJNI.GiGraphics_drawPath__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, GiPath.getCPtr(path), path, fill);
+  public boolean drawPath(GiContext ctx, MgPath path, boolean fill) {
+    return touchvgJNI.GiGraphics_drawPath__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, MgPath.getCPtr(path), path, fill);
   }
 
   public boolean drawHandle(Point2d pnt, int type, boolean modelUnit) {

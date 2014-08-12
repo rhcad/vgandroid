@@ -35,10 +35,6 @@ public class MgPathShape extends MgBaseShape {
     super.delete();
   }
 
-  public MgPathShape() {
-    this(touchvgJNI.new_MgPathShape(), true);
-  }
-
   public static MgPathShape create() {
     long cPtr = touchvgJNI.MgPathShape_create();
     return (cPtr == 0) ? null : new MgPathShape(cPtr, false);
@@ -117,8 +113,8 @@ public class MgPathShape extends MgBaseShape {
     return touchvgJNI.MgPathShape_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgPathShape_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgPathShape_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -157,12 +153,12 @@ public class MgPathShape extends MgBaseShape {
     return touchvgJNI.MgPathShape_hitTest(swigCPtr, this, Point2d.getCPtr(pt), pt, tol, MgHitResult.getCPtr(res), res);
   }
 
-  public GiPath pathc() {
-    return new GiPath(touchvgJNI.MgPathShape_pathc(swigCPtr, this), false);
+  public MgPath pathc() {
+    return new MgPath(touchvgJNI.MgPathShape_pathc(swigCPtr, this), false);
   }
 
-  public GiPath path() {
-    return new GiPath(touchvgJNI.MgPathShape_path(swigCPtr, this), false);
+  public MgPath path() {
+    return new MgPath(touchvgJNI.MgPathShape_path(swigCPtr, this), false);
   }
 
   public boolean importSVGPath(String d) {
@@ -173,12 +169,8 @@ public class MgPathShape extends MgBaseShape {
     return touchvgJNI.MgPathShape_exportSVGPath__SWIG_0(swigCPtr, this, buf, size);
   }
 
-  public static int exportSVGPath(GiPath path, String buf, int size) {
-    return touchvgJNI.MgPathShape_exportSVGPath__SWIG_1(GiPath.getCPtr(path), path, buf, size);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgPathShape_isCurve(swigCPtr, this);
+  public static int exportSVGPath(MgPath path, String buf, int size) {
+    return touchvgJNI.MgPathShape_exportSVGPath__SWIG_1(MgPath.getCPtr(path), path, buf, size);
   }
 
 }

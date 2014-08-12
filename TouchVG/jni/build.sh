@@ -17,6 +17,7 @@ if [ "$1"x = "-swig"x ] || [ ! -f touchvg_java_wrap.cpp ] ; then # Make JNI clas
         -I../../../vgcore/core/include/cmd \
         -I../../../vgcore/core/include/storage \
         -I../../../vgcore/core/include/geom \
+        -I../../../vgcore/core/include/gshape \
         -I../../../vgcore/core/include/shape \
         -I../../../vgcore/core/include/cmdobserver \
         -I../../../vgcore/core/include/cmdbase \

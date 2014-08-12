@@ -35,10 +35,6 @@ public class MgImageShape extends MgBaseRect {
     super.delete();
   }
 
-  public MgImageShape() {
-    this(touchvgJNI.new_MgImageShape(), true);
-  }
-
   public static MgImageShape create() {
     long cPtr = touchvgJNI.MgImageShape_create();
     return (cPtr == 0) ? null : new MgImageShape(cPtr, false);
@@ -117,8 +113,8 @@ public class MgImageShape extends MgBaseRect {
     return touchvgJNI.MgImageShape_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgImageShape_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgImageShape_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {

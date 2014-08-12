@@ -35,10 +35,6 @@ public class MgEllipse extends MgBaseRect {
     super.delete();
   }
 
-  public MgEllipse() {
-    this(touchvgJNI.new_MgEllipse(), true);
-  }
-
   public static MgEllipse create() {
     long cPtr = touchvgJNI.MgEllipse_create();
     return (cPtr == 0) ? null : new MgEllipse(cPtr, false);
@@ -117,8 +113,8 @@ public class MgEllipse extends MgBaseRect {
     return touchvgJNI.MgEllipse_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgEllipse_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgEllipse_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -171,10 +167,6 @@ public class MgEllipse extends MgBaseRect {
 
   public void setRadius(float rx) {
     touchvgJNI.MgEllipse_setRadius__SWIG_1(swigCPtr, this, rx);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgEllipse_isCurve(swigCPtr, this);
   }
 
 }

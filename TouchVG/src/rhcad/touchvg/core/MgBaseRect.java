@@ -106,10 +106,6 @@ public class MgBaseRect extends MgBaseShape {
     touchvgJNI.MgBaseRect_setSquare(swigCPtr, this, square);
   }
 
-  public boolean isCurve() {
-    return (getClass() == MgBaseRect.class) ? touchvgJNI.MgBaseRect_isCurve(swigCPtr, this) : touchvgJNI.MgBaseRect_isCurveSwigExplicitMgBaseRect(swigCPtr, this);
-  }
-
   protected MgBaseRect() {
     this(touchvgJNI.new_MgBaseRect(), true);
     touchvgJNI.MgBaseRect_director_connect(this, swigCPtr, swigCMemOwn, true);

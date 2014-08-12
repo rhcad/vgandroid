@@ -81,7 +81,6 @@ public:
     virtual int getType() const;
     virtual bool isKindOf(int type) const;
     virtual ~SwigDirector_MgBaseShape();
-    virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual long getChangeCount() const;
     virtual void resetChangeCount(long count);
@@ -98,7 +97,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
-    virtual void output(GiPath &path) const;
+    virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
     virtual int getHandleCount() const;
@@ -108,6 +107,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
+    virtual void setOwner(MgShape *owner);
 public:
     bool swig_overrides(int n) {
       return (n < 34 ? swig_override[n] : false);
@@ -129,7 +129,6 @@ public:
     virtual int getType() const;
     virtual bool isKindOf(int type) const;
     virtual ~SwigDirector_MgBaseRect();
-    virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual long getChangeCount() const;
     virtual void resetChangeCount(long count);
@@ -146,7 +145,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
-    virtual void output(GiPath &path) const;
+    virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
     virtual int getHandleCount() const;
@@ -156,6 +155,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
+    virtual void setOwner(MgShape *owner);
 public:
     bool swig_overrides(int n) {
       return (n < 34 ? swig_override[n] : false);
@@ -177,7 +177,6 @@ public:
     virtual int getType() const;
     virtual bool isKindOf(int type) const;
     virtual ~SwigDirector_MgBaseLines();
-    virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual long getChangeCount() const;
     virtual void resetChangeCount(long count);
@@ -194,7 +193,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
-    virtual void output(GiPath &path) const;
+    virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
     virtual int getHandleCount() const;
@@ -204,6 +203,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
+    virtual void setOwner(MgShape *owner);
     virtual bool resize(int count);
     virtual bool addPoint(Point2d const &pt);
     virtual bool insertPoint(int segment, Point2d const &pt);
@@ -229,7 +229,6 @@ public:
     virtual int getType() const;
     virtual bool isKindOf(int type) const;
     virtual ~SwigDirector_MgComposite();
-    virtual void setOwner(MgShape *owner);
     virtual Box2d getExtent() const;
     virtual long getChangeCount() const;
     virtual void resetChangeCount(long count);
@@ -246,7 +245,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
-    virtual void output(GiPath &path) const;
+    virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
     virtual int getHandleCount() const;
@@ -256,6 +255,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
+    virtual void setOwner(MgShape *owner);
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {

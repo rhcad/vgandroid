@@ -35,10 +35,6 @@ public class MgSplines extends MgBaseLines {
     super.delete();
   }
 
-  public MgSplines() {
-    this(touchvgJNI.new_MgSplines(), true);
-  }
-
   public static MgSplines create() {
     long cPtr = touchvgJNI.MgSplines_create();
     return (cPtr == 0) ? null : new MgSplines(cPtr, false);
@@ -117,8 +113,8 @@ public class MgSplines extends MgBaseLines {
     return touchvgJNI.MgSplines_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgSplines_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgSplines_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -155,26 +151,6 @@ public class MgSplines extends MgBaseLines {
 
   public float hitTest(Point2d pt, float tol, MgHitResult res) {
     return touchvgJNI.MgSplines_hitTest(swigCPtr, this, Point2d.getCPtr(pt), pt, tol, MgHitResult.getCPtr(res), res);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgSplines_isCurve(swigCPtr, this);
-  }
-
-  public boolean resize(int count) {
-    return touchvgJNI.MgSplines_resize(swigCPtr, this, count);
-  }
-
-  public boolean addPoint(Point2d pt) {
-    return touchvgJNI.MgSplines_addPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
-  }
-
-  public boolean insertPoint(int segment, Point2d pt) {
-    return touchvgJNI.MgSplines_insertPoint(swigCPtr, this, segment, Point2d.getCPtr(pt), pt);
-  }
-
-  public boolean removePoint(int index) {
-    return touchvgJNI.MgSplines_removePoint(swigCPtr, this, index);
   }
 
   public boolean smooth(Matrix2d m2d, float tol) {

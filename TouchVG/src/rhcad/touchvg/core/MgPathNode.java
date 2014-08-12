@@ -8,12 +8,12 @@
 
 package rhcad.touchvg.core;
 
-public final class GiPathNode {
-  public final static GiPathNode kGiCloseFigure = new GiPathNode("kGiCloseFigure", 1);
-  public final static GiPathNode kGiLineTo = new GiPathNode("kGiLineTo", 2);
-  public final static GiPathNode kGiBezierTo = new GiPathNode("kGiBezierTo", 4);
-  public final static GiPathNode kGiQuadTo = new GiPathNode("kGiQuadTo", 8);
-  public final static GiPathNode kGiMoveTo = new GiPathNode("kGiMoveTo", 6);
+public final class MgPathNode {
+  public final static MgPathNode kMgCloseFigure = new MgPathNode("kMgCloseFigure", 1);
+  public final static MgPathNode kMgLineTo = new MgPathNode("kMgLineTo", 2);
+  public final static MgPathNode kMgBezierTo = new MgPathNode("kMgBezierTo", 4);
+  public final static MgPathNode kMgQuadTo = new MgPathNode("kMgQuadTo", 8);
+  public final static MgPathNode kMgMoveTo = new MgPathNode("kMgMoveTo", 6);
 
   public final int swigValue() {
     return swigValue;
@@ -23,33 +23,33 @@ public final class GiPathNode {
     return swigName;
   }
 
-  public static GiPathNode swigToEnum(int swigValue) {
+  public static MgPathNode swigToEnum(int swigValue) {
     if (swigValue < swigValues.length && swigValue >= 0 && swigValues[swigValue].swigValue == swigValue)
       return swigValues[swigValue];
     for (int i = 0; i < swigValues.length; i++)
       if (swigValues[i].swigValue == swigValue)
         return swigValues[i];
-    throw new IllegalArgumentException("No enum " + GiPathNode.class + " with value " + swigValue);
+    throw new IllegalArgumentException("No enum " + MgPathNode.class + " with value " + swigValue);
   }
 
-  private GiPathNode(String swigName) {
+  private MgPathNode(String swigName) {
     this.swigName = swigName;
     this.swigValue = swigNext++;
   }
 
-  private GiPathNode(String swigName, int swigValue) {
+  private MgPathNode(String swigName, int swigValue) {
     this.swigName = swigName;
     this.swigValue = swigValue;
     swigNext = swigValue+1;
   }
 
-  private GiPathNode(String swigName, GiPathNode swigEnum) {
+  private MgPathNode(String swigName, MgPathNode swigEnum) {
     this.swigName = swigName;
     this.swigValue = swigEnum.swigValue;
     swigNext = this.swigValue+1;
   }
 
-  private static GiPathNode[] swigValues = { kGiCloseFigure, kGiLineTo, kGiBezierTo, kGiQuadTo, kGiMoveTo };
+  private static MgPathNode[] swigValues = { kMgCloseFigure, kMgLineTo, kMgBezierTo, kMgQuadTo, kMgMoveTo };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;
