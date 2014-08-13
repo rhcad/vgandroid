@@ -55,6 +55,10 @@ public class MgPath {
     return new MgPath(touchvgJNI.MgPath_append(swigCPtr, this, MgPath.getCPtr(src), src), false);
   }
 
+  public MgPath addSVGPath(String s) {
+    return new MgPath(touchvgJNI.MgPath_addSVGPath(swigCPtr, this, s), false);
+  }
+
   public boolean genericRoundLines(int count, Point2d points, float radius, boolean closed) {
     return touchvgJNI.MgPath_genericRoundLines__SWIG_0(swigCPtr, this, count, Point2d.getCPtr(points), points, radius, closed);
   }

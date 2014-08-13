@@ -19481,6 +19481,28 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1append(JNIEn
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1addSVGPath(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  MgPath *arg1 = (MgPath *) 0 ;
+  char *arg2 = (char *) 0 ;
+  MgPath *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgPath **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (MgPath *) &(arg1)->addSVGPath((char const *)arg2);
+  *(MgPath **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1genericRoundLines_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_, jfloat jarg4, jboolean jarg5) {
   jboolean jresult = 0 ;
   MgPath *arg1 = (MgPath *) 0 ;

@@ -515,6 +515,7 @@ public class touchvgJNI {
   public final static native void delete_MgPath(long jarg1);
   public final static native long MgPath_copy(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
   public final static native long MgPath_append(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
+  public final static native long MgPath_addSVGPath(long jarg1, MgPath jarg1_, String jarg2);
   public final static native boolean MgPath_genericRoundLines__SWIG_0(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_, float jarg4, boolean jarg5);
   public final static native boolean MgPath_genericRoundLines__SWIG_1(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_, float jarg4);
   public final static native int MgPath_getCount(long jarg1, MgPath jarg1_);
