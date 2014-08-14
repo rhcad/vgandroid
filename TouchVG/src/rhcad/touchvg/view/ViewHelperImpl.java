@@ -38,7 +38,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 16;
+    private static final int JARVERSION = 17;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -612,6 +612,11 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public int insertImageFromFile(String filename, int xc, int yc, int tag) {
         return ContextHelper.insertImageFromFile(mCreator, filename, xc, yc, tag);
+    }
+
+    @Override
+    public boolean getImageSize(float[] info, int sid) {
+        return ContextHelper.getImageSize(mCreator, info, sid);
     }
 
     @Override

@@ -26319,20 +26319,6 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLines_1hitTest(JN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreShapeFactory_1createShape(JNIEnv *jenv, jclass jcls, jint jarg1) {
-  jlong jresult = 0 ;
-  int arg1 ;
-  MgBaseShape *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (int)jarg1; 
-  result = (MgBaseShape *)MgCoreShapeFactory::createShape(arg1);
-  *(MgBaseShape **)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgCoreShapeFactory(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   MgCoreShapeFactory *result = 0 ;
@@ -26352,6 +26338,23 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgCoreShapeFa
   (void)jcls;
   arg1 = *(MgCoreShapeFactory **)&jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreShapeFactory_1createShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  MgCoreShapeFactory *arg1 = (MgCoreShapeFactory *) 0 ;
+  int arg2 ;
+  MgBaseShape *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgCoreShapeFactory **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (MgBaseShape *)(arg1)->createShape(arg2);
+  *(MgBaseShape **)&jresult = result; 
+  return jresult;
 }
 
 
@@ -35059,6 +35062,41 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgImageShape_1setName
   }
   (arg1)->setName((char const *)arg2);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgImageShape_1getImageSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgImageShape *arg1 = (MgImageShape *) 0 ;
+  Vector2d result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgImageShape **)&jarg1; 
+  result = ((MgImageShape const *)arg1)->getImageSize();
+  *(Vector2d **)&jresult = new Vector2d((const Vector2d &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgImageShape_1setImageSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  MgImageShape *arg1 = (MgImageShape *) 0 ;
+  Vector2d arg2 ;
+  Vector2d *argp2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgImageShape **)&jarg1; 
+  argp2 = *(Vector2d **)&jarg2; 
+  if (!argp2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null Vector2d");
+    return ;
+  }
+  arg2 = *argp2; 
+  (arg1)->setImageSize(arg2);
 }
 
 
@@ -43918,6 +43956,30 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1hasIm
   arg1 = *(MgCoreView **)&jarg1; 
   arg2 = (long)jarg2; 
   result = (bool)(arg1)->hasImageShape(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1getImageSize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+  jboolean jresult = 0 ;
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  mgvector< float > *arg2 = 0 ;
+  int arg3 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgCoreView **)&jarg1; 
+  arg2 = *(mgvector< float > **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "mgvector< float > & reference is null");
+    return 0;
+  } 
+  arg3 = (int)jarg3; 
+  result = (bool)(arg1)->getImageSize(*arg2,arg3);
   jresult = (jboolean)result; 
   return jresult;
 }

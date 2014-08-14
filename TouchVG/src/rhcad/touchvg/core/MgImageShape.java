@@ -157,6 +157,14 @@ public class MgImageShape extends MgBaseRect {
     touchvgJNI.MgImageShape_setName(swigCPtr, this, name);
   }
 
+  public Vector2d getImageSize() {
+    return new Vector2d(touchvgJNI.MgImageShape_getImageSize(swigCPtr, this), true);
+  }
+
+  public void setImageSize(Vector2d size) {
+    touchvgJNI.MgImageShape_setImageSize(swigCPtr, this, Vector2d.getCPtr(size), size);
+  }
+
   public static MgShape findShapeByImageID(MgShapes shapes, String name) {
     long cPtr = touchvgJNI.MgImageShape_findShapeByImageID(MgShapes.getCPtr(shapes), shapes, name);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);

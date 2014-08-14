@@ -887,9 +887,9 @@ public class touchvgJNI {
   public final static native int MgLines_getHandleType(long jarg1, MgLines jarg1_, int jarg2);
   public final static native boolean MgLines_offset(long jarg1, MgLines jarg1_, long jarg2, Vector2d jarg2_, int jarg3);
   public final static native float MgLines_hitTest(long jarg1, MgLines jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
-  public final static native long MgCoreShapeFactory_createShape(int jarg1);
   public final static native long new_MgCoreShapeFactory();
   public final static native void delete_MgCoreShapeFactory(long jarg1);
+  public final static native long MgCoreShapeFactory_createShape(long jarg1, MgCoreShapeFactory jarg1_, int jarg2);
   public final static native void delete_MgArc(long jarg1);
   public final static native long MgArc_create();
   public final static native int MgArc_Type();
@@ -1389,6 +1389,8 @@ public class touchvgJNI {
   public final static native boolean MgImageShape_offset(long jarg1, MgImageShape jarg1_, long jarg2, Vector2d jarg2_, int jarg3);
   public final static native float MgImageShape_hitTest(long jarg1, MgImageShape jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
   public final static native void MgImageShape_setName(long jarg1, MgImageShape jarg1_, String jarg2);
+  public final static native long MgImageShape_getImageSize(long jarg1, MgImageShape jarg1_);
+  public final static native void MgImageShape_setImageSize(long jarg1, MgImageShape jarg1_, long jarg2, Vector2d jarg2_);
   public final static native long MgImageShape_findShapeByImageID(long jarg1, MgShapes jarg1_, String jarg2);
   public final static native boolean MgActionDispatcher_showInSelect(long jarg1, MgActionDispatcher jarg1_, long jarg2, MgMotion jarg2_, int jarg3, long jarg4, MgShape jarg4_, long jarg5, Box2d jarg5_);
   public final static native boolean MgActionDispatcher_showInDrawing(long jarg1, MgActionDispatcher jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
@@ -1918,6 +1920,7 @@ public class touchvgJNI {
   public final static native int MgCoreView_addImageShape__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, float jarg3, float jarg4);
   public final static native int MgCoreView_addImageShape__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, float jarg6, int jarg7);
   public final static native boolean MgCoreView_hasImageShape(long jarg1, MgCoreView jarg1_, int jarg2);
+  public final static native boolean MgCoreView_getImageSize(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_, int jarg3);
   public final static native int MgCoreView_findShapeByImageID(long jarg1, MgCoreView jarg1_, int jarg2, String jarg3);
   public final static native int MgCoreView_findShapeByTag(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3);
   public final static native int MgCoreView_traverseImageShapes(long jarg1, MgCoreView jarg1_, int jarg2, long jarg3, MgFindImageCallback jarg3_);

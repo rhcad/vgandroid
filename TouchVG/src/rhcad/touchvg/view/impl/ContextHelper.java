@@ -407,6 +407,16 @@ public class ContextHelper {
         return 0;
     }
 
+    public static boolean getImageSize(ViewCreator vc, float[] info, int sid) {
+        final Floats box = new Floats(info.length);
+        boolean ret = (vc != null && info.length >= 5 &&  vc.coreView().getImageSize(box, sid));
+
+        for (int i = 0; i < info.length; i++) {
+            info[i] = box.get(i);
+        }
+        return ret;
+    }
+
     public static boolean hasImageShape(ViewCreator vc) {
         int doc = acquireFrontDoc(vc);
         boolean ret = doc != 0 && vc.coreView().hasImageShape(doc);

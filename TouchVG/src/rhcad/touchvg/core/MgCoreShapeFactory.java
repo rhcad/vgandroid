@@ -35,13 +35,13 @@ public class MgCoreShapeFactory {
     }
   }
 
-  public static MgBaseShape createShape(int type) {
-    long cPtr = touchvgJNI.MgCoreShapeFactory_createShape(type);
-    return (cPtr == 0) ? null : new MgBaseShape(cPtr, false);
-  }
-
   public MgCoreShapeFactory() {
     this(touchvgJNI.new_MgCoreShapeFactory(), true);
+  }
+
+  public MgBaseShape createShape(int type) {
+    long cPtr = touchvgJNI.MgCoreShapeFactory_createShape(swigCPtr, this, type);
+    return (cPtr == 0) ? null : new MgBaseShape(cPtr, false);
   }
 
 }

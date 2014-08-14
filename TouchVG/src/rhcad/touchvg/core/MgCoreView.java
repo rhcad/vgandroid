@@ -356,6 +356,10 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_hasImageShape(swigCPtr, this, doc);
   }
 
+  public boolean getImageSize(Floats info, int sid) {
+    return touchvgJNI.MgCoreView_getImageSize(swigCPtr, this, Floats.getCPtr(info), info, sid);
+  }
+
   public int findShapeByImageID(int doc, String name) {
     return touchvgJNI.MgCoreView_findShapeByImageID(swigCPtr, this, doc, name);
   }

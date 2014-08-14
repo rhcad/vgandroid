@@ -328,6 +328,9 @@ public interface IViewHelper {
     //! 插入一个图像文件，并指定图像的中心位置和自定义数据
     public int insertImageFromFile(String filename, int xc, int yc, int tag);
 
+    //! 获取指定ID的图像图形的原始图像宽高、显示宽高、角度 {orgw, orgh, w, h, angle}
+    public boolean getImageSize(float[] info, int sid);
+
     //! 返回是否有容纳图像的图形对象
     public boolean hasImageShape();
 
