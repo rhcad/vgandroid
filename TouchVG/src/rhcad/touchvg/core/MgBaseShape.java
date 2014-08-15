@@ -200,8 +200,8 @@ public class MgBaseShape extends MgObject {
     touchvgJNI.MgBaseShape_setExtent(swigCPtr, this, Box2d.getCPtr(rect), rect);
   }
 
-  public void setOwner(MgShape owner) {
-    if (getClass() == MgBaseShape.class) touchvgJNI.MgBaseShape_setOwner(swigCPtr, this, MgShape.getCPtr(owner), owner); else touchvgJNI.MgBaseShape_setOwnerSwigExplicitMgBaseShape(swigCPtr, this, MgShape.getCPtr(owner), owner);
+  public void setOwner(MgObject owner) {
+    if (getClass() == MgBaseShape.class) touchvgJNI.MgBaseShape_setOwner(swigCPtr, this, MgObject.getCPtr(owner), owner); else touchvgJNI.MgBaseShape_setOwnerSwigExplicitMgBaseShape(swigCPtr, this, MgObject.getCPtr(owner), owner);
   }
 
 }

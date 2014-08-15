@@ -107,7 +107,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
-    virtual void setOwner(MgShape *owner);
+    virtual void setOwner(MgObject *owner);
 public:
     bool swig_overrides(int n) {
       return (n < 34 ? swig_override[n] : false);
@@ -155,7 +155,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
-    virtual void setOwner(MgShape *owner);
+    virtual void setOwner(MgObject *owner);
 public:
     bool swig_overrides(int n) {
       return (n < 34 ? swig_override[n] : false);
@@ -203,7 +203,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
-    virtual void setOwner(MgShape *owner);
+    virtual void setOwner(MgObject *owner);
     virtual bool resize(int count);
     virtual bool addPoint(Point2d const &pt);
     virtual bool insertPoint(int segment, Point2d const &pt);
@@ -255,7 +255,7 @@ public:
     virtual int getHandleType(int index) const;
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
-    virtual void setOwner(MgShape *owner);
+    virtual void setOwner(MgObject *owner);
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {

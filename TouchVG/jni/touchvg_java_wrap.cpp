@@ -2694,7 +2694,7 @@ void SwigDirector_MgBaseShape::setFlag(MgShapeBit bit, bool on) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_MgBaseShape::setOwner(MgShape *owner) {
+void SwigDirector_MgBaseShape::setOwner(MgObject *owner) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -2706,7 +2706,7 @@ void SwigDirector_MgBaseShape::setOwner(MgShape *owner) {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((MgShape **)&jowner) = (MgShape *) owner; 
+    *((MgObject **)&jowner) = (MgObject *) owner; 
     jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[62], swigjobj, jowner);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -2826,7 +2826,7 @@ void SwigDirector_MgBaseShape::swig_connect_director(JNIEnv *jenv, jobject jself
       "setFlag", "(Lrhcad/touchvg/core/MgShapeBit;Z)V", NULL 
     },
     {
-      "setOwner", "(Lrhcad/touchvg/core/MgShape;)V", NULL 
+      "setOwner", "(Lrhcad/touchvg/core/MgObject;)V", NULL 
     }
   };
   
@@ -3803,7 +3803,7 @@ void SwigDirector_MgBaseRect::setFlag(MgShapeBit bit, bool on) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_MgBaseRect::setOwner(MgShape *owner) {
+void SwigDirector_MgBaseRect::setOwner(MgObject *owner) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -3815,7 +3815,7 @@ void SwigDirector_MgBaseRect::setOwner(MgShape *owner) {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((MgShape **)&jowner) = (MgShape *) owner; 
+    *((MgObject **)&jowner) = (MgObject *) owner; 
     jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[96], swigjobj, jowner);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -3935,7 +3935,7 @@ void SwigDirector_MgBaseRect::swig_connect_director(JNIEnv *jenv, jobject jself,
       "setFlag", "(Lrhcad/touchvg/core/MgShapeBit;Z)V", NULL 
     },
     {
-      "setOwner", "(Lrhcad/touchvg/core/MgShape;)V", NULL 
+      "setOwner", "(Lrhcad/touchvg/core/MgObject;)V", NULL 
     }
   };
   
@@ -4912,7 +4912,7 @@ void SwigDirector_MgBaseLines::setFlag(MgShapeBit bit, bool on) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_MgBaseLines::setOwner(MgShape *owner) {
+void SwigDirector_MgBaseLines::setOwner(MgObject *owner) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -4924,7 +4924,7 @@ void SwigDirector_MgBaseLines::setOwner(MgShape *owner) {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((MgShape **)&jowner) = (MgShape *) owner; 
+    *((MgObject **)&jowner) = (MgObject *) owner; 
     jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[130], swigjobj, jowner);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -5162,7 +5162,7 @@ void SwigDirector_MgBaseLines::swig_connect_director(JNIEnv *jenv, jobject jself
       "setFlag", "(Lrhcad/touchvg/core/MgShapeBit;Z)V", NULL 
     },
     {
-      "setOwner", "(Lrhcad/touchvg/core/MgShape;)V", NULL 
+      "setOwner", "(Lrhcad/touchvg/core/MgObject;)V", NULL 
     },
     {
       "resize", "(I)Z", NULL 
@@ -6151,7 +6151,7 @@ void SwigDirector_MgComposite::setFlag(MgShapeBit bit, bool on) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_MgComposite::setOwner(MgShape *owner) {
+void SwigDirector_MgComposite::setOwner(MgObject *owner) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -6163,7 +6163,7 @@ void SwigDirector_MgComposite::setOwner(MgShape *owner) {
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((MgShape **)&jowner) = (MgShape *) owner; 
+    *((MgObject **)&jowner) = (MgObject *) owner; 
     jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[168], swigjobj, jowner);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
@@ -6312,7 +6312,7 @@ void SwigDirector_MgComposite::swig_connect_director(JNIEnv *jenv, jobject jself
       "setFlag", "(Lrhcad/touchvg/core/MgShapeBit;Z)V", NULL 
     },
     {
-      "setOwner", "(Lrhcad/touchvg/core/MgShape;)V", NULL 
+      "setOwner", "(Lrhcad/touchvg/core/MgObject;)V", NULL 
     },
     {
       "canOffsetShapeAlone", "(Lrhcad/touchvg/core/MgShape;)Z", NULL 
@@ -15120,6 +15120,26 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1fitBezier(JNI
     return ;
   } 
   mgcurv::fitBezier((Point2d const *)arg1,arg2,*arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1bezierTanget(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2, jlong jarg3, jobject jarg3_) {
+  Point2d *arg1 = (Point2d *) 0 ;
+  float arg2 ;
+  Point2d *arg3 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(Point2d **)&jarg1; 
+  arg2 = (float)jarg2; 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return ;
+  } 
+  mgcurv::bezierTanget((Point2d const *)arg1,arg2,*arg3);
 }
 
 
@@ -24675,28 +24695,28 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgBaseShape_1setExten
 
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgBaseShape_1setOwner(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   MgBaseShape *arg1 = (MgBaseShape *) 0 ;
-  MgShape *arg2 = (MgShape *) 0 ;
+  MgObject *arg2 = (MgObject *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
   arg1 = *(MgBaseShape **)&jarg1; 
-  arg2 = *(MgShape **)&jarg2; 
+  arg2 = *(MgObject **)&jarg2; 
   (arg1)->setOwner(arg2);
 }
 
 
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgBaseShape_1setOwnerSwigExplicitMgBaseShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   MgBaseShape *arg1 = (MgBaseShape *) 0 ;
-  MgShape *arg2 = (MgShape *) 0 ;
+  MgObject *arg2 = (MgObject *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
   arg1 = *(MgBaseShape **)&jarg1; 
-  arg2 = *(MgShape **)&jarg2; 
+  arg2 = *(MgObject **)&jarg2; 
   (arg1)->MgBaseShape::setOwner(arg2);
 }
 
