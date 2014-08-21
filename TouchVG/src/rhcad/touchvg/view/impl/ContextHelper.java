@@ -2,13 +2,16 @@ package rhcad.touchvg.view.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import rhcad.touchvg.core.Floats;
 import rhcad.touchvg.core.GiContext;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.MgFindImageCallback;
+import rhcad.touchvg.core.MgOptionCallback;
 import rhcad.touchvg.view.internal.BaseViewAdapter;
 import rhcad.touchvg.view.internal.BaseViewAdapter.StringCallback;
 import rhcad.touchvg.view.internal.ImageCache;
@@ -62,9 +65,34 @@ public class ContextHelper {
         return vc.isValid() && vc.coreView().switchCommand();
     }
 
+    private static class OptionCallback extends MgOptionCallback {
+        private Map<String, Map<String, String>> dict;
+
+        public OptionCallback(Map<String, Map<String, String>> dict) {
+            this.dict = dict;
+        }
+
+        @Override
+        public void onGetOption(String group, String name, String text) {
+            Map<String, String> item = dict.get(group);
+            if (item == null) {
+                item = new HashMap<String, String>();
+                dict.put(group, item);
+            }
+            item.put(name, text);
+        }
+    }
+
+    public static Map<String, Map<String, String>> getOptions(ViewCreator vc) {
+        Map<String, Map<String, String>> options = new HashMap<String, Map<String, String>>();
+        if (vc.isValid()) {
+            vc.coreView().traverseOptions(new OptionCallback(options));
+        }
+        return options;
+    }
+
     public static int getLineWidth(ViewCreator vc) {
-        return vc.isValid() ? Math
-                .round(vc.coreView().getContext(false).getLineWidth()) : 0;
+        return vc.isValid() ? Math.round(vc.coreView().getContext(false).getLineWidth()) : 0;
     }
 
     public static void setLineWidth(ViewCreator vc, int w) {
@@ -82,8 +110,7 @@ public class ContextHelper {
         if (w < 0) {
             return Math.round(-w);
         }
-        return Math.round(vc.coreView()
-                .calcPenWidth(vc.getGraphView().viewAdapter(), w));
+        return Math.round(vc.coreView().calcPenWidth(vc.getGraphView().viewAdapter(), w));
     }
 
     public static void setStrokeWidth(ViewCreator vc, int w) {
@@ -105,8 +132,7 @@ public class ContextHelper {
     }
 
     public static int getLineColor(ViewCreator vc) {
-        return vc.isValid() ? vc.coreView().getContext(false).getLineColor().getARGB()
-                : 0;
+        return vc.isValid() ? vc.coreView().getContext(false).getLineColor().getARGB() : 0;
     }
 
     public static void setLineColor(ViewCreator vc, int argb) {
@@ -128,8 +154,7 @@ public class ContextHelper {
     }
 
     public static int getFillColor(ViewCreator vc) {
-        return vc.isValid() ? vc.coreView().getContext(false).getFillColor().getARGB()
-                : 0;
+        return vc.isValid() ? vc.coreView().getContext(false).getFillColor().getARGB() : 0;
     }
 
     public static void setFillColor(ViewCreator vc, int argb) {
@@ -453,6 +478,7 @@ public class ContextHelper {
             b.putString("name", name);
             b.putString("path", new File(ContextHelper.getImagePath(vc), name).getPath());
             b.putString("rect", ContextHelper.getShapeBox(vc, sid).toString());
+            b.putParcelable("image", vc.getGraphView().getImageCache().getBitmap(name));
             this.arr.add(b);
         }
     }

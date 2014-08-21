@@ -114,8 +114,19 @@ public class ImageCache extends Object {
         }
     }
 
-    // ! 查找图像对象
-    public Drawable getImage(View view, String name) {
+    //! 查找图像对象，不自动加载
+    public final Bitmap getBitmap(String name) {
+        BitmapDrawable drawable = null;
+        try {
+            drawable = (BitmapDrawable)(mCache != null ? mCache.get(name) : null);
+        } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(getImage)", e);
+        }
+        return drawable != null ? drawable.getBitmap() : null;
+    }
+
+    //! 查找图像对象
+    public final Drawable getImage(View view, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && view != null) {
@@ -159,7 +170,7 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个程序资源中的位图图像
-    public Drawable addBitmap(Resources res, int id, String name) {
+    public final Drawable addBitmap(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && id != 0) {
@@ -176,7 +187,7 @@ public class ImageCache extends Object {
 
     //! 插入一个程序资源中的SVG图像
     @SuppressWarnings("unused")
-    public Drawable addSVG(Resources res, int id, String name) {
+    public final Drawable addSVG(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && id != 0 && USE_SVG) {
@@ -196,7 +207,7 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个PNG等图像文件
-    public Drawable addBitmapFile(Resources res, String filename, String name) {
+    public final Drawable addBitmapFile(Resources res, String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && new File(filename).exists()) {
@@ -225,7 +236,7 @@ public class ImageCache extends Object {
 
     //! 插入一个SVG文件的图像
     @SuppressWarnings("unused")
-    public Drawable addSVGFile(String filename, String name) {
+    public final Drawable addSVGFile(String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && name.endsWith(".svg") && USE_SVG) {

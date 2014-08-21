@@ -124,7 +124,7 @@ public class GestureListener extends SimpleOnGestureListener {
         return false;
     }
 
-    // ! 传递单指触摸事件，可用于拖放操作
+    //! 传递单指触摸事件，可用于拖放操作
     public boolean onTouchDrag(View v, int action, float x, float y) {
         if (action == MotionEvent.ACTION_DOWN) {
             mMoving = M_READY_MOVE;
@@ -324,7 +324,7 @@ public class GestureListener extends SimpleOnGestureListener {
         }
     }
 
-    // ! 传递单指轻击事件，可用于拖放操作
+    //! 传递单指轻击事件，可用于拖放操作
     public boolean onTap(float x, float y) {
         mMoving = M_STOPPED;
         if (mCoreView == null) {

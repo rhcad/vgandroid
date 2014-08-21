@@ -7,6 +7,7 @@ package rhcad.touchvg.view;
 import java.io.File;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
@@ -38,7 +39,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 17;
+    private static final int JARVERSION = 18;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -178,6 +179,16 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public boolean switchCommand() {
         return ContextHelper.switchCommand(mCreator);
+    }
+
+    @Override
+    public Map<String, Map<String, String>> getOptions() {
+        return ContextHelper.getOptions(mCreator);
+    }
+
+    @Override
+    public void setOption(String group, String name, String value) {
+        coreView().setOption(group, name, value);
     }
 
     @Override

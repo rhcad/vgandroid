@@ -5,6 +5,7 @@
 package rhcad.touchvg;
 
 import java.util.List;
+import java.util.Map;
 
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.MgView;
@@ -93,6 +94,12 @@ public interface IViewHelper {
 
     //! 切换到下一命令
     public boolean switchCommand();
+
+    //! 返回绘图命令选项{group:{name:value}}
+    public Map<String, Map<String, String>> getOptions();
+
+    //! 设置或清除绘图命令选项
+    public void setOption(String group, String name, String value);
 
     //! 返回线宽，正数表示单位为0.01毫米，零表示1像素宽，负数表示单位为像素
     public int getLineWidth();
@@ -340,7 +347,7 @@ public interface IViewHelper {
     //! 查找指定Tag的图形对象ID
     public int findShapeByTag(int tag);
 
-    //! 遍历有容纳图像的图形对象
+    //! 遍历有容纳图像的图形对象{id,name,path,rect,image}
     public List<Bundle> getImageShapes();
 
     //! 返回图像文件的默认路径

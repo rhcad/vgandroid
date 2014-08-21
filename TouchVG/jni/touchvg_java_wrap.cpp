@@ -604,7 +604,7 @@ namespace Swig {
 namespace Swig {
   namespace {
     jclass jclass_touchvgJNI = NULL;
-    jmethodID director_methids[269];
+    jmethodID director_methids[270];
   }
 }
 
@@ -9771,6 +9771,92 @@ void SwigDirector_MgStringCallback::swig_connect_director(JNIEnv *jenv, jobject 
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
     if (!baseclass) {
       baseclass = jenv->FindClass("rhcad/touchvg/core/MgStringCallback");
+      if (!baseclass) return;
+      baseclass = (jclass) jenv->NewGlobalRef(baseclass);
+    }
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 1; ++i) {
+      if (!methods[i].base_methid) {
+        methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
+        if (!methods[i].base_methid) return;
+      }
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].mname, methods[i].mdesc);
+        swig_override[i] = (methid != methods[i].base_methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
+
+SwigDirector_MgOptionCallback::SwigDirector_MgOptionCallback(JNIEnv *jenv) : MgOptionCallback(), Swig::Director(jenv) {
+}
+
+SwigDirector_MgOptionCallback::~SwigDirector_MgOptionCallback() {
+  //swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_MgOptionCallback::onGetOption(char const *group, char const *name, char const *text) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jstring jgroup = 0; TmpJOBJ jgroup_(jenv, &jgroup);
+  jstring jname = 0; TmpJOBJ jname_(jenv, &jname);
+  jstring jtext = 0; TmpJOBJ jtext_(jenv, &jtext);
+  
+  if (!swig_override[0]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method MgOptionCallback::onGetOption.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jgroup = 0;
+    if (group) {
+      jgroup = jenv->NewStringUTF((const char *)group);
+      if (!jgroup) return ;
+    }
+    jname = 0;
+    if (name) {
+      jname = jenv->NewStringUTF((const char *)name);
+      if (!jname) return ;
+    }
+    jtext = 0;
+    if (text) {
+      jtext = jenv->NewStringUTF((const char *)text);
+      if (!jtext) return ;
+    }
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[269], swigjobj, jgroup, jname, jtext);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in MgOptionCallback::onGetOption ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_MgOptionCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static struct {
+    const char *mname;
+    const char *mdesc;
+    jmethodID base_methid;
+  } methods[] = {
+    {
+      "onGetOption", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", NULL 
+    }
+  };
+  
+  static jclass baseclass = 0 ;
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    if (!baseclass) {
+      baseclass = jenv->FindClass("rhcad/touchvg/core/MgOptionCallback");
       if (!baseclass) return;
       baseclass = (jclass) jenv->NewGlobalRef(baseclass);
     }
@@ -36553,6 +36639,122 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1hideContextAc
 }
 
 
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1getOptionInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jint jarg4) {
+  jint jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int arg4 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return 0;
+  }
+  arg4 = (int)jarg4; 
+  result = (int)(arg1)->getOptionInt((char const *)arg2,(char const *)arg3,arg4);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1getOptionFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jfloat jarg4) {
+  jfloat jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  float arg4 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return 0;
+  }
+  arg4 = (float)jarg4; 
+  result = (float)(arg1)->getOptionFloat((char const *)arg2,(char const *)arg3,arg4);
+  jresult = (jfloat)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1setOptionInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jint jarg4) {
+  MgView *arg1 = (MgView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int arg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  arg4 = (int)jarg4; 
+  (arg1)->setOptionInt((char const *)arg2,(char const *)arg3,arg4);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1setOptionFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jfloat jarg4) {
+  MgView *arg1 = (MgView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  float arg4 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  arg4 = (float)jarg4; 
+  (arg1)->setOptionFloat((char const *)arg2,(char const *)arg3,arg4);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgMotion_1view_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   MgMotion *arg1 = (MgMotion *) 0 ;
   MgView *arg2 = (MgView *) 0 ;
@@ -44288,6 +44490,80 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1expor
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgOptionCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgOptionCallback *arg1 = (MgOptionCallback *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgOptionCallback **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgOptionCallback_1onGetOption(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4) {
+  MgOptionCallback *arg1 = (MgOptionCallback *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgOptionCallback **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  arg4 = 0;
+  if (jarg4) {
+    arg4 = (char *)jenv->GetStringUTFChars(jarg4, 0);
+    if (!arg4) return ;
+  }
+  (arg1)->onGetOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+  if (arg4) jenv->ReleaseStringUTFChars(jarg4, (const char *)arg4);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgOptionCallback(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  MgOptionCallback *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (MgOptionCallback *)new SwigDirector_MgOptionCallback(jenv);
+  *(MgOptionCallback **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgOptionCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  MgOptionCallback *obj = *((MgOptionCallback **)&objarg);
+  (void)jcls;
+  SwigDirector_MgOptionCallback *director = dynamic_cast<SwigDirector_MgOptionCallback *>(obj);
+  if (director) {
+    director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgOptionCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  MgOptionCallback *obj = *((MgOptionCallback **)&objarg);
+  SwigDirector_MgOptionCallback *director = dynamic_cast<SwigDirector_MgOptionCallback *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCoreView_1createView_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   GiView *arg1 = (GiView *) 0 ;
@@ -45317,6 +45593,56 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCoreView_1resto
   jresult = (jboolean)result; 
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCoreView_1traverseOptions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jint jresult = 0 ;
+  GiCoreView *arg1 = (GiCoreView *) 0 ;
+  MgOptionCallback *arg2 = (MgOptionCallback *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(GiCoreView **)&jarg1; 
+  arg2 = *(MgOptionCallback **)&jarg2; 
+  result = (int)(arg1)->traverseOptions(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCoreView_1setOption(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jstring jarg4) {
+  GiCoreView *arg1 = (GiCoreView *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiCoreView **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return ;
+  }
+  arg4 = 0;
+  if (jarg4) {
+    arg4 = (char *)jenv->GetStringUTFChars(jarg4, 0);
+    if (!arg4) return ;
+  }
+  (arg1)->setOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+  if (arg4) jenv->ReleaseStringUTFChars(jarg4, (const char *)arg4);
 }
 
 
@@ -46663,7 +46989,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
   static struct {
     const char *method;
     const char *signature;
-  } methods[269] = {
+  } methods[270] = {
     {
       "SwigDirector_GiCanvas_setPen", "(Lrhcad/touchvg/core/GiCanvas;IFIFF)V" 
     },
@@ -47470,6 +47796,9 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
     },
     {
       "SwigDirector_MgStringCallback_onGetString", "(Lrhcad/touchvg/core/MgStringCallback;Ljava/lang/String;)V" 
+    },
+    {
+      "SwigDirector_MgOptionCallback_onGetOption", "(Lrhcad/touchvg/core/MgOptionCallback;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" 
     }
   };
   Swig::jclass_touchvgJNI = (jclass) jenv->NewGlobalRef(jcls);

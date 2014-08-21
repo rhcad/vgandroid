@@ -1476,6 +1476,10 @@ public class touchvgJNI {
   public final static native void MgView_getLocalizedString(long jarg1, MgView jarg1_, String jarg2, long jarg3, MgStringCallback jarg3_);
   public final static native boolean MgView_isContextActionsVisible(long jarg1, MgView jarg1_);
   public final static native void MgView_hideContextActions(long jarg1, MgView jarg1_);
+  public final static native int MgView_getOptionInt(long jarg1, MgView jarg1_, String jarg2, String jarg3, int jarg4);
+  public final static native float MgView_getOptionFloat(long jarg1, MgView jarg1_, String jarg2, String jarg3, float jarg4);
+  public final static native void MgView_setOptionInt(long jarg1, MgView jarg1_, String jarg2, String jarg3, int jarg4);
+  public final static native void MgView_setOptionFloat(long jarg1, MgView jarg1_, String jarg2, String jarg3, float jarg4);
   public final static native void MgMotion_view_set(long jarg1, MgMotion jarg1_, long jarg2, MgView jarg2_);
   public final static native long MgMotion_view_get(long jarg1, MgMotion jarg1_);
   public final static native void MgMotion_gestureType_set(long jarg1, MgMotion jarg1_, int jarg2);
@@ -1934,6 +1938,11 @@ public class touchvgJNI {
   public final static native int MgCoreView_importSVGPath(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3, String jarg4);
   public final static native int MgCoreView_exportSVGPath(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3, String jarg4, int jarg5);
   public final static native boolean MgCoreView_exportSVGPath2(long jarg1, MgCoreView jarg1_, long jarg2, MgStringCallback jarg2_, int jarg3, int jarg4);
+  public final static native void delete_MgOptionCallback(long jarg1);
+  public final static native void MgOptionCallback_onGetOption(long jarg1, MgOptionCallback jarg1_, String jarg2, String jarg3, String jarg4);
+  public final static native long new_MgOptionCallback();
+  public final static native void MgOptionCallback_director_connect(MgOptionCallback obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void MgOptionCallback_change_ownership(MgOptionCallback obj, long cptr, boolean take_or_release);
   public final static native long GiCoreView_createView__SWIG_0(long jarg1, GiView jarg1_, int jarg2);
   public final static native long GiCoreView_createView__SWIG_1(long jarg1, GiView jarg1_);
   public final static native long GiCoreView_createMagnifierView(long jarg1, GiView jarg1_, long jarg2, GiCoreView jarg2_, long jarg3, GiView jarg3_);
@@ -1984,6 +1993,8 @@ public class touchvgJNI {
   public final static native boolean GiCoreView_onPause(long jarg1, GiCoreView jarg1_, int jarg2);
   public final static native boolean GiCoreView_onResume(long jarg1, GiCoreView jarg1_, int jarg2);
   public final static native boolean GiCoreView_restoreRecord(long jarg1, GiCoreView jarg1_, int jarg2, String jarg3, int jarg4, int jarg5, int jarg6, int jarg7, int jarg8, int jarg9);
+  public final static native int GiCoreView_traverseOptions(long jarg1, GiCoreView jarg1_, long jarg2, MgOptionCallback jarg2_);
+  public final static native void GiCoreView_setOption(long jarg1, GiCoreView jarg1_, String jarg2, String jarg3, String jarg4);
   public final static native void TestCanvas_initRand();
   public final static native int TestCanvas_randInt(int jarg1, int jarg2);
   public final static native float TestCanvas_randFloat(float jarg1, float jarg2);
@@ -2896,6 +2907,9 @@ public class touchvgJNI {
   }
   public static void SwigDirector_MgStringCallback_onGetString(MgStringCallback self, String text) {
     self.onGetString(text);
+  }
+  public static void SwigDirector_MgOptionCallback_onGetOption(MgOptionCallback self, String group, String name, String text) {
+    self.onGetOption(group, name, text);
   }
 
   private final static native void swig_module_init();
