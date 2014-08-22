@@ -89,8 +89,8 @@ public class MgCommandDraw extends MgCommand {
     if (getClass() == MgCommandDraw.class) touchvgJNI.MgCommandDraw_setStepPoint(swigCPtr, this, step, Point2d.getCPtr(pt), pt); else touchvgJNI.MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(swigCPtr, this, step, Point2d.getCPtr(pt), pt);
   }
 
-  public boolean initialize(MgMotion sender, MgStorage arg1) {
-    return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_initialize(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(arg1), arg1) : touchvgJNI.MgCommandDraw_initializeSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(arg1), arg1);
+  public boolean initialize(MgMotion sender, MgStorage s) {
+    return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_initialize(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(s), s) : touchvgJNI.MgCommandDraw_initializeSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(s), s);
   }
 
   public boolean backStep(MgMotion sender) {

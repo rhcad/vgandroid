@@ -228,4 +228,8 @@ public class MgMotion {
     return touchvgJNI.MgMotion_displayMmToModel__SWIG_1(swigCPtr, this, mm);
   }
 
+  public float displayMmToModel(String group, String name, float mm) {
+    return touchvgJNI.MgMotion_displayMmToModel__SWIG_2(swigCPtr, this, group, name, mm);
+  }
+
 }

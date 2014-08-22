@@ -341,7 +341,7 @@ public:
     virtual ~SwigDirector_MgCommandDraw();
     virtual void release();
     virtual bool cancel(MgMotion const *sender);
-    virtual bool initialize(MgMotion const *sender, MgStorage *arg1);
+    virtual bool initialize(MgMotion const *sender, MgStorage *s);
     virtual bool backStep(MgMotion const *sender);
     virtual bool draw(MgMotion const *sender, GiGraphics *gs);
     virtual bool gatherShapes(MgMotion const *sender, MgShapes *shapes);

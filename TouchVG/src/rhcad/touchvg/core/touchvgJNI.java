@@ -1525,6 +1525,7 @@ public class touchvgJNI {
   public final static native float MgMotion_distanceM(long jarg1, MgMotion jarg1_);
   public final static native float MgMotion_displayMmToModel__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2, long jarg3, GiGraphics jarg3_);
   public final static native float MgMotion_displayMmToModel__SWIG_1(long jarg1, MgMotion jarg1_, float jarg2);
+  public final static native float MgMotion_displayMmToModel__SWIG_2(long jarg1, MgMotion jarg1_, String jarg2, String jarg3, float jarg4);
   public final static native void delete_MgMotion(long jarg1);
   public final static native long new_MgCommand(String jarg1);
   public final static native void delete_MgCommand(long jarg1);
@@ -2737,8 +2738,8 @@ public class touchvgJNI {
   public static boolean SwigDirector_MgCommandDraw_cancel(MgCommandDraw self, long sender) {
     return self.cancel((sender == 0) ? null : new MgMotion(sender, false));
   }
-  public static boolean SwigDirector_MgCommandDraw_initialize(MgCommandDraw self, long sender, long arg1) {
-    return self.initialize((sender == 0) ? null : new MgMotion(sender, false), (arg1 == 0) ? null : new MgStorage(arg1, false));
+  public static boolean SwigDirector_MgCommandDraw_initialize(MgCommandDraw self, long sender, long s) {
+    return self.initialize((sender == 0) ? null : new MgMotion(sender, false), (s == 0) ? null : new MgStorage(s, false));
   }
   public static boolean SwigDirector_MgCommandDraw_backStep(MgCommandDraw self, long sender) {
     return self.backStep((sender == 0) ? null : new MgMotion(sender, false));

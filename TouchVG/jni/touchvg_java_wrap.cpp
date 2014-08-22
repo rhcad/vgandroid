@@ -7792,23 +7792,23 @@ bool SwigDirector_MgCommandDraw::cancel(MgMotion const *sender) {
   return c_result;
 }
 
-bool SwigDirector_MgCommandDraw::initialize(MgMotion const *sender, MgStorage *arg1) {
+bool SwigDirector_MgCommandDraw::initialize(MgMotion const *sender, MgStorage *s) {
   bool c_result = SwigValueInit< bool >() ;
   jboolean jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jsender = 0 ;
-  jlong jarg1 = 0 ;
+  jlong js = 0 ;
   
   if (!swig_override[2]) {
-    return MgCommandDraw::initialize(sender,arg1);
+    return MgCommandDraw::initialize(sender,s);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((MgMotion **)&jsender) = (MgMotion *) sender; 
-    *((MgStorage **)&jarg1) = (MgStorage *) arg1; 
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[212], swigjobj, jsender, jarg1);
+    *((MgStorage **)&js) = (MgStorage *) s; 
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[212], swigjobj, jsender, js);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -37406,6 +37406,37 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgMotion_1displayMm
   arg2 = (float)jarg2; 
   result = (float)((MgMotion const *)arg1)->displayMmToModel(arg2);
   jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgMotion_1displayMmToModel_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3, jfloat jarg4) {
+  jfloat jresult = 0 ;
+  MgMotion *arg1 = (MgMotion *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  float arg4 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgMotion **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return 0;
+  }
+  arg4 = (float)jarg4; 
+  result = (float)((MgMotion const *)arg1)->displayMmToModel((char const *)arg2,(char const *)arg3,arg4);
+  jresult = (jfloat)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
 }
 
