@@ -34,7 +34,7 @@ public:
     virtual void restoreClip();
     virtual bool clipRect(float x, float y, float w, float h);
     virtual bool clipPath();
-    virtual bool drawHandle(float x, float y, int type);
+    virtual bool drawHandle(float x, float y, int type, float angle);
     virtual bool drawBitmap(char const *name, float xc, float yc, float w, float h, float angle);
     virtual float drawTextAt(char const *text, float x, float y, float h, int align);
     virtual bool beginShape(int type, int sid, int version, float x, float y, float w, float h);
@@ -325,12 +325,13 @@ public:
     virtual MgCommand *createCommand(MgMotion const *sender, char const *name);
     virtual bool onPreGesture(MgMotion *sender);
     virtual void onPostGesture(MgMotion const *sender);
+    virtual void onPointSnapped(MgMotion const *sender, MgShape const *sp);
 public:
     bool swig_overrides(int n) {
-      return (n < 23 ? swig_override[n] : false);
+      return (n < 24 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[23];
+    bool swig_override[24];
 };
 
 class SwigDirector_MgCommandDraw : public MgCommandDraw, public Swig::Director {

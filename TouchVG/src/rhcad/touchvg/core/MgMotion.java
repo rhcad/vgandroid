@@ -232,4 +232,12 @@ public class MgMotion {
     return touchvgJNI.MgMotion_displayMmToModel__SWIG_2(swigCPtr, this, group, name, mm);
   }
 
+  public Box2d displayMmToModelBox(float mm) {
+    return new Box2d(touchvgJNI.MgMotion_displayMmToModelBox__SWIG_0(swigCPtr, this, mm), true);
+  }
+
+  public Box2d displayMmToModelBox(String group, String name, float mm) {
+    return new Box2d(touchvgJNI.MgMotion_displayMmToModelBox__SWIG_1(swigCPtr, this, group, name, mm), true);
+  }
+
 }

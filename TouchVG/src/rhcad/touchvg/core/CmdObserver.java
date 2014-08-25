@@ -129,4 +129,8 @@ public class CmdObserver {
     touchvgJNI.CmdObserver_onPostGesture(swigCPtr, this, MgMotion.getCPtr(sender), sender);
   }
 
+  public void onPointSnapped(MgMotion sender, MgShape sp) {
+    touchvgJNI.CmdObserver_onPointSnapped(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  }
+
 }

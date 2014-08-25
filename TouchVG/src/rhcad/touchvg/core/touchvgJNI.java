@@ -379,7 +379,7 @@ public class touchvgJNI {
   public final static native void GiCanvas_restoreClip(long jarg1, GiCanvas jarg1_);
   public final static native boolean GiCanvas_clipRect(long jarg1, GiCanvas jarg1_, float jarg2, float jarg3, float jarg4, float jarg5);
   public final static native boolean GiCanvas_clipPath(long jarg1, GiCanvas jarg1_);
-  public final static native boolean GiCanvas_drawHandle(long jarg1, GiCanvas jarg1_, float jarg2, float jarg3, int jarg4);
+  public final static native boolean GiCanvas_drawHandle(long jarg1, GiCanvas jarg1_, float jarg2, float jarg3, int jarg4, float jarg5);
   public final static native boolean GiCanvas_drawBitmap(long jarg1, GiCanvas jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, float jarg6, float jarg7);
   public final static native float GiCanvas_drawTextAt(long jarg1, GiCanvas jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, int jarg6);
   public final static native boolean GiCanvas_beginShape(long jarg1, GiCanvas jarg1_, int jarg2, int jarg3, int jarg4, float jarg5, float jarg6, float jarg7, float jarg8);
@@ -626,8 +626,9 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawQuadSplines__SWIG_2(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawPath__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, MgPath jarg3_, boolean jarg4, boolean jarg5);
   public final static native boolean GiGraphics_drawPath__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, MgPath jarg3_, boolean jarg4);
-  public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, boolean jarg4);
-  public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
+  public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4, boolean jarg5);
+  public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4);
+  public final static native boolean GiGraphics_drawHandle__SWIG_2(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
   public final static native boolean GiGraphics_beginPaint__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_, long jarg3, RECT_2D jarg3_);
   public final static native boolean GiGraphics_beginPaint__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_);
   public final static native void GiGraphics_endPaint(long jarg1, GiGraphics jarg1_);
@@ -725,6 +726,8 @@ public class touchvgJNI {
   public final static native int MgHitResult_segment_get(long jarg1, MgHitResult jarg1_);
   public final static native void MgHitResult_inside_set(long jarg1, MgHitResult jarg1_, boolean jarg2);
   public final static native boolean MgHitResult_inside_get(long jarg1, MgHitResult jarg1_);
+  public final static native void MgHitResult_contained_set(long jarg1, MgHitResult jarg1_, boolean jarg2);
+  public final static native boolean MgHitResult_contained_get(long jarg1, MgHitResult jarg1_);
   public final static native void MgHitResult_dist_set(long jarg1, MgHitResult jarg1_, float jarg2);
   public final static native float MgHitResult_dist_get(long jarg1, MgHitResult jarg1_);
   public final static native long new_MgHitResult();
@@ -1526,6 +1529,8 @@ public class touchvgJNI {
   public final static native float MgMotion_displayMmToModel__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2, long jarg3, GiGraphics jarg3_);
   public final static native float MgMotion_displayMmToModel__SWIG_1(long jarg1, MgMotion jarg1_, float jarg2);
   public final static native float MgMotion_displayMmToModel__SWIG_2(long jarg1, MgMotion jarg1_, String jarg2, String jarg3, float jarg4);
+  public final static native long MgMotion_displayMmToModelBox__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2);
+  public final static native long MgMotion_displayMmToModelBox__SWIG_1(long jarg1, MgMotion jarg1_, String jarg2, String jarg3, float jarg4);
   public final static native void delete_MgMotion(long jarg1);
   public final static native long new_MgCommand(String jarg1);
   public final static native void delete_MgCommand(long jarg1);
@@ -1587,6 +1592,7 @@ public class touchvgJNI {
   public final static native long CmdObserver_createCommand(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, String jarg3);
   public final static native boolean CmdObserver_onPreGesture(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserver_onPostGesture(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
+  public final static native void CmdObserver_onPointSnapped(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native long new_CmdObserverDefault();
   public final static native void delete_CmdObserverDefault(long jarg1);
   public final static native void CmdObserverDefault_onDocLoaded(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
@@ -1635,6 +1641,8 @@ public class touchvgJNI {
   public final static native boolean CmdObserverDefault_onPreGestureSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserverDefault_onPostGesture(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserverDefault_onPostGestureSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
+  public final static native void CmdObserverDefault_onPointSnapped(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
+  public final static native void CmdObserverDefault_onPointSnappedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native void CmdObserverDefault_director_connect(CmdObserverDefault obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void CmdObserverDefault_change_ownership(CmdObserverDefault obj, long cptr, boolean take_or_release);
   public final static native void CmdSubject_registerObserver(long jarg1, CmdSubject jarg1_, long jarg2, CmdObserver jarg2_);
@@ -2153,8 +2161,8 @@ public class touchvgJNI {
   public static boolean SwigDirector_GiCanvas_clipPath(GiCanvas self) {
     return self.clipPath();
   }
-  public static boolean SwigDirector_GiCanvas_drawHandle(GiCanvas self, float x, float y, int type) {
-    return self.drawHandle(x, y, type);
+  public static boolean SwigDirector_GiCanvas_drawHandle(GiCanvas self, float x, float y, int type, float angle) {
+    return self.drawHandle(x, y, type, angle);
   }
   public static boolean SwigDirector_GiCanvas_drawBitmap(GiCanvas self, String name, float xc, float yc, float w, float h, float angle) {
     return self.drawBitmap(name, xc, yc, w, h, angle);
@@ -2731,6 +2739,9 @@ public class touchvgJNI {
   }
   public static void SwigDirector_CmdObserverDefault_onPostGesture(CmdObserverDefault self, long sender) {
     self.onPostGesture((sender == 0) ? null : new MgMotion(sender, false));
+  }
+  public static void SwigDirector_CmdObserverDefault_onPointSnapped(CmdObserverDefault self, long sender, long sp) {
+    self.onPointSnapped((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));
   }
   public static void SwigDirector_MgCommandDraw_release(MgCommandDraw self) {
     self.release();

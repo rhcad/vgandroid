@@ -289,7 +289,7 @@ public class CanvasAdapter extends GiCanvas {
     }
 
     @Override
-    public boolean drawHandle(float x, float y, int type) {
+    public boolean drawHandle(float x, float y, int type, float angle) {
         final Bitmap bmp = getHandleBitmap(type);
         if (bmp != null) {
             mCanvas.drawBitmap(bmp, x - bmp.getWidth() / 2, y - bmp.getHeight() / 2, null);

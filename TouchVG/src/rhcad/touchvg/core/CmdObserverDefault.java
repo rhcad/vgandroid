@@ -149,4 +149,8 @@ public class CmdObserverDefault extends CmdObserver {
     if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onPostGesture(swigCPtr, this, MgMotion.getCPtr(sender), sender); else touchvgJNI.CmdObserverDefault_onPostGestureSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender);
   }
 
+  public void onPointSnapped(MgMotion sender, MgShape sp) {
+    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onPointSnapped(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp); else touchvgJNI.CmdObserverDefault_onPointSnappedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  }
+
 }
