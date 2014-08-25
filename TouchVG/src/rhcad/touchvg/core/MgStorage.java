@@ -63,6 +63,18 @@ public class MgStorage {
     touchvgJNI.MgStorage_writeString(swigCPtr, this, name, value);
   }
 
+  public int readFloatArray(String name) {
+    return touchvgJNI.MgStorage_readFloatArray(swigCPtr, this, name);
+  }
+
+  public int readIntArray(String name) {
+    return touchvgJNI.MgStorage_readIntArray(swigCPtr, this, name);
+  }
+
+  public int readString(String name) {
+    return touchvgJNI.MgStorage_readString(swigCPtr, this, name);
+  }
+
   public int readInt(String name, int defvalue) {
     return touchvgJNI.MgStorage_readInt(swigCPtr, this, name, defvalue);
   }

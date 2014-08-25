@@ -35,10 +35,6 @@ public class MgLine extends MgBaseShape {
     super.delete();
   }
 
-  public MgLine() {
-    this(touchvgJNI.new_MgLine(), true);
-  }
-
   public static MgLine create() {
     long cPtr = touchvgJNI.MgLine_create();
     return (cPtr == 0) ? null : new MgLine(cPtr, false);
@@ -117,8 +113,8 @@ public class MgLine extends MgBaseShape {
     return touchvgJNI.MgLine_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgLine_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgLine_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -183,10 +179,6 @@ public class MgLine extends MgBaseShape {
 
   public void setEndPoint(Point2d pt) {
     touchvgJNI.MgLine_setEndPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgLine_isCurve(swigCPtr, this);
   }
 
 }

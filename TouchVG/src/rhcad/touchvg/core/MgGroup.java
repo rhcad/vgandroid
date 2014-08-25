@@ -35,10 +35,6 @@ public class MgGroup extends MgComposite {
     super.delete();
   }
 
-  public MgGroup() {
-    this(touchvgJNI.new_MgGroup(), true);
-  }
-
   public static MgGroup create() {
     long cPtr = touchvgJNI.MgGroup_create();
     return (cPtr == 0) ? null : new MgGroup(cPtr, false);
@@ -117,8 +113,8 @@ public class MgGroup extends MgComposite {
     return touchvgJNI.MgGroup_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgGroup_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgGroup_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {

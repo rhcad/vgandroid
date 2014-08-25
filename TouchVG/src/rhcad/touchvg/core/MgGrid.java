@@ -35,10 +35,6 @@ public class MgGrid extends MgBaseRect {
     super.delete();
   }
 
-  public MgGrid() {
-    this(touchvgJNI.new_MgGrid(), true);
-  }
-
   public static MgGrid create() {
     long cPtr = touchvgJNI.MgGrid_create();
     return (cPtr == 0) ? null : new MgGrid(cPtr, false);
@@ -117,8 +113,8 @@ public class MgGrid extends MgBaseRect {
     return touchvgJNI.MgGrid_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgGrid_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgGrid_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -159,6 +155,10 @@ public class MgGrid extends MgBaseRect {
 
   public int snap(Point2d pnt, Point2d dist) {
     return touchvgJNI.MgGrid_snap(swigCPtr, this, Point2d.getCPtr(pnt), pnt, Point2d.getCPtr(dist), dist);
+  }
+
+  public Vector2d getCellSize() {
+    return new Vector2d(touchvgJNI.MgGrid_getCellSize(swigCPtr, this), false);
   }
 
   public boolean isValid(float tol) {

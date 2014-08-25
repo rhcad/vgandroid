@@ -27,11 +27,12 @@ import com.caverock.androidsvg.SVGParseException;
 
 //! 图像对象缓存类
 public class ImageCache extends Object {
-    public static final boolean USE_SVG = false;        // Use androidsvg-xxx.jar?
+    // USE_SVG=true: Uses androidsvg-xxx.jar
+    public static final boolean USE_SVG = false;
     private static final String TAG = "touchvg";
     public static final String BITMAP_PREFIX = "bmp:";
     public static final String SVG_PREFIX = "svg:";
-    private static final int CACHE_SIZE = 2 * 1024 * 1024; // 2MB
+    private static final int CACHE_SIZE = 2 * 1024 * 1024;
     private LruCache<String, Drawable> mCache;
     private String mPath;
     private String mPlayPath;
@@ -39,16 +40,13 @@ public class ImageCache extends Object {
     public ImageCache() {
     }
 
-    protected void finalize() {
-        Log.d(TAG, "ImageCache finalize");
-    }
-
     private boolean createCache() {
         try {
             mCache = new LruCache<String, Drawable>(CACHE_SIZE) {
                 @Override
                 protected int sizeOf(String key, Drawable d) {
-                    int size = 1; // TODO: SVG size?
+                    // TODO: SVG size?
+                    int size = 1;
                     if (d.getClass().isInstance(BitmapDrawable.class)) {
                         size = ((BitmapDrawable) d).getBitmap().getByteCount();
                     }
@@ -56,7 +54,7 @@ public class ImageCache extends Object {
                 }
             };
         } catch (NoClassDefFoundError e) {
-            Log.e(TAG, "Need android-support-v4.jar in application");
+            Log.e(TAG, "Need android-support-v4.jar in application", e);
         }
         return mCache != null;
     }
@@ -80,50 +78,66 @@ public class ImageCache extends Object {
     }
 
     public static int getWidth(Drawable drawable) {
+        int w = 0;
         try {
-            return ((BitmapDrawable) drawable).getBitmap().getWidth();
+            w = ((BitmapDrawable) drawable).getBitmap().getWidth();
         } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(w)", e);
+            try {
+                w = ((PictureDrawable) drawable).getPicture().getWidth();
+            } catch (ClassCastException e2) {
+                Log.i(TAG, "Not PictureDrawable(w)", e);
+            }
         }
-
-        try {
-            return ((PictureDrawable) drawable).getPicture().getWidth();
-        } catch (ClassCastException e) {
-        }
-
-        return 0;
+        return w;
     }
 
     public static int getHeight(Drawable drawable) {
+        int h = 0;
         try {
-            return ((BitmapDrawable) drawable).getBitmap().getHeight();
+            h = ((BitmapDrawable) drawable).getBitmap().getHeight();
         } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(h)", e);
+            try {
+                h = ((PictureDrawable) drawable).getPicture().getHeight();
+            } catch (ClassCastException e2) {
+                Log.i(TAG, "Not PictureDrawable(h)", e);
+            }
         }
-
-        try {
-            return ((PictureDrawable) drawable).getPicture().getHeight();
-        } catch (ClassCastException e) {
-        }
-
-        return 0;
+        return h;
     }
 
     //! 清除所有资源
     public void clear() {
-        if (mCache != null)
+        if (mCache != null) {
             mCache.evictAll();
+        }
+    }
+
+    //! 查找图像对象，不自动加载
+    public final Bitmap getBitmap(String name) {
+        BitmapDrawable drawable = null;
+        try {
+            drawable = (BitmapDrawable)(mCache != null ? mCache.get(name) : null);
+        } catch (ClassCastException e) {
+            Log.v(TAG, "Not BitmapDrawable(getImage)", e);
+        }
+        return drawable != null ? drawable.getBitmap() : null;
     }
 
     //! 查找图像对象
-    public Drawable getImage(View view, String name) {
+    public final Drawable getImage(View view, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && view != null) {
-            if (name.indexOf(BITMAP_PREFIX) == 0) { // R.drawable.resName
+            if (name.indexOf(BITMAP_PREFIX) == 0) {
+                // is R.drawable.resName
                 final String resName = name.substring(BITMAP_PREFIX.length());
                 int id = view.getResources().getIdentifier(resName, "drawable",
                         view.getContext().getPackageName());
                 drawable = this.addBitmap(view.getResources(), id, name);
-            } else if (name.indexOf(SVG_PREFIX) == 0) { // R.raw.resName
+            } else if (name.indexOf(SVG_PREFIX) == 0) {
+                // is R.raw.resName
                 final String resName = name.substring(SVG_PREFIX.length());
                 int id = view.getResources().getIdentifier(resName, "raw",
                         view.getContext().getPackageName());
@@ -141,8 +155,9 @@ public class ImageCache extends Object {
     private String getImagePath(String name) {
         if (mPlayPath != null && !mPlayPath.isEmpty()) {
             final File f = new File(mPlayPath, name);
-            if (f.exists())
+            if (f.exists()) {
                 return f.getPath();
+            }
         }
         if (mPath != null && !mPath.isEmpty()) {
             final File f = new File(mPath, name);
@@ -155,7 +170,7 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个程序资源中的位图图像
-    public Drawable addBitmap(Resources res, int id, String name) {
+    public final Drawable addBitmap(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && id != 0) {
@@ -172,7 +187,7 @@ public class ImageCache extends Object {
 
     //! 插入一个程序资源中的SVG图像
     @SuppressWarnings("unused")
-    public Drawable addSVG(Resources res, int id, String name) {
+    public final Drawable addSVG(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && id != 0 && USE_SVG) {
@@ -184,7 +199,7 @@ public class ImageCache extends Object {
                     addToCache(name, drawable);
                 }
             } catch (SVGParseException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Parse resource fail", e);
             }
         }
 
@@ -192,7 +207,7 @@ public class ImageCache extends Object {
     }
 
     //! 插入一个PNG等图像文件
-    public Drawable addBitmapFile(Resources res, String filename, String name) {
+    public final Drawable addBitmapFile(Resources res, String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && new File(filename).exists()) {
@@ -221,7 +236,7 @@ public class ImageCache extends Object {
 
     //! 插入一个SVG文件的图像
     @SuppressWarnings("unused")
-    public Drawable addSVGFile(String filename, String name) {
+    public final Drawable addSVGFile(String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
         if (drawable == null && name.endsWith(".svg") && USE_SVG) {
@@ -235,11 +250,11 @@ public class ImageCache extends Object {
                 }
                 data.close();
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                Log.e(TAG, "File not found", e);
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, "SVG read fail", e);
             } catch (SVGParseException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Parse file fail", e);
             }
         }
 
@@ -280,21 +295,20 @@ public class ImageCache extends Object {
                 }
                 ret = true;
             } catch (Exception e) {
-                Log.e(TAG, e.getMessage());
+                Log.e(TAG, "IO exception", e);
             } finally {
                 if (fis != null) {
                     try {
                         fis.close();
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, "close fis", e);
                     }
                 }
                 if (fos != null) {
                     try {
                         fos.close();
                     } catch (IOException e) {
-                        ret = false;
-                        e.printStackTrace();
+                        Log.e(TAG, "close fos", e);
                     }
                 }
             }

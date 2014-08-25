@@ -31,6 +31,7 @@ LOCAL_C_INCLUDES := $(CORE_INC) \
                     $(CORE_INC)/graph \
                     $(CORE_INC)/canvas \
                     $(CORE_INC)/shape \
+                    $(CORE_INC)/gshape \
                     $(CORE_INC)/storage \
                     $(CORE_INC)/cmd \
                     $(CORE_INC)/cmdbase \

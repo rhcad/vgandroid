@@ -35,10 +35,6 @@ public class MgRoundRect extends MgBaseRect {
     super.delete();
   }
 
-  public MgRoundRect() {
-    this(touchvgJNI.new_MgRoundRect(), true);
-  }
-
   public static MgRoundRect create() {
     long cPtr = touchvgJNI.MgRoundRect_create();
     return (cPtr == 0) ? null : new MgRoundRect(cPtr, false);
@@ -117,8 +113,8 @@ public class MgRoundRect extends MgBaseRect {
     return touchvgJNI.MgRoundRect_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgRoundRect_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgRoundRect_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -171,10 +167,6 @@ public class MgRoundRect extends MgBaseRect {
 
   public void setRadius(float rx) {
     touchvgJNI.MgRoundRect_setRadius__SWIG_1(swigCPtr, this, rx);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgRoundRect_isCurve(swigCPtr, this);
   }
 
 }

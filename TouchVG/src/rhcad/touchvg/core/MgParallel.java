@@ -35,10 +35,6 @@ public class MgParallel extends MgBaseShape {
     super.delete();
   }
 
-  public MgParallel() {
-    this(touchvgJNI.new_MgParallel(), true);
-  }
-
   public static MgParallel create() {
     long cPtr = touchvgJNI.MgParallel_create();
     return (cPtr == 0) ? null : new MgParallel(cPtr, false);
@@ -117,8 +113,8 @@ public class MgParallel extends MgBaseShape {
     return touchvgJNI.MgParallel_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgParallel_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgParallel_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -179,10 +175,6 @@ public class MgParallel extends MgBaseShape {
 
   public boolean isEmpty(float minDist) {
     return touchvgJNI.MgParallel_isEmpty(swigCPtr, this, minDist);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgParallel_isCurve(swigCPtr, this);
   }
 
 }

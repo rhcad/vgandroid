@@ -237,4 +237,20 @@ public class MgView {
     touchvgJNI.MgView_hideContextActions(swigCPtr, this);
   }
 
+  public int getOptionInt(String group, String name, int defValue) {
+    return touchvgJNI.MgView_getOptionInt(swigCPtr, this, group, name, defValue);
+  }
+
+  public float getOptionFloat(String group, String name, float defValue) {
+    return touchvgJNI.MgView_getOptionFloat(swigCPtr, this, group, name, defValue);
+  }
+
+  public void setOptionInt(String group, String name, int value) {
+    touchvgJNI.MgView_setOptionInt(swigCPtr, this, group, name, value);
+  }
+
+  public void setOptionFloat(String group, String name, float value) {
+    touchvgJNI.MgView_setOptionFloat(swigCPtr, this, group, name, value);
+  }
+
 }

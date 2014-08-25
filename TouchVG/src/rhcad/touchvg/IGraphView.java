@@ -14,9 +14,6 @@ import android.view.View;
 
 //! 绘图视图接口
 public interface IGraphView {
-    public static final int kGestureTap = 2;            //!< 单指单击
-    public static final int kGestureDblTap = 3;         //!< 单指双击
-    public static final int kGesturePress = 4;          //!< 单指长按
 
     //! 返回视图回调适配器对象
     public View getView();

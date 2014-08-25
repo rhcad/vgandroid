@@ -68,14 +68,6 @@ public class MgComposite extends MgBaseShape {
     return (getClass() == MgComposite.class) ? touchvgJNI.MgComposite_canOffsetShapeAlone(swigCPtr, this, MgShape.getCPtr(shape), shape) : touchvgJNI.MgComposite_canOffsetShapeAloneSwigExplicitMgComposite(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
-  public boolean isCurve() {
-    return (getClass() == MgComposite.class) ? touchvgJNI.MgComposite_isCurve(swigCPtr, this) : touchvgJNI.MgComposite_isCurveSwigExplicitMgComposite(swigCPtr, this);
-  }
-
-  public void setOwner(MgShape owner) {
-    if (getClass() == MgComposite.class) touchvgJNI.MgComposite_setOwner(swigCPtr, this, MgShape.getCPtr(owner), owner); else touchvgJNI.MgComposite_setOwnerSwigExplicitMgComposite(swigCPtr, this, MgShape.getCPtr(owner), owner);
-  }
-
   protected MgComposite() {
     this(touchvgJNI.new_MgComposite(), true);
     touchvgJNI.MgComposite_director_connect(this, swigCPtr, swigCMemOwn, true);

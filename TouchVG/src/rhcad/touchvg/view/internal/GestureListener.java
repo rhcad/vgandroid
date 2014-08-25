@@ -4,7 +4,7 @@
 
 package rhcad.touchvg.view.internal;
 
-import rhcad.touchvg.IGraphView;
+import rhcad.touchvg.Const;
 import rhcad.touchvg.IGraphView.OnDrawGestureListener;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.GiGestureState;
@@ -25,15 +25,15 @@ public class GestureListener extends SimpleOnGestureListener {
     private static final int M_MOVING = 3;
     private static final int M_END_MOVE = 4;
     private static final int M_PRESS_MOVING = 5;
-    private static final int XY_COUNT = 20;         // 待分发的移动轨迹点数*2
-    private GiCoreView mCoreView;                   // 内核视图分发器
-    private GiView mAdapter;                        // 视图回调适配器
-    private int mListenerType = 0;                  // OnDrawGestureListener 类型
-    private int mMoving = M_STOPPED;                // 移动状态
-    private int mFingerCount;                       // 上一次的触摸点数
-    private int mXYCount = 0;                       // mPoints值个数
-    private float[] mPoints = new float[XY_COUNT];  // 待分发的移动轨迹
-    private VelocityTracker mVelocityTracker;       // 移动中判断速度
+    private static final int XY_COUNT = 20;
+    private GiCoreView mCoreView;
+    private GiView mAdapter;
+    private int mListenerType = 0;
+    private int mMoving = M_STOPPED;
+    private int mFingerCount;
+    private int mXYCount = 0;
+    private float[] mPoints = new float[XY_COUNT];
+    private VelocityTracker mVelocityTracker;
     private boolean mTrackerEnabled = false;
     private float mLastX;
     private float mLastY;
@@ -45,10 +45,6 @@ public class GestureListener extends SimpleOnGestureListener {
     public GestureListener(GiCoreView coreView, GiView adapter, Object view) {
         mCoreView = coreView;
         mAdapter = adapter;
-    }
-
-    protected void finalize() {
-        Log.d(TAG, "GestureListener finalize");
     }
 
     public void release() {
@@ -123,11 +119,12 @@ public class GestureListener extends SimpleOnGestureListener {
             mCoreView.setGestureVelocity(mAdapter, velocityY, velocityX);
         }
 
-        onTouch_(v, action, e.getPointerCount(), x1, y1, x2, y2);
-        return false;   // to call GestureDetector.onTouchEvent
+        onTouchInternel(v, action, e.getPointerCount(), x1, y1, x2, y2);
+        // false: to call GestureDetector.onTouchEvent
+        return false;
     }
 
-    // ! 传递单指触摸事件，可用于拖放操作
+    //! 传递单指触摸事件，可用于拖放操作
     public boolean onTouchDrag(View v, int action, float x, float y) {
         if (action == MotionEvent.ACTION_DOWN) {
             mMoving = M_READY_MOVE;
@@ -139,7 +136,7 @@ public class GestureListener extends SimpleOnGestureListener {
             mLastX2 = mLastX;
             mLastY2 = mLastY;
         }
-        return onTouch_(v, action, 1, x, y, x, y);
+        return onTouchInternel(v, action, 1, x, y, x, y);
     }
 
     private void onTouchEnded() {
@@ -149,10 +146,12 @@ public class GestureListener extends SimpleOnGestureListener {
         }
     }
 
-    private boolean onTouch_(View v, int action, int count, float x1, float y1, float x2, float y2) {
+    private boolean onTouchInternel(View v, int action, int count,
+            float x1, float y1, float x2, float y2) {
         if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
             v.getParent().requestDisallowInterceptTouchEvent(false);
-        } else {        // 按下后不允许父视图拦截触摸事件
+        } else {
+            // 按下后不允许父视图拦截触摸事件
             v.getParent().requestDisallowInterceptTouchEvent(true);
         }
 
@@ -220,10 +219,13 @@ public class GestureListener extends SimpleOnGestureListener {
         boolean ret = false;
 
         if (mFingerCount != fingerCount) {
-            if (mFingerCount == 1) {                // 单指变为双指
-                if (mTouchTime - mDownTime < 800) { // 双指先后触到屏
+            // 单指变为双指
+            if (mFingerCount == 1) {
+                if (mTouchTime - mDownTime < 800) {
+                    // 双指先后触到屏
                     ret = onMoved(GiGestureState.kGiGestureCancel, 1, mLastX, mLastY, 0, 0, true);
-                } else {                            // 单指移动一段时间后变为双指
+                } else {
+                    // 单指移动一段时间后变为双指
                     ret = onMoved(GiGestureState.kGiGestureEnded, 1, mLastX, mLastY, 0, 0, true);
                 }
                 if (onMoved(GiGestureState.kGiGesturePossible, fingerCount, x1, y1, x2, y2, true)) {
@@ -232,7 +234,8 @@ public class GestureListener extends SimpleOnGestureListener {
                 } else {
                     mMoving = M_END_MOVE;
                 }
-            } else {                                // 不允许双指变为单指
+            } else {
+                // 不允许双指变为单指
                 mMoving = M_END_MOVE;
                 ret = onMoved(GiGestureState.kGiGestureEnded, mFingerCount, x1, y1, x2, y2, true);
             }
@@ -285,16 +288,20 @@ public class GestureListener extends SimpleOnGestureListener {
     public void onLongPress(MotionEvent e) {
         final OnDrawGestureListener notify = getNotify();
 
-        if (notify != null && notify.onPreGesture(IGraphView.kGesturePress, e.getX(), e.getY())) {
-        } else if (mXYCount > 1             // onDown called
+        if (notify != null
+                && notify.onPreGesture(Const.GESTURE_PRESS, e.getX(), e.getY())) {
+        } else if (mXYCount > 1
                 && mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
                         GiGestureState.kGiGestureBegan, e.getX(), e.getY())) {
+            // mXYCount > 1: onDown called
             mXYCount = 0;
             mMoving = M_PRESS_MOVING;
-            if (notify != null)
-                notify.onPostGesture(IGraphView.kGesturePress, e.getX(), e.getY());
-        } else if (mMoving == M_STARTED) {  // onDown 后还未移动
-            mMoving = M_READY_MOVE;         // onTouch 中将开始移动
+            if (notify != null) {
+                notify.onPostGesture(Const.GESTURE_PRESS, e.getX(), e.getY());
+            }
+        } else if (mMoving == M_STARTED) {
+            // onDown 后还未移动: onTouch 中将开始移动
+            mMoving = M_READY_MOVE;
         }
     }
 
@@ -302,23 +309,27 @@ public class GestureListener extends SimpleOnGestureListener {
     public boolean onSingleTapConfirmed(MotionEvent e) {
         final OnDrawGestureListener notify = getNotify();
 
-        if (mCoreView == null)
+        if (mCoreView == null) {
             return false;
-        if (notify != null && notify.onPreGesture(IGraphView.kGestureTap, e.getX(), e.getY()))
+        }
+        if (notify != null && notify.onPreGesture(Const.GESTURE_TAP, e.getX(), e.getY())) {
             return true;
+        }
         synchronized (mCoreView) {
             boolean ret = mXYCount > 1 && onTap(mPoints[0], mPoints[1]);
-            if (notify != null)
-                notify.onPostGesture(IGraphView.kGestureTap, e.getX(), e.getY());
+            if (notify != null) {
+                notify.onPostGesture(Const.GESTURE_TAP, e.getX(), e.getY());
+            }
             return ret;
         }
     }
 
-    // ! 传递单指轻击事件，可用于拖放操作
+    //! 传递单指轻击事件，可用于拖放操作
     public boolean onTap(float x, float y) {
         mMoving = M_STOPPED;
-        if (mCoreView == null)
+        if (mCoreView == null) {
             return false;
+        }
         synchronized (mCoreView) {
             return mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureTap,
                     GiGestureState.kGiGesturePossible, x, y)
@@ -332,15 +343,19 @@ public class GestureListener extends SimpleOnGestureListener {
         boolean ret = mXYCount > 1;
         final OnDrawGestureListener notify = getNotify();
 
-        if (mCoreView == null)
+        if (mCoreView == null) {
             return false;
-        if (ret && (notify == null || !notify.onPreGesture(IGraphView.kGestureDblTap, e.getX(), e.getY()))) {
+        }
+        if (ret
+                && (notify == null
+                || !notify.onPreGesture(Const.GESTURE_DBLTAP, e.getX(), e.getY()))) {
             ret = mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
                     GiGestureState.kGiGesturePossible, mPoints[0], mPoints[1])
                     && mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
                             GiGestureState.kGiGestureEnded, e.getX(), e.getY());
-            if (notify != null)
-                notify.onPostGesture(IGraphView.kGestureDblTap, e.getX(), e.getY());
+            if (notify != null) {
+                notify.onPostGesture(Const.GESTURE_DBLTAP, e.getX(), e.getY());
+            }
         }
         mXYCount = 0;
 
@@ -356,6 +371,7 @@ public class GestureListener extends SimpleOnGestureListener {
                 mListenerType = 1;
             } catch (Exception e) {
                 mListenerType = -1;
+                Log.d(TAG, "The adapter is not kind of OnDrawGestureListener", e);
             }
         } else if (mListenerType > 0) {
             listener = (OnDrawGestureListener) mAdapter;

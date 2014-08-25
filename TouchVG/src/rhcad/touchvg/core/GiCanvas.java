@@ -118,8 +118,8 @@ public class GiCanvas {
     return touchvgJNI.GiCanvas_clipPath(swigCPtr, this);
   }
 
-  public boolean drawHandle(float x, float y, int type) {
-    return touchvgJNI.GiCanvas_drawHandle(swigCPtr, this, x, y, type);
+  public boolean drawHandle(float x, float y, int type, float angle) {
+    return touchvgJNI.GiCanvas_drawHandle(swigCPtr, this, x, y, type, angle);
   }
 
   public boolean drawBitmap(String name, float xc, float yc, float w, float h, float angle) {

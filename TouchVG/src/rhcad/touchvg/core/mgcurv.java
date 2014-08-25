@@ -39,6 +39,10 @@ public class mgcurv {
     touchvgJNI.mgcurv_fitBezier(Point2d.getCPtr(pts), pts, t, Point2d.getCPtr(fitpt), fitpt);
   }
 
+  public static void bezierTanget(Point2d pts, float t, Point2d outpt) {
+    touchvgJNI.mgcurv_bezierTanget(Point2d.getCPtr(pts), pts, t, Point2d.getCPtr(outpt), outpt);
+  }
+
   public static void splitBezier(Point2d pts, float t, Point2d pts1, Point2d pts2) {
     touchvgJNI.mgcurv_splitBezier(Point2d.getCPtr(pts), pts, t, Point2d.getCPtr(pts1), pts1, Point2d.getCPtr(pts2), pts2);
   }

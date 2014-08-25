@@ -35,10 +35,6 @@ public class MgRect extends MgBaseRect {
     super.delete();
   }
 
-  public MgRect() {
-    this(touchvgJNI.new_MgRect(), true);
-  }
-
   public static MgRect create() {
     long cPtr = touchvgJNI.MgRect_create();
     return (cPtr == 0) ? null : new MgRect(cPtr, false);
@@ -117,8 +113,8 @@ public class MgRect extends MgBaseRect {
     return touchvgJNI.MgRect_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgRect_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgRect_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {

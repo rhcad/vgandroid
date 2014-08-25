@@ -234,6 +234,14 @@ public class GiCoreView extends MgCoreView {
     return touchvgJNI.GiCoreView_restoreRecord(swigCPtr, this, type, path, doc, changeCount, index, count, tick, curTick);
   }
 
+  public int traverseOptions(MgOptionCallback c) {
+    return touchvgJNI.GiCoreView_traverseOptions(swigCPtr, this, MgOptionCallback.getCPtr(c), c);
+  }
+
+  public void setOption(String group, String name, String text) {
+    touchvgJNI.GiCoreView_setOption(swigCPtr, this, group, name, text);
+  }
+
   public final static int kNoCmdType = -1;
   public final static int kTestType = 0;
   public final static int kNormalType = 1;

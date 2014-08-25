@@ -60,6 +60,14 @@ public class MgHitResult {
     return touchvgJNI.MgHitResult_inside_get(swigCPtr, this);
   }
 
+  public void setContained(boolean value) {
+    touchvgJNI.MgHitResult_contained_set(swigCPtr, this, value);
+  }
+
+  public boolean getContained() {
+    return touchvgJNI.MgHitResult_contained_get(swigCPtr, this);
+  }
+
   public void setDist(float value) {
     touchvgJNI.MgHitResult_dist_set(swigCPtr, this, value);
   }

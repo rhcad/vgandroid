@@ -42,7 +42,7 @@ public class CanvasAdapter extends GiCanvas {
     private static int[] mHandleIDs;
 
     static {
-        System.loadLibrary("touchvg");
+        System.loadLibrary(TAG);
     }
 
     public CanvasAdapter(View view) {
@@ -52,10 +52,6 @@ public class CanvasAdapter extends GiCanvas {
     public CanvasAdapter(View view, ImageCache cache) {
         this.mView = view;
         this.mCache = cache;
-    }
-
-    protected void finalize() {
-        Log.d(TAG, "CanvasAdapter finalize");
     }
 
     @Override
@@ -88,15 +84,20 @@ public class CanvasAdapter extends GiCanvas {
 
         this.mCanvas = canvas;
 
-        mPen.setAntiAlias(!fast);               // 线条反走样
-        mPen.setDither(!fast);                  // 高精度颜色采样，会略慢
-        mPen.setStyle(Paint.Style.STROKE);      // 仅描边
-        mPen.setPathEffect(null);               // 实线
-        mPen.setStrokeCap(Paint.Cap.ROUND);     // 圆端
-        mPen.setStrokeJoin(Paint.Join.ROUND);   // 折线转角圆弧过渡
-        mBrush.setStyle(Paint.Style.FILL);      // 仅填充
-        mBrush.setColor(Color.TRANSPARENT);     // 默认透明，不填充
-        mBrush.setAntiAlias(true);              // 文字反走样
+        // 线条反走样
+        mPen.setAntiAlias(!fast);
+        // 高精度颜色采样，会略慢
+        mPen.setDither(!fast);
+        // 仅描边,实线,圆端,折线转角圆弧过渡:
+        mPen.setStyle(Paint.Style.STROKE);
+        mPen.setPathEffect(null);
+        mPen.setStrokeCap(Paint.Cap.ROUND);
+        mPen.setStrokeJoin(Paint.Join.ROUND);
+        // 仅填充,默认透明不填充
+        mBrush.setStyle(Paint.Style.FILL);
+        mBrush.setColor(Color.TRANSPARENT);
+        // 文字反走样
+        mBrush.setAntiAlias(true);
 
         return true;
     }
@@ -171,7 +172,8 @@ public class CanvasAdapter extends GiCanvas {
     public void clearRect(float x, float y, float w, float h) {
         mCanvas.save(Canvas.CLIP_SAVE_FLAG);
         mCanvas.clipRect(x, y, x + w, y + h);
-        mCanvas.drawColor(mBkColor, Mode.CLEAR); // punch a whole in the view-hierarchy below the view
+        // punch a whole in the view-hierarchy below the view
+        mCanvas.drawColor(mBkColor, Mode.CLEAR);
         mCanvas.restore();
     }
 
@@ -259,10 +261,12 @@ public class CanvasAdapter extends GiCanvas {
 
         try {
             ret = mCanvas.clipPath(mPath);
-        } catch (UnsupportedOperationException e) { // GLES20Canvas, >=api11
-            e.printStackTrace();
-            if (mView != null) {                    // 改为软实现后下次绘制才生效
-                mView.setLayerType(View.LAYER_TYPE_SOFTWARE, null); // need API11 or above
+        } catch (UnsupportedOperationException e) {
+            // GLES20Canvas, >=api11
+            Log.w(TAG, "Unsupported operation: clipPath", e);
+            if (mView != null) {
+                // 改为软实现后下次绘制才生效(need API11 or above)
+                mView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
             }
         }
 
@@ -285,7 +289,7 @@ public class CanvasAdapter extends GiCanvas {
     }
 
     @Override
-    public boolean drawHandle(float x, float y, int type) {
+    public boolean drawHandle(float x, float y, int type, float angle) {
         final Bitmap bmp = getHandleBitmap(type);
         if (bmp != null) {
             mCanvas.drawBitmap(bmp, x - bmp.getWidth() / 2, y - bmp.getHeight() / 2, null);
@@ -307,14 +311,16 @@ public class CanvasAdapter extends GiCanvas {
             int height = ImageCache.getHeight(drawable);
 
             mat.postTranslate(-0.5f * width, -0.5f * height);
-            mat.postRotate(-angle * 180.f / 3.1415926f);    // degree to radian
+            // degree to radian
+            mat.postRotate(-angle * 180.f / 3.1415926f);
             mat.postScale(w / width, h / height);
             mat.postTranslate(xc, yc);
 
             try {
                 BitmapDrawable b = (BitmapDrawable) drawable;
                 mCanvas.drawBitmap(b.getBitmap(), mat, null);
-            } catch (ClassCastException e) {
+            } catch (ClassCastException e1) {
+                Log.v(TAG, "Not BitmapDrawable", e1);
                 try {
                     PictureDrawable p = (PictureDrawable) drawable;
                     mCanvas.concat(mat);
@@ -324,9 +330,12 @@ public class CanvasAdapter extends GiCanvas {
 
                     return true;
                 } catch (ClassCastException e2) {
-                } catch (UnsupportedOperationException e3) { // GLES20Canvas, >=api11
-                    e.printStackTrace();
-                    if (mView != null) {                    // 改为软实现后下次绘制才生效
+                    Log.v(TAG, "Not PictureDrawable", e2);
+                } catch (UnsupportedOperationException e3) {
+                    // GLES20Canvas, >=api11
+                    Log.w(TAG, "Unsupported operation", e3);
+                    if (mView != null) {
+                        // 改为软实现后下次绘制才生效
                         mView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
                     }
                 }

@@ -14,7 +14,7 @@ public final class MgShapeBit {
   public final static MgShapeBit kMgFixedLength = new MgShapeBit("kMgFixedLength");
   public final static MgShapeBit kMgFixedSize = new MgShapeBit("kMgFixedSize");
   public final static MgShapeBit kMgRotateDisnable = new MgShapeBit("kMgRotateDisnable");
-  public final static MgShapeBit kMgShapeLocked = new MgShapeBit("kMgShapeLocked");
+  public final static MgShapeBit kMgLocked = new MgShapeBit("kMgLocked");
   public final static MgShapeBit kMgNoSnap = new MgShapeBit("kMgNoSnap");
   public final static MgShapeBit kMgNoAction = new MgShapeBit("kMgNoAction");
   public final static MgShapeBit kMgNoClone = new MgShapeBit("kMgNoClone");
@@ -54,7 +54,7 @@ public final class MgShapeBit {
     swigNext = this.swigValue+1;
   }
 
-  private static MgShapeBit[] swigValues = { kMgSquare, kMgClosed, kMgFixedLength, kMgFixedSize, kMgRotateDisnable, kMgShapeLocked, kMgNoSnap, kMgNoAction, kMgNoClone, kMgHideContent };
+  private static MgShapeBit[] swigValues = { kMgSquare, kMgClosed, kMgFixedLength, kMgFixedSize, kMgRotateDisnable, kMgLocked, kMgNoSnap, kMgNoAction, kMgNoClone, kMgHideContent };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

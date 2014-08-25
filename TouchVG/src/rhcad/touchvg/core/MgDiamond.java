@@ -35,10 +35,6 @@ public class MgDiamond extends MgBaseRect {
     super.delete();
   }
 
-  public MgDiamond() {
-    this(touchvgJNI.new_MgDiamond(), true);
-  }
-
   public static MgDiamond create() {
     long cPtr = touchvgJNI.MgDiamond_create();
     return (cPtr == 0) ? null : new MgDiamond(cPtr, false);
@@ -117,8 +113,8 @@ public class MgDiamond extends MgBaseRect {
     return touchvgJNI.MgDiamond_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgDiamond_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgDiamond_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {

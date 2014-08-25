@@ -35,10 +35,6 @@ public class MgDot extends MgBaseShape {
     super.delete();
   }
 
-  public MgDot() {
-    this(touchvgJNI.new_MgDot(), true);
-  }
-
   public static MgDot create() {
     long cPtr = touchvgJNI.MgDot_create();
     return (cPtr == 0) ? null : new MgDot(cPtr, false);
@@ -117,8 +113,8 @@ public class MgDot extends MgBaseShape {
     return touchvgJNI.MgDot_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
-  public void output(GiPath path) {
-    touchvgJNI.MgDot_output(swigCPtr, this, GiPath.getCPtr(path), path);
+  public void output(MgPath path) {
+    touchvgJNI.MgDot_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
   public boolean save(MgStorage s) {
@@ -163,10 +159,6 @@ public class MgDot extends MgBaseShape {
 
   public void setPointType(int type) {
     touchvgJNI.MgDot_setPointType(swigCPtr, this, type);
-  }
-
-  public boolean isCurve() {
-    return touchvgJNI.MgDot_isCurve(swigCPtr, this);
   }
 
 }
