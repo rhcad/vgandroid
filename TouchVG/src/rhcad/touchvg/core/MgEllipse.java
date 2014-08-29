@@ -169,4 +169,8 @@ public class MgEllipse extends MgBaseRect {
     touchvgJNI.MgEllipse_setRadius__SWIG_1(swigCPtr, this, rx);
   }
 
+  public boolean isCircle() {
+    return touchvgJNI.MgEllipse_isCircle(swigCPtr, this);
+  }
+
 }

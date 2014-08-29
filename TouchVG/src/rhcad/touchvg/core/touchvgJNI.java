@@ -588,6 +588,10 @@ public class touchvgJNI {
   public final static native void GiGraphics_setPenWidthFactor(float jarg1);
   public final static native boolean GiGraphics_drawLine__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, boolean jarg5);
   public final static native boolean GiGraphics_drawLine__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
+  public final static native boolean GiGraphics_drawRayline__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, boolean jarg5);
+  public final static native boolean GiGraphics_drawRayline__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
+  public final static native boolean GiGraphics_drawBeeline__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, boolean jarg5);
+  public final static native boolean GiGraphics_drawBeeline__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawLines__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_, boolean jarg5);
   public final static native boolean GiGraphics_drawLines__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawBeziers__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, int jarg3, long jarg4, Point2d jarg4_, boolean jarg5, boolean jarg6);
@@ -1035,6 +1039,7 @@ public class touchvgJNI {
   public final static native float MgEllipse_getRadiusY(long jarg1, MgEllipse jarg1_);
   public final static native void MgEllipse_setRadius__SWIG_0(long jarg1, MgEllipse jarg1_, float jarg2, float jarg3);
   public final static native void MgEllipse_setRadius__SWIG_1(long jarg1, MgEllipse jarg1_, float jarg2);
+  public final static native boolean MgEllipse_isCircle(long jarg1, MgEllipse jarg1_);
   public final static native void delete_MgGrid(long jarg1);
   public final static native long MgGrid_create();
   public final static native int MgGrid_Type();
@@ -1105,6 +1110,10 @@ public class touchvgJNI {
   public final static native float MgLine_angle(long jarg1, MgLine jarg1_);
   public final static native void MgLine_setStartPoint(long jarg1, MgLine jarg1_, long jarg2, Point2d jarg2_);
   public final static native void MgLine_setEndPoint(long jarg1, MgLine jarg1_, long jarg2, Point2d jarg2_);
+  public final static native void MgLine_setRayline(long jarg1, MgLine jarg1_, boolean jarg2);
+  public final static native void MgLine_setBeeline(long jarg1, MgLine jarg1_, boolean jarg2);
+  public final static native boolean MgLine_isRayline(long jarg1, MgLine jarg1_);
+  public final static native boolean MgLine_isBeeline(long jarg1, MgLine jarg1_);
   public final static native void delete_MgParallel(long jarg1);
   public final static native long MgParallel_create();
   public final static native int MgParallel_Type();

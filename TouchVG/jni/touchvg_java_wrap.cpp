@@ -21044,6 +21044,138 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawL
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawRayline_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jboolean jarg5) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  bool arg5 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = jarg5 ? true : false; 
+  result = (bool)(arg1)->drawRayline((GiContext const *)arg2,(Point2d const &)*arg3,(Point2d const &)*arg4,arg5);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawRayline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  result = (bool)(arg1)->drawRayline((GiContext const *)arg2,(Point2d const &)*arg3,(Point2d const &)*arg4);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawBeeline_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jboolean jarg5) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  bool arg5 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = jarg5 ? true : false; 
+  result = (bool)(arg1)->drawBeeline((GiContext const *)arg2,(Point2d const &)*arg3,(Point2d const &)*arg4,arg5);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawBeeline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiContext *arg2 = (GiContext *) 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiContext **)&jarg2; 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  result = (bool)(arg1)->drawBeeline((GiContext const *)arg2,(Point2d const &)*arg3,(Point2d const &)*arg4);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawLines_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jboolean jarg5) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
@@ -29052,6 +29184,21 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1setRadius_
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1isCircle(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgEllipse *arg1 = (MgEllipse *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgEllipse **)&jarg1; 
+  result = (bool)((MgEllipse const *)arg1)->isCircle();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgGrid(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   MgGrid *arg1 = (MgGrid *) 0 ;
   
@@ -30269,6 +30416,62 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLine_1setEndPoint(J
     return ;
   } 
   (arg1)->setEndPoint((Point2d const &)*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLine_1setRayline(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  MgLine *arg1 = (MgLine *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgLine **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->setRayline(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLine_1setBeeline(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  MgLine *arg1 = (MgLine *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgLine **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->setBeeline(arg2);
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLine_1isRayline(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgLine *arg1 = (MgLine *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgLine **)&jarg1; 
+  result = (bool)((MgLine const *)arg1)->isRayline();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgLine_1isBeeline(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgLine *arg1 = (MgLine *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgLine **)&jarg1; 
+  result = (bool)((MgLine const *)arg1)->isBeeline();
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
