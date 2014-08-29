@@ -127,6 +127,10 @@ public class CmdObserverDefault extends CmdObserver {
     return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeWillChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, MgShape.getCPtr(oldsp), oldsp) : touchvgJNI.CmdObserverDefault_onShapeWillChangedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, MgShape.getCPtr(oldsp), oldsp);
   }
 
+  public void onShapeChanged(MgMotion sender, MgShape shape) {
+    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onShapeChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(shape), shape); else touchvgJNI.CmdObserverDefault_onShapeChangedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(shape), shape);
+  }
+
   public MgBaseShape createShape(MgMotion sender, int type) {
     long cPtr = (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_createShape(swigCPtr, this, MgMotion.getCPtr(sender), sender, type) : touchvgJNI.CmdObserverDefault_createShapeSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, type);
     return (cPtr == 0) ? null : new MgBaseShape(cPtr, false);

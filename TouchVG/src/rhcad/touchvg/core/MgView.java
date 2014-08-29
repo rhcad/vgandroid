@@ -217,6 +217,10 @@ public class MgView {
     return touchvgJNI.MgView_shapeWillChanged(swigCPtr, this, MgShape.getCPtr(shape), shape, MgShape.getCPtr(oldsp), oldsp);
   }
 
+  public void shapeChanged(MgShape shape) {
+    touchvgJNI.MgView_shapeChanged(swigCPtr, this, MgShape.getCPtr(shape), shape);
+  }
+
   public boolean shapeClicked(int sid, int tag, float x, float y) {
     return touchvgJNI.MgView_shapeClicked(swigCPtr, this, sid, tag, x, y);
   }

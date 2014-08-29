@@ -39,7 +39,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 18;
+    private static final int JARVERSION = 19;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
