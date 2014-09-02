@@ -87,6 +87,18 @@ public class MgPath {
     return new Vector2d(touchvgJNI.MgPath_getEndTangent(swigCPtr, this), true);
   }
 
+  public boolean isLine() {
+    return touchvgJNI.MgPath_isLine(swigCPtr, this);
+  }
+
+  public boolean isLines() {
+    return touchvgJNI.MgPath_isLines(swigCPtr, this);
+  }
+
+  public boolean isClosed() {
+    return touchvgJNI.MgPath_isClosed(swigCPtr, this);
+  }
+
   public int getNodeType(int index) {
     return touchvgJNI.MgPath_getNodeType(swigCPtr, this, index);
   }
@@ -221,6 +233,10 @@ public class MgPath {
 
   public boolean closeFigure() {
     return touchvgJNI.MgPath_closeFigure(swigCPtr, this);
+  }
+
+  public boolean crossWithPath(MgPath path, Box2d box, Point2d ptCross) {
+    return touchvgJNI.MgPath_crossWithPath(swigCPtr, this, MgPath.getCPtr(path), path, Box2d.getCPtr(box), box, Point2d.getCPtr(ptCross), ptCross);
   }
 
 }

@@ -170,7 +170,15 @@ public class MgEllipse extends MgBaseRect {
   }
 
   public boolean isCircle() {
-    return touchvgJNI.MgEllipse_isCircle(swigCPtr, this);
+    return touchvgJNI.MgEllipse_isCircle__SWIG_0(swigCPtr, this);
+  }
+
+  public static boolean isCircle(MgBaseShape sp) {
+    return touchvgJNI.MgEllipse_isCircle__SWIG_1(MgBaseShape.getCPtr(sp), sp);
+  }
+
+  public static int crossCircle(Point2d pt1, Point2d pt2, MgBaseShape sp1, MgBaseShape sp2) {
+    return touchvgJNI.MgEllipse_crossCircle(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, MgBaseShape.getCPtr(sp1), sp1, MgBaseShape.getCPtr(sp2), sp2);
   }
 
 }

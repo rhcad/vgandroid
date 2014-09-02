@@ -311,7 +311,8 @@ public class touchvgJNI {
   public final static native void mgcurv_ellipseToBezier(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, float jarg3, float jarg4);
   public final static native void mgcurv_roundRectToBeziers(long jarg1, Point2d jarg1_, long jarg2, Box2d jarg2_, float jarg3, float jarg4);
   public final static native int mgcurv_arcToBezier(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, float jarg3, float jarg4, float jarg5, float jarg6);
-  public final static native int mgcurv_insectTwoCircles(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, float jarg4, long jarg5, Point2d jarg5_, float jarg6);
+  public final static native int mgcurv_crossTwoCircles(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, float jarg4, long jarg5, Point2d jarg5_, float jarg6);
+  public final static native int mgcurv_crossLineCircle(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, float jarg6);
   public final static native boolean mgcurv_cubicSplines__SWIG_0(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4, float jarg5);
   public final static native boolean mgcurv_cubicSplines__SWIG_1(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4);
   public final static native boolean mgcurv_cubicSplines__SWIG_2(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_);
@@ -525,6 +526,9 @@ public class touchvgJNI {
   public final static native long MgPath_getStartTangent(long jarg1, MgPath jarg1_);
   public final static native long MgPath_getEndPoint(long jarg1, MgPath jarg1_);
   public final static native long MgPath_getEndTangent(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_isLine(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_isLines(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_isClosed(long jarg1, MgPath jarg1_);
   public final static native int MgPath_getNodeType(long jarg1, MgPath jarg1_, int jarg2);
   public final static native long MgPath_getPoint(long jarg1, MgPath jarg1_, int jarg2);
   public final static native void MgPath_setPoint(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_);
@@ -559,6 +563,7 @@ public class touchvgJNI {
   public final static native boolean MgPath_arcTo__SWIG_2(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, boolean jarg4);
   public final static native boolean MgPath_arcTo__SWIG_3(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean MgPath_closeFigure(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_crossWithPath(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_, long jarg3, Box2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native long new_GiGraphics__SWIG_0();
   public final static native long new_GiGraphics__SWIG_1(long jarg1, GiTransform jarg1_, boolean jarg2);
   public final static native long new_GiGraphics__SWIG_2(long jarg1, GiTransform jarg1_);
@@ -1040,7 +1045,9 @@ public class touchvgJNI {
   public final static native float MgEllipse_getRadiusY(long jarg1, MgEllipse jarg1_);
   public final static native void MgEllipse_setRadius__SWIG_0(long jarg1, MgEllipse jarg1_, float jarg2, float jarg3);
   public final static native void MgEllipse_setRadius__SWIG_1(long jarg1, MgEllipse jarg1_, float jarg2);
-  public final static native boolean MgEllipse_isCircle(long jarg1, MgEllipse jarg1_);
+  public final static native boolean MgEllipse_isCircle__SWIG_0(long jarg1, MgEllipse jarg1_);
+  public final static native boolean MgEllipse_isCircle__SWIG_1(long jarg1, MgBaseShape jarg1_);
+  public final static native int MgEllipse_crossCircle(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_, long jarg4, MgBaseShape jarg4_);
   public final static native void delete_MgGrid(long jarg1);
   public final static native long MgGrid_create();
   public final static native int MgGrid_Type();

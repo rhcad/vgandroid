@@ -79,8 +79,12 @@ public class mgcurv {
     return touchvgJNI.mgcurv_arcToBezier(Point2d.getCPtr(points), points, Point2d.getCPtr(center), center, rx, ry, startAngle, sweepAngle);
   }
 
-  public static int insectTwoCircles(Point2d pt1, Point2d pt2, Point2d c1, float r1, Point2d c2, float r2) {
-    return touchvgJNI.mgcurv_insectTwoCircles(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, Point2d.getCPtr(c1), c1, r1, Point2d.getCPtr(c2), c2, r2);
+  public static int crossTwoCircles(Point2d pt1, Point2d pt2, Point2d c1, float r1, Point2d c2, float r2) {
+    return touchvgJNI.mgcurv_crossTwoCircles(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, Point2d.getCPtr(c1), c1, r1, Point2d.getCPtr(c2), c2, r2);
+  }
+
+  public static int crossLineCircle(Point2d pt1, Point2d pt2, Point2d a, Point2d b, Point2d c, float r) {
+    return touchvgJNI.mgcurv_crossLineCircle(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(c), c, r);
   }
 
   public static boolean cubicSplines(int n, Point2d knots, Vector2d knotvs, int flag, float tension) {
