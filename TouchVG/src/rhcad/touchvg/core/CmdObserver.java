@@ -111,6 +111,10 @@ public class CmdObserver {
     return touchvgJNI.CmdObserver_onShapeWillChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, MgShape.getCPtr(oldsp), oldsp);
   }
 
+  public void onShapeChanged(MgMotion sender, MgShape shape) {
+    touchvgJNI.CmdObserver_onShapeChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(shape), shape);
+  }
+
   public MgBaseShape createShape(MgMotion sender, int type) {
     long cPtr = touchvgJNI.CmdObserver_createShape(swigCPtr, this, MgMotion.getCPtr(sender), sender, type);
     return (cPtr == 0) ? null : new MgBaseShape(cPtr, false);

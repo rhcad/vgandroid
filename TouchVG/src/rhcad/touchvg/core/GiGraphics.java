@@ -152,6 +152,22 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawLine__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt);
   }
 
+  public boolean drawRayline(GiContext ctx, Point2d startPt, Point2d endPt, boolean modelUnit) {
+    return touchvgJNI.GiGraphics_drawRayline__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt, modelUnit);
+  }
+
+  public boolean drawRayline(GiContext ctx, Point2d startPt, Point2d endPt) {
+    return touchvgJNI.GiGraphics_drawRayline__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt);
+  }
+
+  public boolean drawBeeline(GiContext ctx, Point2d startPt, Point2d endPt, boolean modelUnit) {
+    return touchvgJNI.GiGraphics_drawBeeline__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt, modelUnit);
+  }
+
+  public boolean drawBeeline(GiContext ctx, Point2d startPt, Point2d endPt) {
+    return touchvgJNI.GiGraphics_drawBeeline__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt);
+  }
+
   public boolean drawLines(GiContext ctx, int count, Point2d points, boolean modelUnit) {
     return touchvgJNI.GiGraphics_drawLines__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, count, Point2d.getCPtr(points), points, modelUnit);
   }

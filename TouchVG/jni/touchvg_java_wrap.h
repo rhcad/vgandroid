@@ -321,6 +321,7 @@ public:
     virtual bool onShapeCanUngroup(MgMotion const *sender, MgShape const *sp);
     virtual void onShapeMoved(MgMotion const *sender, MgShape *sp, int segment);
     virtual bool onShapeWillChanged(MgMotion const *sender, MgShape *sp, MgShape const *oldsp);
+    virtual void onShapeChanged(MgMotion const *sender, MgShape *shape);
     virtual MgBaseShape *createShape(MgMotion const *sender, int type);
     virtual MgCommand *createCommand(MgMotion const *sender, char const *name);
     virtual bool onPreGesture(MgMotion *sender);
@@ -328,10 +329,10 @@ public:
     virtual void onPointSnapped(MgMotion const *sender, MgShape const *sp);
 public:
     bool swig_overrides(int n) {
-      return (n < 24 ? swig_override[n] : false);
+      return (n < 25 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[24];
+    bool swig_override[25];
 };
 
 class SwigDirector_MgCommandDraw : public MgCommandDraw, public Swig::Director {

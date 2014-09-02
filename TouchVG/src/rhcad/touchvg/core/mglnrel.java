@@ -67,6 +67,10 @@ public class mglnrel {
     return touchvgJNI.mglnrel_isBetweenLine(Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(pt), pt);
   }
 
+  public static boolean isProjectBetweenLine(Point2d a, Point2d b, Point2d pt) {
+    return touchvgJNI.mglnrel_isProjectBetweenLine(Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(pt), pt);
+  }
+
   public static boolean isBetweenLine2(Point2d a, Point2d b, Point2d pt, Tol tol) {
     return touchvgJNI.mglnrel_isBetweenLine2(Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(pt), pt, Tol.getCPtr(tol), tol);
   }

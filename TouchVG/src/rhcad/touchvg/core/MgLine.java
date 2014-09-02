@@ -181,4 +181,20 @@ public class MgLine extends MgBaseShape {
     touchvgJNI.MgLine_setEndPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
   }
 
+  public void setRayline(boolean ray) {
+    touchvgJNI.MgLine_setRayline(swigCPtr, this, ray);
+  }
+
+  public void setBeeline(boolean bee) {
+    touchvgJNI.MgLine_setBeeline(swigCPtr, this, bee);
+  }
+
+  public boolean isRayline() {
+    return touchvgJNI.MgLine_isRayline(swigCPtr, this);
+  }
+
+  public boolean isBeeline() {
+    return touchvgJNI.MgLine_isBeeline(swigCPtr, this);
+  }
+
 }
