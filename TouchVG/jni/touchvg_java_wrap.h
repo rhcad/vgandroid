@@ -311,6 +311,7 @@ public:
     virtual bool doEndAction(MgMotion const *sender, int action);
     virtual void drawInShapeCommand(MgMotion const *sender, MgCommand *cmd, GiGraphics *gs);
     virtual void drawInSelectCommand(MgMotion const *sender, MgShape const *sp, int handleIndex, GiGraphics *gs);
+    virtual void onSelectionChanged(MgMotion const *sender);
     virtual bool onShapeWillAdded(MgMotion const *sender, MgShape *sp);
     virtual void onShapeAdded(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeWillDeleted(MgMotion const *sender, MgShape const *sp);
@@ -330,10 +331,10 @@ public:
     virtual void onPointSnapped(MgMotion const *sender, MgShape const *sp);
 public:
     bool swig_overrides(int n) {
-      return (n < 26 ? swig_override[n] : false);
+      return (n < 27 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[26];
+    bool swig_override[27];
 };
 
 class SwigDirector_MgCommandDraw : public MgCommandDraw, public Swig::Director {

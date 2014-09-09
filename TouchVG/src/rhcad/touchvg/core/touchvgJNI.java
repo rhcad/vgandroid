@@ -1600,6 +1600,7 @@ public class touchvgJNI {
   public final static native boolean CmdObserver_doEndAction(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, int jarg3);
   public final static native void CmdObserver_drawInShapeCommand(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgCommand jarg3_, long jarg4, GiGraphics jarg4_);
   public final static native void CmdObserver_drawInSelectCommand(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_, int jarg4, long jarg5, GiGraphics jarg5_);
+  public final static native void CmdObserver_onSelectionChanged(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
   public final static native boolean CmdObserver_onShapeWillAdded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native void CmdObserver_onShapeAdded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserver_onShapeWillDeleted(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
@@ -1635,6 +1636,8 @@ public class touchvgJNI {
   public final static native void CmdObserverDefault_drawInShapeCommandSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgCommand jarg3_, long jarg4, GiGraphics jarg4_);
   public final static native void CmdObserverDefault_drawInSelectCommand(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_, int jarg4, long jarg5, GiGraphics jarg5_);
   public final static native void CmdObserverDefault_drawInSelectCommandSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_, int jarg4, long jarg5, GiGraphics jarg5_);
+  public final static native void CmdObserverDefault_onSelectionChanged(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
+  public final static native void CmdObserverDefault_onSelectionChangedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
   public final static native boolean CmdObserverDefault_onShapeWillAdded(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeWillAddedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native void CmdObserverDefault_onShapeAdded(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
@@ -2727,6 +2730,9 @@ public class touchvgJNI {
   }
   public static void SwigDirector_CmdObserverDefault_drawInSelectCommand(CmdObserverDefault self, long sender, long sp, int handleIndex, long gs) {
     self.drawInSelectCommand((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false), handleIndex, (gs == 0) ? null : new GiGraphics(gs, false));
+  }
+  public static void SwigDirector_CmdObserverDefault_onSelectionChanged(CmdObserverDefault self, long sender) {
+    self.onSelectionChanged((sender == 0) ? null : new MgMotion(sender, false));
   }
   public static boolean SwigDirector_CmdObserverDefault_onShapeWillAdded(CmdObserverDefault self, long sender, long sp) {
     return self.onShapeWillAdded((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));
