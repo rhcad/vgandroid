@@ -35,8 +35,8 @@ public class MgShapeIterator {
     }
   }
 
-  public MgShapeIterator(MgShapes shapes) {
-    this(touchvgJNI.new_MgShapeIterator(MgShapes.getCPtr(shapes), shapes), true);
+  public MgShapeIterator(MgShapes s) {
+    this(touchvgJNI.new_MgShapeIterator(MgShapes.getCPtr(s), s), true);
   }
 
   public boolean hasNext() {
@@ -46,6 +46,11 @@ public class MgShapeIterator {
   public MgShape getNext() {
     long cPtr = touchvgJNI.MgShapeIterator_getNext(swigCPtr, this);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
+  public MgShapes shapes() {
+    long cPtr = touchvgJNI.MgShapeIterator_shapes(swigCPtr, this);
+    return (cPtr == 0) ? null : new MgShapes(cPtr, false);
   }
 
 }

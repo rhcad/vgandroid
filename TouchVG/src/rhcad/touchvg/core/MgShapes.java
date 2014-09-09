@@ -115,10 +115,6 @@ public class MgShapes extends MgObject {
     return touchvgJNI.MgShapes_draw__SWIG_1(swigCPtr, this, GiGraphics.getCPtr(gs), gs);
   }
 
-  public int dyndraw(int mode, GiGraphics gs, GiContext ctx, int segment) {
-    return touchvgJNI.MgShapes_dyndraw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
-  }
-
   public boolean save(MgStorage s, int startIndex) {
     return touchvgJNI.MgShapes_save__SWIG_0(swigCPtr, this, MgStorage.getCPtr(s), s, startIndex);
   }

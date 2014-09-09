@@ -163,6 +163,10 @@ public class Vector2d {
     return touchvgJNI.Vector2d_isZeroVector__SWIG_1(swigCPtr, this);
   }
 
+  public boolean isDegenerate() {
+    return touchvgJNI.Vector2d_isDegenerate(swigCPtr, this);
+  }
+
   public boolean isEqualTo(Vector2d v, Tol tol) {
     return touchvgJNI.Vector2d_isEqualTo__SWIG_0(swigCPtr, this, Vector2d.getCPtr(v), v, Tol.getCPtr(tol), tol);
   }

@@ -127,6 +127,10 @@ public class Point2d {
     return touchvgJNI.Point2d_isEqualTo__SWIG_1(swigCPtr, this, Point2d.getCPtr(pnt), pnt);
   }
 
+  public boolean isDegenerate() {
+    return touchvgJNI.Point2d_isDegenerate(swigCPtr, this);
+  }
+
   public Point2d set(float xx, float yy) {
     return new Point2d(touchvgJNI.Point2d_set__SWIG_0(swigCPtr, this, xx, yy), false);
   }

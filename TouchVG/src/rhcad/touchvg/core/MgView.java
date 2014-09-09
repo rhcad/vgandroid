@@ -209,6 +209,10 @@ public class MgView {
     return touchvgJNI.MgView_shapeCanUngroup(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
+  public boolean shapeCanMovedHandle(MgShape shape, int index) {
+    return touchvgJNI.MgView_shapeCanMovedHandle(swigCPtr, this, MgShape.getCPtr(shape), shape, index);
+  }
+
   public void shapeMoved(MgShape shape, int segment) {
     touchvgJNI.MgView_shapeMoved(swigCPtr, this, MgShape.getCPtr(shape), shape, segment);
   }

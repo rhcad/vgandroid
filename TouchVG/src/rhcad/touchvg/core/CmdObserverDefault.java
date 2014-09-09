@@ -119,6 +119,10 @@ public class CmdObserverDefault extends CmdObserver {
     return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeCanUngroup(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp) : touchvgJNI.CmdObserverDefault_onShapeCanUngroupSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
+  public boolean onShapeCanMovedHandle(MgMotion sender, MgShape sp, int index) {
+    return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeCanMovedHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index) : touchvgJNI.CmdObserverDefault_onShapeCanMovedHandleSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index);
+  }
+
   public void onShapeMoved(MgMotion sender, MgShape sp, int segment) {
     if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onShapeMoved(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, segment); else touchvgJNI.CmdObserverDefault_onShapeMovedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, segment);
   }

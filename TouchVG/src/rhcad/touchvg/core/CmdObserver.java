@@ -103,6 +103,10 @@ public class CmdObserver {
     return touchvgJNI.CmdObserver_onShapeCanUngroup(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
+  public boolean onShapeCanMovedHandle(MgMotion sender, MgShape sp, int index) {
+    return touchvgJNI.CmdObserver_onShapeCanMovedHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index);
+  }
+
   public void onShapeMoved(MgMotion sender, MgShape sp, int segment) {
     touchvgJNI.CmdObserver_onShapeMoved(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, segment);
   }

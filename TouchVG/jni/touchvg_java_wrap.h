@@ -319,6 +319,7 @@ public:
     virtual bool onShapeCanTransform(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUnlock(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUngroup(MgMotion const *sender, MgShape const *sp);
+    virtual bool onShapeCanMovedHandle(MgMotion const *sender, MgShape const *sp, int index);
     virtual void onShapeMoved(MgMotion const *sender, MgShape *sp, int segment);
     virtual bool onShapeWillChanged(MgMotion const *sender, MgShape *sp, MgShape const *oldsp);
     virtual void onShapeChanged(MgMotion const *sender, MgShape *shape);
@@ -329,10 +330,10 @@ public:
     virtual void onPointSnapped(MgMotion const *sender, MgShape const *sp);
 public:
     bool swig_overrides(int n) {
-      return (n < 25 ? swig_override[n] : false);
+      return (n < 26 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[25];
+    bool swig_override[26];
 };
 
 class SwigDirector_MgCommandDraw : public MgCommandDraw, public Swig::Director {
