@@ -83,6 +83,11 @@ public class MgView {
     return (cPtr == 0) ? null : new MgShapeFactory(cPtr, false);
   }
 
+  public MgShape createShapeCtx(int type) {
+    long cPtr = touchvgJNI.MgView_createShapeCtx(swigCPtr, this, type);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
   public MgSnap getSnap() {
     long cPtr = touchvgJNI.MgView_getSnap(swigCPtr, this);
     return (cPtr == 0) ? null : new MgSnap(cPtr, false);

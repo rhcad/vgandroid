@@ -169,6 +169,18 @@ public class MgEllipse extends MgBaseRect {
     touchvgJNI.MgEllipse_setRadius__SWIG_1(swigCPtr, this, rx);
   }
 
+  public boolean setCircle(Point2d center, float radius) {
+    return touchvgJNI.MgEllipse_setCircle(swigCPtr, this, Point2d.getCPtr(center), center, radius);
+  }
+
+  public boolean setCircle2P(Point2d start, Point2d end) {
+    return touchvgJNI.MgEllipse_setCircle2P(swigCPtr, this, Point2d.getCPtr(start), start, Point2d.getCPtr(end), end);
+  }
+
+  public boolean setCircle3P(Point2d start, Point2d point, Point2d end) {
+    return touchvgJNI.MgEllipse_setCircle3P(swigCPtr, this, Point2d.getCPtr(start), start, Point2d.getCPtr(point), point, Point2d.getCPtr(end), end);
+  }
+
   public boolean isCircle() {
     return touchvgJNI.MgEllipse_isCircle__SWIG_0(swigCPtr, this);
   }

@@ -947,6 +947,7 @@ public class touchvgJNI {
   public final static native long MgArc_getStartTangent(long jarg1, MgArc jarg1_);
   public final static native long MgArc_getEndTangent(long jarg1, MgArc jarg1_);
   public final static native boolean MgArc_setStartMidEnd(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
+  public final static native boolean MgArc_setCenterStartMidEnd(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_);
   public final static native boolean MgArc_setCenterStartEnd__SWIG_0(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean MgArc_setCenterStartEnd__SWIG_1(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgArc_setTanStartEnd(long jarg1, MgArc jarg1_, long jarg2, Vector2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
@@ -1047,6 +1048,9 @@ public class touchvgJNI {
   public final static native float MgEllipse_getRadiusY(long jarg1, MgEllipse jarg1_);
   public final static native void MgEllipse_setRadius__SWIG_0(long jarg1, MgEllipse jarg1_, float jarg2, float jarg3);
   public final static native void MgEllipse_setRadius__SWIG_1(long jarg1, MgEllipse jarg1_, float jarg2);
+  public final static native boolean MgEllipse_setCircle(long jarg1, MgEllipse jarg1_, long jarg2, Point2d jarg2_, float jarg3);
+  public final static native boolean MgEllipse_setCircle2P(long jarg1, MgEllipse jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
+  public final static native boolean MgEllipse_setCircle3P(long jarg1, MgEllipse jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgEllipse_isCircle__SWIG_0(long jarg1, MgEllipse jarg1_);
   public final static native boolean MgEllipse_isCircle__SWIG_1(long jarg1, MgBaseShape jarg1_);
   public final static native int MgEllipse_crossCircle__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_, long jarg4, MgBaseShape jarg4_);
@@ -1462,6 +1466,7 @@ public class touchvgJNI {
   public final static native long MgView_context(long jarg1, MgView jarg1_);
   public final static native long MgView_modelTransform(long jarg1, MgView jarg1_);
   public final static native long MgView_getShapeFactory(long jarg1, MgView jarg1_);
+  public final static native long MgView_createShapeCtx(long jarg1, MgView jarg1_, int jarg2);
   public final static native long MgView_getSnap(long jarg1, MgView jarg1_);
   public final static native long MgView_getAction(long jarg1, MgView jarg1_);
   public final static native long MgView_getCmdSubject(long jarg1, MgView jarg1_);
@@ -1688,6 +1693,7 @@ public class touchvgJNI {
   public final static native boolean MgCommandDraw_touchEndedStep(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
   public final static native int MgCommandDraw_getShapeType(long jarg1, MgCommandDraw jarg1_);
   public final static native int MgCommandDraw_getShapeTypeSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_);
+  public final static native int MgCommandDraw_getSnappedType(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
   public final static native int MgCommandDraw_getMaxStep(long jarg1, MgCommandDraw jarg1_);
   public final static native int MgCommandDraw_getMaxStepSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_);
   public final static native void MgCommandDraw_setStepPoint(long jarg1, MgCommandDraw jarg1_, int jarg2, long jarg3, Point2d jarg3_);
@@ -1736,6 +1742,7 @@ public class touchvgJNI {
   public final static native long new_MgCmdArcCSE__SWIG_1();
   public final static native void MgCmdArcCSE_release(long jarg1, MgCmdArcCSE jarg1_);
   public final static native boolean MgCmdArcCSE_draw(long jarg1, MgCmdArcCSE jarg1_, long jarg2, MgMotion jarg2_, long jarg3, GiGraphics jarg3_);
+  public final static native boolean MgCmdArcCSE_click(long jarg1, MgCmdArcCSE jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void delete_MgCmdArcCSE(long jarg1);
   public final static native long new_MgCmdArcTan__SWIG_0(String jarg1);
   public final static native long new_MgCmdArcTan__SWIG_1();

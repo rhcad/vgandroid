@@ -51,4 +51,8 @@ public class MgCmdArcCSE extends MgCmdArc3P {
     return touchvgJNI.MgCmdArcCSE_draw(swigCPtr, this, MgMotion.getCPtr(sender), sender, GiGraphics.getCPtr(gs), gs);
   }
 
+  public boolean click(MgMotion sender) {
+    return touchvgJNI.MgCmdArcCSE_click(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
 }
