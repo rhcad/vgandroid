@@ -29635,12 +29635,13 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1isCirc
 }
 
 
-SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1crossCircle_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1crossCircle_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
   jint jresult = 0 ;
   Point2d *arg1 = 0 ;
   Point2d *arg2 = 0 ;
   MgBaseShape *arg3 = (MgBaseShape *) 0 ;
   MgBaseShape *arg4 = (MgBaseShape *) 0 ;
+  Point2d *arg5 = 0 ;
   int result;
   
   (void)jenv;
@@ -29649,6 +29650,7 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1crossCircl
   (void)jarg2_;
   (void)jarg3_;
   (void)jarg4_;
+  (void)jarg5_;
   arg1 = *(Point2d **)&jarg1;
   if (!arg1) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
@@ -29661,7 +29663,12 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgEllipse_1crossCircl
   } 
   arg3 = *(MgBaseShape **)&jarg3; 
   arg4 = *(MgBaseShape **)&jarg4; 
-  result = (int)MgEllipse::crossCircle(*arg1,*arg2,(MgBaseShape const *)arg3,(MgBaseShape const *)arg4);
+  arg5 = *(Point2d **)&jarg5;
+  if (!arg5) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  result = (int)MgEllipse::crossCircle(*arg1,*arg2,(MgBaseShape const *)arg3,(MgBaseShape const *)arg4,(Point2d const &)*arg5);
   jresult = (jint)result; 
   return jresult;
 }
@@ -36821,7 +36828,27 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1getShapeFact
 }
 
 
-SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1createShapeCtx(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1createShapeCtx_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+  jlong jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  int arg2 ;
+  GiContext *arg3 = (GiContext *) 0 ;
+  MgShape *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(MgView **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = *(GiContext **)&jarg3; 
+  result = (MgShape *)(arg1)->createShapeCtx(arg2,(GiContext const *)arg3);
+  *(MgShape **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1createShapeCtx_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   MgView *arg1 = (MgView *) 0 ;
   int arg2 ;

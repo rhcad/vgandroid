@@ -83,8 +83,13 @@ public class MgView {
     return (cPtr == 0) ? null : new MgShapeFactory(cPtr, false);
   }
 
+  public MgShape createShapeCtx(int type, GiContext ctx) {
+    long cPtr = touchvgJNI.MgView_createShapeCtx__SWIG_0(swigCPtr, this, type, GiContext.getCPtr(ctx), ctx);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
   public MgShape createShapeCtx(int type) {
-    long cPtr = touchvgJNI.MgView_createShapeCtx(swigCPtr, this, type);
+    long cPtr = touchvgJNI.MgView_createShapeCtx__SWIG_1(swigCPtr, this, type);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);
   }
 

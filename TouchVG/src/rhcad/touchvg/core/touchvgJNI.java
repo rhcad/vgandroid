@@ -1053,7 +1053,7 @@ public class touchvgJNI {
   public final static native boolean MgEllipse_setCircle3P(long jarg1, MgEllipse jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgEllipse_isCircle__SWIG_0(long jarg1, MgEllipse jarg1_);
   public final static native boolean MgEllipse_isCircle__SWIG_1(long jarg1, MgBaseShape jarg1_);
-  public final static native int MgEllipse_crossCircle__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_, long jarg4, MgBaseShape jarg4_);
+  public final static native int MgEllipse_crossCircle__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_, long jarg4, MgBaseShape jarg4_, long jarg5, Point2d jarg5_);
   public final static native int MgEllipse_crossCircle__SWIG_1(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_);
   public final static native void delete_MgGrid(long jarg1);
   public final static native long MgGrid_create();
@@ -1466,7 +1466,8 @@ public class touchvgJNI {
   public final static native long MgView_context(long jarg1, MgView jarg1_);
   public final static native long MgView_modelTransform(long jarg1, MgView jarg1_);
   public final static native long MgView_getShapeFactory(long jarg1, MgView jarg1_);
-  public final static native long MgView_createShapeCtx(long jarg1, MgView jarg1_, int jarg2);
+  public final static native long MgView_createShapeCtx__SWIG_0(long jarg1, MgView jarg1_, int jarg2, long jarg3, GiContext jarg3_);
+  public final static native long MgView_createShapeCtx__SWIG_1(long jarg1, MgView jarg1_, int jarg2);
   public final static native long MgView_getSnap(long jarg1, MgView jarg1_);
   public final static native long MgView_getAction(long jarg1, MgView jarg1_);
   public final static native long MgView_getCmdSubject(long jarg1, MgView jarg1_);
