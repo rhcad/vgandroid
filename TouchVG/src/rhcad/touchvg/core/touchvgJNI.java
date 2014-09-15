@@ -594,6 +594,7 @@ public class touchvgJNI {
   public final static native void GiGraphics_setMaxPenWidth__SWIG_0(long jarg1, GiGraphics jarg1_, float jarg2, float jarg3);
   public final static native void GiGraphics_setMaxPenWidth__SWIG_1(long jarg1, GiGraphics jarg1_, float jarg2);
   public final static native void GiGraphics_setPenWidthFactor(float jarg1);
+  public final static native boolean GiGraphics_setPhaseEnabled(long jarg1, GiGraphics jarg1_, boolean jarg2);
   public final static native boolean GiGraphics_drawLine__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, boolean jarg5);
   public final static native boolean GiGraphics_drawLine__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean GiGraphics_drawRayline__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, boolean jarg5);

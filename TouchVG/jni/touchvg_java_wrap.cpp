@@ -21267,6 +21267,23 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1setPenWid
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1setPhaseEnabled(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  bool arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  result = (bool)(arg1)->setPhaseEnabled(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawLine_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jboolean jarg5) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;

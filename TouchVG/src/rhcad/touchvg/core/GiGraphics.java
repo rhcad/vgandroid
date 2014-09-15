@@ -144,6 +144,10 @@ public class GiGraphics {
     touchvgJNI.GiGraphics_setPenWidthFactor(factor);
   }
 
+  public boolean setPhaseEnabled(boolean enabled) {
+    return touchvgJNI.GiGraphics_setPhaseEnabled(swigCPtr, this, enabled);
+  }
+
   public boolean drawLine(GiContext ctx, Point2d startPt, Point2d endPt, boolean modelUnit) {
     return touchvgJNI.GiGraphics_drawLine__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt, modelUnit);
   }
