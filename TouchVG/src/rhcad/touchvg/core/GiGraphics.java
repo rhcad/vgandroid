@@ -336,6 +336,14 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawHandle__SWIG_2(swigCPtr, this, Point2d.getCPtr(pnt), pnt, type);
   }
 
+  public boolean drawTextAt(String text, Point2d pnt, float h, int align) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_0(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h, align);
+  }
+
+  public boolean drawTextAt(String text, Point2d pnt, float h) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_1(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h);
+  }
+
   public boolean beginPaint(GiCanvas canvas, RECT_2D clipBox) {
     return touchvgJNI.GiGraphics_beginPaint__SWIG_0(swigCPtr, this, GiCanvas.getCPtr(canvas), canvas, RECT_2D.getCPtr(clipBox), clipBox);
   }

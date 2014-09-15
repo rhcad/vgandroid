@@ -22628,6 +22628,70 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawH
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_, jfloat jarg4, jint jarg5) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  char *arg2 = (char *) 0 ;
+  Point2d *arg3 = 0 ;
+  float arg4 ;
+  int arg5 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = (float)jarg4; 
+  arg5 = (int)jarg5; 
+  result = (bool)(arg1)->drawTextAt((char const *)arg2,(Point2d const &)*arg3,arg4,arg5);
+  jresult = (jboolean)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_, jfloat jarg4) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  char *arg2 = (char *) 0 ;
+  Point2d *arg3 = 0 ;
+  float arg4 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = (float)jarg4; 
+  result = (bool)(arg1)->drawTextAt((char const *)arg2,(Point2d const &)*arg3,arg4);
+  jresult = (jboolean)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1beginPaint_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
@@ -36140,6 +36204,61 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1drawSnap(
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(GiGraphics **)&jarg3; 
   result = (bool)((MgSnap const *)arg1)->drawSnap((MgMotion const *)arg2,arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1drawPerpMark(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_, jlong jarg6, jobject jarg6_, jlong jarg7, jobject jarg7_, jfloat jarg8) {
+  jboolean jresult = 0 ;
+  MgSnap *arg1 = (MgSnap *) 0 ;
+  GiGraphics *arg2 = (GiGraphics *) 0 ;
+  GiContext *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  Point2d *arg5 = 0 ;
+  Point2d *arg6 = 0 ;
+  Point2d *arg7 = 0 ;
+  float arg8 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  (void)jarg5_;
+  (void)jarg6_;
+  (void)jarg7_;
+  arg1 = *(MgSnap **)&jarg1; 
+  arg2 = *(GiGraphics **)&jarg2; 
+  arg3 = *(GiContext **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "GiContext const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = *(Point2d **)&jarg5;
+  if (!arg5) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg6 = *(Point2d **)&jarg6;
+  if (!arg6) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg7 = *(Point2d **)&jarg7;
+  if (!arg7) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg8 = (float)jarg8; 
+  result = (bool)((MgSnap const *)arg1)->drawPerpMark(arg2,(GiContext const &)*arg3,(Point2d const &)*arg4,(Point2d const &)*arg5,(Point2d const &)*arg6,(Point2d const &)*arg7,arg8);
   jresult = (jboolean)result; 
   return jresult;
 }

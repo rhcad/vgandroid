@@ -642,6 +642,8 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4, boolean jarg5);
   public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_2(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
+  public final static native boolean GiGraphics_drawTextAt__SWIG_0(long jarg1, GiGraphics jarg1_, String jarg2, long jarg3, Point2d jarg3_, float jarg4, int jarg5);
+  public final static native boolean GiGraphics_drawTextAt__SWIG_1(long jarg1, GiGraphics jarg1_, String jarg2, long jarg3, Point2d jarg3_, float jarg4);
   public final static native boolean GiGraphics_beginPaint__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_, long jarg3, RECT_2D jarg3_);
   public final static native boolean GiGraphics_beginPaint__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_);
   public final static native void GiGraphics_endPaint(long jarg1, GiGraphics jarg1_);
@@ -1427,6 +1429,7 @@ public class touchvgJNI {
   public final static native void delete_MgActionDispatcher(long jarg1);
   public final static native void MgSnap_clearSnap(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_);
   public final static native boolean MgSnap_drawSnap(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_, long jarg3, GiGraphics jarg3_);
+  public final static native boolean MgSnap_drawPerpMark(long jarg1, MgSnap jarg1_, long jarg2, GiGraphics jarg2_, long jarg3, GiContext jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, long jarg6, Point2d jarg6_, long jarg7, Point2d jarg7_, float jarg8);
   public final static native int MgSnap_getSnappedType(long jarg1, MgSnap jarg1_);
   public final static native int MgSnap_getSnappedPoint(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native long MgSnap_snapPoint(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_);
