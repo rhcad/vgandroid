@@ -80,6 +80,7 @@ public class touchvgJNI {
   public final static native long Vector2d_set__SWIG_0(long jarg1, Vector2d jarg1_, float jarg2, float jarg3);
   public final static native long Vector2d_set__SWIG_1(long jarg1, Vector2d jarg1_, long jarg2, Vector2d jarg2_);
   public final static native long Vector2d_setAngleLength(long jarg1, Vector2d jarg1_, float jarg2, float jarg3);
+  public final static native long Vector2d_angledVector(float jarg1, float jarg2);
   public final static native long Vector2d_setLength(long jarg1, Vector2d jarg1_, float jarg2);
   public final static native long Vector2d_scaledVector(long jarg1, Vector2d jarg1_, float jarg2);
   public final static native boolean Vector2d_isRightOf(long jarg1, Vector2d jarg1_, long jarg2, Vector2d jarg2_);
@@ -950,7 +951,6 @@ public class touchvgJNI {
   public final static native long MgArc_getStartTangent(long jarg1, MgArc jarg1_);
   public final static native long MgArc_getEndTangent(long jarg1, MgArc jarg1_);
   public final static native boolean MgArc_setStartMidEnd(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
-  public final static native boolean MgArc_setCenterStartMidEnd(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_);
   public final static native boolean MgArc_setCenterStartEnd__SWIG_0(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean MgArc_setCenterStartEnd__SWIG_1(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgArc_setTanStartEnd(long jarg1, MgArc jarg1_, long jarg2, Vector2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);

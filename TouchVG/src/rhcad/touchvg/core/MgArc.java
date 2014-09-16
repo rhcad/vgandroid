@@ -197,10 +197,6 @@ public class MgArc extends MgBaseShape {
     return touchvgJNI.MgArc_setStartMidEnd(swigCPtr, this, Point2d.getCPtr(start), start, Point2d.getCPtr(point), point, Point2d.getCPtr(end), end);
   }
 
-  public boolean setCenterStartMidEnd(Point2d center, Point2d start, Point2d midpt, Point2d end) {
-    return touchvgJNI.MgArc_setCenterStartMidEnd(swigCPtr, this, Point2d.getCPtr(center), center, Point2d.getCPtr(start), start, Point2d.getCPtr(midpt), midpt, Point2d.getCPtr(end), end);
-  }
-
   public boolean setCenterStartEnd(Point2d center, Point2d start) {
     return touchvgJNI.MgArc_setCenterStartEnd__SWIG_0(swigCPtr, this, Point2d.getCPtr(center), center, Point2d.getCPtr(start), start);
   }

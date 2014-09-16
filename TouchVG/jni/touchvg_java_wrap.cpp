@@ -11092,6 +11092,22 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Vector2d_1setAngleLe
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Vector2d_1angledVector(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2) {
+  jlong jresult = 0 ;
+  float arg1 ;
+  float arg2 ;
+  Vector2d result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  result = Vector2d::angledVector(arg1,arg2);
+  *(Vector2d **)&jresult = new Vector2d((const Vector2d &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Vector2d_1setLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   jlong jresult = 0 ;
   Vector2d *arg1 = (Vector2d *) 0 ;
@@ -27762,49 +27778,6 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgArc_1setStartMi
     return 0;
   } 
   result = (bool)(arg1)->setStartMidEnd((Point2d const &)*arg2,(Point2d const &)*arg3,(Point2d const &)*arg4);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgArc_1setCenterStartMidEnd(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
-  jboolean jresult = 0 ;
-  MgArc *arg1 = (MgArc *) 0 ;
-  Point2d *arg2 = 0 ;
-  Point2d *arg3 = 0 ;
-  Point2d *arg4 = 0 ;
-  Point2d *arg5 = 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  (void)jarg2_;
-  (void)jarg3_;
-  (void)jarg4_;
-  (void)jarg5_;
-  arg1 = *(MgArc **)&jarg1; 
-  arg2 = *(Point2d **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
-    return 0;
-  } 
-  arg3 = *(Point2d **)&jarg3;
-  if (!arg3) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
-    return 0;
-  } 
-  arg4 = *(Point2d **)&jarg4;
-  if (!arg4) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
-    return 0;
-  } 
-  arg5 = *(Point2d **)&jarg5;
-  if (!arg5) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
-    return 0;
-  } 
-  result = (bool)(arg1)->setCenterStartMidEnd((Point2d const &)*arg2,(Point2d const &)*arg3,(Point2d const &)*arg4,(Point2d const &)*arg5);
   jresult = (jboolean)result; 
   return jresult;
 }

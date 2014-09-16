@@ -187,6 +187,10 @@ public class Vector2d {
     return new Vector2d(touchvgJNI.Vector2d_setAngleLength(swigCPtr, this, angle, len), false);
   }
 
+  public static Vector2d angledVector(float angle, float len) {
+    return new Vector2d(touchvgJNI.Vector2d_angledVector(angle, len), true);
+  }
+
   public Vector2d setLength(float newLength) {
     return new Vector2d(touchvgJNI.Vector2d_setLength(swigCPtr, this, newLength), false);
   }
