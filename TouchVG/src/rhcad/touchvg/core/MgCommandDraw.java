@@ -81,6 +81,10 @@ public class MgCommandDraw extends MgCommand {
     return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_getShapeType(swigCPtr, this) : touchvgJNI.MgCommandDraw_getShapeTypeSwigExplicitMgCommandDraw(swigCPtr, this);
   }
 
+  public int getSnappedType(MgMotion sender) {
+    return touchvgJNI.MgCommandDraw_getSnappedType(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
   protected int getMaxStep() {
     return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_getMaxStep(swigCPtr, this) : touchvgJNI.MgCommandDraw_getMaxStepSwigExplicitMgCommandDraw(swigCPtr, this);
   }

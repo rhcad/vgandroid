@@ -144,6 +144,10 @@ public class GiGraphics {
     touchvgJNI.GiGraphics_setPenWidthFactor(factor);
   }
 
+  public boolean setPhaseEnabled(boolean enabled) {
+    return touchvgJNI.GiGraphics_setPhaseEnabled(swigCPtr, this, enabled);
+  }
+
   public boolean drawLine(GiContext ctx, Point2d startPt, Point2d endPt, boolean modelUnit) {
     return touchvgJNI.GiGraphics_drawLine__SWIG_0(swigCPtr, this, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(endPt), endPt, modelUnit);
   }
@@ -330,6 +334,14 @@ public class GiGraphics {
 
   public boolean drawHandle(Point2d pnt, int type) {
     return touchvgJNI.GiGraphics_drawHandle__SWIG_2(swigCPtr, this, Point2d.getCPtr(pnt), pnt, type);
+  }
+
+  public boolean drawTextAt(String text, Point2d pnt, float h, int align) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_0(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h, align);
+  }
+
+  public boolean drawTextAt(String text, Point2d pnt, float h) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_1(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h);
   }
 
   public boolean beginPaint(GiCanvas canvas, RECT_2D clipBox) {

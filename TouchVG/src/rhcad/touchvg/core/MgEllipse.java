@@ -169,6 +169,18 @@ public class MgEllipse extends MgBaseRect {
     touchvgJNI.MgEllipse_setRadius__SWIG_1(swigCPtr, this, rx);
   }
 
+  public boolean setCircle(Point2d center, float radius) {
+    return touchvgJNI.MgEllipse_setCircle(swigCPtr, this, Point2d.getCPtr(center), center, radius);
+  }
+
+  public boolean setCircle2P(Point2d start, Point2d end) {
+    return touchvgJNI.MgEllipse_setCircle2P(swigCPtr, this, Point2d.getCPtr(start), start, Point2d.getCPtr(end), end);
+  }
+
+  public boolean setCircle3P(Point2d start, Point2d point, Point2d end) {
+    return touchvgJNI.MgEllipse_setCircle3P(swigCPtr, this, Point2d.getCPtr(start), start, Point2d.getCPtr(point), point, Point2d.getCPtr(end), end);
+  }
+
   public boolean isCircle() {
     return touchvgJNI.MgEllipse_isCircle__SWIG_0(swigCPtr, this);
   }
@@ -177,8 +189,12 @@ public class MgEllipse extends MgBaseRect {
     return touchvgJNI.MgEllipse_isCircle__SWIG_1(MgBaseShape.getCPtr(sp), sp);
   }
 
-  public static int crossCircle(Point2d pt1, Point2d pt2, MgBaseShape sp1, MgBaseShape sp2) {
-    return touchvgJNI.MgEllipse_crossCircle(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, MgBaseShape.getCPtr(sp1), sp1, MgBaseShape.getCPtr(sp2), sp2);
+  public static int crossCircle(Point2d pt1, Point2d pt2, MgBaseShape sp1, MgBaseShape sp2, Point2d hitpt) {
+    return touchvgJNI.MgEllipse_crossCircle__SWIG_0(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, MgBaseShape.getCPtr(sp1), sp1, MgBaseShape.getCPtr(sp2), sp2, Point2d.getCPtr(hitpt), hitpt);
+  }
+
+  public static int crossCircle(Point2d pt1, Point2d pt2, MgBaseShape sp) {
+    return touchvgJNI.MgEllipse_crossCircle__SWIG_1(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, MgBaseShape.getCPtr(sp), sp);
   }
 
 }

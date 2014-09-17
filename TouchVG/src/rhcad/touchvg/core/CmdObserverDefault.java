@@ -87,6 +87,10 @@ public class CmdObserverDefault extends CmdObserver {
     if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_drawInSelectCommand(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, handleIndex, GiGraphics.getCPtr(gs), gs); else touchvgJNI.CmdObserverDefault_drawInSelectCommandSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, handleIndex, GiGraphics.getCPtr(gs), gs);
   }
 
+  public void onSelectionChanged(MgMotion sender) {
+    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onSelectionChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender); else touchvgJNI.CmdObserverDefault_onSelectionChangedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
   public boolean onShapeWillAdded(MgMotion sender, MgShape sp) {
     return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeWillAdded(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp) : touchvgJNI.CmdObserverDefault_onShapeWillAddedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
@@ -117,6 +121,10 @@ public class CmdObserverDefault extends CmdObserver {
 
   public boolean onShapeCanUngroup(MgMotion sender, MgShape sp) {
     return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeCanUngroup(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp) : touchvgJNI.CmdObserverDefault_onShapeCanUngroupSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  }
+
+  public boolean onShapeCanMovedHandle(MgMotion sender, MgShape sp, int index) {
+    return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeCanMovedHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index) : touchvgJNI.CmdObserverDefault_onShapeCanMovedHandleSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index);
   }
 
   public void onShapeMoved(MgMotion sender, MgShape sp, int segment) {

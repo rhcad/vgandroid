@@ -311,6 +311,7 @@ public:
     virtual bool doEndAction(MgMotion const *sender, int action);
     virtual void drawInShapeCommand(MgMotion const *sender, MgCommand *cmd, GiGraphics *gs);
     virtual void drawInSelectCommand(MgMotion const *sender, MgShape const *sp, int handleIndex, GiGraphics *gs);
+    virtual void onSelectionChanged(MgMotion const *sender);
     virtual bool onShapeWillAdded(MgMotion const *sender, MgShape *sp);
     virtual void onShapeAdded(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeWillDeleted(MgMotion const *sender, MgShape const *sp);
@@ -319,6 +320,7 @@ public:
     virtual bool onShapeCanTransform(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUnlock(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUngroup(MgMotion const *sender, MgShape const *sp);
+    virtual bool onShapeCanMovedHandle(MgMotion const *sender, MgShape const *sp, int index);
     virtual void onShapeMoved(MgMotion const *sender, MgShape *sp, int segment);
     virtual bool onShapeWillChanged(MgMotion const *sender, MgShape *sp, MgShape const *oldsp);
     virtual void onShapeChanged(MgMotion const *sender, MgShape *shape);
@@ -329,10 +331,10 @@ public:
     virtual void onPointSnapped(MgMotion const *sender, MgShape const *sp);
 public:
     bool swig_overrides(int n) {
-      return (n < 25 ? swig_override[n] : false);
+      return (n < 27 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[25];
+    bool swig_override[27];
 };
 
 class SwigDirector_MgCommandDraw : public MgCommandDraw, public Swig::Director {

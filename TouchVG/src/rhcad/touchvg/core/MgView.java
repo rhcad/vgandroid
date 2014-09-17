@@ -83,6 +83,16 @@ public class MgView {
     return (cPtr == 0) ? null : new MgShapeFactory(cPtr, false);
   }
 
+  public MgShape createShapeCtx(int type, GiContext ctx) {
+    long cPtr = touchvgJNI.MgView_createShapeCtx__SWIG_0(swigCPtr, this, type, GiContext.getCPtr(ctx), ctx);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
+  public MgShape createShapeCtx(int type) {
+    long cPtr = touchvgJNI.MgView_createShapeCtx__SWIG_1(swigCPtr, this, type);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
   public MgSnap getSnap() {
     long cPtr = touchvgJNI.MgView_getSnap(swigCPtr, this);
     return (cPtr == 0) ? null : new MgSnap(cPtr, false);
@@ -207,6 +217,10 @@ public class MgView {
 
   public boolean shapeCanUngroup(MgShape shape) {
     return touchvgJNI.MgView_shapeCanUngroup(swigCPtr, this, MgShape.getCPtr(shape), shape);
+  }
+
+  public boolean shapeCanMovedHandle(MgShape shape, int index) {
+    return touchvgJNI.MgView_shapeCanMovedHandle(swigCPtr, this, MgShape.getCPtr(shape), shape, index);
   }
 
   public void shapeMoved(MgShape shape, int segment) {

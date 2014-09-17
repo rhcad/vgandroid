@@ -66,6 +66,10 @@ public class GiCoreView extends MgCoreView {
     touchvgJNI.GiCoreView_releaseDocs(Longs.getCPtr(docs), docs);
   }
 
+  public int getSkipDrawIds(Ints ids) {
+    return touchvgJNI.GiCoreView_getSkipDrawIds(swigCPtr, this, Ints.getCPtr(ids), ids);
+  }
+
   public int acquireDynamicShapesArray(Longs shapes) {
     return touchvgJNI.GiCoreView_acquireDynamicShapesArray(swigCPtr, this, Longs.getCPtr(shapes), shapes);
   }
@@ -82,6 +86,10 @@ public class GiCoreView extends MgCoreView {
     return touchvgJNI.GiCoreView_drawAll__SWIG_1(swigCPtr, this, Longs.getCPtr(docs), docs, gs, GiCanvas.getCPtr(canvas), canvas);
   }
 
+  public int drawAll(Longs docs, int gs, GiCanvas canvas, Ints ignoreIds) {
+    return touchvgJNI.GiCoreView_drawAll__SWIG_2(swigCPtr, this, Longs.getCPtr(docs), docs, gs, GiCanvas.getCPtr(canvas), canvas, Ints.getCPtr(ignoreIds), ignoreIds);
+  }
+
   public int drawAppend(int doc, int gs, GiCanvas canvas, int sid) {
     return touchvgJNI.GiCoreView_drawAppend__SWIG_0(swigCPtr, this, doc, gs, GiCanvas.getCPtr(canvas), canvas, sid);
   }
@@ -95,7 +103,7 @@ public class GiCoreView extends MgCoreView {
   }
 
   public int drawAll(GiView view, GiCanvas canvas) {
-    return touchvgJNI.GiCoreView_drawAll__SWIG_2(swigCPtr, this, GiView.getCPtr(view), view, GiCanvas.getCPtr(canvas), canvas);
+    return touchvgJNI.GiCoreView_drawAll__SWIG_3(swigCPtr, this, GiView.getCPtr(view), view, GiCanvas.getCPtr(canvas), canvas);
   }
 
   public int drawAppend(GiView view, GiCanvas canvas, int sid) {

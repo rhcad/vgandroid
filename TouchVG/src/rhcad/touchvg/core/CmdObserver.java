@@ -71,6 +71,10 @@ public class CmdObserver {
     touchvgJNI.CmdObserver_drawInSelectCommand(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, handleIndex, GiGraphics.getCPtr(gs), gs);
   }
 
+  public void onSelectionChanged(MgMotion sender) {
+    touchvgJNI.CmdObserver_onSelectionChanged(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
   public boolean onShapeWillAdded(MgMotion sender, MgShape sp) {
     return touchvgJNI.CmdObserver_onShapeWillAdded(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
@@ -101,6 +105,10 @@ public class CmdObserver {
 
   public boolean onShapeCanUngroup(MgMotion sender, MgShape sp) {
     return touchvgJNI.CmdObserver_onShapeCanUngroup(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  }
+
+  public boolean onShapeCanMovedHandle(MgMotion sender, MgShape sp, int index) {
+    return touchvgJNI.CmdObserver_onShapeCanMovedHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp, index);
   }
 
   public void onShapeMoved(MgMotion sender, MgShape sp, int segment) {

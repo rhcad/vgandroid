@@ -36,11 +36,11 @@ public class Tol {
   }
 
   public static Tol gTol() {
-    return new Tol(touchvgJNI.Tol_gTol(), false);
+    return new Tol(touchvgJNI.Tol_gTol(), true);
   }
 
   public static Tol minTol() {
-    return new Tol(touchvgJNI.Tol_minTol(), false);
+    return new Tol(touchvgJNI.Tol_minTol(), true);
   }
 
   public Tol() {
