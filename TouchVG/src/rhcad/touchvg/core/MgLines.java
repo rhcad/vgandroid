@@ -35,6 +35,10 @@ public class MgLines extends MgBaseLines {
     super.delete();
   }
 
+  public MgLines() {
+    this(touchvgJNI.new_MgLines(), true);
+  }
+
   public static MgLines create() {
     long cPtr = touchvgJNI.MgLines_create();
     return (cPtr == 0) ? null : new MgLines(cPtr, false);

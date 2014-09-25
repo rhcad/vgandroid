@@ -858,6 +858,11 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
     }
 
     @Override
+    public void setOnShapeDblClickedListener(OnShapeDblClickedListener listener) {
+        mViewAdapter.setOnShapeDblClickedListener(listener);
+    }
+
+    @Override
     public void setOnContextActionListener(OnContextActionListener listener) {
         mViewAdapter.setOnContextActionListener(listener);
     }

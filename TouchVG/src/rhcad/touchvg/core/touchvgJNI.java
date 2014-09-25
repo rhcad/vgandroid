@@ -484,7 +484,7 @@ public class touchvgJNI {
   public final static native boolean GiTransform_setWndSize(long jarg1, GiTransform jarg1_, int jarg2, int jarg3);
   public final static native void GiTransform_setResolution__SWIG_0(long jarg1, GiTransform jarg1_, float jarg2, float jarg3);
   public final static native void GiTransform_setResolution__SWIG_1(long jarg1, GiTransform jarg1_, float jarg2);
-  public final static native void GiTransform_setModelTransform(long jarg1, GiTransform jarg1_, long jarg2, Matrix2d jarg2_);
+  public final static native boolean GiTransform_setModelTransform(long jarg1, GiTransform jarg1_, long jarg2, Matrix2d jarg2_);
   public final static native long GiTransform_getWndRectW(long jarg1, GiTransform jarg1_);
   public final static native long GiTransform_getWndRectM(long jarg1, GiTransform jarg1_);
   public final static native long GiTransform_getWndRect(long jarg1, GiTransform jarg1_);
@@ -775,6 +775,7 @@ public class touchvgJNI {
   public final static native boolean MgBaseShape_isClosed(long jarg1, MgBaseShape jarg1_);
   public final static native boolean MgBaseShape_isClosedSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_);
   public final static native boolean MgBaseShape_isCurve(long jarg1, MgBaseShape jarg1_);
+  public final static native boolean MgBaseShape_isCurveSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_);
   public final static native float MgBaseShape_hitTest(long jarg1, MgBaseShape jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
   public final static native float MgBaseShape_hitTest2(long jarg1, MgBaseShape jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean MgBaseShape_hitTestBox(long jarg1, MgBaseShape jarg1_, long jarg2, Box2d jarg2_);
@@ -831,6 +832,7 @@ public class touchvgJNI {
   public final static native void delete_MgBaseRect(long jarg1);
   public final static native void MgBaseRect_director_connect(MgBaseRect obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgBaseRect_change_ownership(MgBaseRect obj, long cptr, boolean take_or_release);
+  public final static native long new_MgRect();
   public final static native void delete_MgRect(long jarg1);
   public final static native long MgRect_create();
   public final static native int MgRect_Type();
@@ -877,6 +879,7 @@ public class touchvgJNI {
   public final static native long new_MgBaseLines();
   public final static native void MgBaseLines_director_connect(MgBaseLines obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgBaseLines_change_ownership(MgBaseLines obj, long cptr, boolean take_or_release);
+  public final static native long new_MgLines();
   public final static native void delete_MgLines(long jarg1);
   public final static native long MgLines_create();
   public final static native int MgLines_Type();
@@ -910,6 +913,7 @@ public class touchvgJNI {
   public final static native long new_MgCoreShapeFactory();
   public final static native void delete_MgCoreShapeFactory(long jarg1);
   public final static native long MgCoreShapeFactory_createShape(long jarg1, MgCoreShapeFactory jarg1_, int jarg2);
+  public final static native long new_MgArc();
   public final static native void delete_MgArc(long jarg1);
   public final static native long MgArc_create();
   public final static native int MgArc_Type();
@@ -955,6 +959,7 @@ public class touchvgJNI {
   public final static native boolean MgArc_setCenterStartEnd__SWIG_1(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgArc_setTanStartEnd(long jarg1, MgArc jarg1_, long jarg2, Vector2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean MgArc_setCenterRadius(long jarg1, MgArc jarg1_, long jarg2, Point2d jarg2_, float jarg3, float jarg4, float jarg5);
+  public final static native long new_MgDiamond();
   public final static native void delete_MgDiamond(long jarg1);
   public final static native long MgDiamond_create();
   public final static native int MgDiamond_Type();
@@ -985,6 +990,7 @@ public class touchvgJNI {
   public final static native int MgDiamond_getHandleType(long jarg1, MgDiamond jarg1_, int jarg2);
   public final static native boolean MgDiamond_offset(long jarg1, MgDiamond jarg1_, long jarg2, Vector2d jarg2_, int jarg3);
   public final static native float MgDiamond_hitTest(long jarg1, MgDiamond jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
+  public final static native long new_MgDot();
   public final static native void delete_MgDot(long jarg1);
   public final static native long MgDot_create();
   public final static native int MgDot_Type();
@@ -1017,6 +1023,7 @@ public class touchvgJNI {
   public final static native float MgDot_hitTest(long jarg1, MgDot jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
   public final static native int MgDot_getPointType(long jarg1, MgDot jarg1_);
   public final static native void MgDot_setPointType(long jarg1, MgDot jarg1_, int jarg2);
+  public final static native long new_MgEllipse();
   public final static native void delete_MgEllipse(long jarg1);
   public final static native long MgEllipse_create();
   public final static native int MgEllipse_Type();
@@ -1058,6 +1065,7 @@ public class touchvgJNI {
   public final static native boolean MgEllipse_isCircle__SWIG_1(long jarg1, MgBaseShape jarg1_);
   public final static native int MgEllipse_crossCircle__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_, long jarg4, MgBaseShape jarg4_, long jarg5, Point2d jarg5_);
   public final static native int MgEllipse_crossCircle__SWIG_1(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, MgBaseShape jarg3_);
+  public final static native long new_MgGrid();
   public final static native void delete_MgGrid(long jarg1);
   public final static native long MgGrid_create();
   public final static native int MgGrid_Type();
@@ -1091,6 +1099,7 @@ public class touchvgJNI {
   public final static native int MgGrid_snap(long jarg1, MgGrid jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native long MgGrid_getCellSize(long jarg1, MgGrid jarg1_);
   public final static native boolean MgGrid_isValid(long jarg1, MgGrid jarg1_, float jarg2);
+  public final static native long new_MgLine();
   public final static native void delete_MgLine(long jarg1);
   public final static native long MgLine_create();
   public final static native int MgLine_Type();
@@ -1132,6 +1141,7 @@ public class touchvgJNI {
   public final static native void MgLine_setBeeline(long jarg1, MgLine jarg1_, boolean jarg2);
   public final static native boolean MgLine_isRayline(long jarg1, MgLine jarg1_);
   public final static native boolean MgLine_isBeeline(long jarg1, MgLine jarg1_);
+  public final static native long new_MgParallel();
   public final static native void delete_MgParallel(long jarg1);
   public final static native long MgParallel_create();
   public final static native int MgParallel_Type();
@@ -1168,6 +1178,7 @@ public class touchvgJNI {
   public final static native float MgParallel_getHeight(long jarg1, MgParallel jarg1_);
   public final static native float MgParallel_angle(long jarg1, MgParallel jarg1_);
   public final static native boolean MgParallel_isEmpty(long jarg1, MgParallel jarg1_, float jarg2);
+  public final static native long new_MgPathShape();
   public final static native void delete_MgPathShape(long jarg1);
   public final static native long MgPathShape_create();
   public final static native int MgPathShape_Type();
@@ -1203,6 +1214,7 @@ public class touchvgJNI {
   public final static native boolean MgPathShape_importSVGPath(long jarg1, MgPathShape jarg1_, String jarg2);
   public final static native int MgPathShape_exportSVGPath__SWIG_0(long jarg1, MgPathShape jarg1_, String jarg2, int jarg3);
   public final static native int MgPathShape_exportSVGPath__SWIG_1(long jarg1, MgPath jarg1_, String jarg2, int jarg3);
+  public final static native long new_MgRoundRect();
   public final static native void delete_MgRoundRect(long jarg1);
   public final static native long MgRoundRect_create();
   public final static native int MgRoundRect_Type();
@@ -1237,6 +1249,7 @@ public class touchvgJNI {
   public final static native float MgRoundRect_getRadiusY(long jarg1, MgRoundRect jarg1_);
   public final static native void MgRoundRect_setRadius__SWIG_0(long jarg1, MgRoundRect jarg1_, float jarg2, float jarg3);
   public final static native void MgRoundRect_setRadius__SWIG_1(long jarg1, MgRoundRect jarg1_, float jarg2);
+  public final static native long new_MgSplines();
   public final static native void delete_MgSplines(long jarg1);
   public final static native long MgSplines_create();
   public final static native int MgSplines_Type();
@@ -1358,6 +1371,7 @@ public class touchvgJNI {
   public final static native long new_MgComposite();
   public final static native void MgComposite_director_connect(MgComposite obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgComposite_change_ownership(MgComposite obj, long cptr, boolean take_or_release);
+  public final static native long new_MgGroup();
   public final static native void delete_MgGroup(long jarg1);
   public final static native long MgGroup_create();
   public final static native int MgGroup_Type();
@@ -1389,6 +1403,10 @@ public class touchvgJNI {
   public final static native boolean MgGroup_offset(long jarg1, MgGroup jarg1_, long jarg2, Vector2d jarg2_, int jarg3);
   public final static native float MgGroup_hitTest(long jarg1, MgGroup jarg1_, long jarg2, Point2d jarg2_, float jarg3, long jarg4, MgHitResult jarg4_);
   public final static native boolean MgGroup_addShapeToGroup(long jarg1, MgGroup jarg1_, long jarg2, MgShape jarg2_);
+  public final static native long MgGroup_getInsertionPoint(long jarg1, MgGroup jarg1_);
+  public final static native void MgGroup_setInsertionPoint(long jarg1, MgGroup jarg1_, long jarg2, Point2d jarg2_);
+  public final static native long MgGroup_getCenterPoint(long jarg1, MgGroup jarg1_);
+  public final static native long new_MgImageShape();
   public final static native void delete_MgImageShape(long jarg1);
   public final static native long MgImageShape_create();
   public final static native int MgImageShape_Type();
@@ -1482,7 +1500,8 @@ public class touchvgJNI {
   public final static native void MgView_setNewShapeID(long jarg1, MgView jarg1_, int jarg2);
   public final static native long MgView_getCommand(long jarg1, MgView jarg1_);
   public final static native long MgView_findCommand(long jarg1, MgView jarg1_, String jarg2);
-  public final static native boolean MgView_setCommand(long jarg1, MgView jarg1_, String jarg2);
+  public final static native boolean MgView_setCommand__SWIG_0(long jarg1, MgView jarg1_, String jarg2, String jarg3);
+  public final static native boolean MgView_setCommand__SWIG_1(long jarg1, MgView jarg1_, String jarg2);
   public final static native boolean MgView_isReadOnly(long jarg1, MgView jarg1_);
   public final static native boolean MgView_isCommand(long jarg1, MgView jarg1_, String jarg2);
   public final static native void MgView_regenAll(long jarg1, MgView jarg1_, boolean jarg2);
@@ -1506,15 +1525,18 @@ public class touchvgJNI {
   public final static native void MgView_shapeMoved(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_, int jarg3);
   public final static native boolean MgView_shapeWillChanged(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_, long jarg3, MgShape jarg3_);
   public final static native void MgView_shapeChanged(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
+  public final static native boolean MgView_shapeDblClick(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeClicked(long jarg1, MgView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
   public final static native void MgView_showMessage(long jarg1, MgView jarg1_, String jarg2);
   public final static native void MgView_getLocalizedString(long jarg1, MgView jarg1_, String jarg2, long jarg3, MgStringCallback jarg3_);
   public final static native boolean MgView_isContextActionsVisible(long jarg1, MgView jarg1_);
   public final static native void MgView_hideContextActions(long jarg1, MgView jarg1_);
-  public final static native int MgView_getOptionInt(long jarg1, MgView jarg1_, String jarg2, String jarg3, int jarg4);
-  public final static native float MgView_getOptionFloat(long jarg1, MgView jarg1_, String jarg2, String jarg3, float jarg4);
-  public final static native void MgView_setOptionInt(long jarg1, MgView jarg1_, String jarg2, String jarg3, int jarg4);
-  public final static native void MgView_setOptionFloat(long jarg1, MgView jarg1_, String jarg2, String jarg3, float jarg4);
+  public final static native boolean MgView_getOptionBool(long jarg1, MgView jarg1_, String jarg2, boolean jarg3);
+  public final static native int MgView_getOptionInt(long jarg1, MgView jarg1_, String jarg2, int jarg3);
+  public final static native float MgView_getOptionFloat(long jarg1, MgView jarg1_, String jarg2, float jarg3);
+  public final static native void MgView_setOptionBool(long jarg1, MgView jarg1_, String jarg2, boolean jarg3);
+  public final static native void MgView_setOptionInt(long jarg1, MgView jarg1_, String jarg2, int jarg3);
+  public final static native void MgView_setOptionFloat(long jarg1, MgView jarg1_, String jarg2, float jarg3);
   public final static native void MgMotion_view_set(long jarg1, MgMotion jarg1_, long jarg2, MgView jarg2_);
   public final static native long MgMotion_view_get(long jarg1, MgMotion jarg1_);
   public final static native void MgMotion_gestureType_set(long jarg1, MgMotion jarg1_, int jarg2);
@@ -1560,9 +1582,9 @@ public class touchvgJNI {
   public final static native float MgMotion_distanceM(long jarg1, MgMotion jarg1_);
   public final static native float MgMotion_displayMmToModel__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2, long jarg3, GiGraphics jarg3_);
   public final static native float MgMotion_displayMmToModel__SWIG_1(long jarg1, MgMotion jarg1_, float jarg2);
-  public final static native float MgMotion_displayMmToModel__SWIG_2(long jarg1, MgMotion jarg1_, String jarg2, String jarg3, float jarg4);
+  public final static native float MgMotion_displayMmToModel__SWIG_2(long jarg1, MgMotion jarg1_, String jarg2, float jarg3);
   public final static native long MgMotion_displayMmToModelBox__SWIG_0(long jarg1, MgMotion jarg1_, float jarg2);
-  public final static native long MgMotion_displayMmToModelBox__SWIG_1(long jarg1, MgMotion jarg1_, String jarg2, String jarg3, float jarg4);
+  public final static native long MgMotion_displayMmToModelBox__SWIG_1(long jarg1, MgMotion jarg1_, String jarg2, float jarg3);
   public final static native void delete_MgMotion(long jarg1);
   public final static native long new_MgCommand(String jarg1);
   public final static native void delete_MgCommand(long jarg1);
@@ -1732,6 +1754,7 @@ public class touchvgJNI {
   public final static native long MgCommandDraw_snapPoint__SWIG_1(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
   public final static native long MgCommandDraw_snapPoint__SWIG_2(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_, boolean jarg4);
   public final static native long MgCommandDraw_snapPoint__SWIG_3(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_);
+  public final static native long MgCommandDraw_snapPoint__SWIG_4(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_, boolean jarg4, int jarg5);
   public final static native void MgCommandDraw_director_connect(MgCommandDraw obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgCommandDraw_change_ownership(MgCommandDraw obj, long cptr, boolean take_or_release);
   public final static native long new_MgCmdArc3P__SWIG_0(String jarg1);
@@ -1877,6 +1900,8 @@ public class touchvgJNI {
   public final static native void GiView_viewChangedSwigExplicitGiView(long jarg1, GiView jarg1_, long jarg2, GiView jarg2_);
   public final static native void GiView_shapeDeleted(long jarg1, GiView jarg1_, int jarg2);
   public final static native void GiView_shapeDeletedSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2);
+  public final static native boolean GiView_shapeDblClick(long jarg1, GiView jarg1_, int jarg2, int jarg3);
+  public final static native boolean GiView_shapeDblClickSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3);
   public final static native boolean GiView_shapeClicked(long jarg1, GiView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
   public final static native boolean GiView_shapeClickedSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
   public final static native void GiView_showMessage(long jarg1, GiView jarg1_, String jarg2);
@@ -1991,7 +2016,9 @@ public class touchvgJNI {
   public final static native int MgCoreView_exportSVGPath(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3, String jarg4, int jarg5);
   public final static native boolean MgCoreView_exportSVGPath2(long jarg1, MgCoreView jarg1_, long jarg2, MgStringCallback jarg2_, int jarg3, int jarg4);
   public final static native void delete_MgOptionCallback(long jarg1);
-  public final static native void MgOptionCallback_onGetOption(long jarg1, MgOptionCallback jarg1_, String jarg2, String jarg3, String jarg4);
+  public final static native void MgOptionCallback_onGetOptionBool(long jarg1, MgOptionCallback jarg1_, String jarg2, boolean jarg3);
+  public final static native void MgOptionCallback_onGetOptionInt(long jarg1, MgOptionCallback jarg1_, String jarg2, int jarg3);
+  public final static native void MgOptionCallback_onGetOptionFloat(long jarg1, MgOptionCallback jarg1_, String jarg2, float jarg3);
   public final static native long new_MgOptionCallback();
   public final static native void MgOptionCallback_director_connect(MgOptionCallback obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgOptionCallback_change_ownership(MgOptionCallback obj, long cptr, boolean take_or_release);
@@ -2047,8 +2074,10 @@ public class touchvgJNI {
   public final static native boolean GiCoreView_onPause(long jarg1, GiCoreView jarg1_, int jarg2);
   public final static native boolean GiCoreView_onResume(long jarg1, GiCoreView jarg1_, int jarg2);
   public final static native boolean GiCoreView_restoreRecord(long jarg1, GiCoreView jarg1_, int jarg2, String jarg3, int jarg4, int jarg5, int jarg6, int jarg7, int jarg8, int jarg9);
-  public final static native int GiCoreView_traverseOptions(long jarg1, GiCoreView jarg1_, long jarg2, MgOptionCallback jarg2_);
-  public final static native void GiCoreView_setOption(long jarg1, GiCoreView jarg1_, String jarg2, String jarg3, String jarg4);
+  public final static native void GiCoreView_traverseOptions(long jarg1, GiCoreView jarg1_, long jarg2, MgOptionCallback jarg2_);
+  public final static native void GiCoreView_setOptionBool(long jarg1, GiCoreView jarg1_, String jarg2, boolean jarg3);
+  public final static native void GiCoreView_setOptionInt(long jarg1, GiCoreView jarg1_, String jarg2, int jarg3);
+  public final static native void GiCoreView_setOptionFloat(long jarg1, GiCoreView jarg1_, String jarg2, float jarg3);
   public final static native void TestCanvas_initRand();
   public final static native int TestCanvas_randInt(int jarg1, int jarg2);
   public final static native float TestCanvas_randFloat(float jarg1, float jarg2);
@@ -2959,6 +2988,9 @@ public class touchvgJNI {
   public static void SwigDirector_GiView_shapeDeleted(GiView self, int sid) {
     self.shapeDeleted(sid);
   }
+  public static boolean SwigDirector_GiView_shapeDblClick(GiView self, int type, int sid) {
+    return self.shapeDblClick(type, sid);
+  }
   public static boolean SwigDirector_GiView_shapeClicked(GiView self, int sid, int tag, float x, float y) {
     return self.shapeClicked(sid, tag, x, y);
   }
@@ -2974,8 +3006,14 @@ public class touchvgJNI {
   public static void SwigDirector_MgStringCallback_onGetString(MgStringCallback self, String text) {
     self.onGetString(text);
   }
-  public static void SwigDirector_MgOptionCallback_onGetOption(MgOptionCallback self, String group, String name, String text) {
-    self.onGetOption(group, name, text);
+  public static void SwigDirector_MgOptionCallback_onGetOptionBool(MgOptionCallback self, String name, boolean value) {
+    self.onGetOptionBool(name, value);
+  }
+  public static void SwigDirector_MgOptionCallback_onGetOptionInt(MgOptionCallback self, String name, int value) {
+    self.onGetOptionInt(name, value);
+  }
+  public static void SwigDirector_MgOptionCallback_onGetOptionFloat(MgOptionCallback self, String name, float value) {
+    self.onGetOptionFloat(name, value);
   }
 
   private final static native void swig_module_init();

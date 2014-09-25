@@ -35,6 +35,10 @@ public class MgParallel extends MgBaseShape {
     super.delete();
   }
 
+  public MgParallel() {
+    this(touchvgJNI.new_MgParallel(), true);
+  }
+
   public static MgParallel create() {
     long cPtr = touchvgJNI.MgParallel_create();
     return (cPtr == 0) ? null : new MgParallel(cPtr, false);

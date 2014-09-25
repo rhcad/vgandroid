@@ -228,16 +228,16 @@ public class MgMotion {
     return touchvgJNI.MgMotion_displayMmToModel__SWIG_1(swigCPtr, this, mm);
   }
 
-  public float displayMmToModel(String group, String name, float mm) {
-    return touchvgJNI.MgMotion_displayMmToModel__SWIG_2(swigCPtr, this, group, name, mm);
+  public float displayMmToModel(String name, float mm) {
+    return touchvgJNI.MgMotion_displayMmToModel__SWIG_2(swigCPtr, this, name, mm);
   }
 
   public Box2d displayMmToModelBox(float mm) {
     return new Box2d(touchvgJNI.MgMotion_displayMmToModelBox__SWIG_0(swigCPtr, this, mm), true);
   }
 
-  public Box2d displayMmToModelBox(String group, String name, float mm) {
-    return new Box2d(touchvgJNI.MgMotion_displayMmToModelBox__SWIG_1(swigCPtr, this, group, name, mm), true);
+  public Box2d displayMmToModelBox(String name, float mm) {
+    return new Box2d(touchvgJNI.MgMotion_displayMmToModelBox__SWIG_1(swigCPtr, this, name, mm), true);
   }
 
 }

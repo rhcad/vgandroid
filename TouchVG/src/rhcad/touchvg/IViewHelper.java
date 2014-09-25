@@ -95,11 +95,13 @@ public interface IViewHelper {
     //! 切换到下一命令
     public boolean switchCommand();
 
-    //! 返回绘图命令选项{group:{name:value}}
-    public Map<String, Map<String, String>> getOptions();
+    //! 返回绘图命令选项{name:value}
+    public Map<String, String> getOptions();
 
     //! 设置或清除绘图命令选项
-    public void setOption(String group, String name, String value);
+    public void setOption(String name, boolean value);
+    public void setOption(String name, int value);
+    public void setOption(String name, float value);
 
     //! 返回线宽，正数表示单位为0.01毫米，零表示1像素宽，负数表示单位为像素
     public int getLineWidth();

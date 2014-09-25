@@ -35,6 +35,10 @@ public class MgDiamond extends MgBaseRect {
     super.delete();
   }
 
+  public MgDiamond() {
+    this(touchvgJNI.new_MgDiamond(), true);
+  }
+
   public static MgDiamond create() {
     long cPtr = touchvgJNI.MgDiamond_create();
     return (cPtr == 0) ? null : new MgDiamond(cPtr, false);

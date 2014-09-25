@@ -135,8 +135,8 @@ public class GiTransform {
     touchvgJNI.GiTransform_setResolution__SWIG_1(swigCPtr, this, dpiX);
   }
 
-  public void setModelTransform(Matrix2d mat) {
-    touchvgJNI.GiTransform_setModelTransform(swigCPtr, this, Matrix2d.getCPtr(mat), mat);
+  public boolean setModelTransform(Matrix2d mat) {
+    return touchvgJNI.GiTransform_setModelTransform(swigCPtr, this, Matrix2d.getCPtr(mat), mat);
   }
 
   public Box2d getWndRectW() {

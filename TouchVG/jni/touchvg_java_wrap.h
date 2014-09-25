@@ -440,15 +440,16 @@ public:
     virtual void dynamicChanged();
     virtual void viewChanged(GiView *oldview);
     virtual void shapeDeleted(int sid);
+    virtual bool shapeDblClick(int type, int sid);
     virtual bool shapeClicked(int sid, int tag, float x, float y);
     virtual void showMessage(char const *text);
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:
     bool swig_overrides(int n) {
-      return (n < 16 ? swig_override[n] : false);
+      return (n < 17 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[16];
+    bool swig_override[17];
 };
 
 struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {
@@ -487,13 +488,15 @@ public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
     SwigDirector_MgOptionCallback(JNIEnv *jenv);
     virtual ~SwigDirector_MgOptionCallback();
-    virtual void onGetOption(char const *group, char const *name, char const *text);
+    virtual void onGetOptionBool(char const *name, bool value);
+    virtual void onGetOptionInt(char const *name, int value);
+    virtual void onGetOptionFloat(char const *name, float value);
 public:
     bool swig_overrides(int n) {
-      return (n < 1 ? swig_override[n] : false);
+      return (n < 3 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[1];
+    bool swig_override[3];
 };
 
 

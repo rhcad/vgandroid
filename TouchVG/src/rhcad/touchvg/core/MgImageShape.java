@@ -35,6 +35,10 @@ public class MgImageShape extends MgBaseRect {
     super.delete();
   }
 
+  public MgImageShape() {
+    this(touchvgJNI.new_MgImageShape(), true);
+  }
+
   public static MgImageShape create() {
     long cPtr = touchvgJNI.MgImageShape_create();
     return (cPtr == 0) ? null : new MgImageShape(cPtr, false);

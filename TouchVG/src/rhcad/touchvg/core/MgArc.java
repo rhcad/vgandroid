@@ -35,6 +35,10 @@ public class MgArc extends MgBaseShape {
     super.delete();
   }
 
+  public MgArc() {
+    this(touchvgJNI.new_MgArc(), true);
+  }
+
   public static MgArc create() {
     long cPtr = touchvgJNI.MgArc_create();
     return (cPtr == 0) ? null : new MgArc(cPtr, false);

@@ -166,4 +166,8 @@ public class MgCommandDraw extends MgCommand {
     return new Point2d(touchvgJNI.MgCommandDraw_snapPoint__SWIG_3(swigCPtr, this, MgMotion.getCPtr(sender), sender, Point2d.getCPtr(orignPt), orignPt), true);
   }
 
+  public Point2d snapPoint(MgMotion sender, Point2d orignPt, boolean firstStep, int handle) {
+    return new Point2d(touchvgJNI.MgCommandDraw_snapPoint__SWIG_4(swigCPtr, this, MgMotion.getCPtr(sender), sender, Point2d.getCPtr(orignPt), orignPt, firstStep, handle), true);
+  }
+
 }

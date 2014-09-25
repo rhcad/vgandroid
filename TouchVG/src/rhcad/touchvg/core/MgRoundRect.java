@@ -35,6 +35,10 @@ public class MgRoundRect extends MgBaseRect {
     super.delete();
   }
 
+  public MgRoundRect() {
+    this(touchvgJNI.new_MgRoundRect(), true);
+  }
+
   public static MgRoundRect create() {
     long cPtr = touchvgJNI.MgRoundRect_create();
     return (cPtr == 0) ? null : new MgRoundRect(cPtr, false);

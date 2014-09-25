@@ -35,6 +35,10 @@ public class MgRect extends MgBaseRect {
     super.delete();
   }
 
+  public MgRect() {
+    this(touchvgJNI.new_MgRect(), true);
+  }
+
   public static MgRect create() {
     long cPtr = touchvgJNI.MgRect_create();
     return (cPtr == 0) ? null : new MgRect(cPtr, false);

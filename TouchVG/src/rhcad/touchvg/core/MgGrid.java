@@ -35,6 +35,10 @@ public class MgGrid extends MgBaseRect {
     super.delete();
   }
 
+  public MgGrid() {
+    this(touchvgJNI.new_MgGrid(), true);
+  }
+
   public static MgGrid create() {
     long cPtr = touchvgJNI.MgGrid_create();
     return (cPtr == 0) ? null : new MgGrid(cPtr, false);

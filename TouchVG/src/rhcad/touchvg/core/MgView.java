@@ -139,8 +139,12 @@ public class MgView {
     return (cPtr == 0) ? null : new MgCommand(cPtr, false);
   }
 
+  public boolean setCommand(String name, String params) {
+    return touchvgJNI.MgView_setCommand__SWIG_0(swigCPtr, this, name, params);
+  }
+
   public boolean setCommand(String name) {
-    return touchvgJNI.MgView_setCommand(swigCPtr, this, name);
+    return touchvgJNI.MgView_setCommand__SWIG_1(swigCPtr, this, name);
   }
 
   public boolean isReadOnly() {
@@ -235,6 +239,10 @@ public class MgView {
     touchvgJNI.MgView_shapeChanged(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
+  public boolean shapeDblClick(MgShape shape) {
+    return touchvgJNI.MgView_shapeDblClick(swigCPtr, this, MgShape.getCPtr(shape), shape);
+  }
+
   public boolean shapeClicked(int sid, int tag, float x, float y) {
     return touchvgJNI.MgView_shapeClicked(swigCPtr, this, sid, tag, x, y);
   }
@@ -255,20 +263,28 @@ public class MgView {
     touchvgJNI.MgView_hideContextActions(swigCPtr, this);
   }
 
-  public int getOptionInt(String group, String name, int defValue) {
-    return touchvgJNI.MgView_getOptionInt(swigCPtr, this, group, name, defValue);
+  public boolean getOptionBool(String name, boolean defValue) {
+    return touchvgJNI.MgView_getOptionBool(swigCPtr, this, name, defValue);
   }
 
-  public float getOptionFloat(String group, String name, float defValue) {
-    return touchvgJNI.MgView_getOptionFloat(swigCPtr, this, group, name, defValue);
+  public int getOptionInt(String name, int defValue) {
+    return touchvgJNI.MgView_getOptionInt(swigCPtr, this, name, defValue);
   }
 
-  public void setOptionInt(String group, String name, int value) {
-    touchvgJNI.MgView_setOptionInt(swigCPtr, this, group, name, value);
+  public float getOptionFloat(String name, float defValue) {
+    return touchvgJNI.MgView_getOptionFloat(swigCPtr, this, name, defValue);
   }
 
-  public void setOptionFloat(String group, String name, float value) {
-    touchvgJNI.MgView_setOptionFloat(swigCPtr, this, group, name, value);
+  public void setOptionBool(String name, boolean value) {
+    touchvgJNI.MgView_setOptionBool(swigCPtr, this, name, value);
+  }
+
+  public void setOptionInt(String name, int value) {
+    touchvgJNI.MgView_setOptionInt(swigCPtr, this, name, value);
+  }
+
+  public void setOptionFloat(String name, float value) {
+    touchvgJNI.MgView_setOptionFloat(swigCPtr, this, name, value);
   }
 
 }
