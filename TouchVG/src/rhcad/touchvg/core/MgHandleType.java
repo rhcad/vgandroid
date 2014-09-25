@@ -14,6 +14,7 @@ public final class MgHandleType {
   public final static MgHandleType kMgHandleMidPoint = new MgHandleType("kMgHandleMidPoint");
   public final static MgHandleType kMgHandleQuadrant = new MgHandleType("kMgHandleQuadrant");
   public final static MgHandleType kMgHandleOutside = new MgHandleType("kMgHandleOutside");
+  public final static MgHandleType kMgHandleNoSnap = new MgHandleType("kMgHandleNoSnap");
 
   public final int swigValue() {
     return swigValue;
@@ -49,7 +50,7 @@ public final class MgHandleType {
     swigNext = this.swigValue+1;
   }
 
-  private static MgHandleType[] swigValues = { kMgHandleVertext, kMgHandleCenter, kMgHandleMidPoint, kMgHandleQuadrant, kMgHandleOutside };
+  private static MgHandleType[] swigValues = { kMgHandleVertext, kMgHandleCenter, kMgHandleMidPoint, kMgHandleQuadrant, kMgHandleOutside, kMgHandleNoSnap };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

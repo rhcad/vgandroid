@@ -35,6 +35,10 @@ public class MgDot extends MgBaseShape {
     super.delete();
   }
 
+  public MgDot() {
+    this(touchvgJNI.new_MgDot(), true);
+  }
+
   public static MgDot create() {
     long cPtr = touchvgJNI.MgDot_create();
     return (cPtr == 0) ? null : new MgDot(cPtr, false);

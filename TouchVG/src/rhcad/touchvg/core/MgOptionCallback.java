@@ -50,8 +50,16 @@ public class MgOptionCallback {
     touchvgJNI.MgOptionCallback_change_ownership(this, swigCPtr, true);
   }
 
-  public void onGetOption(String group, String name, String text) {
-    touchvgJNI.MgOptionCallback_onGetOption(swigCPtr, this, group, name, text);
+  public void onGetOptionBool(String name, boolean value) {
+    touchvgJNI.MgOptionCallback_onGetOptionBool(swigCPtr, this, name, value);
+  }
+
+  public void onGetOptionInt(String name, int value) {
+    touchvgJNI.MgOptionCallback_onGetOptionInt(swigCPtr, this, name, value);
+  }
+
+  public void onGetOptionFloat(String name, float value) {
+    touchvgJNI.MgOptionCallback_onGetOptionFloat(swigCPtr, this, name, value);
   }
 
   public MgOptionCallback() {

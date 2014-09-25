@@ -66,25 +66,30 @@ public class ContextHelper {
     }
 
     private static class OptionCallback extends MgOptionCallback {
-        private Map<String, Map<String, String>> dict;
+        private Map<String, String> dict;
 
-        public OptionCallback(Map<String, Map<String, String>> dict) {
+        public OptionCallback(Map<String, String> dict) {
             this.dict = dict;
         }
 
         @Override
-        public void onGetOption(String group, String name, String text) {
-            Map<String, String> item = dict.get(group);
-            if (item == null) {
-                item = new HashMap<String, String>();
-                dict.put(group, item);
-            }
-            item.put(name, text);
+        public void onGetOptionBool(String name, boolean value) {
+            dict.put(name, value ? "1" : "0");
+        }
+
+        @Override
+        public void onGetOptionInt(String name, int value) {
+            dict.put(name, String.valueOf(value));
+        }
+
+        @Override
+        public void onGetOptionFloat(String name, float value) {
+            dict.put(name, String.valueOf(value));
         }
     }
 
-    public static Map<String, Map<String, String>> getOptions(ViewCreator vc) {
-        Map<String, Map<String, String>> options = new HashMap<String, Map<String, String>>();
+    public static Map<String, String> getOptions(ViewCreator vc) {
+        Map<String, String> options = new HashMap<String, String>();
         if (vc.isValid()) {
             vc.coreView().traverseOptions(new OptionCallback(options));
         }

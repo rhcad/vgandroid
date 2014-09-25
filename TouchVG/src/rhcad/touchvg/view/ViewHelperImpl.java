@@ -39,7 +39,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper{
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 20;
+    private static final int JARVERSION = 21;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -182,13 +182,23 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
-    public Map<String, Map<String, String>> getOptions() {
+    public Map<String, String> getOptions() {
         return ContextHelper.getOptions(mCreator);
     }
 
     @Override
-    public void setOption(String group, String name, String value) {
-        coreView().setOption(group, name, value);
+    public void setOption(String name, boolean value) {
+        coreView().setOptionBool(name, value);
+    }
+
+    @Override
+    public void setOption(String name, int value) {
+        coreView().setOptionInt(name, value);
+    }
+
+    @Override
+    public void setOption(String name, float value) {
+        coreView().setOptionFloat(name, value);
     }
 
     @Override

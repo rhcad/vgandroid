@@ -242,12 +242,20 @@ public class GiCoreView extends MgCoreView {
     return touchvgJNI.GiCoreView_restoreRecord(swigCPtr, this, type, path, doc, changeCount, index, count, tick, curTick);
   }
 
-  public int traverseOptions(MgOptionCallback c) {
-    return touchvgJNI.GiCoreView_traverseOptions(swigCPtr, this, MgOptionCallback.getCPtr(c), c);
+  public void traverseOptions(MgOptionCallback c) {
+    touchvgJNI.GiCoreView_traverseOptions(swigCPtr, this, MgOptionCallback.getCPtr(c), c);
   }
 
-  public void setOption(String group, String name, String text) {
-    touchvgJNI.GiCoreView_setOption(swigCPtr, this, group, name, text);
+  public void setOptionBool(String name, boolean value) {
+    touchvgJNI.GiCoreView_setOptionBool(swigCPtr, this, name, value);
+  }
+
+  public void setOptionInt(String name, int value) {
+    touchvgJNI.GiCoreView_setOptionInt(swigCPtr, this, name, value);
+  }
+
+  public void setOptionFloat(String name, float value) {
+    touchvgJNI.GiCoreView_setOptionFloat(swigCPtr, this, name, value);
   }
 
   public final static int kNoCmdType = -1;

@@ -11,6 +11,7 @@ import rhcad.touchvg.IGraphView.OnDynamicChangedListener;
 import rhcad.touchvg.IGraphView.OnFirstRegenListener;
 import rhcad.touchvg.IGraphView.OnSelectionChangedListener;
 import rhcad.touchvg.IGraphView.OnShapeClickedListener;
+import rhcad.touchvg.IGraphView.OnShapeDblClickedListener;
 import rhcad.touchvg.IGraphView.OnShapeDeletedListener;
 import rhcad.touchvg.IGraphView.OnShapesRecordedListener;
 import rhcad.touchvg.IGraphView.OnViewDetachedListener;
@@ -56,6 +57,7 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     private List<OnShapesRecordedListener> shapesRecordedListeners;
     private List<OnShapeDeletedListener> shapeDeletedListeners;
     private List<OnShapeClickedListener> shapeClickedListeners;
+    private List<OnShapeDblClickedListener> shapeDblClickedListeners;
     private List<OnContextActionListener> contextActionListeners;
     private List<OnDrawGestureListener> gestureListeners;
     private List<OnPlayingListener> playingListeners;
@@ -104,7 +106,8 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
         final List<?>[] listeners = new List<?>[] { commandChangedListeners,
                 selectionChangedListeners, contentChangedListeners, dynamicChangedListeners,
                 firstRegenListeners, shapesRecordedListeners, shapeDeletedListeners,
-                shapeClickedListeners, contextActionListeners, gestureListeners, playingListeners };
+                shapeClickedListeners, shapeDblClickedListeners, contextActionListeners,
+                gestureListeners, playingListeners };
 
         for (final List<?> listener : listeners) {
             if (listener != null) {
@@ -224,6 +227,18 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     }
 
     @Override
+    public boolean shapeDblClick(int type, int sid) {
+        if (shapeDblClickedListeners != null) {
+            for (OnShapeDblClickedListener listener : shapeDblClickedListeners) {
+                if (listener.onShapeDblClicked(getGraphView(), sid, type)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void showMessage(String text) {
         if (coreView() != null && text.startsWith("@")) {
             final String localstr = ResourceUtil.getStringFromName(getContext(), text.substring(1));
@@ -292,6 +307,13 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
             this.shapeClickedListeners = new ArrayList<OnShapeClickedListener>();
         }
         this.shapeClickedListeners.add(listener);
+    }
+
+    public void setOnShapeDblClickedListener(OnShapeDblClickedListener listener) {
+        if (this.shapeDblClickedListeners == null) {
+            this.shapeDblClickedListeners = new ArrayList<OnShapeDblClickedListener>();
+        }
+        this.shapeDblClickedListeners.add(listener);
     }
 
     public void setOnContextActionListener(OnContextActionListener listener) {

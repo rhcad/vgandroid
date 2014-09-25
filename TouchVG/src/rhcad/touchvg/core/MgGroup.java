@@ -35,6 +35,10 @@ public class MgGroup extends MgComposite {
     super.delete();
   }
 
+  public MgGroup() {
+    this(touchvgJNI.new_MgGroup(), true);
+  }
+
   public static MgGroup create() {
     long cPtr = touchvgJNI.MgGroup_create();
     return (cPtr == 0) ? null : new MgGroup(cPtr, false);
@@ -155,6 +159,18 @@ public class MgGroup extends MgComposite {
 
   public boolean addShapeToGroup(MgShape shape) {
     return touchvgJNI.MgGroup_addShapeToGroup(swigCPtr, this, MgShape.getCPtr(shape), shape);
+  }
+
+  public Point2d getInsertionPoint() {
+    return new Point2d(touchvgJNI.MgGroup_getInsertionPoint(swigCPtr, this), true);
+  }
+
+  public void setInsertionPoint(Point2d pt) {
+    touchvgJNI.MgGroup_setInsertionPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
+  }
+
+  public Point2d getCenterPoint() {
+    return new Point2d(touchvgJNI.MgGroup_getCenterPoint(swigCPtr, this), true);
   }
 
 }

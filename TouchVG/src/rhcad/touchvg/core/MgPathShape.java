@@ -35,6 +35,10 @@ public class MgPathShape extends MgBaseShape {
     super.delete();
   }
 
+  public MgPathShape() {
+    this(touchvgJNI.new_MgPathShape(), true);
+  }
+
   public static MgPathShape create() {
     long cPtr = touchvgJNI.MgPathShape_create();
     return (cPtr == 0) ? null : new MgPathShape(cPtr, false);

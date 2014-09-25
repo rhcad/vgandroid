@@ -106,6 +106,11 @@ public interface IGraphView {
         public boolean onShapeClicked(IGraphView view, int sid, int tag, float x, float y);
     }
 
+    //! 图形双击的通知，返回true自定义编辑，返回false默认编辑
+    public static interface OnShapeDblClickedListener {
+        public boolean onShapeDblClicked(IGraphView view, int sid, int type);
+    }
+
     //! 上下文按钮点击的通知
     public static interface OnContextActionListener {
         public boolean onContextAction(IGraphView view, MgMotion sender, int action);
@@ -145,6 +150,9 @@ public interface IGraphView {
 
     //! 添加图形点击的观察者
     public void setOnShapeClickedListener(OnShapeClickedListener listener);
+
+    //! 添加图形双击的观察者
+    public void setOnShapeDblClickedListener(OnShapeDblClickedListener listener);
 
     //! 添加上下文按钮点击的观察者
     public void setOnContextActionListener(OnContextActionListener listener);

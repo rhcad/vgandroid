@@ -35,6 +35,10 @@ public class MgEllipse extends MgBaseRect {
     super.delete();
   }
 
+  public MgEllipse() {
+    this(touchvgJNI.new_MgEllipse(), true);
+  }
+
   public static MgEllipse create() {
     long cPtr = touchvgJNI.MgEllipse_create();
     return (cPtr == 0) ? null : new MgEllipse(cPtr, false);

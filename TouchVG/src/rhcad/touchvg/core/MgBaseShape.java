@@ -117,7 +117,7 @@ public class MgBaseShape extends MgObject {
   }
 
   public boolean isCurve() {
-    return touchvgJNI.MgBaseShape_isCurve(swigCPtr, this);
+    return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_isCurve(swigCPtr, this) : touchvgJNI.MgBaseShape_isCurveSwigExplicitMgBaseShape(swigCPtr, this);
   }
 
   public float hitTest(Point2d pt, float tol, MgHitResult res) {
