@@ -621,6 +621,7 @@ namespace Swig {
 
 #include <mgstorage.h>
 #include <mgvector.h>
+#include <mgjsonstorage.h>
 
 #include <mgcshapes.h>
 #include <mgshapetype.h>
@@ -12559,7 +12560,7 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1setToProdu
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1TransformPoints(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1transformPoints(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
   Matrix2d *arg1 = (Matrix2d *) 0 ;
   int arg2 ;
   Point2d *arg3 = (Point2d *) 0 ;
@@ -12571,11 +12572,11 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1TransformPo
   arg1 = *(Matrix2d **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = *(Point2d **)&jarg3; 
-  ((Matrix2d const *)arg1)->TransformPoints(arg2,arg3);
+  ((Matrix2d const *)arg1)->transformPoints(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1TransformVectors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1transformVectors(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
   Matrix2d *arg1 = (Matrix2d *) 0 ;
   int arg2 ;
   Vector2d *arg3 = (Vector2d *) 0 ;
@@ -12587,7 +12588,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1TransformVe
   arg1 = *(Matrix2d **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = *(Vector2d **)&jarg3; 
-  ((Matrix2d const *)arg1)->TransformVectors(arg2,arg3);
+  ((Matrix2d const *)arg1)->transformVectors(arg2,arg3);
 }
 
 
@@ -24139,6 +24140,326 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgStorage(JNI
   (void)jcls;
   arg1 = *(MgStorage **)&jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgJsonFile(JNIEnv *jenv, jclass jcls, jstring jarg1, jboolean jarg2) {
+  jlong jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  bool arg2 ;
+  MgJsonFile *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = jarg2 ? true : false; 
+  result = (MgJsonFile *)new MgJsonFile((char const *)arg1,arg2);
+  *(MgJsonFile **)&jresult = result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgJsonFile(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgJsonFile *arg1 = (MgJsonFile *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgJsonFile **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonFile_1opened(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  MgJsonFile *arg1 = (MgJsonFile *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonFile **)&jarg1; 
+  result = (bool)((MgJsonFile const *)arg1)->opened();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonFile_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  MgJsonFile *arg1 = (MgJsonFile *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonFile **)&jarg1; 
+  (arg1)->close();
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgJsonStorage(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  MgJsonStorage *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (MgJsonStorage *)new MgJsonStorage();
+  *(MgJsonStorage **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgJsonStorage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1storageForRead_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  char *arg2 = (char *) 0 ;
+  MgStorage *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (MgStorage *)(arg1)->storageForRead((char const *)arg2);
+  *(MgStorage **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1storageForWrite(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  MgStorage *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  result = (MgStorage *)(arg1)->storageForWrite();
+  *(MgStorage **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1storageForRead_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jlong jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  MgJsonFile *arg2 = 0 ;
+  MgStorage *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = *(MgJsonFile **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "MgJsonFile const & reference is null");
+    return 0;
+  } 
+  result = (MgStorage *)(arg1)->storageForRead((MgJsonFile const &)*arg2);
+  *(MgStorage **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1save_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jboolean jarg3) {
+  jboolean jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  MgJsonFile *arg2 = 0 ;
+  bool arg3 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = *(MgJsonFile **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "MgJsonFile const & reference is null");
+    return 0;
+  } 
+  arg3 = jarg3 ? true : false; 
+  result = (bool)(arg1)->save((MgJsonFile const &)*arg2,arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1save_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jboolean jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  MgJsonFile *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = *(MgJsonFile **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "MgJsonFile const & reference is null");
+    return 0;
+  } 
+  result = (bool)(arg1)->save((MgJsonFile const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1stringify_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  jstring jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  bool arg2 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  result = (char *)(arg1)->stringify(arg2);
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1stringify_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  result = (char *)(arg1)->stringify();
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT jstring JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1getParseError(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  result = (char *)(arg1)->getParseError();
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1setArrayMode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->setArrayMode(arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1saveNumberAsString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+  MgJsonStorage *arg1 = (MgJsonStorage *) 0 ;
+  bool arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgJsonStorage **)&jarg1; 
+  arg2 = jarg2 ? true : false; 
+  (arg1)->saveNumberAsString(arg2);
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1toUTF8(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jboolean jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (bool)MgJsonStorage::toUTF8((char const *)arg1,(char const *)arg2);
+  jresult = (jboolean)result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgJsonStorage_1toUTF16(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2) {
+  jboolean jresult = 0 ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = 0;
+  if (jarg1) {
+    arg1 = (char *)jenv->GetStringUTFChars(jarg1, 0);
+    if (!arg1) return 0;
+  }
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (bool)MgJsonStorage::toUTF16((char const *)arg1,(char const *)arg2);
+  jresult = (jboolean)result; 
+  if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
 }
 
 
