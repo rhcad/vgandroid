@@ -123,12 +123,12 @@ public class Matrix2d {
     return new Matrix2d(touchvgJNI.Matrix2d_setToProduct(swigCPtr, this, Matrix2d.getCPtr(m1), m1, Matrix2d.getCPtr(m2), m2), false);
   }
 
-  public void TransformPoints(int count, Point2d points) {
-    touchvgJNI.Matrix2d_TransformPoints(swigCPtr, this, count, Point2d.getCPtr(points), points);
+  public void transformPoints(int count, Point2d points) {
+    touchvgJNI.Matrix2d_transformPoints(swigCPtr, this, count, Point2d.getCPtr(points), points);
   }
 
-  public void TransformVectors(int count, Vector2d vectors) {
-    touchvgJNI.Matrix2d_TransformVectors(swigCPtr, this, count, Vector2d.getCPtr(vectors), vectors);
+  public void transformVectors(int count, Vector2d vectors) {
+    touchvgJNI.Matrix2d_transformVectors(swigCPtr, this, count, Vector2d.getCPtr(vectors), vectors);
   }
 
   public float det() {
