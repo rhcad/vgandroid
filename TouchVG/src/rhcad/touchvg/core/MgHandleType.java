@@ -9,7 +9,7 @@
 package rhcad.touchvg.core;
 
 public final class MgHandleType {
-  public final static MgHandleType kMgHandleVertext = new MgHandleType("kMgHandleVertext");
+  public final static MgHandleType kMgHandleVertex = new MgHandleType("kMgHandleVertex");
   public final static MgHandleType kMgHandleCenter = new MgHandleType("kMgHandleCenter");
   public final static MgHandleType kMgHandleMidPoint = new MgHandleType("kMgHandleMidPoint");
   public final static MgHandleType kMgHandleQuadrant = new MgHandleType("kMgHandleQuadrant");
@@ -50,7 +50,7 @@ public final class MgHandleType {
     swigNext = this.swigValue+1;
   }
 
-  private static MgHandleType[] swigValues = { kMgHandleVertext, kMgHandleCenter, kMgHandleMidPoint, kMgHandleQuadrant, kMgHandleOutside, kMgHandleNoSnap };
+  private static MgHandleType[] swigValues = { kMgHandleVertex, kMgHandleCenter, kMgHandleMidPoint, kMgHandleQuadrant, kMgHandleOutside, kMgHandleNoSnap };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

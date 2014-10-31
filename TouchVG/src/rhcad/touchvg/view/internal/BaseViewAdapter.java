@@ -13,6 +13,7 @@ import rhcad.touchvg.IGraphView.OnSelectionChangedListener;
 import rhcad.touchvg.IGraphView.OnShapeClickedListener;
 import rhcad.touchvg.IGraphView.OnShapeDblClickedListener;
 import rhcad.touchvg.IGraphView.OnShapeDeletedListener;
+import rhcad.touchvg.IGraphView.OnShapeWillDeleteListener;
 import rhcad.touchvg.IGraphView.OnShapesRecordedListener;
 import rhcad.touchvg.IGraphView.OnViewDetachedListener;
 import rhcad.touchvg.core.CmdObserverDefault;
@@ -55,6 +56,7 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     private List<OnDynamicChangedListener> dynamicChangedListeners;
     private List<OnFirstRegenListener> firstRegenListeners;
     private List<OnShapesRecordedListener> shapesRecordedListeners;
+    private List<OnShapeWillDeleteListener> shapeWillDeleteListeners;
     private List<OnShapeDeletedListener> shapeDeletedListeners;
     private List<OnShapeClickedListener> shapeClickedListeners;
     private List<OnShapeDblClickedListener> shapeDblClickedListeners;
@@ -107,7 +109,7 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
                 selectionChangedListeners, contentChangedListeners, dynamicChangedListeners,
                 firstRegenListeners, shapesRecordedListeners, shapeDeletedListeners,
                 shapeClickedListeners, shapeDblClickedListeners, contextActionListeners,
-                gestureListeners, playingListeners };
+                gestureListeners, playingListeners, shapeWillDeleteListeners };
 
         for (final List<?> listener : listeners) {
             if (listener != null) {
@@ -119,6 +121,10 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
 
     public Bundle getSavedState() {
         return mSavedState;
+    }
+
+    public boolean getContextActionEnabled() {
+        return mActionEnabled;
     }
 
     public void setContextActionEnabled(boolean enabled) {
@@ -293,6 +299,13 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
             this.shapesRecordedListeners = new ArrayList<OnShapesRecordedListener>();
         }
         this.shapesRecordedListeners.add(listener);
+    }
+
+    public void setOnShapeWillDeleteListener(OnShapeWillDeleteListener listener) {
+        if (this.shapeWillDeleteListeners == null) {
+            this.shapeWillDeleteListeners = new ArrayList<OnShapeWillDeleteListener>();
+        }
+        this.shapeWillDeleteListeners.add(listener);
     }
 
     public void setOnShapeDeletedListener(OnShapeDeletedListener listener) {
@@ -695,6 +708,15 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
         int doc = playing ? 0 : coreView().acquireFrontDoc();
         return (playing || doc != 0)
                 && cv.restoreRecord(playing ? 2 : 1, path, doc, 0, index, 0, tick, getTick());
+    }
+
+    @Override
+    public void shapeWillDelete(int sid) {
+        if (shapeWillDeleteListeners != null) {
+            for (OnShapeWillDeleteListener listener : shapeWillDeleteListeners) {
+                listener.onShapeWillDelete(getGraphView(), sid);
+            }
+        }
     }
 
     @Override

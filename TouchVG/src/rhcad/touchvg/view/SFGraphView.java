@@ -848,6 +848,11 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
     }
 
     @Override
+    public void setOnShapeWillDeleteListener(OnShapeWillDeleteListener listener) {
+        mViewAdapter.setOnShapeWillDeleteListener(listener);
+    }
+
+    @Override
     public void setOnShapeDeletedListener(OnShapeDeletedListener listener) {
         mViewAdapter.setOnShapeDeletedListener(listener);
     }

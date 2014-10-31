@@ -76,8 +76,40 @@ public class MgHitResult {
     return touchvgJNI.MgHitResult_dist_get(swigCPtr, this);
   }
 
+  public void setMask(int value) {
+    touchvgJNI.MgHitResult_mask_set(swigCPtr, this, value);
+  }
+
+  public int getMask() {
+    return touchvgJNI.MgHitResult_mask_get(swigCPtr, this);
+  }
+
+  public void setIgnoreHandle(int value) {
+    touchvgJNI.MgHitResult_ignoreHandle_set(swigCPtr, this, value);
+  }
+
+  public int getIgnoreHandle() {
+    return touchvgJNI.MgHitResult_ignoreHandle_get(swigCPtr, this);
+  }
+
   public MgHitResult() {
     this(touchvgJNI.new_MgHitResult(), true);
+  }
+
+  public boolean snapVertexEnabled() {
+    return touchvgJNI.MgHitResult_snapVertexEnabled(swigCPtr, this);
+  }
+
+  public boolean snapEdgeEnabled() {
+    return touchvgJNI.MgHitResult_snapEdgeEnabled(swigCPtr, this);
+  }
+
+  public void disnableSnapVertex() {
+    touchvgJNI.MgHitResult_disnableSnapVertex(swigCPtr, this);
+  }
+
+  public void disnableSnapEdge() {
+    touchvgJNI.MgHitResult_disnableSnapEdge(swigCPtr, this);
   }
 
 }

@@ -204,4 +204,12 @@ public class MgBaseShape extends MgObject {
     if (getClass() == MgBaseShape.class) touchvgJNI.MgBaseShape_setOwner(swigCPtr, this, MgObject.getCPtr(owner), owner); else touchvgJNI.MgBaseShape_setOwnerSwigExplicitMgBaseShape(swigCPtr, this, MgObject.getCPtr(owner), owner);
   }
 
+  public int getSubType() {
+    return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_getSubType(swigCPtr, this) : touchvgJNI.MgBaseShape_getSubTypeSwigExplicitMgBaseShape(swigCPtr, this);
+  }
+
+  public static float linesHit(int n, Point2d points, boolean closed, Point2d pt, float tol, MgHitResult res) {
+    return touchvgJNI.MgBaseShape_linesHit(n, Point2d.getCPtr(points), points, closed, Point2d.getCPtr(pt), pt, tol, MgHitResult.getCPtr(res), res);
+  }
+
 }

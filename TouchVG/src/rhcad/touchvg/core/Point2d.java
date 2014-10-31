@@ -51,6 +51,10 @@ public class Point2d {
     return touchvgJNI.Point2d_y_get(swigCPtr, this);
   }
 
+  public static Point2d kInvalid() {
+    return new Point2d(touchvgJNI.Point2d_kInvalid(), true);
+  }
+
   public static Point2d kOrigin() {
     return new Point2d(touchvgJNI.Point2d_kOrigin(), true);
   }

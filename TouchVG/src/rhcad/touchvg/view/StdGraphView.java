@@ -555,6 +555,11 @@ public class StdGraphView extends View implements BaseGraphView {
     }
 
     @Override
+    public void setOnShapeWillDeleteListener(OnShapeWillDeleteListener listener) {
+        mViewAdapter.setOnShapeWillDeleteListener(listener);
+    }
+
+    @Override
     public void setOnShapeDeletedListener(OnShapeDeletedListener listener) {
         mViewAdapter.setOnShapeDeletedListener(listener);
     }

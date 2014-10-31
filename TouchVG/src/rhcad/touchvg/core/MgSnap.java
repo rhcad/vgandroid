@@ -55,6 +55,10 @@ public class MgSnap {
     return touchvgJNI.MgSnap_getSnappedPoint(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt);
   }
 
+  public void setIgnoreStartPoint(Point2d pt) {
+    touchvgJNI.MgSnap_setIgnoreStartPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
+  }
+
   public Point2d snapPoint(MgMotion sender, Point2d orignPt) {
     return new Point2d(touchvgJNI.MgSnap_snapPoint(swigCPtr, this, MgMotion.getCPtr(sender), sender, Point2d.getCPtr(orignPt), orignPt), true);
   }

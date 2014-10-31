@@ -2,8 +2,13 @@ package rhcad.touchvg.view.impl;
 
 import java.io.FileOutputStream;
 
+import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.core.Floats;
+import rhcad.touchvg.core.GiContext;
 import rhcad.touchvg.core.GiCoreView;
+import rhcad.touchvg.core.MgShape;
+import rhcad.touchvg.core.MgShapeBit;
+import rhcad.touchvg.core.MgShapes;
 import rhcad.touchvg.view.BaseGraphView;
 import rhcad.touchvg.view.internal.LogHelper;
 import rhcad.touchvg.view.internal.BaseViewAdapter.StringCallback;
@@ -89,6 +94,33 @@ public class Snapshot {
         return realBitmap;
     }
 
+    public static Bitmap snapshotWithShapes(IViewHelper hlp, IViewHelper tmphlp, int sid,
+            int width, int height) {
+        tmphlp.createDummyView(hlp.getContext(), width, height);
+        final MgShapes srcs = hlp.cmdView().shapes();
+        final MgShapes dests = tmphlp.cmdView().shapes();
+
+        synchronized (hlp.coreView()) {
+            final MgShape sp = srcs.findShape(sid);
+            if (sp != null) {
+                MgShape newsp = dests.addShape(sp);
+                if (newsp != null) {
+                    newsp.shape().setFlag(MgShapeBit.kMgHideContent, false);
+                    if (newsp.context().getLineAlpha() > 0 && newsp.context().getLineAlpha() < 20) {
+                        final GiContext ctx = newsp.context();
+                        ctx.setLineAlpha(20);
+                        newsp.setContext(ctx, GiContext.kLineAlpha);
+                    }
+                }
+            }
+        }
+
+        tmphlp.zoomToExtent();
+        Bitmap bitmap = tmphlp.snapshot(false);
+        tmphlp.close();
+        return bitmap;
+    }
+
     public static boolean exportExtentAsPNG(BaseGraphView view, String filename, int spaceAround) {
         return savePNG(extentSnapshot(view, spaceAround, true), filename);
     }
@@ -149,31 +181,29 @@ public class Snapshot {
         return c.toString();
     }
 
+    public static Rect getViewBox(BaseGraphView view) {
+        final Floats box = new Floats(4);
+        return toBox(box, view != null && view.coreView().getViewModelBox(box));
+    }
+
     public static Rect getDisplayExtent(BaseGraphView view) {
         final Floats box = new Floats(4);
-        if (view != null && view.coreView().getDisplayExtent(box)) {
-            return new Rect(Math.round(box.get(0)), Math.round(box.get(1)), Math.round(box.get(2)),
-                    Math.round(box.get(3)));
-        }
-        return new Rect();
+        return toBox(box, view != null && view.coreView().getDisplayExtent(box));
     }
 
     public static Rect getDisplayExtent(BaseGraphView view, int doc, int gs) {
         final Floats box = new Floats(4);
-        if (view != null && view.coreView().getDisplayExtent(doc, gs, box)) {
-            return new Rect(Math.round(box.get(0)), Math.round(box.get(1)), Math.round(box.get(2)),
-                    Math.round(box.get(3)));
-        }
-        return new Rect();
+        return toBox(box, view != null && view.coreView().getDisplayExtent(doc, gs, box));
     }
 
     public static Rect getBoundingBox(BaseGraphView view) {
         final Floats box = new Floats(4);
-        if (view != null && view.coreView().getBoundingBox(box)) {
-            return new Rect(Math.round(box.get(0)), Math.round(box.get(1)), Math.round(box.get(2)),
-                    Math.round(box.get(3)));
-        }
-        return new Rect();
+        return toBox(box, view != null && view.coreView().getBoundingBox(box));
+    }
+
+    private static Rect toBox(Floats box, boolean ret) {
+        return !ret ? new Rect() : new Rect(Math.round(box.get(0)), Math.round(box.get(1)),
+                Math.round(box.get(2)), Math.round(box.get(3)));
     }
 
 }

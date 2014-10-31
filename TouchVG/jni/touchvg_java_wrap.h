@@ -108,12 +108,13 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 34 ? swig_override[n] : false);
+      return (n < 35 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[34];
+    bool swig_override[35];
 };
 
 class SwigDirector_MgBaseRect : public MgBaseRect, public Swig::Director {
@@ -156,12 +157,13 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 34 ? swig_override[n] : false);
+      return (n < 35 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[34];
+    bool swig_override[35];
 };
 
 class SwigDirector_MgBaseLines : public MgBaseLines, public Swig::Director {
@@ -204,16 +206,17 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
     virtual bool resize(int count);
     virtual bool addPoint(Point2d const &pt);
     virtual bool insertPoint(int segment, Point2d const &pt);
     virtual bool removePoint(int index);
 public:
     bool swig_overrides(int n) {
-      return (n < 38 ? swig_override[n] : false);
+      return (n < 39 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[38];
+    bool swig_override[39];
 };
 
 class SwigDirector_MgComposite : public MgComposite, public Swig::Director {
@@ -256,13 +259,14 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {
-      return (n < 35 ? swig_override[n] : false);
+      return (n < 36 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[35];
+    bool swig_override[36];
 };
 
 class SwigDirector_MgCommand : public MgCommand, public Swig::Director {
@@ -439,6 +443,7 @@ public:
     virtual void contentChanged();
     virtual void dynamicChanged();
     virtual void viewChanged(GiView *oldview);
+    virtual void shapeWillDelete(int sid);
     virtual void shapeDeleted(int sid);
     virtual bool shapeDblClick(int type, int sid);
     virtual bool shapeClicked(int sid, int tag, float x, float y);
@@ -446,10 +451,10 @@ public:
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:
     bool swig_overrides(int n) {
-      return (n < 17 ? swig_override[n] : false);
+      return (n < 18 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[17];
+    bool swig_override[18];
 };
 
 struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {

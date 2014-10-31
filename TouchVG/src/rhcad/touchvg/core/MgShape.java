@@ -35,6 +35,15 @@ public class MgShape extends MgObject {
     return touchvgJNI.MgShape_Type();
   }
 
+  public static MgShape fromHandle(int h) {
+    long cPtr = touchvgJNI.MgShape_fromHandle(h);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
+  public int toHandle() {
+    return touchvgJNI.MgShape_toHandle(swigCPtr, this);
+  }
+
   public MgShape cloneShape() {
     long cPtr = touchvgJNI.MgShape_cloneShape(swigCPtr, this);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);

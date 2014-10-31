@@ -68,6 +68,15 @@ public class MgShapes extends MgObject {
     return touchvgJNI.MgShapes_getShapeCountByTypeOrTag(swigCPtr, this, type, tag);
   }
 
+  public int getShapeIndex(int sid) {
+    return touchvgJNI.MgShapes_getShapeIndex(swigCPtr, this, sid);
+  }
+
+  public MgShape getShapeAtIndex(int index) {
+    long cPtr = touchvgJNI.MgShapes_getShapeAtIndex(swigCPtr, this, index);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
   public MgShape getHeadShape() {
     long cPtr = touchvgJNI.MgShapes_getHeadShape(swigCPtr, this);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);
@@ -203,6 +212,14 @@ public class MgShapes extends MgObject {
 
   public boolean bringToFront(int sid) {
     return touchvgJNI.MgShapes_bringToFront(swigCPtr, this, sid);
+  }
+
+  public boolean bringToBack(int sid) {
+    return touchvgJNI.MgShapes_bringToBack(swigCPtr, this, sid);
+  }
+
+  public boolean bringToIndex(int sid, int index) {
+    return touchvgJNI.MgShapes_bringToIndex(swigCPtr, this, sid, index);
   }
 
   public static MgShape getParentShape(MgShape shape) {

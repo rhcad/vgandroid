@@ -96,6 +96,11 @@ public interface IGraphView {
         public void onShapesRecorded(IGraphView view, Bundle info);
     }
 
+    //! 图形将删除的通知
+    public static interface OnShapeWillDeleteListener {
+        public void onShapeWillDelete(IGraphView view, int sid);
+    }
+
     //! 图形已删除的通知
     public static interface OnShapeDeletedListener {
         public void onShapeDeleted(IGraphView view, int sid);
@@ -144,6 +149,9 @@ public interface IGraphView {
 
     //! 添加图形录制的观察者
     public void setOnShapesRecordedListener(OnShapesRecordedListener listener);
+
+    //! 添加图形将删除的观察者
+    public void setOnShapeWillDeleteListener(OnShapeWillDeleteListener listener);
 
     //! 添加图形已删除的观察者
     public void setOnShapeDeletedListener(OnShapeDeletedListener listener);

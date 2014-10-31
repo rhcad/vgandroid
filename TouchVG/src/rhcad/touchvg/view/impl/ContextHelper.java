@@ -91,7 +91,12 @@ public class ContextHelper {
     public static Map<String, String> getOptions(ViewCreator vc) {
         Map<String, String> options = new HashMap<String, String>();
         if (vc.isValid()) {
-            vc.coreView().traverseOptions(new OptionCallback(options));
+            final OptionCallback c = new OptionCallback(options);
+            vc.coreView().traverseOptions(c);
+            c.onGetOptionBool("zoomEnabled",
+                    vc.coreView().isZoomEnabled(vc.getGraphView().viewAdapter()));
+            c.onGetOptionBool("contextActionEnabled",
+                    vc.getMainAdapter().getContextActionEnabled());
         }
         return options;
     }
