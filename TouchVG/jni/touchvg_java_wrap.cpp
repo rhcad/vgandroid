@@ -7379,7 +7379,7 @@ bool SwigDirector_CmdObserverDefault::onShapeWillAdded(MgMotion const *sender, M
   return c_result;
 }
 
-void SwigDirector_CmdObserverDefault::onShapeAdded(MgMotion const *sender, MgShape const *sp) {
+void SwigDirector_CmdObserverDefault::onShapeAdded(MgMotion const *sender, MgShape *sp) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -9950,82 +9950,6 @@ void SwigDirector_GiView::swig_connect_director(JNIEnv *jenv, jobject jself, jcl
 }
 
 
-SwigDirector_MgFindImageCallback::SwigDirector_MgFindImageCallback(JNIEnv *jenv) : MgFindImageCallback(), Swig::Director(jenv) {
-}
-
-SwigDirector_MgFindImageCallback::~SwigDirector_MgFindImageCallback() {
-  //swig_disconnect_director_self("swigDirectorDisconnect");
-}
-
-
-void SwigDirector_MgFindImageCallback::onFindImage(int sid, char const *name) {
-  JNIEnvWrapper swigjnienv(this) ;
-  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
-  jobject swigjobj = (jobject) NULL ;
-  jint jsid  ;
-  jstring jname = 0; TmpJOBJ jname_(jenv, &jname);
-  
-  if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method MgFindImageCallback::onFindImage.");
-    return;
-  }
-  swigjobj = swig_get_self(jenv);
-  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    jsid = (jint) sid;
-    jname = 0;
-    if (name) {
-      jname = jenv->NewStringUTF((const char *)name);
-      if (!jname) return ;
-    }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jsid, jname);
-    jthrowable swigerror = jenv->ExceptionOccurred();
-    if (swigerror) {
-      jenv->ExceptionClear();
-      throw Swig::DirectorException(jenv, swigerror);
-    }
-    
-  } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in MgFindImageCallback::onFindImage ");
-  }
-  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
-}
-
-void SwigDirector_MgFindImageCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
-  static struct {
-    const char *mname;
-    const char *mdesc;
-    jmethodID base_methid;
-  } methods[] = {
-    {
-      "onFindImage", "(ILjava/lang/String;)V", NULL 
-    }
-  };
-  
-  static jclass baseclass = 0 ;
-  
-  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
-    if (!baseclass) {
-      baseclass = jenv->FindClass("rhcad/touchvg/core/MgFindImageCallback");
-      if (!baseclass) return;
-      baseclass = (jclass) jenv->NewGlobalRef(baseclass);
-    }
-    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
-    for (int i = 0; i < 1; ++i) {
-      if (!methods[i].base_methid) {
-        methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
-        if (!methods[i].base_methid) return;
-      }
-      swig_override[i] = false;
-      if (derived) {
-        jmethodID methid = jenv->GetMethodID(jcls, methods[i].mname, methods[i].mdesc);
-        swig_override[i] = (methid != methods[i].base_methid);
-        jenv->ExceptionClear();
-      }
-    }
-  }
-}
-
-
 SwigDirector_MgStringCallback::SwigDirector_MgStringCallback(JNIEnv *jenv) : MgStringCallback(), Swig::Director(jenv) {
 }
 
@@ -10051,7 +9975,7 @@ void SwigDirector_MgStringCallback::onGetString(char const *text) {
       jtext = jenv->NewStringUTF((const char *)text);
       if (!jtext) return ;
     }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jtext);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jtext);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10080,6 +10004,82 @@ void SwigDirector_MgStringCallback::swig_connect_director(JNIEnv *jenv, jobject 
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
     if (!baseclass) {
       baseclass = jenv->FindClass("rhcad/touchvg/core/MgStringCallback");
+      if (!baseclass) return;
+      baseclass = (jclass) jenv->NewGlobalRef(baseclass);
+    }
+    bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
+    for (int i = 0; i < 1; ++i) {
+      if (!methods[i].base_methid) {
+        methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
+        if (!methods[i].base_methid) return;
+      }
+      swig_override[i] = false;
+      if (derived) {
+        jmethodID methid = jenv->GetMethodID(jcls, methods[i].mname, methods[i].mdesc);
+        swig_override[i] = (methid != methods[i].base_methid);
+        jenv->ExceptionClear();
+      }
+    }
+  }
+}
+
+
+SwigDirector_MgFindImageCallback::SwigDirector_MgFindImageCallback(JNIEnv *jenv) : MgFindImageCallback(), Swig::Director(jenv) {
+}
+
+SwigDirector_MgFindImageCallback::~SwigDirector_MgFindImageCallback() {
+  //swig_disconnect_director_self("swigDirectorDisconnect");
+}
+
+
+void SwigDirector_MgFindImageCallback::onFindImage(int sid, char const *name) {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jsid  ;
+  jstring jname = 0; TmpJOBJ jname_(jenv, &jname);
+  
+  if (!swig_override[0]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method MgFindImageCallback::onFindImage.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jsid = (jint) sid;
+    jname = 0;
+    if (name) {
+      jname = jenv->NewStringUTF((const char *)name);
+      if (!jname) return ;
+    }
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jsid, jname);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in MgFindImageCallback::onFindImage ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+void SwigDirector_MgFindImageCallback::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+  static struct {
+    const char *mname;
+    const char *mdesc;
+    jmethodID base_methid;
+  } methods[] = {
+    {
+      "onFindImage", "(ILjava/lang/String;)V", NULL 
+    }
+  };
+  
+  static jclass baseclass = 0 ;
+  
+  if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
+    if (!baseclass) {
+      baseclass = jenv->FindClass("rhcad/touchvg/core/MgFindImageCallback");
       if (!baseclass) return;
       baseclass = (jclass) jenv->NewGlobalRef(baseclass);
     }
@@ -38579,7 +38579,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1shapeAdded(JN
   (void)jarg2_;
   arg1 = *(MgView **)&jarg1; 
   arg2 = *(MgShape **)&jarg2; 
-  (arg1)->shapeAdded((MgShape const *)arg2);
+  (arg1)->shapeAdded(arg2);
 }
 
 
@@ -40585,7 +40585,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onShapeA
   arg1 = *(CmdObserver **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->onShapeAdded((MgMotion const *)arg2,(MgShape const *)arg3);
+  (arg1)->onShapeAdded((MgMotion const *)arg2,arg3);
 }
 
 
@@ -41277,7 +41277,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->onShapeAdded((MgMotion const *)arg2,(MgShape const *)arg3);
+  (arg1)->onShapeAdded((MgMotion const *)arg2,arg3);
 }
 
 
@@ -41294,7 +41294,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->CmdObserverDefault::onShapeAdded((MgMotion const *)arg2,(MgShape const *)arg3);
+  (arg1)->CmdObserverDefault::onShapeAdded((MgMotion const *)arg2,arg3);
 }
 
 
@@ -45391,6 +45391,66 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1change_1owner
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgStringCallback *arg1 = (MgStringCallback *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgStringCallback **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1onGetString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  MgStringCallback *arg1 = (MgStringCallback *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgStringCallback **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  (arg1)->onGetString((char const *)arg2);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgStringCallback(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  MgStringCallback *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (MgStringCallback *)new SwigDirector_MgStringCallback(jenv);
+  *(MgStringCallback **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  MgStringCallback *obj = *((MgStringCallback **)&objarg);
+  (void)jcls;
+  SwigDirector_MgStringCallback *director = dynamic_cast<SwigDirector_MgStringCallback *>(obj);
+  if (director) {
+    director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
+  }
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  MgStringCallback *obj = *((MgStringCallback **)&objarg);
+  SwigDirector_MgStringCallback *director = dynamic_cast<SwigDirector_MgStringCallback *>(obj);
+  (void)jcls;
+  if (director) {
+    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
+  }
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgFindImageCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   MgFindImageCallback *arg1 = (MgFindImageCallback *) 0 ;
   
@@ -45446,66 +45506,6 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgFindImageCallback_1
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgFindImageCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
   MgFindImageCallback *obj = *((MgFindImageCallback **)&objarg);
   SwigDirector_MgFindImageCallback *director = dynamic_cast<SwigDirector_MgFindImageCallback *>(obj);
-  (void)jcls;
-  if (director) {
-    director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
-  }
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgStringCallback(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgStringCallback *arg1 = (MgStringCallback *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgStringCallback **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1onGetString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  MgStringCallback *arg1 = (MgStringCallback *) 0 ;
-  char *arg2 = (char *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgStringCallback **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return ;
-  }
-  (arg1)->onGetString((char const *)arg2);
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgStringCallback(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  MgStringCallback *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (MgStringCallback *)new SwigDirector_MgStringCallback(jenv);
-  *(MgStringCallback **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  MgStringCallback *obj = *((MgStringCallback **)&objarg);
-  (void)jcls;
-  SwigDirector_MgStringCallback *director = dynamic_cast<SwigDirector_MgStringCallback *>(obj);
-  if (director) {
-    director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
-  }
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStringCallback_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  MgStringCallback *obj = *((MgStringCallback **)&objarg);
-  SwigDirector_MgStringCallback *director = dynamic_cast<SwigDirector_MgStringCallback *>(obj);
   (void)jcls;
   if (director) {
     director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
@@ -50716,10 +50716,10 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_GiView_getLocalizedString", "(Lrhcad/touchvg/core/GiView;Ljava/lang/String;J)V" 
     },
     {
-      "SwigDirector_MgFindImageCallback_onFindImage", "(Lrhcad/touchvg/core/MgFindImageCallback;ILjava/lang/String;)V" 
+      "SwigDirector_MgStringCallback_onGetString", "(Lrhcad/touchvg/core/MgStringCallback;Ljava/lang/String;)V" 
     },
     {
-      "SwigDirector_MgStringCallback_onGetString", "(Lrhcad/touchvg/core/MgStringCallback;Ljava/lang/String;)V" 
+      "SwigDirector_MgFindImageCallback_onFindImage", "(Lrhcad/touchvg/core/MgFindImageCallback;ILjava/lang/String;)V" 
     },
     {
       "SwigDirector_MgOptionCallback_onGetOptionBool", "(Lrhcad/touchvg/core/MgOptionCallback;Ljava/lang/String;Z)V" 

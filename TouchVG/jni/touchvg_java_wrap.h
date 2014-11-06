@@ -317,7 +317,7 @@ public:
     virtual void drawInSelectCommand(MgMotion const *sender, MgShape const *sp, int handleIndex, GiGraphics *gs);
     virtual void onSelectionChanged(MgMotion const *sender);
     virtual bool onShapeWillAdded(MgMotion const *sender, MgShape *sp);
-    virtual void onShapeAdded(MgMotion const *sender, MgShape const *sp);
+    virtual void onShapeAdded(MgMotion const *sender, MgShape *sp);
     virtual bool onShapeWillDeleted(MgMotion const *sender, MgShape const *sp);
     virtual void onShapeDeleted(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanRotated(MgMotion const *sender, MgShape const *sp);
@@ -457,13 +457,13 @@ protected:
     bool swig_override[18];
 };
 
-struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {
+struct SwigDirector_MgStringCallback : public MgStringCallback, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_MgFindImageCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_MgFindImageCallback();
-    virtual void onFindImage(int sid, char const *name);
+    SwigDirector_MgStringCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_MgStringCallback();
+    virtual void onGetString(char const *text);
 public:
     bool swig_overrides(int n) {
       return (n < 1 ? swig_override[n] : false);
@@ -472,13 +472,13 @@ protected:
     bool swig_override[1];
 };
 
-struct SwigDirector_MgStringCallback : public MgStringCallback, public Swig::Director {
+struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_MgStringCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_MgStringCallback();
-    virtual void onGetString(char const *text);
+    SwigDirector_MgFindImageCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_MgFindImageCallback();
+    virtual void onFindImage(int sid, char const *name);
 public:
     bool swig_overrides(int n) {
       return (n < 1 ? swig_override[n] : false);

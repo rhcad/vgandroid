@@ -1961,16 +1961,16 @@ public class touchvgJNI {
   public final static native long new_GiView();
   public final static native void GiView_director_connect(GiView obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void GiView_change_ownership(GiView obj, long cptr, boolean take_or_release);
-  public final static native void delete_MgFindImageCallback(long jarg1);
-  public final static native void MgFindImageCallback_onFindImage(long jarg1, MgFindImageCallback jarg1_, int jarg2, String jarg3);
-  public final static native long new_MgFindImageCallback();
-  public final static native void MgFindImageCallback_director_connect(MgFindImageCallback obj, long cptr, boolean mem_own, boolean weak_global);
-  public final static native void MgFindImageCallback_change_ownership(MgFindImageCallback obj, long cptr, boolean take_or_release);
   public final static native void delete_MgStringCallback(long jarg1);
   public final static native void MgStringCallback_onGetString(long jarg1, MgStringCallback jarg1_, String jarg2);
   public final static native long new_MgStringCallback();
   public final static native void MgStringCallback_director_connect(MgStringCallback obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgStringCallback_change_ownership(MgStringCallback obj, long cptr, boolean take_or_release);
+  public final static native void delete_MgFindImageCallback(long jarg1);
+  public final static native void MgFindImageCallback_onFindImage(long jarg1, MgFindImageCallback jarg1_, int jarg2, String jarg3);
+  public final static native long new_MgFindImageCallback();
+  public final static native void MgFindImageCallback_director_connect(MgFindImageCallback obj, long cptr, boolean mem_own, boolean weak_global);
+  public final static native void MgFindImageCallback_change_ownership(MgFindImageCallback obj, long cptr, boolean take_or_release);
   public final static native void delete_MgCoreView(long jarg1);
   public final static native long MgCoreView_fromHandle(int jarg1);
   public final static native int MgCoreView_toHandle(long jarg1, MgCoreView jarg1_);
@@ -3070,11 +3070,11 @@ public class touchvgJNI {
   public static void SwigDirector_GiView_getLocalizedString(GiView self, String name, long result) {
     self.getLocalizedString(name, (result == 0) ? null : new MgStringCallback(result, false));
   }
-  public static void SwigDirector_MgFindImageCallback_onFindImage(MgFindImageCallback self, int sid, String name) {
-    self.onFindImage(sid, name);
-  }
   public static void SwigDirector_MgStringCallback_onGetString(MgStringCallback self, String text) {
     self.onGetString(text);
+  }
+  public static void SwigDirector_MgFindImageCallback_onFindImage(MgFindImageCallback self, int sid, String name) {
+    self.onFindImage(sid, name);
   }
   public static void SwigDirector_MgOptionCallback_onGetOptionBool(MgOptionCallback self, String name, boolean value) {
     self.onGetOptionBool(name, value);
