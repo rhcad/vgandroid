@@ -842,6 +842,8 @@ public class touchvgJNI {
   public final static native void MgBaseShape_setOwnerSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native int MgBaseShape_getSubType(long jarg1, MgBaseShape jarg1_);
   public final static native int MgBaseShape_getSubTypeSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_);
+  public final static native boolean MgBaseShape_isVisible(long jarg1, MgBaseShape jarg1_);
+  public final static native boolean MgBaseShape_isLocked(long jarg1, MgBaseShape jarg1_);
   public final static native float MgBaseShape_linesHit(int jarg1, long jarg2, Point2d jarg2_, boolean jarg3, long jarg4, Point2d jarg4_, float jarg5, long jarg6, MgHitResult jarg6_);
   public final static native void MgBaseShape_director_connect(MgBaseShape obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgBaseShape_change_ownership(MgBaseShape obj, long cptr, boolean take_or_release);
@@ -1444,6 +1446,8 @@ public class touchvgJNI {
   public final static native void MgGroup_setInsertionPoint(long jarg1, MgGroup jarg1_, long jarg2, Point2d jarg2_);
   public final static native boolean MgGroup_hasInsertionPoint(long jarg1, MgGroup jarg1_);
   public final static native long MgGroup_getCenterPoint(long jarg1, MgGroup jarg1_);
+  public final static native void MgGroup_setName(long jarg1, MgGroup jarg1_, String jarg2);
+  public final static native long MgGroup_findGroup(long jarg1, MgShapes jarg1_, String jarg2);
   public final static native long new_MgImageShape();
   public final static native void delete_MgImageShape(long jarg1);
   public final static native long MgImageShape_create();

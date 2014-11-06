@@ -177,4 +177,13 @@ public class MgGroup extends MgComposite {
     return new Point2d(touchvgJNI.MgGroup_getCenterPoint(swigCPtr, this), true);
   }
 
+  public void setName(String name) {
+    touchvgJNI.MgGroup_setName(swigCPtr, this, name);
+  }
+
+  public static MgShape findGroup(MgShapes shapes, String name) {
+    long cPtr = touchvgJNI.MgGroup_findGroup(MgShapes.getCPtr(shapes), shapes, name);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
+  }
+
 }
