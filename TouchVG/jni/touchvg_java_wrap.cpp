@@ -7056,20 +7056,22 @@ SwigDirector_CmdObserverDefault::~SwigDirector_CmdObserverDefault() {
 }
 
 
-void SwigDirector_CmdObserverDefault::onDocLoaded(MgMotion const *sender) {
+void SwigDirector_CmdObserverDefault::onDocLoaded(MgMotion const *sender, bool forUndo) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong jsender = 0 ;
+  jboolean jforUndo  ;
   
   if (!swig_override[0]) {
-    CmdObserverDefault::onDocLoaded(sender);
+    CmdObserverDefault::onDocLoaded(sender,forUndo);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((MgMotion **)&jsender) = (MgMotion *) sender; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[191], swigjobj, jsender);
+    jforUndo = (jboolean) forUndo;
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[191], swigjobj, jsender, jforUndo);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -7870,7 +7872,7 @@ void SwigDirector_CmdObserverDefault::swig_connect_director(JNIEnv *jenv, jobjec
     jmethodID base_methid;
   } methods[] = {
     {
-      "onDocLoaded", "(Lrhcad/touchvg/core/MgMotion;)V", NULL 
+      "onDocLoaded", "(Lrhcad/touchvg/core/MgMotion;Z)V", NULL 
     },
     {
       "onEnterSelectCommand", "(Lrhcad/touchvg/core/MgMotion;)V", NULL 
@@ -8531,22 +8533,24 @@ int SwigDirector_MgCommandDraw::getMaxStep() {
   return c_result;
 }
 
-void SwigDirector_MgCommandDraw::setStepPoint(int step, Point2d const &pt) {
+void SwigDirector_MgCommandDraw::setStepPoint(MgMotion const *sender, int step, Point2d const &pt) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
+  jlong jsender = 0 ;
   jint jstep  ;
   jlong jpt = 0 ;
   
   if (!swig_override[19]) {
-    MgCommandDraw::setStepPoint(step,pt);
+    MgCommandDraw::setStepPoint(sender,step,pt);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    *((MgMotion **)&jsender) = (MgMotion *) sender; 
     jstep = (jint) step;
     *(Point2d **)&jpt = (Point2d *) &pt; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[237], swigjobj, jstep, jpt);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[237], swigjobj, jsender, jstep, jpt);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -8623,7 +8627,7 @@ void SwigDirector_MgCommandDraw::swig_connect_director(JNIEnv *jenv, jobject jse
       "getMaxStep", "()I", NULL 
     },
     {
-      "setStepPoint", "(ILrhcad/touchvg/core/Point2d;)V", NULL 
+      "setStepPoint", "(Lrhcad/touchvg/core/MgMotion;ILrhcad/touchvg/core/Point2d;)V", NULL 
     }
   };
   
@@ -9206,22 +9210,24 @@ int SwigDirector_MgCmdDrawRect::getMaxStep() {
   return c_result;
 }
 
-void SwigDirector_MgCmdDrawRect::setStepPoint(int step, Point2d const &pt) {
+void SwigDirector_MgCmdDrawRect::setStepPoint(MgMotion const *sender, int step, Point2d const &pt) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
+  jlong jsender = 0 ;
   jint jstep  ;
   jlong jpt = 0 ;
   
   if (!swig_override[19]) {
-    MgCommandDraw::setStepPoint(step,pt);
+    MgCommandDraw::setStepPoint(sender,step,pt);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    *((MgMotion **)&jsender) = (MgMotion *) sender; 
     jstep = (jint) step;
     *(Point2d **)&jpt = (Point2d *) &pt; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[257], swigjobj, jstep, jpt);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[257], swigjobj, jsender, jstep, jpt);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9324,7 +9330,7 @@ void SwigDirector_MgCmdDrawRect::swig_connect_director(JNIEnv *jenv, jobject jse
       "getMaxStep", "()I", NULL 
     },
     {
-      "setStepPoint", "(ILrhcad/touchvg/core/Point2d;)V", NULL 
+      "setStepPoint", "(Lrhcad/touchvg/core/MgMotion;ILrhcad/touchvg/core/Point2d;)V", NULL 
     },
     {
       "addRectShape", "(Lrhcad/touchvg/core/MgMotion;)V", NULL 
@@ -40365,9 +40371,10 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1CmdObserver(J
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onDocLoaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onDocLoaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jboolean jarg3) {
   CmdObserver *arg1 = (CmdObserver *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
+  bool arg3 ;
   
   (void)jenv;
   (void)jcls;
@@ -40375,7 +40382,8 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onDocLoa
   (void)jarg2_;
   arg1 = *(CmdObserver **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
-  (arg1)->onDocLoaded((MgMotion const *)arg2);
+  arg3 = jarg3 ? true : false; 
+  (arg1)->onDocLoaded((MgMotion const *)arg2,arg3);
 }
 
 
@@ -40910,9 +40918,10 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1CmdObserverDe
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onDocLoaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onDocLoaded(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jboolean jarg3) {
   CmdObserverDefault *arg1 = (CmdObserverDefault *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
+  bool arg3 ;
   
   (void)jenv;
   (void)jcls;
@@ -40920,13 +40929,15 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   (void)jarg2_;
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
-  (arg1)->onDocLoaded((MgMotion const *)arg2);
+  arg3 = jarg3 ? true : false; 
+  (arg1)->onDocLoaded((MgMotion const *)arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onDocLoadedSwigExplicitCmdObserverDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onDocLoadedSwigExplicitCmdObserverDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jboolean jarg3) {
   CmdObserverDefault *arg1 = (CmdObserverDefault *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
+  bool arg3 ;
   
   (void)jenv;
   (void)jcls;
@@ -40934,7 +40945,8 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   (void)jarg2_;
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
-  (arg1)->CmdObserverDefault::onDocLoaded((MgMotion const *)arg2);
+  arg3 = jarg3 ? true : false; 
+  (arg1)->CmdObserverDefault::onDocLoaded((MgMotion const *)arg2,arg3);
 }
 
 
@@ -42258,47 +42270,53 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCommandDraw_1getMax
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCommandDraw_1setStepPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCommandDraw_1setStepPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
   MgCommandDraw *arg1 = (MgCommandDraw *) 0 ;
-  int arg2 ;
-  Point2d *arg3 = 0 ;
+  MgMotion *arg2 = (MgMotion *) 0 ;
+  int arg3 ;
+  Point2d *arg4 = 0 ;
   SwigDirector_MgCommandDraw *darg = 0;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg3_;
+  (void)jarg2_;
+  (void)jarg4_;
   arg1 = *(MgCommandDraw **)&jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = *(Point2d **)&jarg3;
-  if (!arg3) {
+  arg2 = *(MgMotion **)&jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
     return ;
   } 
   darg = dynamic_cast<SwigDirector_MgCommandDraw *>(arg1);
-  (darg)->setStepPoint(arg2,(Point2d const &)*arg3);
+  (darg)->setStepPoint((MgMotion const *)arg2,arg3,(Point2d const &)*arg4);
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCommandDraw_1setStepPointSwigExplicitMgCommandDraw(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCommandDraw_1setStepPointSwigExplicitMgCommandDraw(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_) {
   MgCommandDraw *arg1 = (MgCommandDraw *) 0 ;
-  int arg2 ;
-  Point2d *arg3 = 0 ;
+  MgMotion *arg2 = (MgMotion *) 0 ;
+  int arg3 ;
+  Point2d *arg4 = 0 ;
   SwigDirector_MgCommandDraw *darg = 0;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg3_;
+  (void)jarg2_;
+  (void)jarg4_;
   arg1 = *(MgCommandDraw **)&jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = *(Point2d **)&jarg3;
-  if (!arg3) {
+  arg2 = *(MgMotion **)&jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
     return ;
   } 
   darg = dynamic_cast<SwigDirector_MgCommandDraw *>(arg1);
-  (darg)->setStepPointSwigPublic(arg2,(Point2d const &)*arg3);
+  (darg)->setStepPointSwigPublic((MgMotion const *)arg2,arg3,(Point2d const &)*arg4);
 }
 
 
@@ -43085,6 +43103,27 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCmdArcCSE_1release(
   (void)jarg1_;
   arg1 = *(MgCmdArcCSE **)&jarg1; 
   (arg1)->release();
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCmdArcCSE_1initialize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
+  MgCmdArcCSE *arg1 = (MgCmdArcCSE *) 0 ;
+  MgMotion *arg2 = (MgMotion *) 0 ;
+  MgStorage *arg3 = (MgStorage *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  arg1 = *(MgCmdArcCSE **)&jarg1; 
+  arg2 = *(MgMotion **)&jarg2; 
+  arg3 = *(MgStorage **)&jarg3; 
+  result = (bool)(arg1)->initialize((MgMotion const *)arg2,arg3);
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
@@ -50458,7 +50497,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_MgCommand_doContextAction", "(Lrhcad/touchvg/core/MgCommand;JI)Z" 
     },
     {
-      "SwigDirector_CmdObserverDefault_onDocLoaded", "(Lrhcad/touchvg/core/CmdObserverDefault;J)V" 
+      "SwigDirector_CmdObserverDefault_onDocLoaded", "(Lrhcad/touchvg/core/CmdObserverDefault;JZ)V" 
     },
     {
       "SwigDirector_CmdObserverDefault_onEnterSelectCommand", "(Lrhcad/touchvg/core/CmdObserverDefault;J)V" 
@@ -50596,7 +50635,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_MgCommandDraw_getMaxStep", "(Lrhcad/touchvg/core/MgCommandDraw;)I" 
     },
     {
-      "SwigDirector_MgCommandDraw_setStepPoint", "(Lrhcad/touchvg/core/MgCommandDraw;IJ)V" 
+      "SwigDirector_MgCommandDraw_setStepPoint", "(Lrhcad/touchvg/core/MgCommandDraw;JIJ)V" 
     },
     {
       "SwigDirector_MgCmdDrawRect_release", "(Lrhcad/touchvg/core/MgCmdDrawRect;)V" 
@@ -50656,7 +50695,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_MgCmdDrawRect_getMaxStep", "(Lrhcad/touchvg/core/MgCmdDrawRect;)I" 
     },
     {
-      "SwigDirector_MgCmdDrawRect_setStepPoint", "(Lrhcad/touchvg/core/MgCmdDrawRect;IJ)V" 
+      "SwigDirector_MgCmdDrawRect_setStepPoint", "(Lrhcad/touchvg/core/MgCmdDrawRect;JIJ)V" 
     },
     {
       "SwigDirector_MgCmdDrawRect_addRectShape", "(Lrhcad/touchvg/core/MgCmdDrawRect;J)V" 

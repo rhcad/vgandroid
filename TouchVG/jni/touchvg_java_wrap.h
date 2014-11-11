@@ -306,7 +306,7 @@ public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
     SwigDirector_CmdObserverDefault(JNIEnv *jenv);
     virtual ~SwigDirector_CmdObserverDefault();
-    virtual void onDocLoaded(MgMotion const *sender);
+    virtual void onDocLoaded(MgMotion const *sender, bool forUndo);
     virtual void onEnterSelectCommand(MgMotion const *sender);
     virtual void onUnloadCommands(MgCmdManager *sender);
     virtual bool selectActionsNeedHided(MgMotion const *sender);
@@ -369,9 +369,9 @@ public:
     virtual int getMaxStepSwigPublic() {
       return MgCommandDraw::getMaxStep();
     }
-    virtual void setStepPoint(int step, Point2d const &pt);
-    virtual void setStepPointSwigPublic(int step, Point2d const &pt) {
-      MgCommandDraw::setStepPoint(step,pt);
+    virtual void setStepPoint(MgMotion const *sender, int step, Point2d const &pt);
+    virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
+      MgCommandDraw::setStepPoint(sender,step,pt);
     }
 public:
     bool swig_overrides(int n) {
@@ -409,9 +409,9 @@ public:
     virtual int getMaxStepSwigPublic() {
       return MgCommandDraw::getMaxStep();
     }
-    virtual void setStepPoint(int step, Point2d const &pt);
-    virtual void setStepPointSwigPublic(int step, Point2d const &pt) {
-      MgCommandDraw::setStepPoint(step,pt);
+    virtual void setStepPoint(MgMotion const *sender, int step, Point2d const &pt);
+    virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
+      MgCommandDraw::setStepPoint(sender,step,pt);
     }
     virtual void addRectShape(MgMotion const *sender);
     virtual void addRectShapeSwigPublic(MgMotion const *sender) {

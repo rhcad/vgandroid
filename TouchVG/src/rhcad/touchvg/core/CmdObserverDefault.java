@@ -55,8 +55,8 @@ public class CmdObserverDefault extends CmdObserver {
     touchvgJNI.CmdObserverDefault_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-  public void onDocLoaded(MgMotion sender) {
-    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender); else touchvgJNI.CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  public void onDocLoaded(MgMotion sender, boolean forUndo) {
+    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender, forUndo); else touchvgJNI.CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, forUndo);
   }
 
   public void onEnterSelectCommand(MgMotion sender) {

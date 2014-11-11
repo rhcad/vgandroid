@@ -20,6 +20,7 @@ public final class GiHandleTypes {
   public final static GiHandleTypes kGiHandleCenter = new GiHandleTypes("kGiHandleCenter");
   public final static GiHandleTypes kGiHandleMidPoint = new GiHandleTypes("kGiHandleMidPoint");
   public final static GiHandleTypes kGiHandleQuadrant = new GiHandleTypes("kGiHandleQuadrant");
+  public final static GiHandleTypes kGiHandleTangent = new GiHandleTypes("kGiHandleTangent");
   public final static GiHandleTypes kGiHandleIntersect = new GiHandleTypes("kGiHandleIntersect");
   public final static GiHandleTypes kGiHandleNear = new GiHandleTypes("kGiHandleNear");
   public final static GiHandleTypes kGiHandleCustom = new GiHandleTypes("kGiHandleCustom", 20);
@@ -58,7 +59,7 @@ public final class GiHandleTypes {
     swigNext = this.swigValue+1;
   }
 
-  private static GiHandleTypes[] swigValues = { kGiHandleVertex, kGiHandleHotVertex, kGiHandleRotate, kGiHandleLock, kGiHandleUnlock, kGiHandleCancel, kGiHandleAccept, kGiHandleNode, kGiHandleCenter, kGiHandleMidPoint, kGiHandleQuadrant, kGiHandleIntersect, kGiHandleNear, kGiHandleCustom };
+  private static GiHandleTypes[] swigValues = { kGiHandleVertex, kGiHandleHotVertex, kGiHandleRotate, kGiHandleLock, kGiHandleUnlock, kGiHandleCancel, kGiHandleAccept, kGiHandleNode, kGiHandleCenter, kGiHandleMidPoint, kGiHandleQuadrant, kGiHandleTangent, kGiHandleIntersect, kGiHandleNear, kGiHandleCustom };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

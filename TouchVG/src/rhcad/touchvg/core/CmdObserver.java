@@ -35,8 +35,8 @@ public class CmdObserver {
     }
   }
 
-  public void onDocLoaded(MgMotion sender) {
-    touchvgJNI.CmdObserver_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  public void onDocLoaded(MgMotion sender, boolean forUndo) {
+    touchvgJNI.CmdObserver_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender, forUndo);
   }
 
   public void onEnterSelectCommand(MgMotion sender) {

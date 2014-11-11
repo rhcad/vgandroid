@@ -1668,7 +1668,7 @@ public class touchvgJNI {
   public final static native void MgCommand_director_connect(MgCommand obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgCommand_change_ownership(MgCommand obj, long cptr, boolean take_or_release);
   public final static native void delete_CmdObserver(long jarg1);
-  public final static native void CmdObserver_onDocLoaded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
+  public final static native void CmdObserver_onDocLoaded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, boolean jarg3);
   public final static native void CmdObserver_onEnterSelectCommand(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserver_onUnloadCommands(long jarg1, CmdObserver jarg1_, long jarg2, MgCmdManager jarg2_);
   public final static native boolean CmdObserver_selectActionsNeedHided(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_);
@@ -1697,8 +1697,8 @@ public class touchvgJNI {
   public final static native void CmdObserver_onPointSnapped(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native long new_CmdObserverDefault();
   public final static native void delete_CmdObserverDefault(long jarg1);
-  public final static native void CmdObserverDefault_onDocLoaded(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
-  public final static native void CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
+  public final static native void CmdObserverDefault_onDocLoaded(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, boolean jarg3);
+  public final static native void CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, boolean jarg3);
   public final static native void CmdObserverDefault_onEnterSelectCommand(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserverDefault_onEnterSelectCommandSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void CmdObserverDefault_onUnloadCommands(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgCmdManager jarg2_);
@@ -1771,8 +1771,8 @@ public class touchvgJNI {
   public final static native long MgCommandDraw_getLastSnappedOriginPoint();
   public final static native int MgCommandDraw_getMaxStep(long jarg1, MgCommandDraw jarg1_);
   public final static native int MgCommandDraw_getMaxStepSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_);
-  public final static native void MgCommandDraw_setStepPoint(long jarg1, MgCommandDraw jarg1_, int jarg2, long jarg3, Point2d jarg3_);
-  public final static native void MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, int jarg2, long jarg3, Point2d jarg3_);
+  public final static native void MgCommandDraw_setStepPoint(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3, long jarg4, Point2d jarg4_);
+  public final static native void MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native boolean MgCommandDraw_initialize(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgStorage jarg3_);
   public final static native boolean MgCommandDraw_initializeSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgStorage jarg3_);
   public final static native boolean MgCommandDraw_backStep(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
@@ -1817,6 +1817,7 @@ public class touchvgJNI {
   public final static native long new_MgCmdArcCSE__SWIG_0(String jarg1);
   public final static native long new_MgCmdArcCSE__SWIG_1();
   public final static native void MgCmdArcCSE_release(long jarg1, MgCmdArcCSE jarg1_);
+  public final static native boolean MgCmdArcCSE_initialize(long jarg1, MgCmdArcCSE jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgStorage jarg3_);
   public final static native boolean MgCmdArcCSE_draw(long jarg1, MgCmdArcCSE jarg1_, long jarg2, MgMotion jarg2_, long jarg3, GiGraphics jarg3_);
   public final static native boolean MgCmdArcCSE_click(long jarg1, MgCmdArcCSE jarg1_, long jarg2, MgMotion jarg2_);
   public final static native void delete_MgCmdArcCSE(long jarg1);
@@ -2812,8 +2813,8 @@ public class touchvgJNI {
   public static boolean SwigDirector_MgCommand_doContextAction(MgCommand self, long sender, int action) {
     return self.doContextAction((sender == 0) ? null : new MgMotion(sender, false), action);
   }
-  public static void SwigDirector_CmdObserverDefault_onDocLoaded(CmdObserverDefault self, long sender) {
-    self.onDocLoaded((sender == 0) ? null : new MgMotion(sender, false));
+  public static void SwigDirector_CmdObserverDefault_onDocLoaded(CmdObserverDefault self, long sender, boolean forUndo) {
+    self.onDocLoaded((sender == 0) ? null : new MgMotion(sender, false), forUndo);
   }
   public static void SwigDirector_CmdObserverDefault_onEnterSelectCommand(CmdObserverDefault self, long sender) {
     self.onEnterSelectCommand((sender == 0) ? null : new MgMotion(sender, false));
@@ -2950,8 +2951,8 @@ public class touchvgJNI {
   public static int SwigDirector_MgCommandDraw_getMaxStep(MgCommandDraw self) {
     return self.getMaxStep();
   }
-  public static void SwigDirector_MgCommandDraw_setStepPoint(MgCommandDraw self, int step, long pt) {
-    self.setStepPoint(step, new Point2d(pt, false));
+  public static void SwigDirector_MgCommandDraw_setStepPoint(MgCommandDraw self, long sender, int step, long pt) {
+    self.setStepPoint((sender == 0) ? null : new MgMotion(sender, false), step, new Point2d(pt, false));
   }
   public static void SwigDirector_MgCmdDrawRect_release(MgCmdDrawRect self) {
     self.release();
@@ -3010,8 +3011,8 @@ public class touchvgJNI {
   public static int SwigDirector_MgCmdDrawRect_getMaxStep(MgCmdDrawRect self) {
     return self.getMaxStep();
   }
-  public static void SwigDirector_MgCmdDrawRect_setStepPoint(MgCmdDrawRect self, int step, long pt) {
-    self.setStepPoint(step, new Point2d(pt, false));
+  public static void SwigDirector_MgCmdDrawRect_setStepPoint(MgCmdDrawRect self, long sender, int step, long pt) {
+    self.setStepPoint((sender == 0) ? null : new MgMotion(sender, false), step, new Point2d(pt, false));
   }
   public static void SwigDirector_MgCmdDrawRect_addRectShape(MgCmdDrawRect self, long sender) {
     self.addRectShape((sender == 0) ? null : new MgMotion(sender, false));

@@ -101,8 +101,8 @@ public class MgCommandDraw extends MgCommand {
     return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_getMaxStep(swigCPtr, this) : touchvgJNI.MgCommandDraw_getMaxStepSwigExplicitMgCommandDraw(swigCPtr, this);
   }
 
-  protected void setStepPoint(int step, Point2d pt) {
-    if (getClass() == MgCommandDraw.class) touchvgJNI.MgCommandDraw_setStepPoint(swigCPtr, this, step, Point2d.getCPtr(pt), pt); else touchvgJNI.MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(swigCPtr, this, step, Point2d.getCPtr(pt), pt);
+  protected void setStepPoint(MgMotion sender, int step, Point2d pt) {
+    if (getClass() == MgCommandDraw.class) touchvgJNI.MgCommandDraw_setStepPoint(swigCPtr, this, MgMotion.getCPtr(sender), sender, step, Point2d.getCPtr(pt), pt); else touchvgJNI.MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, step, Point2d.getCPtr(pt), pt);
   }
 
   public boolean initialize(MgMotion sender, MgStorage s) {
