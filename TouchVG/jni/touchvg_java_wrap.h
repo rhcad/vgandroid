@@ -319,7 +319,7 @@ public:
     virtual bool onShapeWillAdded(MgMotion const *sender, MgShape *sp);
     virtual void onShapeAdded(MgMotion const *sender, MgShape *sp);
     virtual bool onShapeWillDeleted(MgMotion const *sender, MgShape const *sp);
-    virtual void onShapeDeleted(MgMotion const *sender, MgShape const *sp);
+    virtual int onShapeDeleted(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanRotated(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanTransform(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUnlock(MgMotion const *sender, MgShape const *sp);

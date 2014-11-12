@@ -1561,7 +1561,7 @@ public class touchvgJNI {
   public final static native boolean MgView_shapeWillAdded(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native void MgView_shapeAdded(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeWillDeleted(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
-  public final static native boolean MgView_removeShape(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
+  public final static native int MgView_removeShape(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeCanRotated(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeCanTransform(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeCanUnlock(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
@@ -1681,7 +1681,7 @@ public class touchvgJNI {
   public final static native boolean CmdObserver_onShapeWillAdded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native void CmdObserver_onShapeAdded(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserver_onShapeWillDeleted(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
-  public final static native void CmdObserver_onShapeDeleted(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
+  public final static native int CmdObserver_onShapeDeleted(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserver_onShapeCanRotated(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserver_onShapeCanTransform(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserver_onShapeCanUnlock(long jarg1, CmdObserver jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
@@ -1721,8 +1721,8 @@ public class touchvgJNI {
   public final static native void CmdObserverDefault_onShapeAddedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeWillDeleted(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeWillDeletedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
-  public final static native void CmdObserverDefault_onShapeDeleted(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
-  public final static native void CmdObserverDefault_onShapeDeletedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
+  public final static native int CmdObserverDefault_onShapeDeleted(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
+  public final static native int CmdObserverDefault_onShapeDeletedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeCanRotated(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeCanRotatedSwigExplicitCmdObserverDefault(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
   public final static native boolean CmdObserverDefault_onShapeCanTransform(long jarg1, CmdObserverDefault jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgShape jarg3_);
@@ -2852,8 +2852,8 @@ public class touchvgJNI {
   public static boolean SwigDirector_CmdObserverDefault_onShapeWillDeleted(CmdObserverDefault self, long sender, long sp) {
     return self.onShapeWillDeleted((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));
   }
-  public static void SwigDirector_CmdObserverDefault_onShapeDeleted(CmdObserverDefault self, long sender, long sp) {
-    self.onShapeDeleted((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));
+  public static int SwigDirector_CmdObserverDefault_onShapeDeleted(CmdObserverDefault self, long sender, long sp) {
+    return self.onShapeDeleted((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));
   }
   public static boolean SwigDirector_CmdObserverDefault_onShapeCanRotated(CmdObserverDefault self, long sender, long sp) {
     return self.onShapeCanRotated((sender == 0) ? null : new MgMotion(sender, false), (sp == 0) ? null : new MgShape(sp, false));

@@ -203,7 +203,7 @@ public class MgView {
     return touchvgJNI.MgView_shapeWillDeleted(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
-  public boolean removeShape(MgShape shape) {
+  public int removeShape(MgShape shape) {
     return touchvgJNI.MgView_removeShape(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 

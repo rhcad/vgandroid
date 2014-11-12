@@ -12,7 +12,7 @@ public class FileUtil {
 
     //! 返回指定后缀名的文件名
     public static String addExtension(String filename, String ext) {
-        if (filename != null && !filename.endsWith(ext)) {
+        if (filename != null && !filename.endsWith(ext) && !filename.endsWith(".json")) {
             return filename.substring(0, filename.lastIndexOf('.')) + ext;
         }
         return filename;

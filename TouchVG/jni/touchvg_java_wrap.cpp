@@ -7440,7 +7440,9 @@ bool SwigDirector_CmdObserverDefault::onShapeWillDeleted(MgMotion const *sender,
   return c_result;
 }
 
-void SwigDirector_CmdObserverDefault::onShapeDeleted(MgMotion const *sender, MgShape const *sp) {
+int SwigDirector_CmdObserverDefault::onShapeDeleted(MgMotion const *sender, MgShape const *sp) {
+  int c_result = SwigValueInit< int >() ;
+  jint jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
@@ -7448,24 +7450,25 @@ void SwigDirector_CmdObserverDefault::onShapeDeleted(MgMotion const *sender, MgS
   jlong jsp = 0 ;
   
   if (!swig_override[13]) {
-    CmdObserverDefault::onShapeDeleted(sender,sp);
-    return;
+    return CmdObserverDefault::onShapeDeleted(sender,sp);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((MgMotion **)&jsender) = (MgMotion *) sender; 
     *((MgShape **)&jsp) = (MgShape *) sp; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[204], swigjobj, jsender, jsp);
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_touchvgJNI, Swig::director_methids[204], swigjobj, jsender, jsp);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
       throw Swig::DirectorException(jenv, swigerror);
     }
     
+    c_result = (int)jresult; 
   } else {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in CmdObserverDefault::onShapeDeleted ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+  return c_result;
 }
 
 bool SwigDirector_CmdObserverDefault::onShapeCanRotated(MgMotion const *sender, MgShape const *sp) {
@@ -7911,7 +7914,7 @@ void SwigDirector_CmdObserverDefault::swig_connect_director(JNIEnv *jenv, jobjec
       "onShapeWillDeleted", "(Lrhcad/touchvg/core/MgMotion;Lrhcad/touchvg/core/MgShape;)Z", NULL 
     },
     {
-      "onShapeDeleted", "(Lrhcad/touchvg/core/MgMotion;Lrhcad/touchvg/core/MgShape;)V", NULL 
+      "onShapeDeleted", "(Lrhcad/touchvg/core/MgMotion;Lrhcad/touchvg/core/MgShape;)I", NULL 
     },
     {
       "onShapeCanRotated", "(Lrhcad/touchvg/core/MgMotion;Lrhcad/touchvg/core/MgShape;)Z", NULL 
@@ -38607,11 +38610,11 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1shapeWill
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1removeShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1removeShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jint jresult = 0 ;
   MgView *arg1 = (MgView *) 0 ;
   MgShape *arg2 = (MgShape *) 0 ;
-  bool result;
+  int result;
   
   (void)jenv;
   (void)jcls;
@@ -38619,8 +38622,8 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1removeSha
   (void)jarg2_;
   arg1 = *(MgView **)&jarg1; 
   arg2 = *(MgShape **)&jarg2; 
-  result = (bool)(arg1)->removeShape((MgShape const *)arg2);
-  jresult = (jboolean)result; 
+  result = (int)(arg1)->removeShape((MgShape const *)arg2);
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -40618,10 +40621,12 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onSh
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onShapeDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onShapeDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jint jresult = 0 ;
   CmdObserver *arg1 = (CmdObserver *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
   MgShape *arg3 = (MgShape *) 0 ;
+  int result;
   
   (void)jenv;
   (void)jcls;
@@ -40631,7 +40636,9 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserver_1onShapeD
   arg1 = *(CmdObserver **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  result = (int)(arg1)->onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  jresult = (jint)result; 
+  return jresult;
 }
 
 
@@ -41352,10 +41359,12 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefaul
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onShapeDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onShapeDeleted(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jint jresult = 0 ;
   CmdObserverDefault *arg1 = (CmdObserverDefault *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
   MgShape *arg3 = (MgShape *) 0 ;
+  int result;
   
   (void)jenv;
   (void)jcls;
@@ -41365,14 +41374,18 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  result = (int)(arg1)->onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  jresult = (jint)result; 
+  return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onShapeDeletedSwigExplicitCmdObserverDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1onShapeDeletedSwigExplicitCmdObserverDefault(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jint jresult = 0 ;
   CmdObserverDefault *arg1 = (CmdObserverDefault *) 0 ;
   MgMotion *arg2 = (MgMotion *) 0 ;
   MgShape *arg3 = (MgShape *) 0 ;
+  int result;
   
   (void)jenv;
   (void)jcls;
@@ -41382,7 +41395,9 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdObserverDefault_1o
   arg1 = *(CmdObserverDefault **)&jarg1; 
   arg2 = *(MgMotion **)&jarg2; 
   arg3 = *(MgShape **)&jarg3; 
-  (arg1)->CmdObserverDefault::onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  result = (int)(arg1)->CmdObserverDefault::onShapeDeleted((MgMotion const *)arg2,(MgShape const *)arg3);
+  jresult = (jint)result; 
+  return jresult;
 }
 
 
@@ -50536,7 +50551,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_CmdObserverDefault_onShapeWillDeleted", "(Lrhcad/touchvg/core/CmdObserverDefault;JJ)Z" 
     },
     {
-      "SwigDirector_CmdObserverDefault_onShapeDeleted", "(Lrhcad/touchvg/core/CmdObserverDefault;JJ)V" 
+      "SwigDirector_CmdObserverDefault_onShapeDeleted", "(Lrhcad/touchvg/core/CmdObserverDefault;JJ)I" 
     },
     {
       "SwigDirector_CmdObserverDefault_onShapeCanRotated", "(Lrhcad/touchvg/core/CmdObserverDefault;JJ)Z" 

@@ -87,8 +87,8 @@ public class CmdObserver {
     return touchvgJNI.CmdObserver_onShapeWillDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
-  public void onShapeDeleted(MgMotion sender, MgShape sp) {
-    touchvgJNI.CmdObserver_onShapeDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  public int onShapeDeleted(MgMotion sender, MgShape sp) {
+    return touchvgJNI.CmdObserver_onShapeDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
   public boolean onShapeCanRotated(MgMotion sender, MgShape sp) {
