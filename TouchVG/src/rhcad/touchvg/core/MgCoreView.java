@@ -392,6 +392,10 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_getViewModelBox(swigCPtr, this, Floats.getCPtr(box), box);
   }
 
+  public boolean getModelBox(Floats box) {
+    return touchvgJNI.MgCoreView_getModelBox(swigCPtr, this, Floats.getCPtr(box), box);
+  }
+
   public boolean getDisplayExtent(Floats box) {
     return touchvgJNI.MgCoreView_getDisplayExtent__SWIG_0(swigCPtr, this, Floats.getCPtr(box), box);
   }

@@ -190,7 +190,10 @@ public class ViewHelperImpl implements IViewHelper {
 
     @Override
     public void setOption(String name, boolean value) {
-        if (name.equals("zoomEnabled")) {
+        if (name == null) {
+            coreView().setOptionBool(name, value);
+        }
+        else if (name.equals("zoomEnabled")) {
             setZoomEnabled(value);
         } else if (name.equals("contextActionEnabled")) {
             getGraphView().setContextActionEnabled(value);
@@ -562,6 +565,11 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public Rect getViewBox() {
         return Snapshot.getViewBox(view());
+    }
+
+    @Override
+    public Rect getModelBox() {
+        return Snapshot.getModelBox(view());
     }
 
     @Override

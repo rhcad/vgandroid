@@ -290,6 +290,9 @@ public interface IViewHelper {
     //! 返回当前视图区域的模型坐标范围，模型坐标
     public Rect getViewBox();
 
+    //! 返回文档的模型坐标范围
+    public Rect getModelBox();
+
     //! 返回图形显示范围
     public Rect getDisplayExtent();
 

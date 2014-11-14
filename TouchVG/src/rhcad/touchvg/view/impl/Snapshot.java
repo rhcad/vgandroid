@@ -186,6 +186,11 @@ public class Snapshot {
         return toBox(box, view != null && view.coreView().getViewModelBox(box));
     }
 
+    public static Rect getModelBox(BaseGraphView view) {
+        final Floats box = new Floats(4);
+        return toBox(box, view != null && view.coreView().getModelBox(box));
+    }
+
     public static Rect getDisplayExtent(BaseGraphView view) {
         final Floats box = new Floats(4);
         return toBox(box, view != null && view.coreView().getDisplayExtent(box));
