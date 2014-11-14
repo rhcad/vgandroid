@@ -41,7 +41,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 24;
+    private static final int JARVERSION = 25;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -192,8 +192,7 @@ public class ViewHelperImpl implements IViewHelper {
     public void setOption(String name, boolean value) {
         if (name == null) {
             coreView().setOptionBool(name, value);
-        }
-        else if (name.equals("zoomEnabled")) {
+        } else if (name.equals("zoomEnabled")) {
             setZoomEnabled(value);
         } else if (name.equals("contextActionEnabled")) {
             getGraphView().setContextActionEnabled(value);

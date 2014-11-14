@@ -99,6 +99,18 @@ public class GiColor {
     return new GiColor(touchvgJNI.GiColor_Black(), true);
   }
 
+  public static GiColor Blue() {
+    return new GiColor(touchvgJNI.GiColor_Blue(), true);
+  }
+
+  public static GiColor Red() {
+    return new GiColor(touchvgJNI.GiColor_Red(), true);
+  }
+
+  public static GiColor Green() {
+    return new GiColor(touchvgJNI.GiColor_Green(), true);
+  }
+
   public static GiColor Invalid() {
     return new GiColor(touchvgJNI.GiColor_Invalid(), true);
   }
