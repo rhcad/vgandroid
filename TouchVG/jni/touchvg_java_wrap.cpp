@@ -10524,20 +10524,6 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI__1FLT_1MAX_1get(JNI
 }
 
 
-SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgRound(JNIEnv *jenv, jclass jcls, jfloat jarg1) {
-  jint jresult = 0 ;
-  float arg1 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (float)jarg1; 
-  result = (int)mgRound(arg1);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Tol_1gTol(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   Tol result;
@@ -24126,6 +24112,30 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1readFloa
 }
 
 
+SWIGEXPORT jdouble JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1readDouble(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jdouble jarg3) {
+  jdouble jresult = 0 ;
+  MgStorage *arg1 = (MgStorage *) 0 ;
+  char *arg2 = (char *) 0 ;
+  double arg3 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgStorage **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = (double)jarg3; 
+  result = (double)(arg1)->readDouble((char const *)arg2,arg3);
+  jresult = (jdouble)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1writeBool(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jboolean jarg3) {
   MgStorage *arg1 = (MgStorage *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -24162,6 +24172,26 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1writeFloat
   }
   arg3 = (float)jarg3; 
   (arg1)->writeFloat((char const *)arg2,arg3);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1writeDouble(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jdouble jarg3) {
+  MgStorage *arg1 = (MgStorage *) 0 ;
+  char *arg2 = (char *) 0 ;
+  double arg3 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgStorage **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  arg3 = (double)jarg3; 
+  (arg1)->writeDouble((char const *)arg2,arg3);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
 }
 

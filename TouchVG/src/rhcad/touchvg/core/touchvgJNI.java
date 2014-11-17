@@ -31,7 +31,6 @@ public class touchvgJNI {
   public final static native float _M_1_SQRPI_get();
   public final static native float _FLT_MIN_get();
   public final static native float _FLT_MAX_get();
-  public final static native int mgRound(float jarg1);
   public final static native long Tol_gTol();
   public final static native long Tol_minTol();
   public final static native long new_Tol__SWIG_0();
@@ -719,8 +718,10 @@ public class touchvgJNI {
   public final static native boolean MgStorage_writeNode(long jarg1, MgStorage jarg1_, String jarg2, int jarg3, boolean jarg4);
   public final static native boolean MgStorage_readBool(long jarg1, MgStorage jarg1_, String jarg2, boolean jarg3);
   public final static native float MgStorage_readFloat(long jarg1, MgStorage jarg1_, String jarg2, float jarg3);
+  public final static native double MgStorage_readDouble(long jarg1, MgStorage jarg1_, String jarg2, double jarg3);
   public final static native void MgStorage_writeBool(long jarg1, MgStorage jarg1_, String jarg2, boolean jarg3);
   public final static native void MgStorage_writeFloat(long jarg1, MgStorage jarg1_, String jarg2, float jarg3);
+  public final static native void MgStorage_writeDouble(long jarg1, MgStorage jarg1_, String jarg2, double jarg3);
   public final static native void MgStorage_writeString(long jarg1, MgStorage jarg1_, String jarg2, String jarg3);
   public final static native int MgStorage_readFloatArray(long jarg1, MgStorage jarg1_, String jarg2);
   public final static native int MgStorage_readIntArray(long jarg1, MgStorage jarg1_, String jarg2);
