@@ -386,7 +386,7 @@ public class touchvgJNI {
   public final static native boolean GiCanvas_clipPath(long jarg1, GiCanvas jarg1_);
   public final static native boolean GiCanvas_drawHandle(long jarg1, GiCanvas jarg1_, float jarg2, float jarg3, int jarg4, float jarg5);
   public final static native boolean GiCanvas_drawBitmap(long jarg1, GiCanvas jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, float jarg6, float jarg7);
-  public final static native float GiCanvas_drawTextAt(long jarg1, GiCanvas jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, int jarg6);
+  public final static native float GiCanvas_drawTextAt(long jarg1, GiCanvas jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, int jarg6, float jarg7);
   public final static native boolean GiCanvas_beginShape(long jarg1, GiCanvas jarg1_, int jarg2, int jarg3, int jarg4, float jarg5, float jarg6, float jarg7, float jarg8);
   public final static native boolean GiCanvas_beginShapeSwigExplicitGiCanvas(long jarg1, GiCanvas jarg1_, int jarg2, int jarg3, int jarg4, float jarg5, float jarg6, float jarg7, float jarg8);
   public final static native void GiCanvas_endShape(long jarg1, GiCanvas jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
@@ -646,8 +646,9 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4, boolean jarg5);
   public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_2(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
-  public final static native boolean GiGraphics_drawTextAt__SWIG_0(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6);
-  public final static native boolean GiGraphics_drawTextAt__SWIG_1(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5);
+  public final static native boolean GiGraphics_drawTextAt__SWIG_0(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6, float jarg7);
+  public final static native boolean GiGraphics_drawTextAt__SWIG_1(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6);
+  public final static native boolean GiGraphics_drawTextAt__SWIG_2(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5);
   public final static native boolean GiGraphics_beginPaint__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_, long jarg3, RECT_2D jarg3_);
   public final static native boolean GiGraphics_beginPaint__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_);
   public final static native void GiGraphics_endPaint(long jarg1, GiGraphics jarg1_);
@@ -2155,6 +2156,7 @@ public class touchvgJNI {
   public final static native void TestCanvas_testHandle(long jarg1, GiCanvas jarg1_, int jarg2);
   public final static native void TestCanvas_testDynCurves(long jarg1, GiCanvas jarg1_);
   public final static native void TestCanvas_testTextAt(long jarg1, GiCanvas jarg1_, int jarg2);
+  public final static native void TestCanvas_testRotateText(long jarg1, GiCanvas jarg1_, int jarg2);
   public final static native long new_TestCanvas();
   public final static native void delete_TestCanvas(long jarg1);
   public final static native long GiPlaying_fromHandle(int jarg1);
@@ -2302,8 +2304,8 @@ public class touchvgJNI {
   public static boolean SwigDirector_GiCanvas_drawBitmap(GiCanvas self, String name, float xc, float yc, float w, float h, float angle) {
     return self.drawBitmap(name, xc, yc, w, h, angle);
   }
-  public static float SwigDirector_GiCanvas_drawTextAt(GiCanvas self, String text, float x, float y, float h, int align) {
-    return self.drawTextAt(text, x, y, h, align);
+  public static float SwigDirector_GiCanvas_drawTextAt(GiCanvas self, String text, float x, float y, float h, int align, float angle) {
+    return self.drawTextAt(text, x, y, h, align, angle);
   }
   public static boolean SwigDirector_GiCanvas_beginShape(GiCanvas self, int type, int sid, int version, float x, float y, float w, float h) {
     return self.beginShape(type, sid, version, x, y, w, h);

@@ -1283,7 +1283,7 @@ bool SwigDirector_GiCanvas::drawBitmap(char const *name, float xc, float yc, flo
   return c_result;
 }
 
-float SwigDirector_GiCanvas::drawTextAt(char const *text, float x, float y, float h, int align) {
+float SwigDirector_GiCanvas::drawTextAt(char const *text, float x, float y, float h, int align, float angle) {
   float c_result = SwigValueInit< float >() ;
   jfloat jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
@@ -1294,6 +1294,7 @@ float SwigDirector_GiCanvas::drawTextAt(char const *text, float x, float y, floa
   jfloat jy  ;
   jfloat jh  ;
   jint jalign  ;
+  jfloat jangle  ;
   
   if (!swig_override[19]) {
     SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method GiCanvas::drawTextAt.");
@@ -1310,7 +1311,8 @@ float SwigDirector_GiCanvas::drawTextAt(char const *text, float x, float y, floa
     jy = (jfloat) y;
     jh = (jfloat) h;
     jalign = (jint) align;
-    jresult = (jfloat) jenv->CallStaticFloatMethod(Swig::jclass_touchvgJNI, Swig::director_methids[19], swigjobj, jtext, jx, jy, jh, jalign);
+    jangle = (jfloat) angle;
+    jresult = (jfloat) jenv->CallStaticFloatMethod(Swig::jclass_touchvgJNI, Swig::director_methids[19], swigjobj, jtext, jx, jy, jh, jalign, jangle);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -1462,7 +1464,7 @@ void SwigDirector_GiCanvas::swig_connect_director(JNIEnv *jenv, jobject jself, j
       "drawBitmap", "(Ljava/lang/String;FFFFF)Z", NULL 
     },
     {
-      "drawTextAt", "(Ljava/lang/String;FFFI)F", NULL 
+      "drawTextAt", "(Ljava/lang/String;FFFIF)F", NULL 
     },
     {
       "beginShape", "(IIIFFFF)Z", NULL 
@@ -17771,7 +17773,7 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCanvas_1drawBit
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCanvas_1drawTextAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6) {
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCanvas_1drawTextAt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6, jfloat jarg7) {
   jfloat jresult = 0 ;
   GiCanvas *arg1 = (GiCanvas *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -17779,6 +17781,7 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCanvas_1drawTextA
   float arg4 ;
   float arg5 ;
   int arg6 ;
+  float arg7 ;
   float result;
   
   (void)jenv;
@@ -17794,7 +17797,8 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiCanvas_1drawTextA
   arg4 = (float)jarg4; 
   arg5 = (float)jarg5; 
   arg6 = (int)jarg6; 
-  result = (float)(arg1)->drawTextAt((char const *)arg2,arg3,arg4,arg5,arg6);
+  arg7 = (float)jarg7; 
+  result = (float)(arg1)->drawTextAt((char const *)arg2,arg3,arg4,arg5,arg6,arg7);
   jresult = (jfloat)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
@@ -22931,7 +22935,44 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawH
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6, jfloat jarg7) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  Point2d *arg4 = 0 ;
+  float arg5 ;
+  int arg6 ;
+  float arg7 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg4_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = 0;
+  if (jarg3) {
+    arg3 = (char *)jenv->GetStringUTFChars(jarg3, 0);
+    if (!arg3) return 0;
+  }
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = (float)jarg5; 
+  arg6 = (int)jarg6; 
+  arg7 = (float)jarg7; 
+  result = (bool)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5,arg6,arg7);
+  jresult = (jboolean)result; 
+  if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
   int arg2 ;
@@ -22966,7 +23007,7 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawT
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5) {
   jboolean jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
   int arg2 ;
@@ -48898,6 +48939,19 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_TestCanvas_1testTextA
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_TestCanvas_1testRotateText(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  GiCanvas *arg1 = (GiCanvas *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiCanvas **)&jarg1; 
+  arg2 = (int)jarg2; 
+  TestCanvas::testRotateText(arg1,arg2);
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1TestCanvas(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   TestCanvas *result = 0 ;
@@ -50088,7 +50142,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_GiCanvas_drawBitmap", "(Lrhcad/touchvg/core/GiCanvas;Ljava/lang/String;FFFFF)Z" 
     },
     {
-      "SwigDirector_GiCanvas_drawTextAt", "(Lrhcad/touchvg/core/GiCanvas;Ljava/lang/String;FFFI)F" 
+      "SwigDirector_GiCanvas_drawTextAt", "(Lrhcad/touchvg/core/GiCanvas;Ljava/lang/String;FFFIF)F" 
     },
     {
       "SwigDirector_GiCanvas_beginShape", "(Lrhcad/touchvg/core/GiCanvas;IIIFFFF)Z" 

@@ -36,7 +36,7 @@ public:
     virtual bool clipPath();
     virtual bool drawHandle(float x, float y, int type, float angle);
     virtual bool drawBitmap(char const *name, float xc, float yc, float w, float h, float angle);
-    virtual float drawTextAt(char const *text, float x, float y, float h, int align);
+    virtual float drawTextAt(char const *text, float x, float y, float h, int align, float angle);
     virtual bool beginShape(int type, int sid, int version, float x, float y, float w, float h);
     virtual void endShape(int type, int sid, float x, float y);
 public:

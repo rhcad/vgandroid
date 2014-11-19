@@ -126,8 +126,8 @@ public class GiCanvas {
     return touchvgJNI.GiCanvas_drawBitmap(swigCPtr, this, name, xc, yc, w, h, angle);
   }
 
-  public float drawTextAt(String text, float x, float y, float h, int align) {
-    return touchvgJNI.GiCanvas_drawTextAt(swigCPtr, this, text, x, y, h, align);
+  public float drawTextAt(String text, float x, float y, float h, int align, float angle) {
+    return touchvgJNI.GiCanvas_drawTextAt(swigCPtr, this, text, x, y, h, align, angle);
   }
 
   public boolean beginShape(int type, int sid, int version, float x, float y, float w, float h) {

@@ -346,7 +346,7 @@ public class CanvasAdapter extends GiCanvas {
     }
 
     @Override
-    public float drawTextAt(String text, float x, float y, float h, int align) {
+    public float drawTextAt(String text, float x, float y, float h, int align, float angle) {
         final Paint.FontMetrics fm = mBrush.getFontMetrics();
         float lineHeight = Math.abs(fm.descent) + Math.abs(fm.ascent);
 
@@ -358,9 +358,24 @@ public class CanvasAdapter extends GiCanvas {
             text = ResourceUtil.getStringFromName(mView.getContext(), text.substring(1));
         }
 
+        Matrix mat = null;
         float w = mBrush.measureText(text);
+
+        if (Math.abs(angle) > 1e-3f) {
+            mat = new Matrix();
+            mat.postRotate(-angle * 180.f / 3.1415926f);
+            mat.postTranslate(x, y);
+            x = y = 0;
+            mCanvas.concat(mat);
+        }
+
         x -= (align == 2) ? w : ((align == 1) ? w / 2 : 0);
         mCanvas.drawText(text, x, y - fm.top, mBrush);
+
+        if (mat != null) {
+            mat.invert(mat);
+            mCanvas.concat(mat);
+        }
 
         return w;
     }

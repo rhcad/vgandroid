@@ -99,6 +99,10 @@ public class TestCanvas {
     touchvgJNI.TestCanvas_testTextAt(GiCanvas.getCPtr(canvas), canvas, n);
   }
 
+  public static void testRotateText(GiCanvas canvas, int n) {
+    touchvgJNI.TestCanvas_testRotateText(GiCanvas.getCPtr(canvas), canvas, n);
+  }
+
   public TestCanvas() {
     this(touchvgJNI.new_TestCanvas(), true);
   }
@@ -114,6 +118,7 @@ public class TestCanvas {
   public final static int kClipPath = 0x100;
   public final static int kHandle = 0x200;
   public final static int kDynCurves = 0x400;
+  public final static int kRotateText = 0x800;
   public final static int kClearPolygon = 0x80|0x40|0x02;
 
 }
