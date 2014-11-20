@@ -149,5 +149,13 @@ public class GiCanvas {
   public final static int kLineCapButt = 0x10000;
   public final static int kLineCapRound = 0x20000;
   public final static int kLineCapSquare = 0x40000;
+  public final static int kAlignLeft = 0;
+  public final static int kAlignCenter = 1;
+  public final static int kAlignRight = 2;
+  public final static int kAlignHorz = 0xF;
+  public final static int kAlignTop = 0;
+  public final static int kAlignBottom = 0x10;
+  public final static int kAlignVCenter = 0x20;
+  public final static int kAlignVert = 0xF0;
 
 }

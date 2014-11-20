@@ -360,4 +360,11 @@ public class GiGraphics {
     touchvgJNI.GiGraphics_endPaint(swigCPtr, this);
   }
 
+  public final static int kAlignLeft = 0;
+  public final static int kAlignCenter = 1;
+  public final static int kAlignRight = 2;
+  public final static int kAlignTop = 0;
+  public final static int kAlignBottom = 0x10;
+  public final static int kAlignVCenter = 0x20;
+
 }

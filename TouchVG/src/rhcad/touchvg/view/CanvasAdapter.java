@@ -369,7 +369,8 @@ public class CanvasAdapter extends GiCanvas {
             mCanvas.concat(mat);
         }
 
-        x -= (align == 2) ? w : ((align == 1) ? w / 2 : 0);
+        y -= (align & kAlignBottom) != 0 ? h : (align & kAlignVCenter) != 0 ? h / 2 : 0.f;
+        x -= (align & kAlignRight) != 0 ? w : ((align & kAlignCenter) != 0 ? w / 2 : 0.f);
         mCanvas.drawText(text, x, y - fm.top, mBrush);
 
         if (mat != null) {
