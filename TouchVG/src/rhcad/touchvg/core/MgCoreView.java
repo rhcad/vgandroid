@@ -443,5 +443,6 @@ public class MgCoreView {
   public final static int kMgNoClone = kMgNoAction + 1;
   public final static int kMgHideContent = kMgNoClone + 1;
   public final static int kMgNoDel = kMgHideContent + 1;
+  public final static int kMgCanSelLocked = kMgNoDel + 1;
 
 }
