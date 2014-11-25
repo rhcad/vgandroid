@@ -646,9 +646,9 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4, boolean jarg5);
   public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, float jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_2(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
-  public final static native boolean GiGraphics_drawTextAt__SWIG_0(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6, float jarg7);
-  public final static native boolean GiGraphics_drawTextAt__SWIG_1(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6);
-  public final static native boolean GiGraphics_drawTextAt__SWIG_2(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5);
+  public final static native float GiGraphics_drawTextAt__SWIG_0(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6, float jarg7);
+  public final static native float GiGraphics_drawTextAt__SWIG_1(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5, int jarg6);
+  public final static native float GiGraphics_drawTextAt__SWIG_2(long jarg1, GiGraphics jarg1_, int jarg2, String jarg3, long jarg4, Point2d jarg4_, float jarg5);
   public final static native boolean GiGraphics_beginPaint__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_, long jarg3, RECT_2D jarg3_);
   public final static native boolean GiGraphics_beginPaint__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_);
   public final static native void GiGraphics_endPaint(long jarg1, GiGraphics jarg1_);

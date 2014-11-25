@@ -22935,8 +22935,8 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawH
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6, jfloat jarg7) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6, jfloat jarg7) {
+  jfloat jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
@@ -22944,7 +22944,7 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawT
   float arg5 ;
   int arg6 ;
   float arg7 ;
-  bool result;
+  float result;
   
   (void)jenv;
   (void)jcls;
@@ -22965,22 +22965,22 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawT
   arg5 = (float)jarg5; 
   arg6 = (int)jarg6; 
   arg7 = (float)jarg7; 
-  result = (bool)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5,arg6,arg7);
-  jresult = (jboolean)result; 
+  result = (float)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5,arg6,arg7);
+  jresult = (jfloat)result; 
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5, jint jarg6) {
+  jfloat jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   Point2d *arg4 = 0 ;
   float arg5 ;
   int arg6 ;
-  bool result;
+  float result;
   
   (void)jenv;
   (void)jcls;
@@ -23000,21 +23000,21 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawT
   } 
   arg5 = (float)jarg5; 
   arg6 = (int)jarg6; 
-  result = (bool)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5,arg6);
-  jresult = (jboolean)result; 
+  result = (float)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5,arg6);
+  jresult = (jfloat)result; 
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawTextAt_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3, jlong jarg4, jobject jarg4_, jfloat jarg5) {
+  jfloat jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   Point2d *arg4 = 0 ;
   float arg5 ;
-  bool result;
+  float result;
   
   (void)jenv;
   (void)jcls;
@@ -23033,8 +23033,8 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiGraphics_1drawT
     return 0;
   } 
   arg5 = (float)jarg5; 
-  result = (bool)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5);
-  jresult = (jboolean)result; 
+  result = (float)(arg1)->drawTextAt(arg2,(char const *)arg3,(Point2d const &)*arg4,arg5);
+  jresult = (jfloat)result; 
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
   return jresult;
 }
