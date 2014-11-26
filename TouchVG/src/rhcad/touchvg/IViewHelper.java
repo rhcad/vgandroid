@@ -263,8 +263,11 @@ public interface IViewHelper {
     //! 返回图形总数
     public int getShapeCount();
 
-    //! 返回未锁定的图形的个数
+    //! 返回未锁定的可见图形的个数
     public int getUnlockedShapeCount();
+
+    //! 返回可见图形的个数
+    public int getVisibleShapeCount();
 
     //! 返回选中的图形个数
     public int getSelectedCount();

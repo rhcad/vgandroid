@@ -815,6 +815,7 @@ public class touchvgJNI {
   public final static native boolean MgBaseShape_hitTestBoxSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_, long jarg2, Box2d jarg2_);
   public final static native boolean MgBaseShape_draw(long jarg1, MgBaseShape jarg1_, int jarg2, long jarg3, GiGraphics jarg3_, long jarg4, GiContext jarg4_, int jarg5);
   public final static native void MgBaseShape_output(long jarg1, MgBaseShape jarg1_, long jarg2, MgPath jarg2_);
+  public final static native long MgBaseShape_getPath(long jarg1, MgBaseShape jarg1_);
   public final static native boolean MgBaseShape_save(long jarg1, MgBaseShape jarg1_, long jarg2, MgStorage jarg2_);
   public final static native boolean MgBaseShape_saveSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_, long jarg2, MgStorage jarg2_);
   public final static native boolean MgBaseShape_load(long jarg1, MgBaseShape jarg1_, long jarg2, MgShapeFactory jarg2_, long jarg3, MgStorage jarg3_);
@@ -2025,6 +2026,8 @@ public class touchvgJNI {
   public final static native int MgCoreView_getShapeCount__SWIG_1(long jarg1, MgCoreView jarg1_, int jarg2);
   public final static native int MgCoreView_getUnlockedShapeCount__SWIG_0(long jarg1, MgCoreView jarg1_, int jarg2);
   public final static native int MgCoreView_getUnlockedShapeCount__SWIG_1(long jarg1, MgCoreView jarg1_);
+  public final static native int MgCoreView_getVisibleShapeCount__SWIG_0(long jarg1, MgCoreView jarg1_, int jarg2);
+  public final static native int MgCoreView_getVisibleShapeCount__SWIG_1(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getChangeCount(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getDrawCount(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getSelectedShapeCount(long jarg1, MgCoreView jarg1_);

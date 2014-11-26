@@ -527,6 +527,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public int getVisibleShapeCount() {
+        return mCreator.isValid() ? coreView().getVisibleShapeCount() : 0;
+    }
+
+    @Override
     public int getSelectedCount() {
         return mCreator.isValid() ? coreView().getSelectedShapeCount() : 0;
     }

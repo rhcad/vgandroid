@@ -224,6 +224,14 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_getUnlockedShapeCount__SWIG_1(swigCPtr, this);
   }
 
+  public int getVisibleShapeCount(int type) {
+    return touchvgJNI.MgCoreView_getVisibleShapeCount__SWIG_0(swigCPtr, this, type);
+  }
+
+  public int getVisibleShapeCount() {
+    return touchvgJNI.MgCoreView_getVisibleShapeCount__SWIG_1(swigCPtr, this);
+  }
+
   public int getChangeCount() {
     return touchvgJNI.MgCoreView_getChangeCount(swigCPtr, this);
   }

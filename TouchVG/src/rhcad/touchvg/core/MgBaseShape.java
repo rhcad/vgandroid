@@ -140,6 +140,10 @@ public class MgBaseShape extends MgObject {
     touchvgJNI.MgBaseShape_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }
 
+  public MgPath getPath() {
+    return new MgPath(touchvgJNI.MgBaseShape_getPath(swigCPtr, this), true);
+  }
+
   public boolean save(MgStorage s) {
     return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_save(swigCPtr, this, MgStorage.getCPtr(s), s) : touchvgJNI.MgBaseShape_saveSwigExplicitMgBaseShape(swigCPtr, this, MgStorage.getCPtr(s), s);
   }
