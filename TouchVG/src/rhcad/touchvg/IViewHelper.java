@@ -103,6 +103,7 @@ public interface IViewHelper {
     public void setOption(String name, boolean value);
     public void setOption(String name, int value);
     public void setOption(String name, float value);
+    public void setOption(String name, String value);
 
     //! 返回线宽，正数表示单位为0.01毫米，零表示1像素宽，负数表示单位为像素
     public int getLineWidth();

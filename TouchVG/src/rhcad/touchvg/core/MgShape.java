@@ -120,8 +120,8 @@ public class MgShape extends MgObject {
     return touchvgJNI.MgShape_isKindOf(swigCPtr, this, type);
   }
 
-  public static boolean drawShape(MgBaseShape sp, int mode, GiGraphics gs, GiContext ctx, int segment) {
-    return touchvgJNI.MgShape_drawShape(MgBaseShape.getCPtr(sp), sp, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
+  public static boolean drawShape(MgShapes shapes, MgBaseShape sp, int mode, GiGraphics gs, GiContext ctx, int segment) {
+    return touchvgJNI.MgShape_drawShape(MgShapes.getCPtr(shapes), shapes, MgBaseShape.getCPtr(sp), sp, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
 }

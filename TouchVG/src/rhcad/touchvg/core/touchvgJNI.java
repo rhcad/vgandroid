@@ -814,6 +814,8 @@ public class touchvgJNI {
   public final static native boolean MgBaseShape_hitTestBox(long jarg1, MgBaseShape jarg1_, long jarg2, Box2d jarg2_);
   public final static native boolean MgBaseShape_hitTestBoxSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_, long jarg2, Box2d jarg2_);
   public final static native boolean MgBaseShape_draw(long jarg1, MgBaseShape jarg1_, int jarg2, long jarg3, GiGraphics jarg3_, long jarg4, GiContext jarg4_, int jarg5);
+  public final static native boolean MgBaseShape_draw2(long jarg1, MgBaseShape jarg1_, long jarg2, MgObject jarg2_, int jarg3, long jarg4, GiGraphics jarg4_, long jarg5, GiContext jarg5_, int jarg6);
+  public final static native boolean MgBaseShape_draw2SwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_, long jarg2, MgObject jarg2_, int jarg3, long jarg4, GiGraphics jarg4_, long jarg5, GiContext jarg5_, int jarg6);
   public final static native void MgBaseShape_output(long jarg1, MgBaseShape jarg1_, long jarg2, MgPath jarg2_);
   public final static native long MgBaseShape_getPath(long jarg1, MgBaseShape jarg1_);
   public final static native boolean MgBaseShape_save(long jarg1, MgBaseShape jarg1_, long jarg2, MgStorage jarg2_);
@@ -1343,7 +1345,7 @@ public class touchvgJNI {
   public final static native void MgShape_copy(long jarg1, MgShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native boolean MgShape_equals(long jarg1, MgShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native boolean MgShape_isKindOf(long jarg1, MgShape jarg1_, int jarg2);
-  public final static native boolean MgShape_drawShape(long jarg1, MgBaseShape jarg1_, int jarg2, long jarg3, GiGraphics jarg3_, long jarg4, GiContext jarg4_, int jarg5);
+  public final static native boolean MgShape_drawShape(long jarg1, MgShapes jarg1_, long jarg2, MgBaseShape jarg2_, int jarg3, long jarg4, GiGraphics jarg4_, long jarg5, GiContext jarg5_, int jarg6);
   public final static native long MgShapeFactory_createShape(long jarg1, MgShapeFactory jarg1_, int jarg2);
   public final static native void delete_MgShapeFactory(long jarg1);
   public final static native int MgShapes_Type();
@@ -1588,6 +1590,7 @@ public class touchvgJNI {
   public final static native void MgView_setOptionBool(long jarg1, MgView jarg1_, String jarg2, boolean jarg3);
   public final static native void MgView_setOptionInt(long jarg1, MgView jarg1_, String jarg2, int jarg3);
   public final static native void MgView_setOptionFloat(long jarg1, MgView jarg1_, String jarg2, float jarg3);
+  public final static native void MgView_setOptionString(long jarg1, MgView jarg1_, String jarg2, String jarg3);
   public final static native void MgMotion_view_set(long jarg1, MgMotion jarg1_, long jarg2, MgView jarg2_);
   public final static native long MgMotion_view_get(long jarg1, MgMotion jarg1_);
   public final static native void MgMotion_gestureType_set(long jarg1, MgMotion jarg1_, int jarg2);
@@ -2084,6 +2087,7 @@ public class touchvgJNI {
   public final static native void MgOptionCallback_onGetOptionBool(long jarg1, MgOptionCallback jarg1_, String jarg2, boolean jarg3);
   public final static native void MgOptionCallback_onGetOptionInt(long jarg1, MgOptionCallback jarg1_, String jarg2, int jarg3);
   public final static native void MgOptionCallback_onGetOptionFloat(long jarg1, MgOptionCallback jarg1_, String jarg2, float jarg3);
+  public final static native void MgOptionCallback_onGetOptionString(long jarg1, MgOptionCallback jarg1_, String jarg2, String jarg3);
   public final static native long new_MgOptionCallback();
   public final static native void MgOptionCallback_director_connect(MgOptionCallback obj, long cptr, boolean mem_own, boolean weak_global);
   public final static native void MgOptionCallback_change_ownership(MgOptionCallback obj, long cptr, boolean take_or_release);
@@ -2143,6 +2147,7 @@ public class touchvgJNI {
   public final static native void GiCoreView_setOptionBool(long jarg1, GiCoreView jarg1_, String jarg2, boolean jarg3);
   public final static native void GiCoreView_setOptionInt(long jarg1, GiCoreView jarg1_, String jarg2, int jarg3);
   public final static native void GiCoreView_setOptionFloat(long jarg1, GiCoreView jarg1_, String jarg2, float jarg3);
+  public final static native void GiCoreView_setOptionString(long jarg1, GiCoreView jarg1_, String jarg2, String jarg3);
   public final static native void TestCanvas_initRand();
   public final static native int TestCanvas_randInt(int jarg1, int jarg2);
   public final static native float TestCanvas_randFloat(float jarg1, float jarg2);
@@ -2406,6 +2411,9 @@ public class touchvgJNI {
   public static boolean SwigDirector_MgBaseShape_draw(MgBaseShape self, int mode, long gs, long ctx, int segment) {
     return self.draw(mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
   }
+  public static boolean SwigDirector_MgBaseShape_draw2(MgBaseShape self, long owner, int mode, long gs, long ctx, int segment) {
+    return self.draw2((owner == 0) ? null : new MgObject(owner, false), mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
+  }
   public static void SwigDirector_MgBaseShape_output(MgBaseShape self, long path) {
     self.output(new MgPath(path, false));
   }
@@ -2511,6 +2519,9 @@ public class touchvgJNI {
   public static boolean SwigDirector_MgBaseRect_draw(MgBaseRect self, int mode, long gs, long ctx, int segment) {
     return self.draw(mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
   }
+  public static boolean SwigDirector_MgBaseRect_draw2(MgBaseRect self, long owner, int mode, long gs, long ctx, int segment) {
+    return self.draw2((owner == 0) ? null : new MgObject(owner, false), mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
+  }
   public static void SwigDirector_MgBaseRect_output(MgBaseRect self, long path) {
     self.output(new MgPath(path, false));
   }
@@ -2615,6 +2626,9 @@ public class touchvgJNI {
   }
   public static boolean SwigDirector_MgBaseLines_draw(MgBaseLines self, int mode, long gs, long ctx, int segment) {
     return self.draw(mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
+  }
+  public static boolean SwigDirector_MgBaseLines_draw2(MgBaseLines self, long owner, int mode, long gs, long ctx, int segment) {
+    return self.draw2((owner == 0) ? null : new MgObject(owner, false), mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
   }
   public static void SwigDirector_MgBaseLines_output(MgBaseLines self, long path) {
     self.output(new MgPath(path, false));
@@ -2732,6 +2746,9 @@ public class touchvgJNI {
   }
   public static boolean SwigDirector_MgComposite_draw(MgComposite self, int mode, long gs, long ctx, int segment) {
     return self.draw(mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
+  }
+  public static boolean SwigDirector_MgComposite_draw2(MgComposite self, long owner, int mode, long gs, long ctx, int segment) {
+    return self.draw2((owner == 0) ? null : new MgObject(owner, false), mode, new GiGraphics(gs, false), new GiContext(ctx, false), segment);
   }
   public static void SwigDirector_MgComposite_output(MgComposite self, long path) {
     self.output(new MgPath(path, false));
@@ -3095,6 +3112,9 @@ public class touchvgJNI {
   }
   public static void SwigDirector_MgOptionCallback_onGetOptionFloat(MgOptionCallback self, String name, float value) {
     self.onGetOptionFloat(name, value);
+  }
+  public static void SwigDirector_MgOptionCallback_onGetOptionString(MgOptionCallback self, String name, String text) {
+    self.onGetOptionString(name, text);
   }
 
   private final static native void swig_module_init();

@@ -287,4 +287,8 @@ public class MgView {
     touchvgJNI.MgView_setOptionFloat(swigCPtr, this, name, value);
   }
 
+  public void setOptionString(String name, String text) {
+    touchvgJNI.MgView_setOptionString(swigCPtr, this, name, text);
+  }
+
 }

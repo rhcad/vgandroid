@@ -136,6 +136,10 @@ public class MgBaseShape extends MgObject {
     return touchvgJNI.MgBaseShape_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
+  public boolean draw2(MgObject owner, int mode, GiGraphics gs, GiContext ctx, int segment) {
+    return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_draw2(swigCPtr, this, MgObject.getCPtr(owner), owner, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment) : touchvgJNI.MgBaseShape_draw2SwigExplicitMgBaseShape(swigCPtr, this, MgObject.getCPtr(owner), owner, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
+  }
+
   public void output(MgPath path) {
     touchvgJNI.MgBaseShape_output(swigCPtr, this, MgPath.getCPtr(path), path);
   }

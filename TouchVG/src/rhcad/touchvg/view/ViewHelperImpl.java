@@ -41,7 +41,7 @@ import android.widget.ImageView;
  */
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 26;
+    private static final int JARVERSION = 27;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -209,6 +209,11 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public void setOption(String name, float value) {
         coreView().setOptionFloat(name, value);
+    }
+
+    @Override
+    public void setOption(String name, String value) {
+        coreView().setOptionString(name, value);
     }
 
     @Override

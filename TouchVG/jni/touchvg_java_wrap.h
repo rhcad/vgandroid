@@ -97,6 +97,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -111,10 +112,10 @@ public:
     virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 35 ? swig_override[n] : false);
+      return (n < 36 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[35];
+    bool swig_override[36];
 };
 
 class SwigDirector_MgBaseRect : public MgBaseRect, public Swig::Director {
@@ -146,6 +147,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -160,10 +162,10 @@ public:
     virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 35 ? swig_override[n] : false);
+      return (n < 36 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[35];
+    bool swig_override[36];
 };
 
 class SwigDirector_MgBaseLines : public MgBaseLines, public Swig::Director {
@@ -195,6 +197,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -213,10 +216,10 @@ public:
     virtual bool removePoint(int index);
 public:
     bool swig_overrides(int n) {
-      return (n < 39 ? swig_override[n] : false);
+      return (n < 40 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[39];
+    bool swig_override[40];
 };
 
 class SwigDirector_MgComposite : public MgComposite, public Swig::Director {
@@ -248,6 +251,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -263,10 +267,10 @@ public:
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {
-      return (n < 36 ? swig_override[n] : false);
+      return (n < 37 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[36];
+    bool swig_override[37];
 };
 
 class SwigDirector_MgCommand : public MgCommand, public Swig::Director {
@@ -496,12 +500,13 @@ public:
     virtual void onGetOptionBool(char const *name, bool value);
     virtual void onGetOptionInt(char const *name, int value);
     virtual void onGetOptionFloat(char const *name, float value);
+    virtual void onGetOptionString(char const *name, char const *text);
 public:
     bool swig_overrides(int n) {
-      return (n < 3 ? swig_override[n] : false);
+      return (n < 4 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[3];
+    bool swig_override[4];
 };
 
 

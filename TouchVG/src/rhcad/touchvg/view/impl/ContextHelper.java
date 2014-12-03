@@ -86,6 +86,11 @@ public class ContextHelper {
         public void onGetOptionFloat(String name, float value) {
             dict.put(name, String.valueOf(value));
         }
+
+        @Override
+        public void onGetOptionString(String name, String text) {
+            dict.put(name, text);
+        }
     }
 
     public static Map<String, String> getOptions(ViewCreator vc) {

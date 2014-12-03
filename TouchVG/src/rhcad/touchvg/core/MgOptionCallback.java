@@ -62,6 +62,10 @@ public class MgOptionCallback {
     touchvgJNI.MgOptionCallback_onGetOptionFloat(swigCPtr, this, name, value);
   }
 
+  public void onGetOptionString(String name, String text) {
+    touchvgJNI.MgOptionCallback_onGetOptionString(swigCPtr, this, name, text);
+  }
+
   public MgOptionCallback() {
     this(touchvgJNI.new_MgOptionCallback(), true);
     touchvgJNI.MgOptionCallback_director_connect(this, swigCPtr, swigCMemOwn, true);
