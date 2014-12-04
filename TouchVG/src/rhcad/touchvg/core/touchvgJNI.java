@@ -198,6 +198,7 @@ public class touchvgJNI {
   public final static native long Matrix2d_mirroring__SWIG_2(long jarg1, Point2d jarg1_, long jarg2, Vector2d jarg2_);
   public final static native long Matrix2d_shearing__SWIG_0(float jarg1, float jarg2, long jarg3, Point2d jarg3_);
   public final static native long Matrix2d_shearing__SWIG_1(float jarg1, float jarg2);
+  public final static native long Matrix2d_transformWith2P(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native void delete_Matrix2d(long jarg1);
   public final static native void RECT_2D_left_set(long jarg1, RECT_2D jarg1_, float jarg2);
   public final static native float RECT_2D_left_get(long jarg1, RECT_2D jarg1_);
@@ -867,6 +868,7 @@ public class touchvgJNI {
   public final static native void MgBaseRect_setRect2P(long jarg1, MgBaseRect jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native void MgBaseRect_setRectWithAngle(long jarg1, MgBaseRect jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, float jarg4, long jarg5, Point2d jarg5_);
   public final static native void MgBaseRect_setRect4P(long jarg1, MgBaseRect jarg1_, long jarg2, Point2d jarg2_);
+  public final static native boolean MgBaseRect_transformWith2P(long jarg1, MgBaseRect jarg1_, long jarg2, Point2d jarg2_, int jarg3, long jarg4, Point2d jarg4_, int jarg5);
   public final static native void MgBaseRect_setCenter(long jarg1, MgBaseRect jarg1_, long jarg2, Point2d jarg2_);
   public final static native void MgBaseRect_setSquare(long jarg1, MgBaseRect jarg1_, boolean jarg2);
   public final static native long new_MgBaseRect();

@@ -98,6 +98,10 @@ public class MgBaseRect extends MgBaseShape {
     touchvgJNI.MgBaseRect_setRect4P(swigCPtr, this, Point2d.getCPtr(points), points);
   }
 
+  public boolean transformWith2P(Point2d pt1, int i1, Point2d pt2, int i2) {
+    return touchvgJNI.MgBaseRect_transformWith2P(swigCPtr, this, Point2d.getCPtr(pt1), pt1, i1, Point2d.getCPtr(pt2), pt2, i2);
+  }
+
   public void setCenter(Point2d pt) {
     touchvgJNI.MgBaseRect_setCenter(swigCPtr, this, Point2d.getCPtr(pt), pt);
   }

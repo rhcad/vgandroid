@@ -311,4 +311,8 @@ public class Matrix2d {
     return new Matrix2d(touchvgJNI.Matrix2d_shearing__SWIG_1(sx, sy), true);
   }
 
+  public static Matrix2d transformWith2P(Point2d from1, Point2d from2, Point2d to1, Point2d to2) {
+    return new Matrix2d(touchvgJNI.Matrix2d_transformWith2P(Point2d.getCPtr(from1), from1, Point2d.getCPtr(from2), from2, Point2d.getCPtr(to1), to1, Point2d.getCPtr(to2), to2), true);
+  }
+
 }

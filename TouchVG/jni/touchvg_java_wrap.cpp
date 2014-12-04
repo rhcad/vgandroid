@@ -13868,6 +13868,46 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1shearing_1
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_Matrix2d_1transformWith2P(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_) {
+  jlong jresult = 0 ;
+  Point2d *arg1 = 0 ;
+  Point2d *arg2 = 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  Matrix2d result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  arg1 = *(Point2d **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg2 = *(Point2d **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  result = Matrix2d::transformWith2P((Point2d const &)*arg1,(Point2d const &)*arg2,(Point2d const &)*arg3,(Point2d const &)*arg4);
+  *(Matrix2d **)&jresult = new Matrix2d((const Matrix2d &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1Matrix2d(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   Matrix2d *arg1 = (Matrix2d *) 0 ;
   
@@ -26841,6 +26881,39 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgBaseRect_1setRect4P
   arg2 = *(Point2d **)&jarg2; 
   (arg1)->setRect4P((Point2d const (*))arg2);
   
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgBaseRect_1transformWith2P(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jint jarg5) {
+  jboolean jresult = 0 ;
+  MgBaseRect *arg1 = (MgBaseRect *) 0 ;
+  Point2d *arg2 = 0 ;
+  int arg3 ;
+  Point2d *arg4 = 0 ;
+  int arg5 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg4_;
+  arg1 = *(MgBaseRect **)&jarg1; 
+  arg2 = *(Point2d **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg3 = (int)jarg3; 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = (int)jarg5; 
+  result = (bool)(arg1)->transformWith2P((Point2d const &)*arg2,arg3,(Point2d const &)*arg4,arg5);
+  jresult = (jboolean)result; 
+  return jresult;
 }
 
 
