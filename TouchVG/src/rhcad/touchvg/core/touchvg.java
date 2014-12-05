@@ -97,8 +97,4 @@ public class touchvg {
     return touchvgJNI._FLT_MAX_get();
   }
 
-  public static int mgRound(float d) {
-    return touchvgJNI.mgRound(d);
-  }
-
 }

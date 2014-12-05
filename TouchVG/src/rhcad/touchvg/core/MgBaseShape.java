@@ -136,8 +136,16 @@ public class MgBaseShape extends MgObject {
     return touchvgJNI.MgBaseShape_draw(swigCPtr, this, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
+  public boolean draw2(MgObject owner, int mode, GiGraphics gs, GiContext ctx, int segment) {
+    return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_draw2(swigCPtr, this, MgObject.getCPtr(owner), owner, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment) : touchvgJNI.MgBaseShape_draw2SwigExplicitMgBaseShape(swigCPtr, this, MgObject.getCPtr(owner), owner, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
+  }
+
   public void output(MgPath path) {
     touchvgJNI.MgBaseShape_output(swigCPtr, this, MgPath.getCPtr(path), path);
+  }
+
+  public MgPath getPath() {
+    return new MgPath(touchvgJNI.MgBaseShape_getPath(swigCPtr, this), true);
   }
 
   public boolean save(MgStorage s) {
@@ -202,6 +210,22 @@ public class MgBaseShape extends MgObject {
 
   public void setOwner(MgObject owner) {
     if (getClass() == MgBaseShape.class) touchvgJNI.MgBaseShape_setOwner(swigCPtr, this, MgObject.getCPtr(owner), owner); else touchvgJNI.MgBaseShape_setOwnerSwigExplicitMgBaseShape(swigCPtr, this, MgObject.getCPtr(owner), owner);
+  }
+
+  public int getSubType() {
+    return (getClass() == MgBaseShape.class) ? touchvgJNI.MgBaseShape_getSubType(swigCPtr, this) : touchvgJNI.MgBaseShape_getSubTypeSwigExplicitMgBaseShape(swigCPtr, this);
+  }
+
+  public boolean isVisible() {
+    return touchvgJNI.MgBaseShape_isVisible(swigCPtr, this);
+  }
+
+  public boolean isLocked() {
+    return touchvgJNI.MgBaseShape_isLocked(swigCPtr, this);
+  }
+
+  public static float linesHit(int n, Point2d points, boolean closed, Point2d pt, float tol, MgHitResult res) {
+    return touchvgJNI.MgBaseShape_linesHit(n, Point2d.getCPtr(points), points, closed, Point2d.getCPtr(pt), pt, tol, MgHitResult.getCPtr(res), res);
   }
 
 }

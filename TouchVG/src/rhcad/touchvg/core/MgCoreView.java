@@ -216,8 +216,20 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_getShapeCount__SWIG_1(swigCPtr, this, doc);
   }
 
+  public int getUnlockedShapeCount(int type) {
+    return touchvgJNI.MgCoreView_getUnlockedShapeCount__SWIG_0(swigCPtr, this, type);
+  }
+
   public int getUnlockedShapeCount() {
-    return touchvgJNI.MgCoreView_getUnlockedShapeCount(swigCPtr, this);
+    return touchvgJNI.MgCoreView_getUnlockedShapeCount__SWIG_1(swigCPtr, this);
+  }
+
+  public int getVisibleShapeCount(int type) {
+    return touchvgJNI.MgCoreView_getVisibleShapeCount__SWIG_0(swigCPtr, this, type);
+  }
+
+  public int getVisibleShapeCount() {
+    return touchvgJNI.MgCoreView_getVisibleShapeCount__SWIG_1(swigCPtr, this);
   }
 
   public int getChangeCount() {
@@ -238,6 +250,10 @@ public class MgCoreView {
 
   public int getSelectedShapeID() {
     return touchvgJNI.MgCoreView_getSelectedShapeID(swigCPtr, this);
+  }
+
+  public int getSelectedHandle() {
+    return touchvgJNI.MgCoreView_getSelectedHandle(swigCPtr, this);
   }
 
   public void clear() {
@@ -336,6 +352,14 @@ public class MgCoreView {
     touchvgJNI.MgCoreView_setContext__SWIG_0(swigCPtr, this, mask);
   }
 
+  public boolean getShapeFlag(int sid, int bit) {
+    return touchvgJNI.MgCoreView_getShapeFlag(swigCPtr, this, sid, bit);
+  }
+
+  public boolean setShapeFlag(int sid, int bit, boolean on) {
+    return touchvgJNI.MgCoreView_setShapeFlag(swigCPtr, this, sid, bit, on);
+  }
+
   public void setContext(GiContext ctx, int mask, int apply) {
     touchvgJNI.MgCoreView_setContext__SWIG_1(swigCPtr, this, GiContext.getCPtr(ctx), ctx, mask, apply);
   }
@@ -370,6 +394,14 @@ public class MgCoreView {
 
   public int traverseImageShapes(int doc, MgFindImageCallback c) {
     return touchvgJNI.MgCoreView_traverseImageShapes(swigCPtr, this, doc, MgFindImageCallback.getCPtr(c), c);
+  }
+
+  public boolean getViewModelBox(Floats box) {
+    return touchvgJNI.MgCoreView_getViewModelBox(swigCPtr, this, Floats.getCPtr(box), box);
+  }
+
+  public boolean getModelBox(Floats box) {
+    return touchvgJNI.MgCoreView_getModelBox(swigCPtr, this, Floats.getCPtr(box), box);
   }
 
   public boolean getDisplayExtent(Floats box) {
@@ -407,5 +439,18 @@ public class MgCoreView {
   public boolean exportSVGPath2(MgStringCallback c, int shapes, int sid) {
     return touchvgJNI.MgCoreView_exportSVGPath2(swigCPtr, this, MgStringCallback.getCPtr(c), c, shapes, sid);
   }
+
+  public final static int kMgSquare = 0;
+  public final static int kMgClosed = kMgSquare + 1;
+  public final static int kMgFixedLength = kMgClosed + 1;
+  public final static int kMgFixedSize = kMgFixedLength + 1;
+  public final static int kMgRotateDisnable = kMgFixedSize + 1;
+  public final static int kMgLocked = kMgRotateDisnable + 1;
+  public final static int kMgNoSnap = kMgLocked + 1;
+  public final static int kMgNoAction = kMgNoSnap + 1;
+  public final static int kMgNoClone = kMgNoAction + 1;
+  public final static int kMgHideContent = kMgNoClone + 1;
+  public final static int kMgNoDel = kMgHideContent + 1;
+  public final static int kMgCanSelLocked = kMgNoDel + 1;
 
 }

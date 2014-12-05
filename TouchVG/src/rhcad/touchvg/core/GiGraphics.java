@@ -336,12 +336,16 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawHandle__SWIG_2(swigCPtr, this, Point2d.getCPtr(pnt), pnt, type);
   }
 
-  public boolean drawTextAt(String text, Point2d pnt, float h, int align) {
-    return touchvgJNI.GiGraphics_drawTextAt__SWIG_0(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h, align);
+  public float drawTextAt(int argb, String text, Point2d pnt, float h, int align, float angle) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_0(swigCPtr, this, argb, text, Point2d.getCPtr(pnt), pnt, h, align, angle);
   }
 
-  public boolean drawTextAt(String text, Point2d pnt, float h) {
-    return touchvgJNI.GiGraphics_drawTextAt__SWIG_1(swigCPtr, this, text, Point2d.getCPtr(pnt), pnt, h);
+  public float drawTextAt(int argb, String text, Point2d pnt, float h, int align) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_1(swigCPtr, this, argb, text, Point2d.getCPtr(pnt), pnt, h, align);
+  }
+
+  public float drawTextAt(int argb, String text, Point2d pnt, float h) {
+    return touchvgJNI.GiGraphics_drawTextAt__SWIG_2(swigCPtr, this, argb, text, Point2d.getCPtr(pnt), pnt, h);
   }
 
   public boolean beginPaint(GiCanvas canvas, RECT_2D clipBox) {
@@ -355,5 +359,12 @@ public class GiGraphics {
   public void endPaint() {
     touchvgJNI.GiGraphics_endPaint(swigCPtr, this);
   }
+
+  public final static int kAlignLeft = 0;
+  public final static int kAlignCenter = 1;
+  public final static int kAlignRight = 2;
+  public final static int kAlignTop = 0;
+  public final static int kAlignBottom = 0x10;
+  public final static int kAlignVCenter = 0x20;
 
 }

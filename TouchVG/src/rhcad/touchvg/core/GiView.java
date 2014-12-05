@@ -98,16 +98,20 @@ public class GiView {
     if (getClass() == GiView.class) touchvgJNI.GiView_viewChanged(swigCPtr, this, GiView.getCPtr(oldview), oldview); else touchvgJNI.GiView_viewChangedSwigExplicitGiView(swigCPtr, this, GiView.getCPtr(oldview), oldview);
   }
 
+  public void shapeWillDelete(int sid) {
+    if (getClass() == GiView.class) touchvgJNI.GiView_shapeWillDelete(swigCPtr, this, sid); else touchvgJNI.GiView_shapeWillDeleteSwigExplicitGiView(swigCPtr, this, sid);
+  }
+
   public void shapeDeleted(int sid) {
     if (getClass() == GiView.class) touchvgJNI.GiView_shapeDeleted(swigCPtr, this, sid); else touchvgJNI.GiView_shapeDeletedSwigExplicitGiView(swigCPtr, this, sid);
   }
 
-  public boolean shapeDblClick(int type, int sid) {
-    return (getClass() == GiView.class) ? touchvgJNI.GiView_shapeDblClick(swigCPtr, this, type, sid) : touchvgJNI.GiView_shapeDblClickSwigExplicitGiView(swigCPtr, this, type, sid);
+  public boolean shapeDblClick(int type, int sid, int tag) {
+    return (getClass() == GiView.class) ? touchvgJNI.GiView_shapeDblClick(swigCPtr, this, type, sid, tag) : touchvgJNI.GiView_shapeDblClickSwigExplicitGiView(swigCPtr, this, type, sid, tag);
   }
 
-  public boolean shapeClicked(int sid, int tag, float x, float y) {
-    return (getClass() == GiView.class) ? touchvgJNI.GiView_shapeClicked(swigCPtr, this, sid, tag, x, y) : touchvgJNI.GiView_shapeClickedSwigExplicitGiView(swigCPtr, this, sid, tag, x, y);
+  public boolean shapeClicked(int type, int sid, int tag, float x, float y) {
+    return (getClass() == GiView.class) ? touchvgJNI.GiView_shapeClicked(swigCPtr, this, type, sid, tag, x, y) : touchvgJNI.GiView_shapeClickedSwigExplicitGiView(swigCPtr, this, type, sid, tag, x, y);
   }
 
   public void showMessage(String text) {

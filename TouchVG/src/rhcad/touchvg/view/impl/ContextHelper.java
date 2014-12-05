@@ -86,12 +86,22 @@ public class ContextHelper {
         public void onGetOptionFloat(String name, float value) {
             dict.put(name, String.valueOf(value));
         }
+
+        @Override
+        public void onGetOptionString(String name, String text) {
+            dict.put(name, text);
+        }
     }
 
     public static Map<String, String> getOptions(ViewCreator vc) {
         Map<String, String> options = new HashMap<String, String>();
         if (vc.isValid()) {
-            vc.coreView().traverseOptions(new OptionCallback(options));
+            final OptionCallback c = new OptionCallback(options);
+            vc.coreView().traverseOptions(c);
+            c.onGetOptionBool("zoomEnabled",
+                    vc.coreView().isZoomEnabled(vc.getGraphView().viewAdapter()));
+            c.onGetOptionBool("contextActionEnabled",
+                    vc.getMainAdapter().getContextActionEnabled());
         }
         return options;
     }

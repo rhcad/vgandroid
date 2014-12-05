@@ -55,8 +55,8 @@ public class CmdObserverDefault extends CmdObserver {
     touchvgJNI.CmdObserverDefault_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
-  public void onDocLoaded(MgMotion sender) {
-    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender); else touchvgJNI.CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  public void onDocLoaded(MgMotion sender, boolean forUndo) {
+    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onDocLoaded(swigCPtr, this, MgMotion.getCPtr(sender), sender, forUndo); else touchvgJNI.CmdObserverDefault_onDocLoadedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, forUndo);
   }
 
   public void onEnterSelectCommand(MgMotion sender) {
@@ -103,8 +103,8 @@ public class CmdObserverDefault extends CmdObserver {
     return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeWillDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp) : touchvgJNI.CmdObserverDefault_onShapeWillDeletedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
-  public void onShapeDeleted(MgMotion sender, MgShape sp) {
-    if (getClass() == CmdObserverDefault.class) touchvgJNI.CmdObserverDefault_onShapeDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp); else touchvgJNI.CmdObserverDefault_onShapeDeletedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
+  public int onShapeDeleted(MgMotion sender, MgShape sp) {
+    return (getClass() == CmdObserverDefault.class) ? touchvgJNI.CmdObserverDefault_onShapeDeleted(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp) : touchvgJNI.CmdObserverDefault_onShapeDeletedSwigExplicitCmdObserverDefault(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgShape.getCPtr(sp), sp);
   }
 
   public boolean onShapeCanRotated(MgMotion sender, MgShape sp) {

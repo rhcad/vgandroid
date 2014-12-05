@@ -169,8 +169,21 @@ public class MgGroup extends MgComposite {
     touchvgJNI.MgGroup_setInsertionPoint(swigCPtr, this, Point2d.getCPtr(pt), pt);
   }
 
+  public boolean hasInsertionPoint() {
+    return touchvgJNI.MgGroup_hasInsertionPoint(swigCPtr, this);
+  }
+
   public Point2d getCenterPoint() {
     return new Point2d(touchvgJNI.MgGroup_getCenterPoint(swigCPtr, this), true);
+  }
+
+  public void setName(String name) {
+    touchvgJNI.MgGroup_setName(swigCPtr, this, name);
+  }
+
+  public static MgShape findGroup(MgShapes shapes, String name) {
+    long cPtr = touchvgJNI.MgGroup_findGroup(MgShapes.getCPtr(shapes), shapes, name);
+    return (cPtr == 0) ? null : new MgShape(cPtr, false);
   }
 
 }

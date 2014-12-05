@@ -258,6 +258,10 @@ public class GiCoreView extends MgCoreView {
     touchvgJNI.GiCoreView_setOptionFloat(swigCPtr, this, name, value);
   }
 
+  public void setOptionString(String name, String value) {
+    touchvgJNI.GiCoreView_setOptionString(swigCPtr, this, name, value);
+  }
+
   public final static int kNoCmdType = -1;
   public final static int kTestType = 0;
   public final static int kNormalType = 1;

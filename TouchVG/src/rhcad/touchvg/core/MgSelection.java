@@ -55,6 +55,14 @@ public class MgSelection {
     return touchvgJNI.MgSelection_getSelectType(swigCPtr, this, MgView.getCPtr(view), view);
   }
 
+  public int getSelectedHandle(MgMotion sender) {
+    return touchvgJNI.MgSelection_getSelectedHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
+  public int getSelectedShapeHandle(MgMotion sender) {
+    return touchvgJNI.MgSelection_getSelectedShapeHandle(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  }
+
   public boolean selectAll(MgMotion sender) {
     return touchvgJNI.MgSelection_selectAll(swigCPtr, this, MgMotion.getCPtr(sender), sender);
   }
@@ -83,12 +91,12 @@ public class MgSelection {
     return touchvgJNI.MgSelection_addSelection(swigCPtr, this, MgMotion.getCPtr(sender), sender, shapeID);
   }
 
-  public boolean deleteVertext(MgMotion sender) {
-    return touchvgJNI.MgSelection_deleteVertext(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  public boolean deleteVertex(MgMotion sender) {
+    return touchvgJNI.MgSelection_deleteVertex(swigCPtr, this, MgMotion.getCPtr(sender), sender);
   }
 
-  public boolean insertVertext(MgMotion sender) {
-    return touchvgJNI.MgSelection_insertVertext(swigCPtr, this, MgMotion.getCPtr(sender), sender);
+  public boolean insertVertex(MgMotion sender) {
+    return touchvgJNI.MgSelection_insertVertex(swigCPtr, this, MgMotion.getCPtr(sender), sender);
   }
 
   public boolean switchClosed(MgMotion sender) {

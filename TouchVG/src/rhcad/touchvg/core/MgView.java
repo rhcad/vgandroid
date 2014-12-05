@@ -203,7 +203,7 @@ public class MgView {
     return touchvgJNI.MgView_shapeWillDeleted(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
-  public boolean removeShape(MgShape shape) {
+  public int removeShape(MgShape shape) {
     return touchvgJNI.MgView_removeShape(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
@@ -243,8 +243,8 @@ public class MgView {
     return touchvgJNI.MgView_shapeDblClick(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
-  public boolean shapeClicked(int sid, int tag, float x, float y) {
-    return touchvgJNI.MgView_shapeClicked(swigCPtr, this, sid, tag, x, y);
+  public boolean shapeClicked(MgShape shape, float x, float y) {
+    return touchvgJNI.MgView_shapeClicked(swigCPtr, this, MgShape.getCPtr(shape), shape, x, y);
   }
 
   public void showMessage(String text) {
@@ -285,6 +285,10 @@ public class MgView {
 
   public void setOptionFloat(String name, float value) {
     touchvgJNI.MgView_setOptionFloat(swigCPtr, this, name, value);
+  }
+
+  public void setOptionString(String name, String text) {
+    touchvgJNI.MgView_setOptionString(swigCPtr, this, name, text);
   }
 
 }

@@ -14,6 +14,7 @@ import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.MgView;
+import rhcad.touchvg.core.Point2d;
 import rhcad.touchvg.view.impl.ContextHelper;
 import rhcad.touchvg.view.impl.FileUtil;
 import rhcad.touchvg.view.impl.Snapshot;
@@ -23,6 +24,7 @@ import rhcad.touchvg.view.internal.ResourceUtil;
 import rhcad.touchvg.view.internal.ViewUtil;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -37,9 +39,9 @@ import android.widget.ImageView;
  * \ingroup GROUP_ANDROID
  * Android绘图视图辅助类
  */
-public class ViewHelperImpl implements IViewHelper{
+public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 21;
+    private static final int JARVERSION = 27;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -188,7 +190,15 @@ public class ViewHelperImpl implements IViewHelper{
 
     @Override
     public void setOption(String name, boolean value) {
-        coreView().setOptionBool(name, value);
+        if (name == null) {
+            coreView().setOptionBool(name, value);
+        } else if (name.equals("zoomEnabled")) {
+            setZoomEnabled(value);
+        } else if (name.equals("contextActionEnabled")) {
+            getGraphView().setContextActionEnabled(value);
+        } else {
+            coreView().setOptionBool(name, value);
+        }
     }
 
     @Override
@@ -199,6 +209,11 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public void setOption(String name, float value) {
         coreView().setOptionFloat(name, value);
+    }
+
+    @Override
+    public void setOption(String name, String value) {
+        coreView().setOptionString(name, value);
     }
 
     @Override
@@ -435,6 +450,12 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public boolean getZoomEnabled() {
+        return mCreator.isValid()
+                && coreView().isZoomEnabled(mCreator.getGraphView().viewAdapter());
+    }
+
+    @Override
     public void setZoomEnabled(boolean enabled) {
         if (mCreator.isValid()) {
             coreView().setZoomEnabled(mCreator.getGraphView().viewAdapter(), enabled);
@@ -463,6 +484,11 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public Bitmap extentSnapshot(int spaceAround, boolean transparent) {
         return Snapshot.extentSnapshot(view(), spaceAround, transparent);
+    }
+
+    @Override
+    public Bitmap snapshotWithShapes(int sid, int width, int height) {
+        return Snapshot.snapshotWithShapes(this, new ViewHelperImpl(), sid, width, height);
     }
 
     @Override
@@ -506,6 +532,11 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public int getVisibleShapeCount() {
+        return mCreator.isValid() ? coreView().getVisibleShapeCount() : 0;
+    }
+
+    @Override
     public int getSelectedCount() {
         return mCreator.isValid() ? coreView().getSelectedShapeCount() : 0;
     }
@@ -521,6 +552,16 @@ public class ViewHelperImpl implements IViewHelper{
     }
 
     @Override
+    public void setSelectedShapeID(int sid) {
+        setCommand(String.format("select{'id':%d}", sid));
+    }
+
+    @Override
+    public int getSelectedHandle() {
+        return mCreator.isValid() ? coreView().getSelectedHandle() : 0;
+    }
+
+    @Override
     public int getChangeCount() {
         return mCreator.isValid() ? coreView().getChangeCount() : 0;
     }
@@ -528,6 +569,16 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public int getDrawCount() {
         return mCreator.isValid() ? coreView().getDrawCount() : 0;
+    }
+
+    @Override
+    public Rect getViewBox() {
+        return Snapshot.getViewBox(view());
+    }
+
+    @Override
+    public Rect getModelBox() {
+        return Snapshot.getModelBox(view());
     }
 
     @Override
@@ -548,6 +599,18 @@ public class ViewHelperImpl implements IViewHelper{
     @Override
     public Rect getShapeBox(int sid) {
         return ContextHelper.getShapeBox(mCreator, sid);
+    }
+
+    @Override
+    public Point getCurrentPoint() {
+        Point2d pt = this.cmdView().motion().getPoint();
+        return new Point(Math.round(pt.getX()), Math.round(pt.getY()));
+    }
+
+    @Override
+    public PointF getCurrentModelPoint() {
+        Point2d pt = this.cmdView().motion().getPointM();
+        return new PointF(pt.getX(), pt.getY());
     }
 
     @Override

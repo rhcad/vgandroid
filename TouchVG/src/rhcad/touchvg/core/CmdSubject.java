@@ -43,4 +43,13 @@ public class CmdSubject extends CmdObserver {
     touchvgJNI.CmdSubject_unregisterObserver(swigCPtr, this, CmdObserver.getCPtr(observer), observer);
   }
 
+  public boolean registerNamedObserver(String name, CmdObserver observer) {
+    return touchvgJNI.CmdSubject_registerNamedObserver(swigCPtr, this, name, CmdObserver.getCPtr(observer), observer);
+  }
+
+  public CmdObserver findNamedObserver(String name) {
+    long cPtr = touchvgJNI.CmdSubject_findNamedObserver(swigCPtr, this, name);
+    return (cPtr == 0) ? null : new CmdObserver(cPtr, false);
+  }
+
 }

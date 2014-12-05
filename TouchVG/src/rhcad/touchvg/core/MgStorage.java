@@ -51,12 +51,20 @@ public class MgStorage {
     return touchvgJNI.MgStorage_readFloat(swigCPtr, this, name, defvalue);
   }
 
+  public double readDouble(String name, double defvalue) {
+    return touchvgJNI.MgStorage_readDouble(swigCPtr, this, name, defvalue);
+  }
+
   public void writeBool(String name, boolean value) {
     touchvgJNI.MgStorage_writeBool(swigCPtr, this, name, value);
   }
 
   public void writeFloat(String name, float value) {
     touchvgJNI.MgStorage_writeFloat(swigCPtr, this, name, value);
+  }
+
+  public void writeDouble(String name, double value) {
+    touchvgJNI.MgStorage_writeDouble(swigCPtr, this, name, value);
   }
 
   public void writeString(String name, String value) {

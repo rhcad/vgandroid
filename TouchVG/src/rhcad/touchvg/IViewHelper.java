@@ -11,6 +11,7 @@ import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.MgView;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -102,6 +103,7 @@ public interface IViewHelper {
     public void setOption(String name, boolean value);
     public void setOption(String name, int value);
     public void setOption(String name, float value);
+    public void setOption(String name, String value);
 
     //! 返回线宽，正数表示单位为0.01毫米，零表示1像素宽，负数表示单位为像素
     public int getLineWidth();
@@ -220,6 +222,9 @@ public interface IViewHelper {
     //! 设置是否向当前命令传递触摸速度
     public void setVelocityTrackerEnabled(boolean enabled);
 
+    //! 返回是否允许放缩显示
+    public boolean getZoomEnabled();
+
     //! 是否允许放缩显示
     public void setZoomEnabled(boolean enabled);
 
@@ -234,6 +239,9 @@ public interface IViewHelper {
 
     //! 得到当前显示的静态图形快照，自动去掉周围空白，支持多线程
     public Bitmap extentSnapshot(int spaceAround, boolean transparent);
+
+    //! 在矩形框内绘制指定ID的图形
+    public Bitmap snapshotWithShapes(int sid, int width, int height);
 
     //! 保存当前显示的静态图形快照(去掉周围空白)到PNG文件，自动添加后缀名.png，支持多线程
     public boolean exportExtentAsPNG(String filename, int spaceAround);
@@ -256,8 +264,11 @@ public interface IViewHelper {
     //! 返回图形总数
     public int getShapeCount();
 
-    //! 返回未锁定的图形的个数
+    //! 返回未锁定的可见图形的个数
     public int getUnlockedShapeCount();
+
+    //! 返回可见图形的个数
+    public int getVisibleShapeCount();
 
     //! 返回选中的图形个数
     public int getSelectedCount();
@@ -268,11 +279,23 @@ public interface IViewHelper {
     //! 返回当前选中的图形的ID，选中多个时只取第一个
     public int getSelectedShapeID();
 
+    //! 选择一个图形
+    public void setSelectedShapeID(int sid);
+
+    //! 当前线性图形中当前控制点序号
+    public int getSelectedHandle();
+
     //! 返回图形改变次数，可用于检查是否需要保存
     public int getChangeCount();
 
     //! 返回图形改变次数，可用于检查是否需要保存
     public int getDrawCount();
+
+    //! 返回当前视图区域的模型坐标范围，模型坐标
+    public Rect getViewBox();
+
+    //! 返回文档的模型坐标范围
+    public Rect getModelBox();
 
     //! 返回图形显示范围
     public Rect getDisplayExtent();
@@ -285,6 +308,12 @@ public interface IViewHelper {
 
     //! 得到指定ID的图形的包络框显示坐标
     public Rect getShapeBox(int sid);
+
+    //! 得到当前触摸位置，视图坐标
+    public Point getCurrentPoint();
+
+    //! 得到当前触摸位置的模型坐标
+    public PointF getCurrentModelPoint();
 
     //! 得到图形的JSON内容，支持多线程
     public String getContent();

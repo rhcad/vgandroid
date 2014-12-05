@@ -96,6 +96,11 @@ public interface IGraphView {
         public void onShapesRecorded(IGraphView view, Bundle info);
     }
 
+    //! 图形将删除的通知
+    public static interface OnShapeWillDeleteListener {
+        public void onShapeWillDelete(IGraphView view, int sid);
+    }
+
     //! 图形已删除的通知
     public static interface OnShapeDeletedListener {
         public void onShapeDeleted(IGraphView view, int sid);
@@ -103,12 +108,12 @@ public interface IGraphView {
 
     //! 图形点击的通知，返回false继续显示上下文按钮
     public static interface OnShapeClickedListener {
-        public boolean onShapeClicked(IGraphView view, int sid, int tag, float x, float y);
+        public boolean onShapeClicked(IGraphView view, int type, int sid, int tag, float x, float y);
     }
 
     //! 图形双击的通知，返回true自定义编辑，返回false默认编辑
     public static interface OnShapeDblClickedListener {
-        public boolean onShapeDblClicked(IGraphView view, int sid, int type);
+        public boolean onShapeDblClicked(IGraphView view, int type, int sid, int tag);
     }
 
     //! 上下文按钮点击的通知
@@ -144,6 +149,9 @@ public interface IGraphView {
 
     //! 添加图形录制的观察者
     public void setOnShapesRecordedListener(OnShapesRecordedListener listener);
+
+    //! 添加图形将删除的观察者
+    public void setOnShapeWillDeleteListener(OnShapeWillDeleteListener listener);
 
     //! 添加图形已删除的观察者
     public void setOnShapeDeletedListener(OnShapeDeletedListener listener);

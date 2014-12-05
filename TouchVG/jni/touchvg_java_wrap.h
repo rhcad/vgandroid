@@ -36,7 +36,7 @@ public:
     virtual bool clipPath();
     virtual bool drawHandle(float x, float y, int type, float angle);
     virtual bool drawBitmap(char const *name, float xc, float yc, float w, float h, float angle);
-    virtual float drawTextAt(char const *text, float x, float y, float h, int align);
+    virtual float drawTextAt(char const *text, float x, float y, float h, int align, float angle);
     virtual bool beginShape(int type, int sid, int version, float x, float y, float w, float h);
     virtual void endShape(int type, int sid, float x, float y);
 public:
@@ -97,6 +97,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -108,12 +109,13 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 34 ? swig_override[n] : false);
+      return (n < 36 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[34];
+    bool swig_override[36];
 };
 
 class SwigDirector_MgBaseRect : public MgBaseRect, public Swig::Director {
@@ -145,6 +147,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -156,12 +159,13 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
 public:
     bool swig_overrides(int n) {
-      return (n < 34 ? swig_override[n] : false);
+      return (n < 36 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[34];
+    bool swig_override[36];
 };
 
 class SwigDirector_MgBaseLines : public MgBaseLines, public Swig::Director {
@@ -193,6 +197,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -204,16 +209,17 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
     virtual bool resize(int count);
     virtual bool addPoint(Point2d const &pt);
     virtual bool insertPoint(int segment, Point2d const &pt);
     virtual bool removePoint(int index);
 public:
     bool swig_overrides(int n) {
-      return (n < 38 ? swig_override[n] : false);
+      return (n < 40 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[38];
+    bool swig_override[40];
 };
 
 class SwigDirector_MgComposite : public MgComposite, public Swig::Director {
@@ -245,6 +251,7 @@ public:
     virtual float hitTest(Point2d const &pt, float tol, MgHitResult &res) const;
     virtual bool hitTestBox(Box2d const &rect) const;
     virtual bool draw(int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
+    virtual bool draw2(MgObject const *owner, int mode, GiGraphics &gs, GiContext const &ctx, int segment) const;
     virtual void output(MgPath &path) const;
     virtual bool save(MgStorage *s) const;
     virtual bool load(MgShapeFactory *factory, MgStorage *s);
@@ -256,13 +263,14 @@ public:
     virtual bool offset(Vector2d const &vec, int segment);
     virtual void setFlag(MgShapeBit bit, bool on);
     virtual void setOwner(MgObject *owner);
+    virtual int getSubType() const;
     virtual bool canOffsetShapeAlone(MgShape *shape);
 public:
     bool swig_overrides(int n) {
-      return (n < 35 ? swig_override[n] : false);
+      return (n < 37 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[35];
+    bool swig_override[37];
 };
 
 class SwigDirector_MgCommand : public MgCommand, public Swig::Director {
@@ -302,7 +310,7 @@ public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
     SwigDirector_CmdObserverDefault(JNIEnv *jenv);
     virtual ~SwigDirector_CmdObserverDefault();
-    virtual void onDocLoaded(MgMotion const *sender);
+    virtual void onDocLoaded(MgMotion const *sender, bool forUndo);
     virtual void onEnterSelectCommand(MgMotion const *sender);
     virtual void onUnloadCommands(MgCmdManager *sender);
     virtual bool selectActionsNeedHided(MgMotion const *sender);
@@ -313,9 +321,9 @@ public:
     virtual void drawInSelectCommand(MgMotion const *sender, MgShape const *sp, int handleIndex, GiGraphics *gs);
     virtual void onSelectionChanged(MgMotion const *sender);
     virtual bool onShapeWillAdded(MgMotion const *sender, MgShape *sp);
-    virtual void onShapeAdded(MgMotion const *sender, MgShape const *sp);
+    virtual void onShapeAdded(MgMotion const *sender, MgShape *sp);
     virtual bool onShapeWillDeleted(MgMotion const *sender, MgShape const *sp);
-    virtual void onShapeDeleted(MgMotion const *sender, MgShape const *sp);
+    virtual int onShapeDeleted(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanRotated(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanTransform(MgMotion const *sender, MgShape const *sp);
     virtual bool onShapeCanUnlock(MgMotion const *sender, MgShape const *sp);
@@ -365,9 +373,9 @@ public:
     virtual int getMaxStepSwigPublic() {
       return MgCommandDraw::getMaxStep();
     }
-    virtual void setStepPoint(int step, Point2d const &pt);
-    virtual void setStepPointSwigPublic(int step, Point2d const &pt) {
-      MgCommandDraw::setStepPoint(step,pt);
+    virtual void setStepPoint(MgMotion const *sender, int step, Point2d const &pt);
+    virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
+      MgCommandDraw::setStepPoint(sender,step,pt);
     }
 public:
     bool swig_overrides(int n) {
@@ -405,9 +413,9 @@ public:
     virtual int getMaxStepSwigPublic() {
       return MgCommandDraw::getMaxStep();
     }
-    virtual void setStepPoint(int step, Point2d const &pt);
-    virtual void setStepPointSwigPublic(int step, Point2d const &pt) {
-      MgCommandDraw::setStepPoint(step,pt);
+    virtual void setStepPoint(MgMotion const *sender, int step, Point2d const &pt);
+    virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
+      MgCommandDraw::setStepPoint(sender,step,pt);
     }
     virtual void addRectShape(MgMotion const *sender);
     virtual void addRectShapeSwigPublic(MgMotion const *sender) {
@@ -439,32 +447,18 @@ public:
     virtual void contentChanged();
     virtual void dynamicChanged();
     virtual void viewChanged(GiView *oldview);
+    virtual void shapeWillDelete(int sid);
     virtual void shapeDeleted(int sid);
-    virtual bool shapeDblClick(int type, int sid);
-    virtual bool shapeClicked(int sid, int tag, float x, float y);
+    virtual bool shapeDblClick(int type, int sid, int tag);
+    virtual bool shapeClicked(int type, int sid, int tag, float x, float y);
     virtual void showMessage(char const *text);
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:
     bool swig_overrides(int n) {
-      return (n < 17 ? swig_override[n] : false);
+      return (n < 18 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[17];
-};
-
-struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {
-
-public:
-    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_MgFindImageCallback(JNIEnv *jenv);
-    virtual ~SwigDirector_MgFindImageCallback();
-    virtual void onFindImage(int sid, char const *name);
-public:
-    bool swig_overrides(int n) {
-      return (n < 1 ? swig_override[n] : false);
-    }
-protected:
-    bool swig_override[1];
+    bool swig_override[18];
 };
 
 struct SwigDirector_MgStringCallback : public MgStringCallback, public Swig::Director {
@@ -482,6 +476,21 @@ protected:
     bool swig_override[1];
 };
 
+struct SwigDirector_MgFindImageCallback : public MgFindImageCallback, public Swig::Director {
+
+public:
+    void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
+    SwigDirector_MgFindImageCallback(JNIEnv *jenv);
+    virtual ~SwigDirector_MgFindImageCallback();
+    virtual void onFindImage(int sid, char const *name);
+public:
+    bool swig_overrides(int n) {
+      return (n < 1 ? swig_override[n] : false);
+    }
+protected:
+    bool swig_override[1];
+};
+
 struct SwigDirector_MgOptionCallback : public MgOptionCallback, public Swig::Director {
 
 public:
@@ -491,12 +500,13 @@ public:
     virtual void onGetOptionBool(char const *name, bool value);
     virtual void onGetOptionInt(char const *name, int value);
     virtual void onGetOptionFloat(char const *name, float value);
+    virtual void onGetOptionString(char const *name, char const *text);
 public:
     bool swig_overrides(int n) {
-      return (n < 3 ? swig_override[n] : false);
+      return (n < 4 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[3];
+    bool swig_override[4];
 };
 
 
