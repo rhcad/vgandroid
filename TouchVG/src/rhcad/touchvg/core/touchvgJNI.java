@@ -1766,6 +1766,8 @@ public class touchvgJNI {
   public final static native void CmdObserverDefault_change_ownership(CmdObserverDefault obj, long cptr, boolean take_or_release);
   public final static native void CmdSubject_registerObserver(long jarg1, CmdSubject jarg1_, long jarg2, CmdObserver jarg2_);
   public final static native void CmdSubject_unregisterObserver(long jarg1, CmdSubject jarg1_, long jarg2, CmdObserver jarg2_);
+  public final static native boolean CmdSubject_registerNamedObserver(long jarg1, CmdSubject jarg1_, String jarg2, long jarg3, CmdObserver jarg3_);
+  public final static native long CmdSubject_findNamedObserver(long jarg1, CmdSubject jarg1_, String jarg2);
   public final static native void delete_CmdSubject(long jarg1);
   public final static native long new_MgCommandDraw(String jarg1);
   public final static native void delete_MgCommandDraw(long jarg1);

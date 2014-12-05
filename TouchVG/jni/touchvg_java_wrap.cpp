@@ -42529,6 +42529,53 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdSubject_1unregiste
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdSubject_1registerNamedObserver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
+  CmdSubject *arg1 = (CmdSubject *) 0 ;
+  char *arg2 = (char *) 0 ;
+  CmdObserver *arg3 = (CmdObserver *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg3_;
+  arg1 = *(CmdSubject **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  arg3 = *(CmdObserver **)&jarg3; 
+  result = (bool)(arg1)->registerNamedObserver((char const *)arg2,arg3);
+  jresult = (jboolean)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_CmdSubject_1findNamedObserver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  CmdSubject *arg1 = (CmdSubject *) 0 ;
+  char *arg2 = (char *) 0 ;
+  CmdObserver *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(CmdSubject **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (CmdObserver *)(arg1)->findNamedObserver((char const *)arg2);
+  *(CmdObserver **)&jresult = result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1CmdSubject(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   CmdSubject *arg1 = (CmdSubject *) 0 ;
   
