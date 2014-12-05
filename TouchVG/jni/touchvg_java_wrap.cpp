@@ -9906,7 +9906,7 @@ void SwigDirector_GiView::shapeDeleted(int sid) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-bool SwigDirector_GiView::shapeDblClick(int type, int sid) {
+bool SwigDirector_GiView::shapeDblClick(int type, int sid, int tag) {
   bool c_result = SwigValueInit< bool >() ;
   jboolean jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
@@ -9914,15 +9914,17 @@ bool SwigDirector_GiView::shapeDblClick(int type, int sid) {
   jobject swigjobj = (jobject) NULL ;
   jint jtype  ;
   jint jsid  ;
+  jint jtag  ;
   
   if (!swig_override[14]) {
-    return GiView::shapeDblClick(type,sid);
+    return GiView::shapeDblClick(type,sid,tag);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jtype = (jint) type;
     jsid = (jint) sid;
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jtype, jsid);
+    jtag = (jint) tag;
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jtype, jsid, jtag);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9937,27 +9939,29 @@ bool SwigDirector_GiView::shapeDblClick(int type, int sid) {
   return c_result;
 }
 
-bool SwigDirector_GiView::shapeClicked(int sid, int tag, float x, float y) {
+bool SwigDirector_GiView::shapeClicked(int type, int sid, int tag, float x, float y) {
   bool c_result = SwigValueInit< bool >() ;
   jboolean jresult = 0 ;
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
+  jint jtype  ;
   jint jsid  ;
   jint jtag  ;
   jfloat jx  ;
   jfloat jy  ;
   
   if (!swig_override[15]) {
-    return GiView::shapeClicked(sid,tag,x,y);
+    return GiView::shapeClicked(type,sid,tag,x,y);
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jtype = (jint) type;
     jsid = (jint) sid;
     jtag = (jint) tag;
     jx = (jfloat) x;
     jy = (jfloat) y;
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jsid, jtag, jx, jy);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jtype, jsid, jtag, jx, jy);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10083,10 +10087,10 @@ void SwigDirector_GiView::swig_connect_director(JNIEnv *jenv, jobject jself, jcl
       "shapeDeleted", "(I)V", NULL 
     },
     {
-      "shapeDblClick", "(II)Z", NULL 
+      "shapeDblClick", "(III)Z", NULL 
     },
     {
-      "shapeClicked", "(IIFF)Z", NULL 
+      "shapeClicked", "(IIIFF)Z", NULL 
     },
     {
       "showMessage", "(Ljava/lang/String;)V", NULL 
@@ -39262,24 +39266,23 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1shapeDblC
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1shapeClicked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1shapeClicked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jfloat jarg3, jfloat jarg4) {
   jboolean jresult = 0 ;
   MgView *arg1 = (MgView *) 0 ;
-  int arg2 ;
-  int arg3 ;
+  MgShape *arg2 = (MgShape *) 0 ;
+  float arg3 ;
   float arg4 ;
-  float arg5 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
+  (void)jarg2_;
   arg1 = *(MgView **)&jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (int)jarg3; 
+  arg2 = *(MgShape **)&jarg2; 
+  arg3 = (float)jarg3; 
   arg4 = (float)jarg4; 
-  arg5 = (float)jarg5; 
-  result = (bool)(arg1)->shapeClicked(arg2,arg3,arg4,arg5);
+  result = (bool)(arg1)->shapeClicked((MgShape const *)arg2,arg3,arg4);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -45796,11 +45799,12 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDeletedS
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblClick(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblClick(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
   jboolean jresult = 0 ;
   GiView *arg1 = (GiView *) 0 ;
   int arg2 ;
   int arg3 ;
+  int arg4 ;
   bool result;
   
   (void)jenv;
@@ -45809,17 +45813,19 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblC
   arg1 = *(GiView **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  result = (bool)(arg1)->shapeDblClick(arg2,arg3);
+  arg4 = (int)jarg4; 
+  result = (bool)(arg1)->shapeDblClick(arg2,arg3,arg4);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblClickSwigExplicitGiView(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblClickSwigExplicitGiView(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
   jboolean jresult = 0 ;
   GiView *arg1 = (GiView *) 0 ;
   int arg2 ;
   int arg3 ;
+  int arg4 ;
   bool result;
   
   (void)jenv;
@@ -45828,19 +45834,21 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeDblC
   arg1 = *(GiView **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  result = (bool)(arg1)->GiView::shapeDblClick(arg2,arg3);
+  arg4 = (int)jarg4; 
+  result = (bool)(arg1)->GiView::shapeDblClick(arg2,arg3,arg4);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClicked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClicked(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4, jfloat jarg5, jfloat jarg6) {
   jboolean jresult = 0 ;
   GiView *arg1 = (GiView *) 0 ;
   int arg2 ;
   int arg3 ;
-  float arg4 ;
+  int arg4 ;
   float arg5 ;
+  float arg6 ;
   bool result;
   
   (void)jenv;
@@ -45849,21 +45857,23 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClic
   arg1 = *(GiView **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  arg4 = (float)jarg4; 
+  arg4 = (int)jarg4; 
   arg5 = (float)jarg5; 
-  result = (bool)(arg1)->shapeClicked(arg2,arg3,arg4,arg5);
+  arg6 = (float)jarg6; 
+  result = (bool)(arg1)->shapeClicked(arg2,arg3,arg4,arg5,arg6);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClickedSwigExplicitGiView(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClickedSwigExplicitGiView(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4, jfloat jarg5, jfloat jarg6) {
   jboolean jresult = 0 ;
   GiView *arg1 = (GiView *) 0 ;
   int arg2 ;
   int arg3 ;
-  float arg4 ;
+  int arg4 ;
   float arg5 ;
+  float arg6 ;
   bool result;
   
   (void)jenv;
@@ -45872,9 +45882,10 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1shapeClic
   arg1 = *(GiView **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  arg4 = (float)jarg4; 
+  arg4 = (int)jarg4; 
   arg5 = (float)jarg5; 
-  result = (bool)(arg1)->GiView::shapeClicked(arg2,arg3,arg4,arg5);
+  arg6 = (float)jarg6; 
+  result = (bool)(arg1)->GiView::shapeClicked(arg2,arg3,arg4,arg5,arg6);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -51432,10 +51443,10 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
       "SwigDirector_GiView_shapeDeleted", "(Lrhcad/touchvg/core/GiView;I)V" 
     },
     {
-      "SwigDirector_GiView_shapeDblClick", "(Lrhcad/touchvg/core/GiView;II)Z" 
+      "SwigDirector_GiView_shapeDblClick", "(Lrhcad/touchvg/core/GiView;III)Z" 
     },
     {
-      "SwigDirector_GiView_shapeClicked", "(Lrhcad/touchvg/core/GiView;IIFF)Z" 
+      "SwigDirector_GiView_shapeClicked", "(Lrhcad/touchvg/core/GiView;IIIFF)Z" 
     },
     {
       "SwigDirector_GiView_showMessage", "(Lrhcad/touchvg/core/GiView;Ljava/lang/String;)V" 

@@ -243,8 +243,8 @@ public class MgView {
     return touchvgJNI.MgView_shapeDblClick(swigCPtr, this, MgShape.getCPtr(shape), shape);
   }
 
-  public boolean shapeClicked(int sid, int tag, float x, float y) {
-    return touchvgJNI.MgView_shapeClicked(swigCPtr, this, sid, tag, x, y);
+  public boolean shapeClicked(MgShape shape, float x, float y) {
+    return touchvgJNI.MgView_shapeClicked(swigCPtr, this, MgShape.getCPtr(shape), shape, x, y);
   }
 
   public void showMessage(String text) {

@@ -1581,7 +1581,7 @@ public class touchvgJNI {
   public final static native boolean MgView_shapeWillChanged(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_, long jarg3, MgShape jarg3_);
   public final static native void MgView_shapeChanged(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
   public final static native boolean MgView_shapeDblClick(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_);
-  public final static native boolean MgView_shapeClicked(long jarg1, MgView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
+  public final static native boolean MgView_shapeClicked(long jarg1, MgView jarg1_, long jarg2, MgShape jarg2_, float jarg3, float jarg4);
   public final static native void MgView_showMessage(long jarg1, MgView jarg1_, String jarg2);
   public final static native void MgView_getLocalizedString(long jarg1, MgView jarg1_, String jarg2, long jarg3, MgStringCallback jarg3_);
   public final static native boolean MgView_isContextActionsVisible(long jarg1, MgView jarg1_);
@@ -1964,10 +1964,10 @@ public class touchvgJNI {
   public final static native void GiView_shapeWillDeleteSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2);
   public final static native void GiView_shapeDeleted(long jarg1, GiView jarg1_, int jarg2);
   public final static native void GiView_shapeDeletedSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2);
-  public final static native boolean GiView_shapeDblClick(long jarg1, GiView jarg1_, int jarg2, int jarg3);
-  public final static native boolean GiView_shapeDblClickSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3);
-  public final static native boolean GiView_shapeClicked(long jarg1, GiView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
-  public final static native boolean GiView_shapeClickedSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3, float jarg4, float jarg5);
+  public final static native boolean GiView_shapeDblClick(long jarg1, GiView jarg1_, int jarg2, int jarg3, int jarg4);
+  public final static native boolean GiView_shapeDblClickSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3, int jarg4);
+  public final static native boolean GiView_shapeClicked(long jarg1, GiView jarg1_, int jarg2, int jarg3, int jarg4, float jarg5, float jarg6);
+  public final static native boolean GiView_shapeClickedSwigExplicitGiView(long jarg1, GiView jarg1_, int jarg2, int jarg3, int jarg4, float jarg5, float jarg6);
   public final static native void GiView_showMessage(long jarg1, GiView jarg1_, String jarg2);
   public final static native void GiView_showMessageSwigExplicitGiView(long jarg1, GiView jarg1_, String jarg2);
   public final static native void GiView_getLocalizedString(long jarg1, GiView jarg1_, String jarg2, long jarg3, MgStringCallback jarg3_);
@@ -3090,11 +3090,11 @@ public class touchvgJNI {
   public static void SwigDirector_GiView_shapeDeleted(GiView self, int sid) {
     self.shapeDeleted(sid);
   }
-  public static boolean SwigDirector_GiView_shapeDblClick(GiView self, int type, int sid) {
-    return self.shapeDblClick(type, sid);
+  public static boolean SwigDirector_GiView_shapeDblClick(GiView self, int type, int sid, int tag) {
+    return self.shapeDblClick(type, sid, tag);
   }
-  public static boolean SwigDirector_GiView_shapeClicked(GiView self, int sid, int tag, float x, float y) {
-    return self.shapeClicked(sid, tag, x, y);
+  public static boolean SwigDirector_GiView_shapeClicked(GiView self, int type, int sid, int tag, float x, float y) {
+    return self.shapeClicked(type, sid, tag, x, y);
   }
   public static void SwigDirector_GiView_showMessage(GiView self, String text) {
     self.showMessage(text);

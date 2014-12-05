@@ -108,12 +108,12 @@ public interface IGraphView {
 
     //! 图形点击的通知，返回false继续显示上下文按钮
     public static interface OnShapeClickedListener {
-        public boolean onShapeClicked(IGraphView view, int sid, int tag, float x, float y);
+        public boolean onShapeClicked(IGraphView view, int type, int sid, int tag, float x, float y);
     }
 
     //! 图形双击的通知，返回true自定义编辑，返回false默认编辑
     public static interface OnShapeDblClickedListener {
-        public boolean onShapeDblClicked(IGraphView view, int sid, int type);
+        public boolean onShapeDblClicked(IGraphView view, int type, int sid, int tag);
     }
 
     //! 上下文按钮点击的通知

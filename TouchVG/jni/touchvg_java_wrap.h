@@ -449,8 +449,8 @@ public:
     virtual void viewChanged(GiView *oldview);
     virtual void shapeWillDelete(int sid);
     virtual void shapeDeleted(int sid);
-    virtual bool shapeDblClick(int type, int sid);
-    virtual bool shapeClicked(int sid, int tag, float x, float y);
+    virtual bool shapeDblClick(int type, int sid, int tag);
+    virtual bool shapeClicked(int type, int sid, int tag, float x, float y);
     virtual void showMessage(char const *text);
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:

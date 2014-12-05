@@ -221,10 +221,10 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     }
 
     @Override
-    public boolean shapeClicked(int sid, int tag, float x, float y) {
+    public boolean shapeClicked(int type, int sid, int tag, float x, float y) {
         if (shapeClickedListeners != null) {
             for (OnShapeClickedListener listener : shapeClickedListeners) {
-                if (listener.onShapeClicked(getGraphView(), sid, tag, x, y)) {
+                if (listener.onShapeClicked(getGraphView(), type, sid, tag, x, y)) {
                     return true;
                 }
             }
@@ -233,10 +233,10 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     }
 
     @Override
-    public boolean shapeDblClick(int type, int sid) {
+    public boolean shapeDblClick(int type, int sid, int tag) {
         if (shapeDblClickedListeners != null) {
             for (OnShapeDblClickedListener listener : shapeDblClickedListeners) {
-                if (listener.onShapeDblClicked(getGraphView(), sid, type)) {
+                if (listener.onShapeDblClicked(getGraphView(), type, sid, tag)) {
                     return true;
                 }
             }
