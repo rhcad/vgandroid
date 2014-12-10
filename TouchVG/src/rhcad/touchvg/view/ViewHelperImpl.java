@@ -35,13 +35,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-/**
- * \ingroup GROUP_ANDROID
- * Android绘图视图辅助类
- */
+//! Android绘图视图辅助类
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 27;
+    private static final int JARVERSION = 28;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -574,6 +571,16 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public Rect getViewBox() {
         return Snapshot.getViewBox(view());
+    }
+
+    @Override
+    public float getViewScale() {
+        return cmdView().xform().getViewScale();
+    }
+
+    @Override
+    public boolean setViewScale(float scale) {
+        return ContextHelper.setViewScale(mCreator, scale);
     }
 
     @Override

@@ -59,6 +59,10 @@ public class MgPath {
     return new MgPath(touchvgJNI.MgPath_addSVGPath(swigCPtr, this, s), false);
   }
 
+  public MgPath reverse() {
+    return new MgPath(touchvgJNI.MgPath_reverse(swigCPtr, this), false);
+  }
+
   public boolean genericRoundLines(int count, Point2d points, float radius, boolean closed) {
     return touchvgJNI.MgPath_genericRoundLines__SWIG_0(swigCPtr, this, count, Point2d.getCPtr(points), points, radius, closed);
   }
@@ -69,6 +73,10 @@ public class MgPath {
 
   public int getCount() {
     return touchvgJNI.MgPath_getCount(swigCPtr, this);
+  }
+
+  public int getSubPathCount() {
+    return touchvgJNI.MgPath_getSubPathCount(swigCPtr, this);
   }
 
   public Point2d getStartPoint() {
@@ -233,6 +241,10 @@ public class MgPath {
 
   public boolean closeFigure() {
     return touchvgJNI.MgPath_closeFigure(swigCPtr, this);
+  }
+
+  public boolean trimStart(float dist) {
+    return touchvgJNI.MgPath_trimStart(swigCPtr, this, dist);
   }
 
   public boolean crossWithPath(MgPath path, Box2d box, Point2d ptCross) {

@@ -15915,18 +15915,31 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1splitBezier(J
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1lengthOfBezier(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1bezierIsStraight(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  Point2d *arg1 = (Point2d *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(Point2d **)&jarg1; 
+  result = (bool)mgcurv::bezierIsStraight((Point2d const *)arg1);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1lengthOfBezier(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   Point2d *arg1 = (Point2d *) 0 ;
-  float arg2 ;
   float result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(Point2d **)&jarg1; 
-  arg2 = (float)jarg2; 
-  result = (float)mgcurv::lengthOfBezier((Point2d const *)arg1,arg2);
+  result = (float)mgcurv::lengthOfBezier((Point2d const *)arg1);
   jresult = (jfloat)result; 
   return jresult;
 }
@@ -19230,6 +19243,77 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1setFillAlp
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1hasArrayHead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jboolean jresult = 0 ;
+  GiContext *arg1 = (GiContext *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiContext **)&jarg1; 
+  result = (bool)((GiContext const *)arg1)->hasArrayHead();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1getStartArrayHead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  GiContext *arg1 = (GiContext *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiContext **)&jarg1; 
+  result = (int)((GiContext const *)arg1)->getStartArrayHead();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1setStartArrayHead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  GiContext *arg1 = (GiContext *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiContext **)&jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->setStartArrayHead(arg2);
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1getEndArrayHead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  GiContext *arg1 = (GiContext *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiContext **)&jarg1; 
+  result = (int)((GiContext const *)arg1)->getEndArrayHead();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiContext_1setEndArrayHead(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  GiContext *arg1 = (GiContext *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiContext **)&jarg1; 
+  arg2 = (int)jarg2; 
+  (arg1)->setEndArrayHead(arg2);
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1GiContext(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   GiContext *arg1 = (GiContext *) 0 ;
   
@@ -20402,6 +20486,21 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1addSVGPath(J
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1reverse(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgPath *arg1 = (MgPath *) 0 ;
+  MgPath *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgPath **)&jarg1; 
+  result = (MgPath *) &(arg1)->reverse();
+  *(MgPath **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1genericRoundLines_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_, jfloat jarg4, jboolean jarg5) {
   jboolean jresult = 0 ;
   MgPath *arg1 = (MgPath *) 0 ;
@@ -20458,6 +20557,21 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1getCount(JNIE
   (void)jarg1_;
   arg1 = *(MgPath **)&jarg1; 
   result = (int)((MgPath const *)arg1)->getCount();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1getSubPathCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  MgPath *arg1 = (MgPath *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgPath **)&jarg1; 
+  result = (int)((MgPath const *)arg1)->getSubPathCount();
   jresult = (jint)result; 
   return jresult;
 }
@@ -21332,6 +21446,23 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1closeFigu
   (void)jarg1_;
   arg1 = *(MgPath **)&jarg1; 
   result = (bool)(arg1)->closeFigure();
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgPath_1trimStart(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+  jboolean jresult = 0 ;
+  MgPath *arg1 = (MgPath *) 0 ;
+  float arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgPath **)&jarg1; 
+  arg2 = (float)jarg2; 
+  result = (bool)(arg1)->trimStart(arg2);
   jresult = (jboolean)result; 
   return jresult;
 }

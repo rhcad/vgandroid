@@ -191,6 +191,26 @@ public class GiContext {
     touchvgJNI.GiContext_setFillAlpha(swigCPtr, this, alpha);
   }
 
+  public boolean hasArrayHead() {
+    return touchvgJNI.GiContext_hasArrayHead(swigCPtr, this);
+  }
+
+  public int getStartArrayHead() {
+    return touchvgJNI.GiContext_getStartArrayHead(swigCPtr, this);
+  }
+
+  public void setStartArrayHead(int type) {
+    touchvgJNI.GiContext_setStartArrayHead(swigCPtr, this, type);
+  }
+
+  public int getEndArrayHead() {
+    return touchvgJNI.GiContext_getEndArrayHead(swigCPtr, this);
+  }
+
+  public void setEndArrayHead(int type) {
+    touchvgJNI.GiContext_setEndArrayHead(swigCPtr, this, type);
+  }
+
   public final static int kSolidLine = 0;
   public final static int kDashLine = kSolidLine + 1;
   public final static int kDotLine = kDashLine + 1;
@@ -206,7 +226,15 @@ public class GiContext {
   public final static int kFillRGB = 0x10;
   public final static int kFillAlpha = 0x20;
   public final static int kFillARGB = 0x30;
+  public final static int kLineArrayHead = 0x40;
   public final static int kCopyAll = 0xFF;
   public final static int kLineDashMask = 0xFFF;
+  public final static int kArrowNone = 0;
+  public final static int kArrowSharpClosed = kArrowNone + 1;
+  public final static int kArrowSharpLine = kArrowSharpClosed + 1;
+  public final static int kArrowTLine = kArrowSharpLine + 1;
+  public final static int kArrowSlashLine = kArrowTLine + 1;
+  public final static int kArrowClosedCircle = kArrowSlashLine + 1;
+  public final static int kArrowOpenedCircle = kArrowClosedCircle + 1;
 
 }

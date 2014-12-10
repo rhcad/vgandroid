@@ -21,7 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-//! 绘图视图辅助API接口
+/**
+ * \ingroup GROUP_ANDROID
+ * 绘图视图辅助API接口
+ */
 public interface IViewHelper {
 
     //! [状态无关]返回绘图包的版本号，1.1.jarver.sover
@@ -293,6 +296,12 @@ public interface IViewHelper {
 
     //! 返回当前视图区域的模型坐标范围，模型坐标
     public Rect getViewBox();
+
+    //! 得到当前显示比例，正数，1表示100%，越大显示得越大
+    public float getViewScale();
+
+    //! 设置当前显示比例，正数，1表示100%，越大显示得越大
+    public boolean setViewScale(float scale);
 
     //! 返回文档的模型坐标范围
     public Rect getModelBox();

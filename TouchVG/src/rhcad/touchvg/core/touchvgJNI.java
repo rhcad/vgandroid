@@ -307,7 +307,8 @@ public class touchvgJNI {
   public final static native void mgcurv_fitBezier(long jarg1, Point2d jarg1_, float jarg2, long jarg3, Point2d jarg3_);
   public final static native void mgcurv_bezierTanget(long jarg1, Point2d jarg1_, float jarg2, long jarg3, Point2d jarg3_);
   public final static native void mgcurv_splitBezier(long jarg1, Point2d jarg1_, float jarg2, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
-  public final static native float mgcurv_lengthOfBezier(long jarg1, Point2d jarg1_, float jarg2);
+  public final static native boolean mgcurv_bezierIsStraight(long jarg1, Point2d jarg1_);
+  public final static native float mgcurv_lengthOfBezier(long jarg1, Point2d jarg1_);
   public final static native void mgcurv_bezier4P(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, long jarg6, Point2d jarg6_);
   public final static native int mgcurv_fitCurve(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4, long jarg5, Point2d jarg5_, float jarg6);
   public final static native void mgcurv_quadBezierToCubic(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_);
@@ -461,6 +462,11 @@ public class touchvgJNI {
   public final static native void GiContext_setFillARGB(long jarg1, GiContext jarg1_, int jarg2);
   public final static native int GiContext_getFillAlpha(long jarg1, GiContext jarg1_);
   public final static native void GiContext_setFillAlpha(long jarg1, GiContext jarg1_, int jarg2);
+  public final static native boolean GiContext_hasArrayHead(long jarg1, GiContext jarg1_);
+  public final static native int GiContext_getStartArrayHead(long jarg1, GiContext jarg1_);
+  public final static native void GiContext_setStartArrayHead(long jarg1, GiContext jarg1_, int jarg2);
+  public final static native int GiContext_getEndArrayHead(long jarg1, GiContext jarg1_);
+  public final static native void GiContext_setEndArrayHead(long jarg1, GiContext jarg1_, int jarg2);
   public final static native void delete_GiContext(long jarg1);
   public final static native long new_GiTransform__SWIG_0(boolean jarg1);
   public final static native long new_GiTransform__SWIG_1();
@@ -526,9 +532,11 @@ public class touchvgJNI {
   public final static native long MgPath_copy(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
   public final static native long MgPath_append(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
   public final static native long MgPath_addSVGPath(long jarg1, MgPath jarg1_, String jarg2);
+  public final static native long MgPath_reverse(long jarg1, MgPath jarg1_);
   public final static native boolean MgPath_genericRoundLines__SWIG_0(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_, float jarg4, boolean jarg5);
   public final static native boolean MgPath_genericRoundLines__SWIG_1(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_, float jarg4);
   public final static native int MgPath_getCount(long jarg1, MgPath jarg1_);
+  public final static native int MgPath_getSubPathCount(long jarg1, MgPath jarg1_);
   public final static native long MgPath_getStartPoint(long jarg1, MgPath jarg1_);
   public final static native long MgPath_getStartTangent(long jarg1, MgPath jarg1_);
   public final static native long MgPath_getEndPoint(long jarg1, MgPath jarg1_);
@@ -570,6 +578,7 @@ public class touchvgJNI {
   public final static native boolean MgPath_arcTo__SWIG_2(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, boolean jarg4);
   public final static native boolean MgPath_arcTo__SWIG_3(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean MgPath_closeFigure(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_trimStart(long jarg1, MgPath jarg1_, float jarg2);
   public final static native boolean MgPath_crossWithPath(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_, long jarg3, Box2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native long new_GiGraphics__SWIG_0();
   public final static native long new_GiGraphics__SWIG_1(long jarg1, GiTransform jarg1_, boolean jarg2);

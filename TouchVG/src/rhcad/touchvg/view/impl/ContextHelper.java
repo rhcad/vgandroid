@@ -229,6 +229,14 @@ public class ContextHelper {
         return vc.isValid() && vc.coreView().zoomPan(dxPixel, dyPixel);
     }
 
+    public static boolean setViewScale(ViewCreator vc, float scale) {
+        if (scale > 0 && vc.cmdView().xform().zoomScale(scale)) {
+            vc.cmdView().regenAll(false);
+            return true;
+        }
+        return false;
+    }
+
     public static PointF displayToModel(ViewCreator vc, float x, float y) {
         final Floats pt = new Floats(x, y);
         if (vc.isValid() && vc.coreView().displayToModel(pt)) {

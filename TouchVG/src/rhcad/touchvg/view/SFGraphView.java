@@ -33,7 +33,6 @@ import android.view.SurfaceView;
 import android.view.View;
 
 /**
- * \ingroup GROUP_ANDROID
  * Graphics view with media overlay surface placed behind its window.
  * It uses a surface view placed on top of its window to draw dynamic shapes.
  */
@@ -532,6 +531,7 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
             } finally {
                 if (canvas != null) {
                     mHolder.unlockCanvasAndPost(canvas);
+                    mView.mViewAdapter.fireDynDrawEnded();
                 }
             }
         }
@@ -840,6 +840,11 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
     @Override
     public void setOnFirstRegenListener(OnFirstRegenListener listener) {
         mViewAdapter.setOnFirstRegenListener(listener);
+    }
+
+    @Override
+    public void setOnDynDrawEndedListener(OnDynDrawEndedListener listener) {
+        mViewAdapter.setOnDynDrawEndedListener(listener);
     }
 
     @Override

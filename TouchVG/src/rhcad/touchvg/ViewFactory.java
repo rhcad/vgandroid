@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.view.ViewHelperImpl;
 
-//! 绘图视图工厂类
+/**
+ * \ingroup GROUP_ANDROID
+ * 绘图视图工厂类
+ */
 public class ViewFactory {
     private static final String TAG = "touchvg";
 
