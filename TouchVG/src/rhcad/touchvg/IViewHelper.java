@@ -126,6 +126,18 @@ public interface IViewHelper {
     //! 设置线型(Const.SOLID_LINE,DASH_LINE..NULL_LINE)
     public void setLineStyle(int style);
 
+    //! 返回起端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public int getStartArrowHead();
+
+    //! 设置起端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public void setStartArrowHead(int style);
+
+    //! 返回末端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public int getEndArrowHead();
+
+    //! 设置末端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public void setEndArrowHead(int style);
+
     //! 返回线条颜色，忽略透明度分量，0 表示不画线条
     public int getLineColor();
 

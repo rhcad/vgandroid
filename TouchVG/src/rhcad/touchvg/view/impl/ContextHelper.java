@@ -146,6 +146,28 @@ public class ContextHelper {
         }
     }
 
+    public static int getStartArrowHead(ViewCreator vc) {
+        return vc.isValid() ? vc.coreView().getContext(false).getStartArrayHead() : 0;
+    }
+
+    public static void setStartArrowHead(ViewCreator vc, int style) {
+        if (vc.isValid()) {
+            vc.coreView().getContext(true).setStartArrayHead(style);
+            vc.coreView().setContext(GiContext.kLineArrayHead);
+        }
+    }
+
+    public static int getEndArrowHead(ViewCreator vc) {
+        return vc.isValid() ? vc.coreView().getContext(false).getEndArrayHead() : 0;
+    }
+
+    public static void setEndArrowHead(ViewCreator vc, int style) {
+        if (vc.isValid()) {
+            vc.coreView().getContext(true).setEndArrayHead(style);
+            vc.coreView().setContext(GiContext.kLineArrayHead);
+        }
+    }
+
     public static int getLineColor(ViewCreator vc) {
         return vc.isValid() ? vc.coreView().getContext(false).getLineColor().getARGB() : 0;
     }

@@ -244,6 +244,26 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public int getStartArrowHead() {
+        return ContextHelper.getStartArrowHead(mCreator);
+    }
+
+    @Override
+    public void setStartArrowHead(int style) {
+        ContextHelper.setStartArrowHead(mCreator, style);
+    }
+
+    @Override
+    public int getEndArrowHead() {
+        return ContextHelper.getEndArrowHead(mCreator);
+    }
+
+    @Override
+    public void setEndArrowHead(int style) {
+        ContextHelper.setEndArrowHead(mCreator, style);
+    }
+
+    @Override
     public int getLineColor() {
         return ContextHelper.getLineColor(mCreator);
     }

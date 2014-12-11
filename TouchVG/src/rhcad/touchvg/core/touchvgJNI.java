@@ -528,6 +528,7 @@ public class touchvgJNI {
   public final static native long new_MgPath__SWIG_0();
   public final static native long new_MgPath__SWIG_1(long jarg1, MgPath jarg1_);
   public final static native long new_MgPath__SWIG_2(int jarg1, long jarg2, Point2d jarg2_, String jarg3);
+  public final static native long new_MgPath__SWIG_3(String jarg1);
   public final static native void delete_MgPath(long jarg1);
   public final static native long MgPath_copy(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
   public final static native long MgPath_append(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_);
@@ -543,7 +544,9 @@ public class touchvgJNI {
   public final static native long MgPath_getEndTangent(long jarg1, MgPath jarg1_);
   public final static native boolean MgPath_isLine(long jarg1, MgPath jarg1_);
   public final static native boolean MgPath_isLines(long jarg1, MgPath jarg1_);
+  public final static native boolean MgPath_isCurve(long jarg1, MgPath jarg1_);
   public final static native boolean MgPath_isClosed(long jarg1, MgPath jarg1_);
+  public final static native float MgPath_getLength(long jarg1, MgPath jarg1_);
   public final static native int MgPath_getNodeType(long jarg1, MgPath jarg1_, int jarg2);
   public final static native long MgPath_getPoint(long jarg1, MgPath jarg1_, int jarg2);
   public final static native void MgPath_setPoint(long jarg1, MgPath jarg1_, int jarg2, long jarg3, Point2d jarg3_);
@@ -578,7 +581,7 @@ public class touchvgJNI {
   public final static native boolean MgPath_arcTo__SWIG_2(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, boolean jarg4);
   public final static native boolean MgPath_arcTo__SWIG_3(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean MgPath_closeFigure(long jarg1, MgPath jarg1_);
-  public final static native boolean MgPath_trimStart(long jarg1, MgPath jarg1_, float jarg2);
+  public final static native boolean MgPath_trimStart(long jarg1, MgPath jarg1_, long jarg2, Point2d jarg2_, float jarg3);
   public final static native boolean MgPath_crossWithPath(long jarg1, MgPath jarg1_, long jarg2, MgPath jarg2_, long jarg3, Box2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native long new_GiGraphics__SWIG_0();
   public final static native long new_GiGraphics__SWIG_1(long jarg1, GiTransform jarg1_, boolean jarg2);
