@@ -55,6 +55,10 @@ public class mgcurv {
     return touchvgJNI.mgcurv_lengthOfBezier(Point2d.getCPtr(pts), pts);
   }
 
+  public static float bezierPointLengthFromStart(Point2d pts, float len) {
+    return touchvgJNI.mgcurv_bezierPointLengthFromStart(Point2d.getCPtr(pts), pts, len);
+  }
+
   public static void bezier4P(Point2d pt1, Point2d pt2, Point2d pt3, Point2d pt4, Point2d ctrpt1, Point2d ctrpt2) {
     touchvgJNI.mgcurv_bezier4P(Point2d.getCPtr(pt1), pt1, Point2d.getCPtr(pt2), pt2, Point2d.getCPtr(pt3), pt3, Point2d.getCPtr(pt4), pt4, Point2d.getCPtr(ctrpt1), ctrpt1, Point2d.getCPtr(ctrpt2), ctrpt2);
   }

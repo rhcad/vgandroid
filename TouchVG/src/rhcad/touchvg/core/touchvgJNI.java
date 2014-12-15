@@ -309,6 +309,7 @@ public class touchvgJNI {
   public final static native void mgcurv_splitBezier(long jarg1, Point2d jarg1_, float jarg2, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean mgcurv_bezierIsStraight(long jarg1, Point2d jarg1_);
   public final static native float mgcurv_lengthOfBezier(long jarg1, Point2d jarg1_);
+  public final static native float mgcurv_bezierPointLengthFromStart(long jarg1, Point2d jarg1_, float jarg2);
   public final static native void mgcurv_bezier4P(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, long jarg6, Point2d jarg6_);
   public final static native int mgcurv_fitCurve(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4, long jarg5, Point2d jarg5_, float jarg6);
   public final static native void mgcurv_quadBezierToCubic(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_);

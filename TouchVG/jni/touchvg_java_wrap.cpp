@@ -15945,6 +15945,23 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1lengthOfBez
 }
 
 
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1bezierPointLengthFromStart(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+  jfloat jresult = 0 ;
+  Point2d *arg1 = (Point2d *) 0 ;
+  float arg2 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(Point2d **)&jarg1; 
+  arg2 = (float)jarg2; 
+  result = (float)mgcurv::bezierPointLengthFromStart((Point2d const *)arg1,arg2);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1bezier4P(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_, jlong jarg6, jobject jarg6_) {
   Point2d *arg1 = 0 ;
   Point2d *arg2 = 0 ;

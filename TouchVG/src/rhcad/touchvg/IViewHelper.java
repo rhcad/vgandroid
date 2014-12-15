@@ -428,4 +428,10 @@ public interface IViewHelper {
 
     //! 所属的Activity恢复状态时调用
     public void onRestoreInstanceState(Bundle savedState);
+
+    //! 显示消息文字
+    public void showMessage(String text);
+
+    //! 返回本地化文字
+    public String getLocalizedString(String name);
 }

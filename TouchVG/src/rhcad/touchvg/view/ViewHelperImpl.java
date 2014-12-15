@@ -795,6 +795,16 @@ public class ViewHelperImpl implements IViewHelper {
         ContextHelper.onRestoreInstanceState(mCreator, savedState);
     }
 
+    @Override
+    public void showMessage(String text) {
+        mCreator.getMainAdapter().showMessage(text);
+    }
+
+    @Override
+    public String getLocalizedString(String name) {
+        return ResourceUtil.getStringFromName(getContext(), name);
+    }
+
     //! 注册命令观察者
     public void registerCmdObserver(CmdObserver observer) {
         if (this.cmdView() != null) {
