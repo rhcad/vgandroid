@@ -838,6 +838,11 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
     }
 
     @Override
+    public void setOnZoomChangedListener(OnZoomChangedListener listener) {
+        mViewAdapter.setOnZoomChangedListener(listener);
+    }
+
+    @Override
     public void setOnFirstRegenListener(OnFirstRegenListener listener) {
         mViewAdapter.setOnFirstRegenListener(listener);
     }

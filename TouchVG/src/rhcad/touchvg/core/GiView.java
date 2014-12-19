@@ -94,6 +94,10 @@ public class GiView {
     if (getClass() == GiView.class) touchvgJNI.GiView_dynamicChanged(swigCPtr, this); else touchvgJNI.GiView_dynamicChangedSwigExplicitGiView(swigCPtr, this);
   }
 
+  public void zoomChanged() {
+    if (getClass() == GiView.class) touchvgJNI.GiView_zoomChanged(swigCPtr, this); else touchvgJNI.GiView_zoomChangedSwigExplicitGiView(swigCPtr, this);
+  }
+
   public void viewChanged(GiView oldview) {
     if (getClass() == GiView.class) touchvgJNI.GiView_viewChanged(swigCPtr, this, GiView.getCPtr(oldview), oldview); else touchvgJNI.GiView_viewChangedSwigExplicitGiView(swigCPtr, this, GiView.getCPtr(oldview), oldview);
   }

@@ -89,6 +89,11 @@ public interface IGraphView {
         public void onDynamicChanged(IGraphView view);
     }
 
+    //! 视图放缩的通知
+    public static interface OnZoomChangedListener {
+        public void onZoomChanged(IGraphView view);
+    }
+
     //! 第一次后台渲染结束的通知
     public static interface OnFirstRegenListener {
         public void onFirstRegen(IGraphView view);
@@ -151,6 +156,9 @@ public interface IGraphView {
 
     //! 添加图形动态改变的观察者
     public void setOnDynamicChangedListener(OnDynamicChangedListener listener);
+
+    //! 添加视图放缩的观察者
+    public void setOnZoomChangedListener(OnZoomChangedListener listener);
 
     //! 添加第一次后台渲染结束的观察者
     public void setOnFirstRegenListener(OnFirstRegenListener listener);

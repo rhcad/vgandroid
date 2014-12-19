@@ -446,6 +446,7 @@ public:
     virtual void selectionChanged();
     virtual void contentChanged();
     virtual void dynamicChanged();
+    virtual void zoomChanged();
     virtual void viewChanged(GiView *oldview);
     virtual void shapeWillDelete(int sid);
     virtual void shapeDeleted(int sid);
@@ -455,10 +456,10 @@ public:
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:
     bool swig_overrides(int n) {
-      return (n < 18 ? swig_override[n] : false);
+      return (n < 19 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[18];
+    bool swig_override[19];
 };
 
 struct SwigDirector_MgStringCallback : public MgStringCallback, public Swig::Director {

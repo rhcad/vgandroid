@@ -1971,6 +1971,8 @@ public class touchvgJNI {
   public final static native void GiView_contentChangedSwigExplicitGiView(long jarg1, GiView jarg1_);
   public final static native void GiView_dynamicChanged(long jarg1, GiView jarg1_);
   public final static native void GiView_dynamicChangedSwigExplicitGiView(long jarg1, GiView jarg1_);
+  public final static native void GiView_zoomChanged(long jarg1, GiView jarg1_);
+  public final static native void GiView_zoomChangedSwigExplicitGiView(long jarg1, GiView jarg1_);
   public final static native void GiView_viewChanged(long jarg1, GiView jarg1_, long jarg2, GiView jarg2_);
   public final static native void GiView_viewChangedSwigExplicitGiView(long jarg1, GiView jarg1_, long jarg2, GiView jarg2_);
   public final static native void GiView_shapeWillDelete(long jarg1, GiView jarg1_, int jarg2);
@@ -3093,6 +3095,9 @@ public class touchvgJNI {
   }
   public static void SwigDirector_GiView_dynamicChanged(GiView self) {
     self.dynamicChanged();
+  }
+  public static void SwigDirector_GiView_zoomChanged(GiView self) {
+    self.zoomChanged();
   }
   public static void SwigDirector_GiView_viewChanged(GiView self, long oldview) {
     self.viewChanged((oldview == 0) ? null : new GiView(oldview, false));

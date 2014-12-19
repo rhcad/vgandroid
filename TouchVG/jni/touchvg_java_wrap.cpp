@@ -604,7 +604,7 @@ namespace Swig {
 namespace Swig {
   namespace {
     jclass jclass_touchvgJNI = NULL;
-    jmethodID director_methids[287];
+    jmethodID director_methids[288];
   }
 }
 
@@ -9828,20 +9828,44 @@ void SwigDirector_GiView::dynamicChanged() {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
+void SwigDirector_GiView::zoomChanged() {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  
+  if (!swig_override[11]) {
+    GiView::zoomChanged();
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[274], swigjobj);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in GiView::zoomChanged ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
 void SwigDirector_GiView::viewChanged(GiView *oldview) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jlong joldview = 0 ;
   
-  if (!swig_override[11]) {
+  if (!swig_override[12]) {
     GiView::viewChanged(oldview);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     *((GiView **)&joldview) = (GiView *) oldview; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[274], swigjobj, joldview);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[275], swigjobj, joldview);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9860,14 +9884,14 @@ void SwigDirector_GiView::shapeWillDelete(int sid) {
   jobject swigjobj = (jobject) NULL ;
   jint jsid  ;
   
-  if (!swig_override[12]) {
+  if (!swig_override[13]) {
     GiView::shapeWillDelete(sid);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jsid = (jint) sid;
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[275], swigjobj, jsid);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[276], swigjobj, jsid);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9886,14 +9910,14 @@ void SwigDirector_GiView::shapeDeleted(int sid) {
   jobject swigjobj = (jobject) NULL ;
   jint jsid  ;
   
-  if (!swig_override[13]) {
+  if (!swig_override[14]) {
     GiView::shapeDeleted(sid);
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
     jsid = (jint) sid;
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[276], swigjobj, jsid);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jsid);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9916,7 +9940,7 @@ bool SwigDirector_GiView::shapeDblClick(int type, int sid, int tag) {
   jint jsid  ;
   jint jtag  ;
   
-  if (!swig_override[14]) {
+  if (!swig_override[15]) {
     return GiView::shapeDblClick(type,sid,tag);
   }
   swigjobj = swig_get_self(jenv);
@@ -9924,7 +9948,7 @@ bool SwigDirector_GiView::shapeDblClick(int type, int sid, int tag) {
     jtype = (jint) type;
     jsid = (jint) sid;
     jtag = (jint) tag;
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[277], swigjobj, jtype, jsid, jtag);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jtype, jsid, jtag);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9951,7 +9975,7 @@ bool SwigDirector_GiView::shapeClicked(int type, int sid, int tag, float x, floa
   jfloat jx  ;
   jfloat jy  ;
   
-  if (!swig_override[15]) {
+  if (!swig_override[16]) {
     return GiView::shapeClicked(type,sid,tag,x,y);
   }
   swigjobj = swig_get_self(jenv);
@@ -9961,7 +9985,7 @@ bool SwigDirector_GiView::shapeClicked(int type, int sid, int tag, float x, floa
     jtag = (jint) tag;
     jx = (jfloat) x;
     jy = (jfloat) y;
-    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[278], swigjobj, jtype, jsid, jtag, jx, jy);
+    jresult = (jboolean) jenv->CallStaticBooleanMethod(Swig::jclass_touchvgJNI, Swig::director_methids[279], swigjobj, jtype, jsid, jtag, jx, jy);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -9982,7 +10006,7 @@ void SwigDirector_GiView::showMessage(char const *text) {
   jobject swigjobj = (jobject) NULL ;
   jstring jtext = 0; TmpJOBJ jtext_(jenv, &jtext);
   
-  if (!swig_override[16]) {
+  if (!swig_override[17]) {
     GiView::showMessage(text);
     return;
   }
@@ -9993,7 +10017,7 @@ void SwigDirector_GiView::showMessage(char const *text) {
       jtext = jenv->NewStringUTF((const char *)text);
       if (!jtext) return ;
     }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[279], swigjobj, jtext);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[280], swigjobj, jtext);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10013,7 +10037,7 @@ void SwigDirector_GiView::getLocalizedString(char const *name, MgStringCallback 
   jstring jname = 0; TmpJOBJ jname_(jenv, &jname);
   jlong jresult = 0 ;
   
-  if (!swig_override[17]) {
+  if (!swig_override[18]) {
     GiView::getLocalizedString(name,result);
     return;
   }
@@ -10025,7 +10049,7 @@ void SwigDirector_GiView::getLocalizedString(char const *name, MgStringCallback 
       if (!jname) return ;
     }
     *((MgStringCallback **)&jresult) = (MgStringCallback *) result; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[280], swigjobj, jname, jresult);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[281], swigjobj, jname, jresult);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10078,6 +10102,9 @@ void SwigDirector_GiView::swig_connect_director(JNIEnv *jenv, jobject jself, jcl
       "dynamicChanged", "()V", NULL 
     },
     {
+      "zoomChanged", "()V", NULL 
+    },
+    {
       "viewChanged", "(Lrhcad/touchvg/core/GiView;)V", NULL 
     },
     {
@@ -10109,7 +10136,7 @@ void SwigDirector_GiView::swig_connect_director(JNIEnv *jenv, jobject jself, jcl
       baseclass = (jclass) jenv->NewGlobalRef(baseclass);
     }
     bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
-    for (int i = 0; i < 18; ++i) {
+    for (int i = 0; i < 19; ++i) {
       if (!methods[i].base_methid) {
         methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
         if (!methods[i].base_methid) return;
@@ -10150,7 +10177,7 @@ void SwigDirector_MgStringCallback::onGetString(char const *text) {
       jtext = jenv->NewStringUTF((const char *)text);
       if (!jtext) return ;
     }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[281], swigjobj, jtext);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[282], swigjobj, jtext);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10226,7 +10253,7 @@ void SwigDirector_MgFindImageCallback::onFindImage(int sid, char const *name) {
       jname = jenv->NewStringUTF((const char *)name);
       if (!jname) return ;
     }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[282], swigjobj, jsid, jname);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[283], swigjobj, jsid, jname);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10302,7 +10329,7 @@ void SwigDirector_MgOptionCallback::onGetOptionBool(char const *name, bool value
       if (!jname) return ;
     }
     jvalue = (jboolean) value;
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[283], swigjobj, jname, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[284], swigjobj, jname, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10334,7 +10361,7 @@ void SwigDirector_MgOptionCallback::onGetOptionInt(char const *name, int value) 
       if (!jname) return ;
     }
     jvalue = (jint) value;
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[284], swigjobj, jname, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[285], swigjobj, jname, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10366,7 +10393,7 @@ void SwigDirector_MgOptionCallback::onGetOptionFloat(char const *name, float val
       if (!jname) return ;
     }
     jvalue = (jfloat) value;
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[285], swigjobj, jname, jvalue);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[286], swigjobj, jname, jvalue);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -10402,7 +10429,7 @@ void SwigDirector_MgOptionCallback::onGetOptionString(char const *name, char con
       jtext = jenv->NewStringUTF((const char *)text);
       if (!jtext) return ;
     }
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[286], swigjobj, jname, jtext);
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[287], swigjobj, jname, jtext);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -45923,6 +45950,28 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1dynamicChange
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1zoomChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  GiView *arg1 = (GiView *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiView **)&jarg1; 
+  (arg1)->zoomChanged();
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1zoomChangedSwigExplicitGiView(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  GiView *arg1 = (GiView *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiView **)&jarg1; 
+  (arg1)->GiView::zoomChanged();
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiView_1viewChanged(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   GiView *arg1 = (GiView *) 0 ;
   GiView *arg2 = (GiView *) 0 ;
@@ -50814,7 +50863,7 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
   static struct {
     const char *method;
     const char *signature;
-  } methods[287] = {
+  } methods[288] = {
     {
       "SwigDirector_GiCanvas_setPen", "(Lrhcad/touchvg/core/GiCanvas;IFIFF)V" 
     },
@@ -51636,6 +51685,9 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_swig_1module_1init(JN
     },
     {
       "SwigDirector_GiView_dynamicChanged", "(Lrhcad/touchvg/core/GiView;)V" 
+    },
+    {
+      "SwigDirector_GiView_zoomChanged", "(Lrhcad/touchvg/core/GiView;)V" 
     },
     {
       "SwigDirector_GiView_viewChanged", "(Lrhcad/touchvg/core/GiView;J)V" 

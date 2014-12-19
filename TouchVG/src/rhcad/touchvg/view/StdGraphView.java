@@ -545,6 +545,11 @@ public class StdGraphView extends View implements BaseGraphView {
     }
 
     @Override
+    public void setOnZoomChangedListener(OnZoomChangedListener listener) {
+        mViewAdapter.setOnZoomChangedListener(listener);
+    }
+
+    @Override
     public void setOnFirstRegenListener(OnFirstRegenListener listener) {
         mViewAdapter.setOnFirstRegenListener(listener);
     }
