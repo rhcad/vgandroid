@@ -258,6 +258,9 @@ public interface IViewHelper {
     //! 在矩形框内绘制指定ID的图形
     public Bitmap snapshotWithShapes(int sid, int width, int height);
 
+    //! 在矩形框内绘制所有图形
+    public Bitmap snapshotWithShapes(int width, int height);
+
     //! 保存当前显示的静态图形快照(去掉周围空白)到PNG文件，自动添加后缀名.png，支持多线程
     public boolean exportExtentAsPNG(String filename, int spaceAround);
 

@@ -509,6 +509,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public Bitmap snapshotWithShapes(int width, int height) {
+        return Snapshot.snapshotWithShapes(this, new ViewHelperImpl(), width, height);
+    }
+
+    @Override
     public boolean exportExtentAsPNG(String filename, int spaceAround) {
         return Snapshot.exportExtentAsPNG(view(), filename, spaceAround);
     }
