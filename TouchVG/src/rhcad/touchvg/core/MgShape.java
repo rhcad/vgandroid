@@ -124,4 +124,24 @@ public class MgShape extends MgObject {
     return touchvgJNI.MgShape_drawShape(MgShapes.getCPtr(shapes), shapes, MgBaseShape.getCPtr(sp), sp, mode, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, segment);
   }
 
+  public int getPointCount() {
+    return touchvgJNI.MgShape_getPointCount(swigCPtr, this);
+  }
+
+  public Point2d getPoint(int index) {
+    return new Point2d(touchvgJNI.MgShape_getPoint(swigCPtr, this, index), true);
+  }
+
+  public int getHandleCount() {
+    return touchvgJNI.MgShape_getHandleCount(swigCPtr, this);
+  }
+
+  public Point2d getHandlePoint(int index) {
+    return new Point2d(touchvgJNI.MgShape_getHandlePoint(swigCPtr, this, index), true);
+  }
+
+  public int getHandleType(int index) {
+    return touchvgJNI.MgShape_getHandleType(swigCPtr, this, index);
+  }
+
 }

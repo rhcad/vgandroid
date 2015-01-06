@@ -15813,6 +15813,22 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgbase_1getMidAngle
 }
 
 
+SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgbase_1getMidAngle2(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2) {
+  jfloat jresult = 0 ;
+  float arg1 ;
+  float arg2 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (float)jarg1; 
+  arg2 = (float)jarg2; 
+  result = (float)mgbase::getMidAngle2(arg1,arg2);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgbase_1getDiffAngle(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2) {
   jfloat jresult = 0 ;
   float arg1 ;
@@ -16983,8 +16999,9 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1ptToBeelin
   jfloat jresult = 0 ;
   Point2d *arg1 = 0 ;
   Point2d *arg2 = 0 ;
-  Point2d *arg3 = 0 ;
+  Point2d arg3 ;
   Point2d *arg4 = 0 ;
+  Point2d *argp3 ;
   float result;
   
   (void)jenv;
@@ -17003,17 +17020,18 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1ptToBeelin
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
     return 0;
   } 
-  arg3 = *(Point2d **)&jarg3;
-  if (!arg3) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+  argp3 = *(Point2d **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null Point2d");
     return 0;
-  } 
+  }
+  arg3 = *argp3; 
   arg4 = *(Point2d **)&jarg4;
   if (!arg4) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
     return 0;
   } 
-  result = (float)mglnrel::ptToBeeline2((Point2d const &)*arg1,(Point2d const &)*arg2,(Point2d const &)*arg3,*arg4);
+  result = (float)mglnrel::ptToBeeline2((Point2d const &)*arg1,(Point2d const &)*arg2,arg3,*arg4);
   jresult = (jfloat)result; 
   return jresult;
 }
@@ -17023,8 +17041,9 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1ptToLine(J
   jfloat jresult = 0 ;
   Point2d *arg1 = 0 ;
   Point2d *arg2 = 0 ;
-  Point2d *arg3 = 0 ;
+  Point2d arg3 ;
   Point2d *arg4 = 0 ;
+  Point2d *argp3 ;
   float result;
   
   (void)jenv;
@@ -17043,17 +17062,18 @@ SWIGEXPORT jfloat JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1ptToLine(J
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
     return 0;
   } 
-  arg3 = *(Point2d **)&jarg3;
-  if (!arg3) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+  argp3 = *(Point2d **)&jarg3; 
+  if (!argp3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null Point2d");
     return 0;
-  } 
+  }
+  arg3 = *argp3; 
   arg4 = *(Point2d **)&jarg4;
   if (!arg4) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
     return 0;
   } 
-  result = (float)mglnrel::ptToLine((Point2d const &)*arg1,(Point2d const &)*arg2,(Point2d const &)*arg3,*arg4);
+  result = (float)mglnrel::ptToLine((Point2d const &)*arg1,(Point2d const &)*arg2,arg3,*arg4);
   jresult = (jfloat)result; 
   return jresult;
 }
@@ -35492,6 +35512,87 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1drawShap
 }
 
 
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getPointCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  MgShape *arg1 = (MgShape *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShape **)&jarg1; 
+  result = (int)((MgShape const *)arg1)->getPointCount();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  MgShape *arg1 = (MgShape *) 0 ;
+  int arg2 ;
+  Point2d result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShape **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = ((MgShape const *)arg1)->getPoint(arg2);
+  *(Point2d **)&jresult = new Point2d((const Point2d &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getHandleCount(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  MgShape *arg1 = (MgShape *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShape **)&jarg1; 
+  result = (int)((MgShape const *)arg1)->getHandleCount();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getHandlePoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  MgShape *arg1 = (MgShape *) 0 ;
+  int arg2 ;
+  Point2d result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShape **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = ((MgShape const *)arg1)->getHandlePoint(arg2);
+  *(Point2d **)&jresult = new Point2d((const Point2d &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getHandleType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  MgShape *arg1 = (MgShape *) 0 ;
+  int arg2 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgShape **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (int)((MgShape const *)arg1)->getHandleType(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShapeFactory_1createShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   MgShapeFactory *arg1 = (MgShapeFactory *) 0 ;
@@ -38133,7 +38234,7 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1getSnappedTyp
 }
 
 
-SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1getSnappedPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1getSnappedPoint_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   jint jresult = 0 ;
   MgSnap *arg1 = (MgSnap *) 0 ;
   Point2d *arg2 = 0 ;
@@ -38157,6 +38258,49 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1getSnappedPoi
     return 0;
   } 
   result = (int)((MgSnap const *)arg1)->getSnappedPoint(*arg2,*arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1getSnappedPoint_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
+  jint jresult = 0 ;
+  MgSnap *arg1 = (MgSnap *) 0 ;
+  Point2d *arg2 = 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  Point2d *arg5 = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  (void)jarg5_;
+  arg1 = *(MgSnap **)&jarg1; 
+  arg2 = *(Point2d **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  arg5 = *(Point2d **)&jarg5;
+  if (!arg5) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  result = (int)((MgSnap const *)arg1)->getSnappedPoint(*arg2,*arg3,*arg4,*arg5);
   jresult = (jint)result; 
   return jresult;
 }
@@ -47232,6 +47376,42 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1getSelect
   result = (int)(arg1)->getSelectedHandle();
   jresult = (jint)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1getSelectedShapeIDs(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  mgvector< int > *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgCoreView **)&jarg1; 
+  arg2 = *(mgvector< int > **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "mgvector< int > & reference is null");
+    return ;
+  } 
+  (arg1)->getSelectedShapeIDs(*arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCoreView_1setSelectedShapeIDs(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  MgCoreView *arg1 = (MgCoreView *) 0 ;
+  mgvector< int > *arg2 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(MgCoreView **)&jarg1; 
+  arg2 = *(mgvector< int > **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "mgvector< int > const & reference is null");
+    return ;
+  } 
+  (arg1)->setSelectedShapeIDs((mgvector< int > const &)*arg2);
 }
 
 

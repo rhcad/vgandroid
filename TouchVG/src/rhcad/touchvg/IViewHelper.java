@@ -300,6 +300,12 @@ public interface IViewHelper {
     //! 选择一个图形
     public void setSelectedShapeID(int sid);
 
+    //! 返回当前选中的图形的ID
+    public int[] getSelectedIds();
+
+    //! 选中指定ID的图形
+    public void setSelectedIds(int[] ids);
+
     //! 当前线性图形中当前控制点序号
     public int getSelectedHandle();
 

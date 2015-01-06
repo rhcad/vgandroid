@@ -13,6 +13,7 @@ import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.core.GiCoreView;
+import rhcad.touchvg.core.Ints;
 import rhcad.touchvg.core.MgView;
 import rhcad.touchvg.core.Point2d;
 import rhcad.touchvg.view.impl.ContextHelper;
@@ -38,7 +39,7 @@ import android.widget.ImageView;
 //! Android绘图视图辅助类
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 28;
+    private static final int JARVERSION = 29;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -576,6 +577,25 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public void setSelectedShapeID(int sid) {
         setCommand(String.format("select{'id':%d}", sid));
+    }
+
+    @Override
+    public int[] getSelectedIds() {
+        final Ints ids = new Ints();
+        coreView().getSelectedShapeIDs(ids);
+        final int[] arr = new int[ids.count()];
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = ids.get(i);
+        return arr;
+    }
+
+    @Override
+    public void setSelectedIds(int[] ids) {
+        int n = ids != null ? ids.length : 0;
+        final Ints arr = new Ints(n);
+        for (int i = 0; i < n; i++)
+            arr.set(i, ids[i]);
+        coreView().setSelectedShapeIDs(arr);
     }
 
     @Override

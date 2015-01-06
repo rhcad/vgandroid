@@ -52,7 +52,11 @@ public class MgSnap {
   }
 
   public int getSnappedPoint(Point2d fromPt, Point2d toPt) {
-    return touchvgJNI.MgSnap_getSnappedPoint(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt);
+    return touchvgJNI.MgSnap_getSnappedPoint__SWIG_0(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt);
+  }
+
+  public int getSnappedPoint(Point2d fromPt, Point2d toPt, Point2d startPt, Point2d guildPt) {
+    return touchvgJNI.MgSnap_getSnappedPoint__SWIG_1(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(guildPt), guildPt);
   }
 
   public void setIgnoreStartPoint(Point2d pt) {

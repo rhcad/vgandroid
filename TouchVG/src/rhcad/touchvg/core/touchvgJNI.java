@@ -299,6 +299,7 @@ public class touchvgJNI {
   public final static native float mgbase_dms2Deg(float jarg1);
   public final static native float mgbase_deg2Dms(float jarg1);
   public final static native float mgbase_getMidAngle(float jarg1, float jarg2);
+  public final static native float mgbase_getMidAngle2(float jarg1, float jarg2);
   public final static native float mgbase_getDiffAngle(float jarg1, float jarg2);
   public final static native int mgbase_getGcd(int jarg1, int jarg2);
   public final static native float mgbase_roundReal(float jarg1, int jarg2);
@@ -1361,6 +1362,11 @@ public class touchvgJNI {
   public final static native boolean MgShape_equals(long jarg1, MgShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native boolean MgShape_isKindOf(long jarg1, MgShape jarg1_, int jarg2);
   public final static native boolean MgShape_drawShape(long jarg1, MgShapes jarg1_, long jarg2, MgBaseShape jarg2_, int jarg3, long jarg4, GiGraphics jarg4_, long jarg5, GiContext jarg5_, int jarg6);
+  public final static native int MgShape_getPointCount(long jarg1, MgShape jarg1_);
+  public final static native long MgShape_getPoint(long jarg1, MgShape jarg1_, int jarg2);
+  public final static native int MgShape_getHandleCount(long jarg1, MgShape jarg1_);
+  public final static native long MgShape_getHandlePoint(long jarg1, MgShape jarg1_, int jarg2);
+  public final static native int MgShape_getHandleType(long jarg1, MgShape jarg1_, int jarg2);
   public final static native long MgShapeFactory_createShape(long jarg1, MgShapeFactory jarg1_, int jarg2);
   public final static native void delete_MgShapeFactory(long jarg1);
   public final static native int MgShapes_Type();
@@ -1514,7 +1520,8 @@ public class touchvgJNI {
   public final static native boolean MgSnap_drawSnap(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_, long jarg3, GiGraphics jarg3_);
   public final static native boolean MgSnap_drawPerpMark(long jarg1, MgSnap jarg1_, long jarg2, GiGraphics jarg2_, long jarg3, GiContext jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, long jarg6, Point2d jarg6_, long jarg7, Point2d jarg7_, float jarg8);
   public final static native int MgSnap_getSnappedType(long jarg1, MgSnap jarg1_);
-  public final static native int MgSnap_getSnappedPoint(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
+  public final static native int MgSnap_getSnappedPoint__SWIG_0(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
+  public final static native int MgSnap_getSnappedPoint__SWIG_1(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_);
   public final static native void MgSnap_setIgnoreStartPoint(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_);
   public final static native long MgSnap_snapPoint(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_);
   public final static native void delete_MgSnap(long jarg1);
@@ -2056,6 +2063,8 @@ public class touchvgJNI {
   public final static native int MgCoreView_getSelectedShapeType(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getSelectedShapeID(long jarg1, MgCoreView jarg1_);
   public final static native int MgCoreView_getSelectedHandle(long jarg1, MgCoreView jarg1_);
+  public final static native void MgCoreView_getSelectedShapeIDs(long jarg1, MgCoreView jarg1_, long jarg2, Ints jarg2_);
+  public final static native void MgCoreView_setSelectedShapeIDs(long jarg1, MgCoreView jarg1_, long jarg2, Ints jarg2_);
   public final static native void MgCoreView_clear(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_loadFromFile__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3);
   public final static native boolean MgCoreView_loadFromFile__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2);

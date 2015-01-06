@@ -256,6 +256,14 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_getSelectedHandle(swigCPtr, this);
   }
 
+  public void getSelectedShapeIDs(Ints ids) {
+    touchvgJNI.MgCoreView_getSelectedShapeIDs(swigCPtr, this, Ints.getCPtr(ids), ids);
+  }
+
+  public void setSelectedShapeIDs(Ints ids) {
+    touchvgJNI.MgCoreView_setSelectedShapeIDs(swigCPtr, this, Ints.getCPtr(ids), ids);
+  }
+
   public void clear() {
     touchvgJNI.MgCoreView_clear(swigCPtr, this);
   }
