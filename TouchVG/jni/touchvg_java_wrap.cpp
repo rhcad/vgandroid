@@ -39885,6 +39885,31 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1setOptionStri
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  MgRegenLocker *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (MgRegenLocker *)new MgRegenLocker(arg1);
+  *(MgRegenLocker **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgRegenLocker *arg1 = (MgRegenLocker *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgRegenLocker **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgMotion_1view_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   MgMotion *arg1 = (MgMotion *) 0 ;
   MgView *arg2 = (MgView *) 0 ;

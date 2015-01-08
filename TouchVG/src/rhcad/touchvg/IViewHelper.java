@@ -210,6 +210,9 @@ public interface IViewHelper {
     //! 重做
     public void redo();
 
+    //! 在块中批量操作，最后才重新生成
+    public void combineRegen(Runnable action);
+
     //! 是否正在录屏
     public boolean isRecording();
 

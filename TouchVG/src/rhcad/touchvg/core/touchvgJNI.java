@@ -1613,6 +1613,8 @@ public class touchvgJNI {
   public final static native void MgView_setOptionInt(long jarg1, MgView jarg1_, String jarg2, int jarg3);
   public final static native void MgView_setOptionFloat(long jarg1, MgView jarg1_, String jarg2, float jarg3);
   public final static native void MgView_setOptionString(long jarg1, MgView jarg1_, String jarg2, String jarg3);
+  public final static native long new_MgRegenLocker(long jarg1, MgView jarg1_);
+  public final static native void delete_MgRegenLocker(long jarg1);
   public final static native void MgMotion_view_set(long jarg1, MgMotion jarg1_, long jarg2, MgView jarg2_);
   public final static native long MgMotion_view_get(long jarg1, MgMotion jarg1_);
   public final static native void MgMotion_gestureType_set(long jarg1, MgMotion jarg1_, int jarg2);

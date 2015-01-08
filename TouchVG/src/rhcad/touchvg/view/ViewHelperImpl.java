@@ -14,6 +14,7 @@ import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.core.GiCoreView;
 import rhcad.touchvg.core.Ints;
+import rhcad.touchvg.core.MgRegenLocker;
 import rhcad.touchvg.core.MgView;
 import rhcad.touchvg.core.Point2d;
 import rhcad.touchvg.view.impl.ContextHelper;
@@ -39,7 +40,7 @@ import android.widget.ImageView;
 //! Android绘图视图辅助类
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 29;
+    private static final int JARVERSION = 30;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -401,6 +402,13 @@ public class ViewHelperImpl implements IViewHelper {
         if (adapter != null) {
             adapter.redo();
         }
+    }
+
+    @Override
+    public void combineRegen(Runnable action) {
+        final MgRegenLocker locker = new MgRegenLocker(this.cmdView());
+        action.run();
+        locker.delete();
     }
 
     @Override
