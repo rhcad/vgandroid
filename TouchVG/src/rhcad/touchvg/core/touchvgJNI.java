@@ -1519,6 +1519,8 @@ public class touchvgJNI {
   public final static native void MgSnap_clearSnap(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_);
   public final static native boolean MgSnap_drawSnap(long jarg1, MgSnap jarg1_, long jarg2, MgMotion jarg2_, long jarg3, GiGraphics jarg3_);
   public final static native boolean MgSnap_drawPerpMark(long jarg1, MgSnap jarg1_, long jarg2, GiGraphics jarg2_, long jarg3, GiContext jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, long jarg6, Point2d jarg6_, long jarg7, Point2d jarg7_, float jarg8);
+  public final static native int MgSnap_getSnapOptions(long jarg1, MgSnap jarg1_, long jarg2, MgView jarg2_);
+  public final static native void MgSnap_setSnapOptions(long jarg1, MgSnap jarg1_, long jarg2, MgView jarg2_, int jarg3);
   public final static native int MgSnap_getSnappedType(long jarg1, MgSnap jarg1_);
   public final static native int MgSnap_getSnappedPoint__SWIG_0(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native int MgSnap_getSnappedPoint__SWIG_1(long jarg1, MgSnap jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_);
@@ -1808,6 +1810,10 @@ public class touchvgJNI {
   public final static native int MgCommandDraw_getMaxStepSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_);
   public final static native void MgCommandDraw_setStepPoint(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3, long jarg4, Point2d jarg4_);
   public final static native void MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3, long jarg4, Point2d jarg4_);
+  public final static native boolean MgCommandDraw_isStepPointAccepted(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_);
+  public final static native boolean MgCommandDraw_isStepPointAcceptedSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_);
+  public final static native int MgCommandDraw_snapOptionsForStep(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3);
+  public final static native int MgCommandDraw_snapOptionsForStepSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3);
   public final static native boolean MgCommandDraw_initialize(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgStorage jarg3_);
   public final static native boolean MgCommandDraw_initializeSwigExplicitMgCommandDraw(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, MgStorage jarg3_);
   public final static native boolean MgCommandDraw_backStep(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
@@ -1833,6 +1839,8 @@ public class touchvgJNI {
   public final static native int MgCommandDraw_getStep(long jarg1, MgCommandDraw jarg1_);
   public final static native long MgCommandDraw_dynshape(long jarg1, MgCommandDraw jarg1_);
   public final static native void MgCommandDraw_setStep(long jarg1, MgCommandDraw jarg1_, int jarg2);
+  public final static native long MgCommandDraw_snapPointWidhOptions__SWIG_0(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3, boolean jarg4);
+  public final static native long MgCommandDraw_snapPointWidhOptions__SWIG_1(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, int jarg3);
   public final static native long MgCommandDraw_snapPoint__SWIG_0(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, boolean jarg3);
   public final static native long MgCommandDraw_snapPoint__SWIG_1(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_);
   public final static native long MgCommandDraw_snapPoint__SWIG_2(long jarg1, MgCommandDraw jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Point2d jarg3_, boolean jarg4);
@@ -3011,6 +3019,12 @@ public class touchvgJNI {
   public static void SwigDirector_MgCommandDraw_setStepPoint(MgCommandDraw self, long sender, int step, long pt) {
     self.setStepPoint((sender == 0) ? null : new MgMotion(sender, false), step, new Point2d(pt, false));
   }
+  public static boolean SwigDirector_MgCommandDraw_isStepPointAccepted(MgCommandDraw self, long sender, long pt) {
+    return self.isStepPointAccepted((sender == 0) ? null : new MgMotion(sender, false), new Point2d(pt, false));
+  }
+  public static int SwigDirector_MgCommandDraw_snapOptionsForStep(MgCommandDraw self, long sender, int step) {
+    return self.snapOptionsForStep((sender == 0) ? null : new MgMotion(sender, false), step);
+  }
   public static void SwigDirector_MgCmdDrawRect_release(MgCmdDrawRect self) {
     self.release();
   }
@@ -3070,6 +3084,12 @@ public class touchvgJNI {
   }
   public static void SwigDirector_MgCmdDrawRect_setStepPoint(MgCmdDrawRect self, long sender, int step, long pt) {
     self.setStepPoint((sender == 0) ? null : new MgMotion(sender, false), step, new Point2d(pt, false));
+  }
+  public static boolean SwigDirector_MgCmdDrawRect_isStepPointAccepted(MgCmdDrawRect self, long sender, long pt) {
+    return self.isStepPointAccepted((sender == 0) ? null : new MgMotion(sender, false), new Point2d(pt, false));
+  }
+  public static int SwigDirector_MgCmdDrawRect_snapOptionsForStep(MgCmdDrawRect self, long sender, int step) {
+    return self.snapOptionsForStep((sender == 0) ? null : new MgMotion(sender, false), step);
   }
   public static void SwigDirector_MgCmdDrawRect_addRectShape(MgCmdDrawRect self, long sender) {
     self.addRectShape((sender == 0) ? null : new MgMotion(sender, false));

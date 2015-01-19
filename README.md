@@ -1,9 +1,9 @@
 # TouchVG for Android
 
-This is a lightweight 2D vector drawing framework using [TouchVGCore](https://github.com/touchvg/vgcore) for Android.
+This is a lightweight 2D vector drawing framework using [vgcore](https://github.com/rhcad/vgcore) for Android.
 It uses `android.graphics` and `android.view` packages to render shapes and handle touches.
 
-Features described in [Online document](http://touchvg.github.io). Please visit [the TouchVG Demo project](https://github.com/touchvg/vgandroid-demo) to see more examples.
+Features described in [Online document](http://touchvg.github.io). Please visit [vgandroid-demo](https://github.com/rhcad/vgandroid-demo) to see more examples.
 
 ![arch](http://touchvg.github.io/images/arch.svg) 
 ![android1](http://touchvg.github.io/images/android1.png)
@@ -11,7 +11,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 ## How to Compile
 
 - Don't want to build libtouchvg.so and jar ?
-  - Download the [prebuilt libraries](https://github.com/touchvg/vgandroid/archive/prebuilt.zip).
+  - Download the [prebuilt libraries](https://github.com/rhcad/vgandroid/archive/prebuilt.zip).
   - Extract `touchvg_libs` in the zip package to `vgandroid/TouchVG/libs` or `yourapp/libs`.
   - Import this project in eclipse. Android SDK version in the project.properties may need to modify according to your installation.
 
@@ -52,12 +52,12 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
  
 ## Add more shapes and commands
 
-- You can use [newproj.py](https://github.com/touchvg/DemoCmds/blob/master/newproj.py) to create library project containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
+- You can use [newproj.py](https://github.com/rhcad/DemoCmds/blob/master/newproj.py) to create library project containing your own shapes and commands. So the TouchVG and TouchVGCore libraries does not require changes.
 
-  - Checkout and enter [DemoCmds](https://github.com/touchvg/DemoCmds) directory, then type `python newproj.py YourCmds`:
+  - Checkout and enter [DemoCmds](https://github.com/rhcad/DemoCmds) directory, then type `python newproj.py YourCmds`:
 
      ```shell
-     git clone https://github.com/touchvg/DemoCmds.git
+     git clone https://github.com/rhcad/DemoCmds.git
      cd DemoCmds
      python newproj.py MyCmds
      ```
@@ -66,7 +66,7 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
 
-- [TouchVGCore](https://github.com/touchvg/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [vgcore](https://github.com/rhcad/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
 - [AndroidSVG](https://code.google.com/p/androidsvg) (Apache): SVG rendering library for Android.
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
 - [SWIG](https://github.com/swig/swig) (GPL): Use the tool to generate the glue code for Java and C#.

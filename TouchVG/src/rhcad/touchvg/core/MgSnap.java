@@ -47,6 +47,14 @@ public class MgSnap {
     return touchvgJNI.MgSnap_drawPerpMark(swigCPtr, this, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(perp), perp, Point2d.getCPtr(c), c, len);
   }
 
+  public int getSnapOptions(MgView view) {
+    return touchvgJNI.MgSnap_getSnapOptions(swigCPtr, this, MgView.getCPtr(view), view);
+  }
+
+  public void setSnapOptions(MgView view, int bits) {
+    touchvgJNI.MgSnap_setSnapOptions(swigCPtr, this, MgView.getCPtr(view), view, bits);
+  }
+
   public int getSnappedType() {
     return touchvgJNI.MgSnap_getSnappedType(swigCPtr, this);
   }

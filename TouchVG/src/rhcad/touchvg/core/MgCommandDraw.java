@@ -105,6 +105,14 @@ public class MgCommandDraw extends MgCommand {
     if (getClass() == MgCommandDraw.class) touchvgJNI.MgCommandDraw_setStepPoint(swigCPtr, this, MgMotion.getCPtr(sender), sender, step, Point2d.getCPtr(pt), pt); else touchvgJNI.MgCommandDraw_setStepPointSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, step, Point2d.getCPtr(pt), pt);
   }
 
+  protected boolean isStepPointAccepted(MgMotion sender, Point2d pt) {
+    return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_isStepPointAccepted(swigCPtr, this, MgMotion.getCPtr(sender), sender, Point2d.getCPtr(pt), pt) : touchvgJNI.MgCommandDraw_isStepPointAcceptedSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, Point2d.getCPtr(pt), pt);
+  }
+
+  protected int snapOptionsForStep(MgMotion sender, int step) {
+    return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_snapOptionsForStep(swigCPtr, this, MgMotion.getCPtr(sender), sender, step) : touchvgJNI.MgCommandDraw_snapOptionsForStepSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, step);
+  }
+
   public boolean initialize(MgMotion sender, MgStorage s) {
     return (getClass() == MgCommandDraw.class) ? touchvgJNI.MgCommandDraw_initialize(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(s), s) : touchvgJNI.MgCommandDraw_initializeSwigExplicitMgCommandDraw(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(s), s);
   }
@@ -160,6 +168,14 @@ public class MgCommandDraw extends MgCommand {
 
   public void setStep(int step) {
     touchvgJNI.MgCommandDraw_setStep(swigCPtr, this, step);
+  }
+
+  public Point2d snapPointWidhOptions(MgMotion sender, int options, boolean firstStep) {
+    return new Point2d(touchvgJNI.MgCommandDraw_snapPointWidhOptions__SWIG_0(swigCPtr, this, MgMotion.getCPtr(sender), sender, options, firstStep), true);
+  }
+
+  public Point2d snapPointWidhOptions(MgMotion sender, int options) {
+    return new Point2d(touchvgJNI.MgCommandDraw_snapPointWidhOptions__SWIG_1(swigCPtr, this, MgMotion.getCPtr(sender), sender, options), true);
   }
 
   public Point2d snapPoint(MgMotion sender, boolean firstStep) {
