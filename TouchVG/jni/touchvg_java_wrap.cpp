@@ -39017,6 +39017,31 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSelection_1isSe
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSelection_1applyTransform(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
+  MgSelection *arg1 = (MgSelection *) 0 ;
+  MgMotion *arg2 = (MgMotion *) 0 ;
+  Matrix2d *arg3 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  arg1 = *(MgSelection **)&jarg1; 
+  arg2 = *(MgMotion **)&jarg2; 
+  arg3 = *(Matrix2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Matrix2d const & reference is null");
+    return 0;
+  } 
+  result = (bool)(arg1)->applyTransform((MgMotion const *)arg2,(Matrix2d const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgSelection(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   MgSelection *arg1 = (MgSelection *) 0 ;
   

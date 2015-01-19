@@ -1553,6 +1553,7 @@ public class touchvgJNI {
   public final static native boolean MgSelection_overturnPolygon(long jarg1, MgSelection jarg1_, long jarg2, MgMotion jarg2_);
   public final static native long MgSelection_getBoundingBox(long jarg1, MgSelection jarg1_, long jarg2, MgMotion jarg2_);
   public final static native boolean MgSelection_isSelectedByType(long jarg1, MgSelection jarg1_, long jarg2, MgView jarg2_, int jarg3);
+  public final static native boolean MgSelection_applyTransform(long jarg1, MgSelection jarg1_, long jarg2, MgMotion jarg2_, long jarg3, Matrix2d jarg3_);
   public final static native void delete_MgSelection(long jarg1);
   public final static native void delete_MgView(long jarg1);
   public final static native long MgView_fromHandle(int jarg1);
