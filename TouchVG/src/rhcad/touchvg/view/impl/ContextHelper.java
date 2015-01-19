@@ -146,6 +146,28 @@ public class ContextHelper {
         }
     }
 
+    public static int getStartArrowHead(ViewCreator vc) {
+        return vc.isValid() ? vc.coreView().getContext(false).getStartArrayHead() : 0;
+    }
+
+    public static void setStartArrowHead(ViewCreator vc, int style) {
+        if (vc.isValid()) {
+            vc.coreView().getContext(true).setStartArrayHead(style);
+            vc.coreView().setContext(GiContext.kLineArrayHead);
+        }
+    }
+
+    public static int getEndArrowHead(ViewCreator vc) {
+        return vc.isValid() ? vc.coreView().getContext(false).getEndArrayHead() : 0;
+    }
+
+    public static void setEndArrowHead(ViewCreator vc, int style) {
+        if (vc.isValid()) {
+            vc.coreView().getContext(true).setEndArrayHead(style);
+            vc.coreView().setContext(GiContext.kLineArrayHead);
+        }
+    }
+
     public static int getLineColor(ViewCreator vc) {
         return vc.isValid() ? vc.coreView().getContext(false).getLineColor().getARGB() : 0;
     }
@@ -227,6 +249,14 @@ public class ContextHelper {
 
     public static boolean zoomPan(ViewCreator vc, float dxPixel, float dyPixel) {
         return vc.isValid() && vc.coreView().zoomPan(dxPixel, dyPixel);
+    }
+
+    public static boolean setViewScale(ViewCreator vc, float scale) {
+        if (scale > 0 && vc.cmdView().xform().zoomScale(scale)) {
+            vc.cmdView().regenAll(false);
+            return true;
+        }
+        return false;
     }
 
     public static PointF displayToModel(ViewCreator vc, float x, float y) {

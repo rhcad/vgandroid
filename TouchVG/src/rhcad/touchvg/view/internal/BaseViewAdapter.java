@@ -7,6 +7,7 @@ import rhcad.touchvg.IGraphView.OnCommandChangedListener;
 import rhcad.touchvg.IGraphView.OnContentChangedListener;
 import rhcad.touchvg.IGraphView.OnContextActionListener;
 import rhcad.touchvg.IGraphView.OnDrawGestureListener;
+import rhcad.touchvg.IGraphView.OnDynDrawEndedListener;
 import rhcad.touchvg.IGraphView.OnDynamicChangedListener;
 import rhcad.touchvg.IGraphView.OnFirstRegenListener;
 import rhcad.touchvg.IGraphView.OnSelectionChangedListener;
@@ -16,6 +17,7 @@ import rhcad.touchvg.IGraphView.OnShapeDeletedListener;
 import rhcad.touchvg.IGraphView.OnShapeWillDeleteListener;
 import rhcad.touchvg.IGraphView.OnShapesRecordedListener;
 import rhcad.touchvg.IGraphView.OnViewDetachedListener;
+import rhcad.touchvg.IGraphView.OnZoomChangedListener;
 import rhcad.touchvg.core.CmdObserverDefault;
 import rhcad.touchvg.core.Floats;
 import rhcad.touchvg.core.GiCoreView;
@@ -54,7 +56,9 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     private List<OnSelectionChangedListener> selectionChangedListeners;
     private List<OnContentChangedListener> contentChangedListeners;
     private List<OnDynamicChangedListener> dynamicChangedListeners;
+    private List<OnZoomChangedListener> zoomChangedListeners;
     private List<OnFirstRegenListener> firstRegenListeners;
+    private List<OnDynDrawEndedListener> dynDrawEndedListeners;
     private List<OnShapesRecordedListener> shapesRecordedListeners;
     private List<OnShapeWillDeleteListener> shapeWillDeleteListeners;
     private List<OnShapeDeletedListener> shapeDeletedListeners;
@@ -109,7 +113,8 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
                 selectionChangedListeners, contentChangedListeners, dynamicChangedListeners,
                 firstRegenListeners, shapesRecordedListeners, shapeDeletedListeners,
                 shapeClickedListeners, shapeDblClickedListeners, contextActionListeners,
-                gestureListeners, playingListeners, shapeWillDeleteListeners };
+                gestureListeners, playingListeners, shapeWillDeleteListeners,
+                dynDrawEndedListeners, zoomChangedListeners };
 
         for (final List<?> listener : listeners) {
             if (listener != null) {
@@ -206,14 +211,14 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
     }
 
     @Override
-    public void dynamicChanged() {
-        if (dynamicChangedListeners != null) {
+    public void zoomChanged() {
+        if (zoomChangedListeners != null) {
             postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     removeCallbacks(this);
-                    for (OnDynamicChangedListener listener : dynamicChangedListeners) {
-                        listener.onDynamicChanged(getGraphView());
+                    for (OnZoomChangedListener listener : zoomChangedListeners) {
+                        listener.onZoomChanged(getGraphView());
                     }
                 }
             }, 50);
@@ -287,11 +292,25 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
         this.dynamicChangedListeners.add(listener);
     }
 
+    public void setOnZoomChangedListener(OnZoomChangedListener listener) {
+        if (this.zoomChangedListeners == null) {
+            this.zoomChangedListeners = new ArrayList<OnZoomChangedListener>();
+        }
+        this.zoomChangedListeners.add(listener);
+    }
+
     public void setOnFirstRegenListener(OnFirstRegenListener listener) {
         if (this.firstRegenListeners == null) {
             this.firstRegenListeners = new ArrayList<OnFirstRegenListener>();
         }
         this.firstRegenListeners.add(listener);
+    }
+
+    public void setOnDynDrawEndedListener(OnDynDrawEndedListener listener) {
+        if (this.dynDrawEndedListeners == null) {
+            this.dynDrawEndedListeners = new ArrayList<OnDynDrawEndedListener>();
+        }
+        this.dynDrawEndedListeners.add(listener);
     }
 
     public void setOnShapesRecordedListener(OnShapesRecordedListener listener) {
@@ -391,6 +410,14 @@ public abstract class BaseViewAdapter extends GiView implements OnDrawGestureLis
 
     public boolean postDelayed(Runnable action, long delayMillis) {
         return getGraphView().getView().postDelayed(action, delayMillis);
+    }
+
+    public void fireDynDrawEnded() {
+        if (dynDrawEndedListeners != null) {
+            for (OnDynDrawEndedListener listener : dynDrawEndedListeners) {
+                listener.onDynDrawEnded(getGraphView());
+            }
+        }
     }
 
     public void onFirstRegen() {

@@ -13,6 +13,15 @@ public class Const {
     public static final int NULL_LINE   = 5;
     public static final int MAX_LINESTYLE = 5;
 
+    public static final int ARROWHEAD_NONE  = 0;
+    public static final int ARROWHEAD_SHARPCLOSED   = 1;
+    public static final int ARROWHEAD_SHARPLINE    = 2;
+    public static final int ARROWHEAD_TLINE    = 3;
+    public static final int ARROWHEAD_SLASHLINE = 4;
+    public static final int ARROWHEAD_CLOSEDCIRCLE   = 5;
+    public static final int ARROWHEAD_OPENEDCIRCLE = 6;
+    public static final int MAX_ARROWHEAD = 6;
+
     private Const() {
     }
 }

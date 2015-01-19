@@ -121,6 +121,21 @@ public class Snapshot {
         return bitmap;
     }
 
+    public static Bitmap snapshotWithShapes(IViewHelper hlp, IViewHelper tmphlp, int width, int height) {
+        tmphlp.createDummyView(hlp.getContext(), width, height);
+        final MgShapes srcs = hlp.cmdView().shapes();
+        final MgShapes dests = tmphlp.cmdView().shapes();
+
+        synchronized (hlp.coreView()) {
+            dests.copyShapes(srcs, false);
+        }
+
+        tmphlp.zoomToExtent();
+        Bitmap bitmap = tmphlp.snapshot(false);
+        tmphlp.close();
+        return bitmap;
+    }
+
     public static boolean exportExtentAsPNG(BaseGraphView view, String filename, int spaceAround) {
         return savePNG(extentSnapshot(view, spaceAround, true), filename);
     }

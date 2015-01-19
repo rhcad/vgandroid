@@ -139,4 +139,8 @@ public class MgSelection {
     return touchvgJNI.MgSelection_isSelectedByType(swigCPtr, this, MgView.getCPtr(view), view, type);
   }
 
+  public boolean applyTransform(MgMotion sender, Matrix2d xf) {
+    return touchvgJNI.MgSelection_applyTransform(swigCPtr, this, MgMotion.getCPtr(sender), sender, Matrix2d.getCPtr(xf), xf);
+  }
+
 }

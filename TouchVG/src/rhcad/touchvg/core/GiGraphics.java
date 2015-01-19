@@ -366,5 +366,6 @@ public class GiGraphics {
   public final static int kAlignTop = 0;
   public final static int kAlignBottom = 0x10;
   public final static int kAlignVCenter = 0x20;
+  public final static int kAlignHVCenter = kAlignCenter|kAlignVCenter;
 
 }

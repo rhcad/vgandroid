@@ -28,7 +28,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * \ingroup GROUP_ANDROID
  * Android绘图视图类.
  * 
  * 建议使用FrameLayout作为容器创建绘图视图，使用LinearLayout将无法显示上下文操作按钮。
@@ -129,6 +128,7 @@ public class StdGraphView extends View implements BaseGraphView {
         mCoreView.onSize(mViewAdapter, getWidth(), getHeight());
         if (mCachedBitmap != null) {
             drawShapes(canvas, mCanvasOnDraw, true);
+            mViewAdapter.fireDynDrawEnded();
         } else if (!regen(false)) {
             // 首次onDraw，但视图太大无法创建缓存位图
             canvas.drawColor(mBkColor);
@@ -545,8 +545,18 @@ public class StdGraphView extends View implements BaseGraphView {
     }
 
     @Override
+    public void setOnZoomChangedListener(OnZoomChangedListener listener) {
+        mViewAdapter.setOnZoomChangedListener(listener);
+    }
+
+    @Override
     public void setOnFirstRegenListener(OnFirstRegenListener listener) {
         mViewAdapter.setOnFirstRegenListener(listener);
+    }
+
+    @Override
+    public void setOnDynDrawEndedListener(OnDynDrawEndedListener listener) {
+        mViewAdapter.setOnDynDrawEndedListener(listener);
     }
 
     @Override

@@ -47,12 +47,24 @@ public class MgSnap {
     return touchvgJNI.MgSnap_drawPerpMark(swigCPtr, this, GiGraphics.getCPtr(gs), gs, GiContext.getCPtr(ctx), ctx, Point2d.getCPtr(a), a, Point2d.getCPtr(b), b, Point2d.getCPtr(perp), perp, Point2d.getCPtr(c), c, len);
   }
 
+  public int getSnapOptions(MgView view) {
+    return touchvgJNI.MgSnap_getSnapOptions(swigCPtr, this, MgView.getCPtr(view), view);
+  }
+
+  public void setSnapOptions(MgView view, int bits) {
+    touchvgJNI.MgSnap_setSnapOptions(swigCPtr, this, MgView.getCPtr(view), view, bits);
+  }
+
   public int getSnappedType() {
     return touchvgJNI.MgSnap_getSnappedType(swigCPtr, this);
   }
 
   public int getSnappedPoint(Point2d fromPt, Point2d toPt) {
-    return touchvgJNI.MgSnap_getSnappedPoint(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt);
+    return touchvgJNI.MgSnap_getSnappedPoint__SWIG_0(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt);
+  }
+
+  public int getSnappedPoint(Point2d fromPt, Point2d toPt, Point2d startPt, Point2d guildPt) {
+    return touchvgJNI.MgSnap_getSnappedPoint__SWIG_1(swigCPtr, this, Point2d.getCPtr(fromPt), fromPt, Point2d.getCPtr(toPt), toPt, Point2d.getCPtr(startPt), startPt, Point2d.getCPtr(guildPt), guildPt);
   }
 
   public void setIgnoreStartPoint(Point2d pt) {

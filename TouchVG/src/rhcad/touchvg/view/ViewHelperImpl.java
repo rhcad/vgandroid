@@ -13,6 +13,8 @@ import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.IViewHelper;
 import rhcad.touchvg.core.CmdObserver;
 import rhcad.touchvg.core.GiCoreView;
+import rhcad.touchvg.core.Ints;
+import rhcad.touchvg.core.MgRegenLocker;
 import rhcad.touchvg.core.MgView;
 import rhcad.touchvg.core.Point2d;
 import rhcad.touchvg.view.impl.ContextHelper;
@@ -35,13 +37,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-/**
- * \ingroup GROUP_ANDROID
- * Android绘图视图辅助类
- */
+//! Android绘图视图辅助类
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 27;
+    private static final int JARVERSION = 30;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -247,6 +246,26 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public int getStartArrowHead() {
+        return ContextHelper.getStartArrowHead(mCreator);
+    }
+
+    @Override
+    public void setStartArrowHead(int style) {
+        ContextHelper.setStartArrowHead(mCreator, style);
+    }
+
+    @Override
+    public int getEndArrowHead() {
+        return ContextHelper.getEndArrowHead(mCreator);
+    }
+
+    @Override
+    public void setEndArrowHead(int style) {
+        ContextHelper.setEndArrowHead(mCreator, style);
+    }
+
+    @Override
     public int getLineColor() {
         return ContextHelper.getLineColor(mCreator);
     }
@@ -386,6 +405,13 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public void combineRegen(Runnable action) {
+        final MgRegenLocker locker = new MgRegenLocker(this.cmdView());
+        action.run();
+        locker.delete();
+    }
+
+    @Override
     public boolean isRecording() {
         return mCreator.isValid() && coreView().isRecording();
     }
@@ -492,6 +518,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public Bitmap snapshotWithShapes(int width, int height) {
+        return Snapshot.snapshotWithShapes(this, new ViewHelperImpl(), width, height);
+    }
+
+    @Override
     public boolean exportExtentAsPNG(String filename, int spaceAround) {
         return Snapshot.exportExtentAsPNG(view(), filename, spaceAround);
     }
@@ -557,6 +588,25 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public int[] getSelectedIds() {
+        final Ints ids = new Ints();
+        coreView().getSelectedShapeIDs(ids);
+        final int[] arr = new int[ids.count()];
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = ids.get(i);
+        return arr;
+    }
+
+    @Override
+    public void setSelectedIds(int[] ids) {
+        int n = ids != null ? ids.length : 0;
+        final Ints arr = new Ints(n);
+        for (int i = 0; i < n; i++)
+            arr.set(i, ids[i]);
+        coreView().setSelectedShapeIDs(arr);
+    }
+
+    @Override
     public int getSelectedHandle() {
         return mCreator.isValid() ? coreView().getSelectedHandle() : 0;
     }
@@ -574,6 +624,16 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public Rect getViewBox() {
         return Snapshot.getViewBox(view());
+    }
+
+    @Override
+    public float getViewScale() {
+        return cmdView().xform().getViewScale();
+    }
+
+    @Override
+    public boolean setViewScale(float scale) {
+        return ContextHelper.setViewScale(mCreator, scale);
     }
 
     @Override
@@ -766,6 +826,16 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public void onRestoreInstanceState(Bundle savedState) {
         ContextHelper.onRestoreInstanceState(mCreator, savedState);
+    }
+
+    @Override
+    public void showMessage(String text) {
+        mCreator.getMainAdapter().showMessage(text);
+    }
+
+    @Override
+    public String getLocalizedString(String name) {
+        return ResourceUtil.getStringFromName(getContext(), name);
     }
 
     //! 注册命令观察者

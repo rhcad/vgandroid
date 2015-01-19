@@ -47,8 +47,16 @@ public class mgcurv {
     touchvgJNI.mgcurv_splitBezier(Point2d.getCPtr(pts), pts, t, Point2d.getCPtr(pts1), pts1, Point2d.getCPtr(pts2), pts2);
   }
 
-  public static float lengthOfBezier(Point2d pts, float tol) {
-    return touchvgJNI.mgcurv_lengthOfBezier(Point2d.getCPtr(pts), pts, tol);
+  public static boolean bezierIsStraight(Point2d pts) {
+    return touchvgJNI.mgcurv_bezierIsStraight(Point2d.getCPtr(pts), pts);
+  }
+
+  public static float lengthOfBezier(Point2d pts) {
+    return touchvgJNI.mgcurv_lengthOfBezier(Point2d.getCPtr(pts), pts);
+  }
+
+  public static float bezierPointLengthFromStart(Point2d pts, float len) {
+    return touchvgJNI.mgcurv_bezierPointLengthFromStart(Point2d.getCPtr(pts), pts, len);
   }
 
   public static void bezier4P(Point2d pt1, Point2d pt2, Point2d pt3, Point2d pt4, Point2d ctrpt1, Point2d ctrpt2) {

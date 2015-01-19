@@ -67,6 +67,10 @@ public class mgbase {
     return touchvgJNI.mgbase_getMidAngle(fromAngle, toAngle);
   }
 
+  public static float getMidAngle2(float angle1, float angle2) {
+    return touchvgJNI.mgbase_getMidAngle2(angle1, angle2);
+  }
+
   public static float getDiffAngle(float fromAngle, float toAngle) {
     return touchvgJNI.mgbase_getDiffAngle(fromAngle, toAngle);
   }

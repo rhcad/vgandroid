@@ -377,12 +377,20 @@ public:
     virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
       MgCommandDraw::setStepPoint(sender,step,pt);
     }
+    virtual bool isStepPointAccepted(MgMotion const *sender, Point2d const &pt);
+    virtual bool isStepPointAcceptedSwigPublic(MgMotion const *sender, Point2d const &pt) {
+      return MgCommandDraw::isStepPointAccepted(sender,pt);
+    }
+    virtual int snapOptionsForStep(MgMotion const *sender, int step);
+    virtual int snapOptionsForStepSwigPublic(MgMotion const *sender, int step) {
+      return MgCommandDraw::snapOptionsForStep(sender,step);
+    }
 public:
     bool swig_overrides(int n) {
-      return (n < 20 ? swig_override[n] : false);
+      return (n < 22 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[20];
+    bool swig_override[22];
 };
 
 class SwigDirector_MgCmdDrawRect : public MgCmdDrawRect, public Swig::Director {
@@ -417,16 +425,24 @@ public:
     virtual void setStepPointSwigPublic(MgMotion const *sender, int step, Point2d const &pt) {
       MgCommandDraw::setStepPoint(sender,step,pt);
     }
+    virtual bool isStepPointAccepted(MgMotion const *sender, Point2d const &pt);
+    virtual bool isStepPointAcceptedSwigPublic(MgMotion const *sender, Point2d const &pt) {
+      return MgCommandDraw::isStepPointAccepted(sender,pt);
+    }
+    virtual int snapOptionsForStep(MgMotion const *sender, int step);
+    virtual int snapOptionsForStepSwigPublic(MgMotion const *sender, int step) {
+      return MgCommandDraw::snapOptionsForStep(sender,step);
+    }
     virtual void addRectShape(MgMotion const *sender);
     virtual void addRectShapeSwigPublic(MgMotion const *sender) {
       MgCmdDrawRect::addRectShape(sender);
     }
 public:
     bool swig_overrides(int n) {
-      return (n < 21 ? swig_override[n] : false);
+      return (n < 23 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[21];
+    bool swig_override[23];
 };
 
 class SwigDirector_GiView : public GiView, public Swig::Director {
@@ -446,6 +462,7 @@ public:
     virtual void selectionChanged();
     virtual void contentChanged();
     virtual void dynamicChanged();
+    virtual void zoomChanged();
     virtual void viewChanged(GiView *oldview);
     virtual void shapeWillDelete(int sid);
     virtual void shapeDeleted(int sid);
@@ -455,10 +472,10 @@ public:
     virtual void getLocalizedString(char const *name, MgStringCallback *result);
 public:
     bool swig_overrides(int n) {
-      return (n < 18 ? swig_override[n] : false);
+      return (n < 19 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[18];
+    bool swig_override[19];
 };
 
 struct SwigDirector_MgStringCallback : public MgStringCallback, public Swig::Director {

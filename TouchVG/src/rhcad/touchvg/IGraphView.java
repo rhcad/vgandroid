@@ -12,7 +12,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 
-//! 绘图视图接口
+/**
+ * \ingroup GROUP_ANDROID
+ * 绘图视图接口
+ */
 public interface IGraphView {
 
     //! 返回视图回调适配器对象
@@ -86,9 +89,19 @@ public interface IGraphView {
         public void onDynamicChanged(IGraphView view);
     }
 
+    //! 视图放缩的通知
+    public static interface OnZoomChangedListener {
+        public void onZoomChanged(IGraphView view);
+    }
+
     //! 第一次后台渲染结束的通知
     public static interface OnFirstRegenListener {
         public void onFirstRegen(IGraphView view);
+    }
+
+    //! 动态绘图完成的通知
+    public static interface OnDynDrawEndedListener {
+        public void onDynDrawEnded(IGraphView view);
     }
 
     //! 图形录制的通知
@@ -144,8 +157,14 @@ public interface IGraphView {
     //! 添加图形动态改变的观察者
     public void setOnDynamicChangedListener(OnDynamicChangedListener listener);
 
+    //! 添加视图放缩的观察者
+    public void setOnZoomChangedListener(OnZoomChangedListener listener);
+
     //! 添加第一次后台渲染结束的观察者
     public void setOnFirstRegenListener(OnFirstRegenListener listener);
+
+    //! 添加动态绘图完成的观察者
+    public void setOnDynDrawEndedListener(OnDynDrawEndedListener listener);
 
     //! 添加图形录制的观察者
     public void setOnShapesRecordedListener(OnShapesRecordedListener listener);

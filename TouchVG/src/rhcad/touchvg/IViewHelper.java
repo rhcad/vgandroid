@@ -21,7 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-//! 绘图视图辅助API接口
+/**
+ * \ingroup GROUP_ANDROID
+ * 绘图视图辅助API接口
+ */
 public interface IViewHelper {
 
     //! [状态无关]返回绘图包的版本号，1.1.jarver.sover
@@ -123,6 +126,18 @@ public interface IViewHelper {
     //! 设置线型(Const.SOLID_LINE,DASH_LINE..NULL_LINE)
     public void setLineStyle(int style);
 
+    //! 返回起端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public int getStartArrowHead();
+
+    //! 设置起端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public void setStartArrowHead(int style);
+
+    //! 返回末端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public int getEndArrowHead();
+
+    //! 设置末端箭头(Const.ARROWHEAD_NONE,ARROWHEAD_SHARPCLOSED..)
+    public void setEndArrowHead(int style);
+
     //! 返回线条颜色，忽略透明度分量，0 表示不画线条
     public int getLineColor();
 
@@ -195,6 +210,9 @@ public interface IViewHelper {
     //! 重做
     public void redo();
 
+    //! 在块中批量操作，最后才重新生成
+    public void combineRegen(Runnable action);
+
     //! 是否正在录屏
     public boolean isRecording();
 
@@ -243,6 +261,9 @@ public interface IViewHelper {
     //! 在矩形框内绘制指定ID的图形
     public Bitmap snapshotWithShapes(int sid, int width, int height);
 
+    //! 在矩形框内绘制所有图形
+    public Bitmap snapshotWithShapes(int width, int height);
+
     //! 保存当前显示的静态图形快照(去掉周围空白)到PNG文件，自动添加后缀名.png，支持多线程
     public boolean exportExtentAsPNG(String filename, int spaceAround);
 
@@ -282,6 +303,12 @@ public interface IViewHelper {
     //! 选择一个图形
     public void setSelectedShapeID(int sid);
 
+    //! 返回当前选中的图形的ID
+    public int[] getSelectedIds();
+
+    //! 选中指定ID的图形
+    public void setSelectedIds(int[] ids);
+
     //! 当前线性图形中当前控制点序号
     public int getSelectedHandle();
 
@@ -293,6 +320,12 @@ public interface IViewHelper {
 
     //! 返回当前视图区域的模型坐标范围，模型坐标
     public Rect getViewBox();
+
+    //! 得到当前显示比例，正数，1表示100%，越大显示得越大
+    public float getViewScale();
+
+    //! 设置当前显示比例，正数，1表示100%，越大显示得越大
+    public boolean setViewScale(float scale);
 
     //! 返回文档的模型坐标范围
     public Rect getModelBox();
@@ -407,4 +440,10 @@ public interface IViewHelper {
 
     //! 所属的Activity恢复状态时调用
     public void onRestoreInstanceState(Bundle savedState);
+
+    //! 显示消息文字
+    public void showMessage(String text);
+
+    //! 返回本地化文字
+    public String getLocalizedString(String name);
 }
