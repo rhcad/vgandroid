@@ -342,6 +342,9 @@ public interface IViewHelper {
     //! 得到指定ID的图形的包络框显示坐标
     public Rect getShapeBox(int sid);
 
+    //! 得到指定ID的图形的模型坐标范围
+    public Rect getModelBox(int sid);
+
     //! 得到当前触摸位置，视图坐标
     public Point getCurrentPoint();
 

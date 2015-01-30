@@ -409,7 +409,11 @@ public class MgCoreView {
   }
 
   public boolean getModelBox(Floats box) {
-    return touchvgJNI.MgCoreView_getModelBox(swigCPtr, this, Floats.getCPtr(box), box);
+    return touchvgJNI.MgCoreView_getModelBox__SWIG_0(swigCPtr, this, Floats.getCPtr(box), box);
+  }
+
+  public boolean getModelBox(Floats box, int shapeId) {
+    return touchvgJNI.MgCoreView_getModelBox__SWIG_1(swigCPtr, this, Floats.getCPtr(box), box, shapeId);
   }
 
   public boolean getDisplayExtent(Floats box) {

@@ -2112,7 +2112,8 @@ public class touchvgJNI {
   public final static native int MgCoreView_findShapeByTag(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3);
   public final static native int MgCoreView_traverseImageShapes(long jarg1, MgCoreView jarg1_, int jarg2, long jarg3, MgFindImageCallback jarg3_);
   public final static native boolean MgCoreView_getViewModelBox(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_);
-  public final static native boolean MgCoreView_getModelBox(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_);
+  public final static native boolean MgCoreView_getModelBox__SWIG_0(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_);
+  public final static native boolean MgCoreView_getModelBox__SWIG_1(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_, int jarg3);
   public final static native boolean MgCoreView_getDisplayExtent__SWIG_0(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_);
   public final static native boolean MgCoreView_getDisplayExtent__SWIG_1(long jarg1, MgCoreView jarg1_, int jarg2, int jarg3, long jarg4, Floats jarg4_);
   public final static native boolean MgCoreView_getBoundingBox__SWIG_0(long jarg1, MgCoreView jarg1_, long jarg2, Floats jarg2_);

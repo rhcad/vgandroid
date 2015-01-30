@@ -662,6 +662,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public Rect getModelBox(int sid) {
+        return ContextHelper.getModelBox(mCreator, sid);
+    }
+
+    @Override
     public Point getCurrentPoint() {
         Point2d pt = this.cmdView().motion().getPoint();
         return new Point(Math.round(pt.getX()), Math.round(pt.getY()));
