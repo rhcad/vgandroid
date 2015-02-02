@@ -330,20 +330,20 @@ public interface IViewHelper {
     //! 返回文档的模型坐标范围
     public Rect getModelBox();
 
-    //! 返回图形显示范围
+    //! 返回图形显示范围，像素坐标
     public Rect getDisplayExtent();
 
-    //! 返回图形显示范围，支持多线程
+    //! 返回图形显示范围，像素坐标，支持多线程
     public Rect getDisplayExtent(int doc, int gs);
 
-    //! 返回选择包络框
+    //! 返回选择包络框，像素坐标
     public Rect getBoundingBox();
 
     //! 得到指定ID的图形的包络框显示坐标
     public Rect getShapeBox(int sid);
 
     //! 得到指定ID的图形的模型坐标范围
-    public Rect getModelBox(int sid);
+    public RectF getModelBox(int sid);
 
     //! 得到当前触摸位置，视图坐标
     public Point getCurrentPoint();

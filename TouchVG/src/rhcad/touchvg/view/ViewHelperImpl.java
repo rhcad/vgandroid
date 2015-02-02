@@ -662,7 +662,7 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
-    public Rect getModelBox(int sid) {
+    public RectF getModelBox(int sid) {
         return ContextHelper.getModelBox(mCreator, sid);
     }
 

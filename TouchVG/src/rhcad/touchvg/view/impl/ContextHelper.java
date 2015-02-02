@@ -555,13 +555,12 @@ public class ContextHelper {
         return new Rect();
     }
 
-    public static Rect getModelBox(ViewCreator vc, int sid) {
+    public static RectF getModelBox(ViewCreator vc, int sid) {
         final Floats box = new Floats(4);
         if (vc != null && vc.coreView().getModelBox(box, sid)) {
-            return new Rect(Math.round(box.get(0)), Math.round(box.get(1)), Math.round(box.get(2)),
-                    Math.round(box.get(3)));
+            return new RectF(box.get(0), box.get(1), box.get(2), box.get(3));
         }
-        return new Rect();
+        return new RectF();
     }
 
     public static void onSaveInstanceState(ViewCreator vc, Bundle outState, String path) {
