@@ -48,6 +48,16 @@ public class MgEllipse extends MgBaseRect {
     return touchvgJNI.MgEllipse_Type();
   }
 
+  public static MgEllipse cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgEllipse_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgEllipse(cPtr, false);
+  }
+
+  public static MgEllipse fromHandle(int h) {
+    long cPtr = touchvgJNI.MgEllipse_fromHandle(h);
+    return (cPtr == 0) ? null : new MgEllipse(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgEllipse_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

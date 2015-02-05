@@ -48,6 +48,16 @@ public class MgParallel extends MgBaseShape {
     return touchvgJNI.MgParallel_Type();
   }
 
+  public static MgParallel cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgParallel_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgParallel(cPtr, false);
+  }
+
+  public static MgParallel fromHandle(int h) {
+    long cPtr = touchvgJNI.MgParallel_fromHandle(h);
+    return (cPtr == 0) ? null : new MgParallel(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgParallel_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

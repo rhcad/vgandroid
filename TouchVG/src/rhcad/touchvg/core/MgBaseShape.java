@@ -63,6 +63,10 @@ public class MgBaseShape extends MgObject {
     return new Tol(touchvgJNI.MgBaseShape_minTol(), false);
   }
 
+  public int toHandle() {
+    return touchvgJNI.MgBaseShape_toHandle(swigCPtr, this);
+  }
+
   public MgBaseShape cloneShape() {
     long cPtr = touchvgJNI.MgBaseShape_cloneShape(swigCPtr, this);
     return (cPtr == 0) ? null : new MgBaseShape(cPtr, false);

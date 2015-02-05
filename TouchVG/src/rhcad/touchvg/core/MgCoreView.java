@@ -320,8 +320,12 @@ public class MgCoreView {
     touchvgJNI.MgCoreView_freeContent(swigCPtr, this);
   }
 
+  public boolean setContent(String content, boolean readOnly) {
+    return touchvgJNI.MgCoreView_setContent__SWIG_0(swigCPtr, this, content, readOnly);
+  }
+
   public boolean setContent(String content) {
-    return touchvgJNI.MgCoreView_setContent(swigCPtr, this, content);
+    return touchvgJNI.MgCoreView_setContent__SWIG_1(swigCPtr, this, content);
   }
 
   public boolean zoomToInitial() {

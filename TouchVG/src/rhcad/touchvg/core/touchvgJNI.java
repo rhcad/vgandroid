@@ -800,6 +800,7 @@ public class touchvgJNI {
   public final static native void delete_MgBaseShape(long jarg1);
   public final static native int MgBaseShape_Type();
   public final static native long MgBaseShape_minTol();
+  public final static native int MgBaseShape_toHandle(long jarg1, MgBaseShape jarg1_);
   public final static native long MgBaseShape_cloneShape(long jarg1, MgBaseShape jarg1_);
   public final static native long MgBaseShape_getExtent(long jarg1, MgBaseShape jarg1_);
   public final static native long MgBaseShape_getExtentSwigExplicitMgBaseShape(long jarg1, MgBaseShape jarg1_);
@@ -893,6 +894,8 @@ public class touchvgJNI {
   public final static native void delete_MgRect(long jarg1);
   public final static native long MgRect_create();
   public final static native int MgRect_Type();
+  public final static native long MgRect_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgRect_fromHandle(int jarg1);
   public final static native long MgRect_clone(long jarg1, MgRect jarg1_);
   public final static native void MgRect_copy(long jarg1, MgRect jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgRect_release(long jarg1, MgRect jarg1_);
@@ -940,6 +943,8 @@ public class touchvgJNI {
   public final static native void delete_MgLines(long jarg1);
   public final static native long MgLines_create();
   public final static native int MgLines_Type();
+  public final static native long MgLines_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgLines_fromHandle(int jarg1);
   public final static native long MgLines_clone(long jarg1, MgLines jarg1_);
   public final static native void MgLines_copy(long jarg1, MgLines jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgLines_release(long jarg1, MgLines jarg1_);
@@ -974,6 +979,8 @@ public class touchvgJNI {
   public final static native void delete_MgArc(long jarg1);
   public final static native long MgArc_create();
   public final static native int MgArc_Type();
+  public final static native long MgArc_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgArc_fromHandle(int jarg1);
   public final static native long MgArc_clone(long jarg1, MgArc jarg1_);
   public final static native void MgArc_copy(long jarg1, MgArc jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgArc_release(long jarg1, MgArc jarg1_);
@@ -1020,6 +1027,8 @@ public class touchvgJNI {
   public final static native void delete_MgDiamond(long jarg1);
   public final static native long MgDiamond_create();
   public final static native int MgDiamond_Type();
+  public final static native long MgDiamond_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgDiamond_fromHandle(int jarg1);
   public final static native long MgDiamond_clone(long jarg1, MgDiamond jarg1_);
   public final static native void MgDiamond_copy(long jarg1, MgDiamond jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgDiamond_release(long jarg1, MgDiamond jarg1_);
@@ -1051,6 +1060,8 @@ public class touchvgJNI {
   public final static native void delete_MgDot(long jarg1);
   public final static native long MgDot_create();
   public final static native int MgDot_Type();
+  public final static native long MgDot_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgDot_fromHandle(int jarg1);
   public final static native long MgDot_clone(long jarg1, MgDot jarg1_);
   public final static native void MgDot_copy(long jarg1, MgDot jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgDot_release(long jarg1, MgDot jarg1_);
@@ -1084,6 +1095,8 @@ public class touchvgJNI {
   public final static native void delete_MgEllipse(long jarg1);
   public final static native long MgEllipse_create();
   public final static native int MgEllipse_Type();
+  public final static native long MgEllipse_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgEllipse_fromHandle(int jarg1);
   public final static native long MgEllipse_clone(long jarg1, MgEllipse jarg1_);
   public final static native void MgEllipse_copy(long jarg1, MgEllipse jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgEllipse_release(long jarg1, MgEllipse jarg1_);
@@ -1126,6 +1139,8 @@ public class touchvgJNI {
   public final static native void delete_MgGrid(long jarg1);
   public final static native long MgGrid_create();
   public final static native int MgGrid_Type();
+  public final static native long MgGrid_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgGrid_fromHandle(int jarg1);
   public final static native long MgGrid_clone(long jarg1, MgGrid jarg1_);
   public final static native void MgGrid_copy(long jarg1, MgGrid jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgGrid_release(long jarg1, MgGrid jarg1_);
@@ -1160,6 +1175,8 @@ public class touchvgJNI {
   public final static native void delete_MgLine(long jarg1);
   public final static native long MgLine_create();
   public final static native int MgLine_Type();
+  public final static native long MgLine_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgLine_fromHandle(int jarg1);
   public final static native long MgLine_clone(long jarg1, MgLine jarg1_);
   public final static native void MgLine_copy(long jarg1, MgLine jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgLine_release(long jarg1, MgLine jarg1_);
@@ -1202,6 +1219,8 @@ public class touchvgJNI {
   public final static native void delete_MgParallel(long jarg1);
   public final static native long MgParallel_create();
   public final static native int MgParallel_Type();
+  public final static native long MgParallel_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgParallel_fromHandle(int jarg1);
   public final static native long MgParallel_clone(long jarg1, MgParallel jarg1_);
   public final static native void MgParallel_copy(long jarg1, MgParallel jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgParallel_release(long jarg1, MgParallel jarg1_);
@@ -1239,6 +1258,8 @@ public class touchvgJNI {
   public final static native void delete_MgPathShape(long jarg1);
   public final static native long MgPathShape_create();
   public final static native int MgPathShape_Type();
+  public final static native long MgPathShape_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgPathShape_fromHandle(int jarg1);
   public final static native long MgPathShape_clone(long jarg1, MgPathShape jarg1_);
   public final static native void MgPathShape_copy(long jarg1, MgPathShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgPathShape_release(long jarg1, MgPathShape jarg1_);
@@ -1275,6 +1296,8 @@ public class touchvgJNI {
   public final static native void delete_MgRoundRect(long jarg1);
   public final static native long MgRoundRect_create();
   public final static native int MgRoundRect_Type();
+  public final static native long MgRoundRect_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgRoundRect_fromHandle(int jarg1);
   public final static native long MgRoundRect_clone(long jarg1, MgRoundRect jarg1_);
   public final static native void MgRoundRect_copy(long jarg1, MgRoundRect jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgRoundRect_release(long jarg1, MgRoundRect jarg1_);
@@ -1310,6 +1333,8 @@ public class touchvgJNI {
   public final static native void delete_MgSplines(long jarg1);
   public final static native long MgSplines_create();
   public final static native int MgSplines_Type();
+  public final static native long MgSplines_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgSplines_fromHandle(int jarg1);
   public final static native long MgSplines_clone(long jarg1, MgSplines jarg1_);
   public final static native void MgSplines_copy(long jarg1, MgSplines jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgSplines_release(long jarg1, MgSplines jarg1_);
@@ -1443,6 +1468,8 @@ public class touchvgJNI {
   public final static native void delete_MgGroup(long jarg1);
   public final static native long MgGroup_create();
   public final static native int MgGroup_Type();
+  public final static native long MgGroup_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgGroup_fromHandle(int jarg1);
   public final static native long MgGroup_clone(long jarg1, MgGroup jarg1_);
   public final static native void MgGroup_copy(long jarg1, MgGroup jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgGroup_release(long jarg1, MgGroup jarg1_);
@@ -1481,6 +1508,8 @@ public class touchvgJNI {
   public final static native void delete_MgImageShape(long jarg1);
   public final static native long MgImageShape_create();
   public final static native int MgImageShape_Type();
+  public final static native long MgImageShape_cast(long jarg1, MgBaseShape jarg1_);
+  public final static native long MgImageShape_fromHandle(int jarg1);
   public final static native long MgImageShape_clone(long jarg1, MgImageShape jarg1_);
   public final static native void MgImageShape_copy(long jarg1, MgImageShape jarg1_, long jarg2, MgObject jarg2_);
   public final static native void MgImageShape_release(long jarg1, MgImageShape jarg1_);
@@ -2090,7 +2119,8 @@ public class touchvgJNI {
   public final static native void MgCoreView_getContent__SWIG_0(long jarg1, MgCoreView jarg1_, int jarg2, long jarg3, MgStringCallback jarg3_);
   public final static native void MgCoreView_getContent__SWIG_1(long jarg1, MgCoreView jarg1_, long jarg2, MgStringCallback jarg2_);
   public final static native void MgCoreView_freeContent(long jarg1, MgCoreView jarg1_);
-  public final static native boolean MgCoreView_setContent(long jarg1, MgCoreView jarg1_, String jarg2);
+  public final static native boolean MgCoreView_setContent__SWIG_0(long jarg1, MgCoreView jarg1_, String jarg2, boolean jarg3);
+  public final static native boolean MgCoreView_setContent__SWIG_1(long jarg1, MgCoreView jarg1_, String jarg2);
   public final static native boolean MgCoreView_zoomToInitial(long jarg1, MgCoreView jarg1_);
   public final static native boolean MgCoreView_zoomToExtent__SWIG_0(long jarg1, MgCoreView jarg1_, float jarg2);
   public final static native boolean MgCoreView_zoomToExtent__SWIG_1(long jarg1, MgCoreView jarg1_);

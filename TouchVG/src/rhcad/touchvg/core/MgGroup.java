@@ -48,6 +48,16 @@ public class MgGroup extends MgComposite {
     return touchvgJNI.MgGroup_Type();
   }
 
+  public static MgGroup cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgGroup_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgGroup(cPtr, false);
+  }
+
+  public static MgGroup fromHandle(int h) {
+    long cPtr = touchvgJNI.MgGroup_fromHandle(h);
+    return (cPtr == 0) ? null : new MgGroup(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgGroup_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);
