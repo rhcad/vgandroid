@@ -422,6 +422,7 @@ public class touchvgJNI {
   public final static native void GiColor_setARGB(long jarg1, GiColor jarg1_, int jarg2);
   public final static native void GiColor_set__SWIG_0(long jarg1, GiColor jarg1_, int jarg2, int jarg3, int jarg4);
   public final static native void GiColor_set__SWIG_1(long jarg1, GiColor jarg1_, int jarg2, int jarg3, int jarg4, int jarg5);
+  public final static native long GiColor_withAlpha(long jarg1, GiColor jarg1_, int jarg2);
   public final static native boolean GiColor_isInvalid(long jarg1, GiColor jarg1_);
   public final static native boolean GiColor_equals(long jarg1, GiColor jarg1_, long jarg2, GiColor jarg2_);
   public final static native void delete_GiColor(long jarg1);

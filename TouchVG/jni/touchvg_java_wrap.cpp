@@ -18736,6 +18736,23 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiColor_1set_1_1SWIG_
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiColor_1withAlpha(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  GiColor *arg1 = (GiColor *) 0 ;
+  int arg2 ;
+  GiColor result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiColor **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = ((GiColor const *)arg1)->withAlpha(arg2);
+  *(GiColor **)&jresult = new GiColor((const GiColor &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_GiColor_1isInvalid(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   GiColor *arg1 = (GiColor *) 0 ;
