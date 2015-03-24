@@ -64,9 +64,9 @@ Features described in [Online document](http://touchvg.github.io). Please visit 
 
 ## License
 
-This is an open source [LGPL 2.1](LICENSE.md) licensed project. It uses the following open source projects:
+This is an open source [BSD licensed](LICENSE) project. It uses the following open source projects:
 
-- [vgcore](https://github.com/rhcad/vgcore) (LGPL): Cross-platform vector drawing libraries using C++.
+- [vgcore](https://github.com/rhcad/vgcore) (BSD): Cross-platform vector drawing libraries using C++.
 - [AndroidSVG](https://code.google.com/p/androidsvg) (Apache): SVG rendering library for Android.
 - [x3py](https://github.com/rhcad/x3py) (Apache): Compile script files.
 - [SWIG](https://github.com/swig/swig) (GPL): Use the tool to generate the glue code for Java and C#.
@@ -79,7 +79,4 @@ To contribute, please follow the branching model outlined here: [A successful Gi
 ## Contributors
 
 - [Zhang Yungui](https://github.com/rhcad)
-- [Archer](https://github.com/a7ch3r)
-- [ljlin](https://github.com/ljlin)
-- [Pengjun](https://github.com/pengjun) / Line and triangle commands
 - [Proteas](https://github.com/proteas)

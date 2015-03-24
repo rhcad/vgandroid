@@ -1,4 +1,4 @@
-// Copyright (c) 2014, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg.view.internal;
 

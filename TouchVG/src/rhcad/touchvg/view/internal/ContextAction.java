@@ -1,5 +1,6 @@
 ﻿//! \file ContextAction.java
 //! \brief Android绘图视图类
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg.view.internal;
 

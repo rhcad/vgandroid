@@ -16391,7 +16391,58 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1crossTwoCircl
 }
 
 
-SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1crossLineCircle(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_, jfloat jarg6) {
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1crossLineCircle_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_, jfloat jarg6, jboolean jarg7) {
+  jint jresult = 0 ;
+  Point2d *arg1 = 0 ;
+  Point2d *arg2 = 0 ;
+  Point2d *arg3 = 0 ;
+  Point2d *arg4 = 0 ;
+  Point2d *arg5 = 0 ;
+  float arg6 ;
+  bool arg7 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  (void)jarg4_;
+  (void)jarg5_;
+  arg1 = *(Point2d **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  arg2 = *(Point2d **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d & reference is null");
+    return 0;
+  } 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg4 = *(Point2d **)&jarg4;
+  if (!arg4) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg5 = *(Point2d **)&jarg5;
+  if (!arg5) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg6 = (float)jarg6; 
+  arg7 = jarg7 ? true : false; 
+  result = (int)mgcurv::crossLineCircle(*arg1,*arg2,(Point2d const &)*arg3,(Point2d const &)*arg4,(Point2d const &)*arg5,arg6,arg7);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_mgcurv_1crossLineCircle_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_, jfloat jarg6) {
   jint jresult = 0 ;
   Point2d *arg1 = 0 ;
   Point2d *arg2 = 0 ;
@@ -16944,6 +16995,39 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1isProjec
     return 0;
   } 
   result = (bool)mglnrel::isProjectBetweenLine((Point2d const &)*arg1,(Point2d const &)*arg2,(Point2d const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_mglnrel_1isProjectBetweenRayline(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
+  Point2d *arg1 = 0 ;
+  Point2d *arg2 = 0 ;
+  Point2d *arg3 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  arg1 = *(Point2d **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg2 = *(Point2d **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  arg3 = *(Point2d **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Point2d const & reference is null");
+    return 0;
+  } 
+  result = (bool)mglnrel::isProjectBetweenRayline((Point2d const &)*arg1,(Point2d const &)*arg2,(Point2d const &)*arg3);
   jresult = (jboolean)result; 
   return jresult;
 }

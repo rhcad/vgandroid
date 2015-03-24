@@ -1,3 +1,5 @@
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
+
 package rhcad.touchvg.view.impl;
 
 import rhcad.touchvg.IGraphView;

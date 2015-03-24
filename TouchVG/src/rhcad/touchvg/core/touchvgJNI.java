@@ -319,7 +319,8 @@ public class touchvgJNI {
   public final static native void mgcurv_roundRectToBeziers(long jarg1, Point2d jarg1_, long jarg2, Box2d jarg2_, float jarg3, float jarg4);
   public final static native int mgcurv_arcToBezier(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, float jarg3, float jarg4, float jarg5, float jarg6);
   public final static native int mgcurv_crossTwoCircles(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, float jarg4, long jarg5, Point2d jarg5_, float jarg6);
-  public final static native int mgcurv_crossLineCircle(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, float jarg6);
+  public final static native int mgcurv_crossLineCircle__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, float jarg6, boolean jarg7);
+  public final static native int mgcurv_crossLineCircle__SWIG_1(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_, long jarg5, Point2d jarg5_, float jarg6);
   public final static native boolean mgcurv_cubicSplines__SWIG_0(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4, float jarg5);
   public final static native boolean mgcurv_cubicSplines__SWIG_1(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_, int jarg4);
   public final static native boolean mgcurv_cubicSplines__SWIG_2(int jarg1, long jarg2, Point2d jarg2_, long jarg3, Vector2d jarg3_);
@@ -338,6 +339,7 @@ public class touchvgJNI {
   public final static native boolean mglnrel_isIntersectProp(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean mglnrel_isBetweenLine(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean mglnrel_isProjectBetweenLine(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
+  public final static native boolean mglnrel_isProjectBetweenRayline(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);
   public final static native boolean mglnrel_isBetweenLine2(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Tol jarg4_);
   public final static native boolean mglnrel_isBetweenLine3__SWIG_0(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_, long jarg4, Point2d jarg4_);
   public final static native boolean mglnrel_isBetweenLine3__SWIG_1(long jarg1, Point2d jarg1_, long jarg2, Point2d jarg2_, long jarg3, Point2d jarg3_);

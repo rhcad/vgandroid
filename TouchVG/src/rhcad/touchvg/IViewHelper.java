@@ -1,6 +1,6 @@
 //! \file IViewHelper.java
 //! \brief Android绘图视图辅助类
-// Copyright (c) 2012-2014, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg;
 
