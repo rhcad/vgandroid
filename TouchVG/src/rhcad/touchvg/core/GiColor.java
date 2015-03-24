@@ -131,6 +131,10 @@ public class GiColor {
     touchvgJNI.GiColor_set__SWIG_1(swigCPtr, this, _r, _g, _b, _a);
   }
 
+  public GiColor withAlpha(int alpha) {
+    return new GiColor(touchvgJNI.GiColor_withAlpha(swigCPtr, this, alpha), true);
+  }
+
   public boolean isInvalid() {
     return touchvgJNI.GiColor_isInvalid(swigCPtr, this);
   }

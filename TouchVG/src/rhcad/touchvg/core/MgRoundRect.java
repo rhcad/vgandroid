@@ -48,6 +48,16 @@ public class MgRoundRect extends MgBaseRect {
     return touchvgJNI.MgRoundRect_Type();
   }
 
+  public static MgRoundRect cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgRoundRect_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgRoundRect(cPtr, false);
+  }
+
+  public static MgRoundRect fromHandle(int h) {
+    long cPtr = touchvgJNI.MgRoundRect_fromHandle(h);
+    return (cPtr == 0) ? null : new MgRoundRect(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgRoundRect_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

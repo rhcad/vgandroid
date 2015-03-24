@@ -1,6 +1,6 @@
 //! \file ViewHelperImpl.java
 //! \brief Android绘图视图辅助类
-// Copyright (c) 2012-2013, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg.view;
 
@@ -40,7 +40,7 @@ import android.widget.ImageView;
 //! Android绘图视图辅助类
 public class ViewHelperImpl implements IViewHelper {
     private static final String TAG = "touchvg";
-    private static final int JARVERSION = 30;
+    private static final int JARVERSION = 32;
     private ViewCreator mCreator = new ViewCreator();
 
     static {
@@ -659,6 +659,11 @@ public class ViewHelperImpl implements IViewHelper {
     @Override
     public Rect getShapeBox(int sid) {
         return ContextHelper.getShapeBox(mCreator, sid);
+    }
+
+    @Override
+    public RectF getModelBox(int sid) {
+        return ContextHelper.getModelBox(mCreator, sid);
     }
 
     @Override

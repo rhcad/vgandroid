@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2014, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg.view.internal;
 
@@ -10,7 +10,8 @@ public class ResourceUtil {
     private static final String TAG = "touchvg";
     private static final String[] HANDLE_NAMES = new String[] { "vgdot1", "vgdot2", "vgdot3",
             "vg_lock", "vg_unlock", "vg_back", "vg_endedit",
-            "vgnode", "vgcen", "vgmid", "vgquad", "vgtangent", "vgcross", "vgnear", "vgpivot" };
+            "vgnode", "vgcen", "vgmid", "vgquad", "vgtangent", "vgcross", "vgnear",
+            "vgpivot", "vg_overturn" };
     private static final String[] IMAGE_NAMES = new String[] { null, "vg_selall", null, null,
             HANDLE_NAMES[5], "vg_delete", "vg_clone", "vg_fixlen", "vg_freelen", HANDLE_NAMES[3],
             HANDLE_NAMES[4], "vg_edit", HANDLE_NAMES[6], null, null, null, null, "vg_group",

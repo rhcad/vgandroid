@@ -48,6 +48,16 @@ public class MgLines extends MgBaseLines {
     return touchvgJNI.MgLines_Type();
   }
 
+  public static MgLines cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgLines_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgLines(cPtr, false);
+  }
+
+  public static MgLines fromHandle(int h) {
+    long cPtr = touchvgJNI.MgLines_fromHandle(h);
+    return (cPtr == 0) ? null : new MgLines(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgLines_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

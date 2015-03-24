@@ -1,6 +1,6 @@
 //! \file IGraphView.java
 //! \brief 绘图视图接口
-// Copyright (c) 2012-2014, https://github.com/rhcad/touchvg
+// Copyright (c) 2012-2015, https://github.com/rhcad/vgandroid, BSD license
 
 package rhcad.touchvg;
 

@@ -48,6 +48,16 @@ public class MgGrid extends MgBaseRect {
     return touchvgJNI.MgGrid_Type();
   }
 
+  public static MgGrid cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgGrid_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgGrid(cPtr, false);
+  }
+
+  public static MgGrid fromHandle(int h) {
+    long cPtr = touchvgJNI.MgGrid_fromHandle(h);
+    return (cPtr == 0) ? null : new MgGrid(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgGrid_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

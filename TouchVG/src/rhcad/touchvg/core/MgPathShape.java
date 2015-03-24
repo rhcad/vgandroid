@@ -48,6 +48,16 @@ public class MgPathShape extends MgBaseShape {
     return touchvgJNI.MgPathShape_Type();
   }
 
+  public static MgPathShape cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgPathShape_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgPathShape(cPtr, false);
+  }
+
+  public static MgPathShape fromHandle(int h) {
+    long cPtr = touchvgJNI.MgPathShape_fromHandle(h);
+    return (cPtr == 0) ? null : new MgPathShape(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgPathShape_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

@@ -48,6 +48,16 @@ public class MgImageShape extends MgBaseRect {
     return touchvgJNI.MgImageShape_Type();
   }
 
+  public static MgImageShape cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgImageShape_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgImageShape(cPtr, false);
+  }
+
+  public static MgImageShape fromHandle(int h) {
+    long cPtr = touchvgJNI.MgImageShape_fromHandle(h);
+    return (cPtr == 0) ? null : new MgImageShape(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgImageShape_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

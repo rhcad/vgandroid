@@ -48,6 +48,16 @@ public class MgDot extends MgBaseShape {
     return touchvgJNI.MgDot_Type();
   }
 
+  public static MgDot cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgDot_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgDot(cPtr, false);
+  }
+
+  public static MgDot fromHandle(int h) {
+    long cPtr = touchvgJNI.MgDot_fromHandle(h);
+    return (cPtr == 0) ? null : new MgDot(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgDot_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);

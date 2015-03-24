@@ -48,6 +48,16 @@ public class MgArc extends MgBaseShape {
     return touchvgJNI.MgArc_Type();
   }
 
+  public static MgArc cast(MgBaseShape obj) {
+    long cPtr = touchvgJNI.MgArc_cast(MgBaseShape.getCPtr(obj), obj);
+    return (cPtr == 0) ? null : new MgArc(cPtr, false);
+  }
+
+  public static MgArc fromHandle(int h) {
+    long cPtr = touchvgJNI.MgArc_fromHandle(h);
+    return (cPtr == 0) ? null : new MgArc(cPtr, false);
+  }
+
   public MgObject clone() {
     long cPtr = touchvgJNI.MgArc_clone(swigCPtr, this);
     return (cPtr == 0) ? null : new MgObject(cPtr, false);
