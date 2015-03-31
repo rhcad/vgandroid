@@ -420,6 +420,10 @@ public class MgCoreView {
     return touchvgJNI.MgCoreView_getModelBox__SWIG_1(swigCPtr, this, Floats.getCPtr(box), box, shapeId);
   }
 
+  public boolean getHandlePoint(Floats xy, int shapeId, int index) {
+    return touchvgJNI.MgCoreView_getHandlePoint(swigCPtr, this, Floats.getCPtr(xy), xy, shapeId, index);
+  }
+
   public boolean getDisplayExtent(Floats box) {
     return touchvgJNI.MgCoreView_getDisplayExtent__SWIG_0(swigCPtr, this, Floats.getCPtr(box), box);
   }
@@ -468,5 +472,7 @@ public class MgCoreView {
   public final static int kMgHideContent = kMgNoClone + 1;
   public final static int kMgNoDel = kMgHideContent + 1;
   public final static int kMgCanSelLocked = kMgNoDel + 1;
+  public final static int kMgNotAddRel = kMgCanSelLocked + 1;
+  public final static int kMgNotShowSnap = kMgNotAddRel + 1;
 
 }

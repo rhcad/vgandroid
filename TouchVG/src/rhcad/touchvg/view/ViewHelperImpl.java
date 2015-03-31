@@ -679,6 +679,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public PointF getHandlePoint(int sid, int index) {
+        return ContextHelper.getHandlePoint(mCreator, sid, index);
+    }
+
+    @Override
     public String getContent() {
         return ContextHelper.getContent(mCreator);
     }

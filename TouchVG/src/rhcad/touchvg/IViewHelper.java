@@ -351,6 +351,9 @@ public interface IViewHelper {
     //! 得到当前触摸位置的模型坐标
     public PointF getCurrentModelPoint();
 
+    //! 得到指定序号的控制点的模型坐标
+    public PointF getHandlePoint(int sid, int index);
+
     //! 得到图形的JSON内容，支持多线程
     public String getContent();
 

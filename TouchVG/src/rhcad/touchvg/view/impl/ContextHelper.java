@@ -565,6 +565,14 @@ public class ContextHelper {
         return new RectF();
     }
 
+    public static PointF getHandlePoint(ViewCreator vc, int sid, int index) {
+        final Floats pt = new Floats(2);
+        if (vc.isValid()) {
+            vc.coreView().getHandlePoint(pt, sid, index);
+        }
+        return new PointF(pt.get(0), pt.get(1));
+    }
+
     public static void onSaveInstanceState(ViewCreator vc, Bundle outState, String path) {
         final BaseViewAdapter adapter = vc.getMainAdapter();
 
