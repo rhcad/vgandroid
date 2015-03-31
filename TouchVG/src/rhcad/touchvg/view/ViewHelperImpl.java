@@ -613,7 +613,11 @@ public class ViewHelperImpl implements IViewHelper {
 
     @Override
     public int getChangeCount() {
-        return mCreator.isValid() ? coreView().getChangeCount() : 0;
+        final GiCoreView v = coreView();
+        if (v != null) {
+            return v.getChangeCount();
+        }
+        return 0;
     }
 
     @Override

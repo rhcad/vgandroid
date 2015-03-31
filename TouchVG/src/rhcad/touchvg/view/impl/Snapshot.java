@@ -30,6 +30,9 @@ public class Snapshot {
         final GiCoreView v = view.coreView();
         int doc, gs;
 
+        if (v == null) {
+            return null;
+        }
         synchronized (v) {
             doc = v.acquireFrontDoc();
             gs = v.acquireGraphics(view.viewAdapter());
@@ -53,6 +56,9 @@ public class Snapshot {
         final GiCoreView v = view.coreView();
         int doc, gs;
 
+        if (v == null) {
+            return null;
+        }
         synchronized (v) {
             doc = v.acquireFrontDoc();
             gs = v.acquireGraphics(view.viewAdapter());
