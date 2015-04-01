@@ -9,6 +9,7 @@ if [ "$1"x = "-swig"x ] || [ ! -f touchvg_java_wrap.cpp ] ; then # Make JNI clas
     rm -rf ../src/rhcad/touchvg/core/*.*
     
     swig -c++ -java -package rhcad.touchvg.core -D__ANDROID__ \
+        -features autodoc=1 \
         -outdir ../src/rhcad/touchvg/core \
         -o touchvg_java_wrap.cpp \
         -I../../../vgcore/core/include \
