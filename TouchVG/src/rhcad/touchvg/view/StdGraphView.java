@@ -6,6 +6,7 @@ package rhcad.touchvg.view;
 
 import rhcad.touchvg.IGraphView;
 import rhcad.touchvg.core.GiCoreView;
+import rhcad.touchvg.core.GiGestureType;
 import rhcad.touchvg.core.GiView;
 import rhcad.touchvg.core.Longs;
 import rhcad.touchvg.view.internal.BaseViewAdapter;
@@ -105,16 +106,24 @@ public class StdGraphView extends View implements BaseGraphView {
         this.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (mCoreView == null) {
+                if (mCoreView == null || !mGestureEnable) {
                     return false;
                 }
                 if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
                     activateView();
                 }
-                return mGestureEnable && (mGestureListener.onTouch(v, event)
-                        || mGestureDetector.onTouchEvent(event));
+                boolean ret = mGestureListener.onTouch(v, event) || mGestureDetector.onTouchEvent(event);
+                if (mGestureListener.getLastGesture() == GiGestureType.kGiGestureTap) {
+                    v.performClick();
+                }
+                return ret;
             }
         });
+    }
+
+    @Override
+    public boolean performClick() {
+        return super.performClick();
     }
 
     protected void activateView() {
@@ -162,7 +171,7 @@ public class StdGraphView extends View implements BaseGraphView {
             CanvasAdapter adapter, boolean dyndraw) {
         int n = 0;
 
-        if (adapter.beginPaint(canvas, dyndraw)) {
+        if (adapter.beginPaint(canvas)) {
             if (mCachedBitmap == null || !dyndraw) {
                 if (this.getBackground() != null) {
                     this.getBackground().draw(canvas);

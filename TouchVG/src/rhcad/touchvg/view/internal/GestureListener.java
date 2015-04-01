@@ -29,6 +29,7 @@ public class GestureListener extends SimpleOnGestureListener {
     private GiCoreView mCoreView;
     private GiView mAdapter;
     private int mListenerType = 0;
+    private GiGestureType mLastGesture = GiGestureType.kGiGestureUnknown;
     private int mMoving = M_STOPPED;
     private int mFingerCount;
     private int mXYCount = 0;
@@ -52,6 +53,10 @@ public class GestureListener extends SimpleOnGestureListener {
         mAdapter = null;
     }
 
+    public GiGestureType getLastGesture() {
+        return mLastGesture;
+    }
+
     public void setGestureEnabled(boolean enabled) {
         if (!enabled) {
             cancelDragging();
@@ -69,8 +74,8 @@ public class GestureListener extends SimpleOnGestureListener {
             onMoved(GiGestureState.kGiGestureCancel, mFingerCount, 0, 0, 0, 0, false);
         } else if (mMoving == M_PRESS_MOVING) {
             mMoving = M_STOPPED;
-            mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
-                    GiGestureState.kGiGestureCancel, 0, 0);
+            mLastGesture = GiGestureType.kGiGesturePress;
+            mCoreView.onGesture(mAdapter, mLastGesture, GiGestureState.kGiGestureCancel, 0, 0);
         }
         onTouchEnded();
     }
@@ -209,8 +214,8 @@ public class GestureListener extends SimpleOnGestureListener {
             mPoints[mXYCount++] = x1;
             mPoints[mXYCount++] = y1;
         } else if (mMoving == M_PRESS_MOVING) {
-            mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
-                    GiGestureState.kGiGestureMoved, x1, y1);
+            mLastGesture = GiGestureType.kGiGesturePress;
+            mCoreView.onGesture(mAdapter, mLastGesture, GiGestureState.kGiGestureMoved, x1, y1);
         }
         if (mMoving != M_MOVING) {
             return false;
@@ -257,7 +262,8 @@ public class GestureListener extends SimpleOnGestureListener {
             ret = onMoved(submit ? GiGestureState.kGiGestureEnded : GiGestureState.kGiGestureCancel,
                     mFingerCount, x1, y1, x2, y2, false);
         } else if (mMoving == M_PRESS_MOVING) {
-            ret = mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
+            mLastGesture = GiGestureType.kGiGesturePress;
+            ret = mCoreView.onGesture(mAdapter, mLastGesture,
                     submit ? GiGestureState.kGiGestureEnded : GiGestureState.kGiGestureCancel, 0, 0);
         }
         mMoving = M_STOPPED;
@@ -280,18 +286,20 @@ public class GestureListener extends SimpleOnGestureListener {
 
     private boolean onMoved(GiGestureState state, int fingerCount, float x1, float y1, float x2,
             float y2, boolean s) {
+        mLastGesture = fingerCount > 1 ? GiGestureType.kGiTwoFingersMove : GiGestureType.kGiGesturePan;
         return fingerCount > 1 ? mCoreView.twoFingersMove(mAdapter, state, x1, y1, x2, y2, s)
-                : mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePan, state, x1, y1, s);
+                : mCoreView.onGesture(mAdapter, mLastGesture, state, x1, y1, s);
     }
 
     @Override
     public void onLongPress(MotionEvent e) {
         final OnDrawGestureListener notify = getNotify();
 
+        mLastGesture = GiGestureType.kGiGesturePress;
         if (notify != null
                 && notify.onPreGesture(Const.GESTURE_PRESS, e.getX(), e.getY())) {
         } else if (mXYCount > 1
-                && mCoreView.onGesture(mAdapter, GiGestureType.kGiGesturePress,
+                && mCoreView.onGesture(mAdapter, mLastGesture,
                         GiGestureState.kGiGestureBegan, e.getX(), e.getY())) {
             // mXYCount > 1: onDown called
             mXYCount = 0;
@@ -330,11 +338,10 @@ public class GestureListener extends SimpleOnGestureListener {
         if (mCoreView == null) {
             return false;
         }
+        mLastGesture = GiGestureType.kGiGestureTap;
         synchronized (mCoreView) {
-            return mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureTap,
-                    GiGestureState.kGiGesturePossible, x, y)
-                    && mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureTap,
-                            GiGestureState.kGiGestureEnded, x, y);
+            return mCoreView.onGesture(mAdapter, mLastGesture, GiGestureState.kGiGesturePossible, x, y)
+                    && mCoreView.onGesture(mAdapter, mLastGesture, GiGestureState.kGiGestureEnded, x, y);
         }
     }
 
@@ -349,9 +356,10 @@ public class GestureListener extends SimpleOnGestureListener {
         if (ret
                 && (notify == null
                 || !notify.onPreGesture(Const.GESTURE_DBLTAP, e.getX(), e.getY()))) {
-            ret = mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
+            mLastGesture = GiGestureType.kGiGestureDblTap;
+            ret = mCoreView.onGesture(mAdapter, mLastGesture,
                     GiGestureState.kGiGesturePossible, mPoints[0], mPoints[1])
-                    && mCoreView.onGesture(mAdapter, GiGestureType.kGiGestureDblTap,
+                    && mCoreView.onGesture(mAdapter, mLastGesture,
                             GiGestureState.kGiGestureEnded, e.getX(), e.getY());
             if (notify != null) {
                 notify.onPostGesture(Const.GESTURE_DBLTAP, e.getX(), e.getY());
