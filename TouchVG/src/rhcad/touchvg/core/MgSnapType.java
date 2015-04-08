@@ -22,6 +22,7 @@ public final class MgSnapType {
   public final static MgSnapType kMgSnapOutPoint = new MgSnapType("kMgSnapOutPoint");
   public final static MgSnapType kMgSnapTangent = new MgSnapType("kMgSnapTangent");
   public final static MgSnapType kMgSnapIntersect = new MgSnapType("kMgSnapIntersect");
+  public final static MgSnapType kMgSnapParallel = new MgSnapType("kMgSnapParallel");
   public final static MgSnapType kMgSnapPerp = new MgSnapType("kMgSnapPerp");
   public final static MgSnapType kMgSnapPerpNear = new MgSnapType("kMgSnapPerpNear");
   public final static MgSnapType kMgSnapNearPt = new MgSnapType("kMgSnapNearPt");
@@ -61,7 +62,7 @@ public final class MgSnapType {
     swigNext = this.swigValue+1;
   }
 
-  private static MgSnapType[] swigValues = { kMgSnapNone, kMgSnapSameX, kMgSnapSameY, kMgSnapGridX, kMgSnapGridY, kMgSnapGrid, kMgSnapPoint, kMgSnapCenter, kMgSnapMidPoint, kMgSnapQuadrant, kMgSnapOutPoint, kMgSnapTangent, kMgSnapIntersect, kMgSnapPerp, kMgSnapPerpNear, kMgSnapNearPt, kMgSnapExtendPt };
+  private static MgSnapType[] swigValues = { kMgSnapNone, kMgSnapSameX, kMgSnapSameY, kMgSnapGridX, kMgSnapGridY, kMgSnapGrid, kMgSnapPoint, kMgSnapCenter, kMgSnapMidPoint, kMgSnapQuadrant, kMgSnapOutPoint, kMgSnapTangent, kMgSnapIntersect, kMgSnapParallel, kMgSnapPerp, kMgSnapPerpNear, kMgSnapNearPt, kMgSnapExtendPt };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;

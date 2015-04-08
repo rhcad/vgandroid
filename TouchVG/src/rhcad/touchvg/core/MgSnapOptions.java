@@ -21,6 +21,7 @@ public final class MgSnapOptions {
   public final static MgSnapOptions kMgOptionSnapTangent = new MgSnapOptions("kMgOptionSnapTangent", 1 << 10);
   public final static MgSnapOptions kMgOptionSnapNear = new MgSnapOptions("kMgOptionSnapNear", 1 << 11);
   public final static MgSnapOptions kMgOptionSnapExtend = new MgSnapOptions("kMgOptionSnapExtend", 1 << 12);
+  public final static MgSnapOptions kMgOptionSnapParallel = new MgSnapOptions("kMgOptionSnapParallel", 1 << 13);
 
   public final int swigValue() {
     return swigValue;
@@ -56,7 +57,7 @@ public final class MgSnapOptions {
     swigNext = this.swigValue+1;
   }
 
-  private static MgSnapOptions[] swigValues = { kMgOptionSnapGrid, kMgOptionStartMustVertex, kMgOptionSnapVertex, kMgOptionSnapCenter, kMgOptionSnapMidPoint, kMgOptionSnapQuadrant, kMgOptionSnapCross, kMgOptionSnapPerp, kMgOptionSnapPerpOut, kMgOptionSnapTangent, kMgOptionSnapNear, kMgOptionSnapExtend };
+  private static MgSnapOptions[] swigValues = { kMgOptionSnapGrid, kMgOptionStartMustVertex, kMgOptionSnapVertex, kMgOptionSnapCenter, kMgOptionSnapMidPoint, kMgOptionSnapQuadrant, kMgOptionSnapCross, kMgOptionSnapPerp, kMgOptionSnapPerpOut, kMgOptionSnapTangent, kMgOptionSnapNear, kMgOptionSnapExtend, kMgOptionSnapParallel };
   private static int swigNext = 0;
   private final int swigValue;
   private final String swigName;
