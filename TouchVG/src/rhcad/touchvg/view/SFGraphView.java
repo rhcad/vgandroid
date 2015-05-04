@@ -228,6 +228,14 @@ public class SFGraphView extends SurfaceView implements BaseGraphView {
         }
     }
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+       super.onLayout(changed, left, top, right, bottom);
+       if (mBackground != null) {
+           mBackground.setBounds(left, top, right, bottom);
+       }
+    }
+
     private int drawShapes(CanvasAdapter canvasAdapter) {
         int gs, n;
         final Longs docs = new Longs();

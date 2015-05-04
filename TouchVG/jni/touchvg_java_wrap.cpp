@@ -10190,15 +10190,15 @@ void SwigDirector_GiView::showMessage(char const *text) {
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-void SwigDirector_GiView::getLocalizedString(char const *name, MgStringCallback *result) {
+void SwigDirector_GiView::getLocalizedString(char const *name, MgStringCallback *c) {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
   jstring jname = 0 ;
-  jlong jresult = 0 ;
+  jlong jc = 0 ;
   
   if (!swig_override[18]) {
-    GiView::getLocalizedString(name,result);
+    GiView::getLocalizedString(name,c);
     return;
   }
   swigjobj = swig_get_self(jenv);
@@ -10210,8 +10210,8 @@ void SwigDirector_GiView::getLocalizedString(char const *name, MgStringCallback 
     }
     Swig::LocalRefGuard name_refguard(jenv, jname);
     // boohoo
-    *((MgStringCallback **)&jresult) = (MgStringCallback *) result; 
-    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[285], swigjobj, jname, jresult);
+    *((MgStringCallback **)&jc) = (MgStringCallback *) c; 
+    jenv->CallStaticVoidMethod(Swig::jclass_touchvgJNI, Swig::director_methids[285], swigjobj, jname, jc);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -24824,6 +24824,16 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_Shapes_1set_1_1SWIG_1
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgStorage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgStorage *arg1 = (MgStorage *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgStorage **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1readNode(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jboolean jarg4) {
   jboolean jresult = 0 ;
   MgStorage *arg1 = (MgStorage *) 0 ;
@@ -25182,16 +25192,6 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgStorage_1setErr
   jresult = (jboolean)result; 
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgStorage(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgStorage *arg1 = (MgStorage *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgStorage **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -36266,6 +36266,16 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1getHandleTyp
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgShapeFactory(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgShapeFactory *arg1 = (MgShapeFactory *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgShapeFactory **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShapeFactory_1createShape(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   MgShapeFactory *arg1 = (MgShapeFactory *) 0 ;
@@ -36280,16 +36290,6 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShapeFactory_1crea
   result = (MgShape *)(arg1)->createShape(arg2);
   *(MgShape **)&jresult = result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgShapeFactory(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgShapeFactory *arg1 = (MgShapeFactory *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgShapeFactory **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -38779,6 +38779,16 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgImageShape_1findSh
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgActionDispatcher(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgActionDispatcher *arg1 = (MgActionDispatcher *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgActionDispatcher **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgActionDispatcher_1showInSelect(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
   jboolean jresult = 0 ;
   MgActionDispatcher *arg1 = (MgActionDispatcher *) 0 ;
@@ -38850,12 +38860,12 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgActionDispatche
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgActionDispatcher(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgActionDispatcher *arg1 = (MgActionDispatcher *) 0 ;
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgSnap(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgSnap *arg1 = (MgSnap *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(MgActionDispatcher **)&jarg1; 
+  arg1 = *(MgSnap **)&jarg1; 
   delete arg1;
 }
 
@@ -39114,12 +39124,12 @@ SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSnap_1snapPoint(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgSnap(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgSnap *arg1 = (MgSnap *) 0 ;
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgSelection(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgSelection *arg1 = (MgSelection *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(MgSnap **)&jarg1; 
+  arg1 = *(MgSelection **)&jarg1; 
   delete arg1;
 }
 
@@ -39634,16 +39644,6 @@ SWIGEXPORT jboolean JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgSelection_1appl
   result = (bool)(arg1)->applyTransform((MgMotion const *)arg2,(Matrix2d const &)*arg3);
   jresult = (jboolean)result; 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgSelection(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgSelection *arg1 = (MgSelection *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgSelection **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -40672,31 +40672,6 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgView_1setOptionStri
   (arg1)->setOptionString((char const *)arg2,(char const *)arg3);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
   if (arg3) jenv->ReleaseStringUTFChars(jarg3, (const char *)arg3);
-}
-
-
-SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  MgView *arg1 = (MgView *) 0 ;
-  MgRegenLocker *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(MgView **)&jarg1; 
-  result = (MgRegenLocker *)new MgRegenLocker(arg1);
-  *(MgRegenLocker **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgRegenLocker *arg1 = (MgRegenLocker *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgRegenLocker **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -45422,6 +45397,16 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCmdDrawRect_1change
 }
 
 
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgCmdManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgCmdManager *arg1 = (MgCmdManager *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgCmdManager **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCmdManager_1release(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   MgCmdManager *arg1 = (MgCmdManager *) 0 ;
   
@@ -45795,16 +45780,6 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgCmdManager_1getBoun
   } 
   arg3 = *(MgMotion **)&jarg3; 
   (arg1)->getBoundingBox(*arg2,(MgMotion const *)arg3);
-}
-
-
-SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgCmdManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  MgCmdManager *arg1 = (MgCmdManager *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(MgCmdManager **)&jarg1; 
-  delete arg1;
 }
 
 
@@ -49526,6 +49501,31 @@ SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgOptionCallback_1cha
   if (director) {
     director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
   }
+}
+
+
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_new_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  MgView *arg1 = (MgView *) 0 ;
+  MgRegenLocker *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgView **)&jarg1; 
+  result = (MgRegenLocker *)new MgRegenLocker(arg1);
+  *(MgRegenLocker **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_rhcad_touchvg_core_touchvgJNI_delete_1MgRegenLocker(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  MgRegenLocker *arg1 = (MgRegenLocker *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(MgRegenLocker **)&jarg1; 
+  delete arg1;
 }
 
 

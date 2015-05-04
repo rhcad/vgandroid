@@ -122,8 +122,8 @@ public class GiView {
     if (getClass() == GiView.class) touchvgJNI.GiView_showMessage(swigCPtr, this, text); else touchvgJNI.GiView_showMessageSwigExplicitGiView(swigCPtr, this, text);
   }
 
-  public void getLocalizedString(String name, MgStringCallback result) {
-    if (getClass() == GiView.class) touchvgJNI.GiView_getLocalizedString(swigCPtr, this, name, MgStringCallback.getCPtr(result), result); else touchvgJNI.GiView_getLocalizedStringSwigExplicitGiView(swigCPtr, this, name, MgStringCallback.getCPtr(result), result);
+  public void getLocalizedString(String name, MgStringCallback c) {
+    if (getClass() == GiView.class) touchvgJNI.GiView_getLocalizedString(swigCPtr, this, name, MgStringCallback.getCPtr(c), c); else touchvgJNI.GiView_getLocalizedStringSwigExplicitGiView(swigCPtr, this, name, MgStringCallback.getCPtr(c), c);
   }
 
   public GiView() {

@@ -251,8 +251,8 @@ public class MgView {
     touchvgJNI.MgView_showMessage(swigCPtr, this, text);
   }
 
-  public void getLocalizedString(String name, MgStringCallback result) {
-    touchvgJNI.MgView_getLocalizedString(swigCPtr, this, name, MgStringCallback.getCPtr(result), result);
+  public void getLocalizedString(String name, MgStringCallback c) {
+    touchvgJNI.MgView_getLocalizedString(swigCPtr, this, name, MgStringCallback.getCPtr(c), c);
   }
 
   public boolean isContextActionsVisible() {

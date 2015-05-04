@@ -469,7 +469,7 @@ public:
     virtual bool shapeDblClick(int type, int sid, int tag);
     virtual bool shapeClicked(int type, int sid, int tag, float x, float y);
     virtual void showMessage(char const *text);
-    virtual void getLocalizedString(char const *name, MgStringCallback *result);
+    virtual void getLocalizedString(char const *name, MgStringCallback *c);
 public:
     bool swig_overrides(int n) {
       return (n < 19 ? swig_override[n] : false);

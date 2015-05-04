@@ -474,5 +474,6 @@ public class MgCoreView {
   public final static int kMgCanSelLocked = kMgNoDel + 1;
   public final static int kMgNotAddRel = kMgCanSelLocked + 1;
   public final static int kMgNotShowSnap = kMgNotAddRel + 1;
+  public final static int kMgCanAddVertex = kMgNotShowSnap + 1;
 
 }
