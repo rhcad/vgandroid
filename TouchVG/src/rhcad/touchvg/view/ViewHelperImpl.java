@@ -714,7 +714,12 @@ public class ViewHelperImpl implements IViewHelper {
 
     @Override
     public void clearShapes() {
-        ContextHelper.clearShapes(mCreator);
+        ContextHelper.clearShapes(mCreator, true);
+    }
+
+    @Override
+    public void clearShapes(boolean showMessage) {
+        ContextHelper.clearShapes(mCreator, showMessage);
     }
 
     @Override

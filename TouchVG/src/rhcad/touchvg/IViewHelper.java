@@ -372,6 +372,9 @@ public interface IViewHelper {
     //! 清除所有图形，含锁定的图形
     public void clearShapes();
 
+    //! 清除所有图形，含锁定的图形，允许不显示删除结果文字
+    public void clearShapes(boolean showMessage);
+
     //! 清除当前视图区域内的未锁定的图形
     public void eraseView();
 
