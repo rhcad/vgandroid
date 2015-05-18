@@ -12,6 +12,7 @@
     <string name="midpt">中点</string>
     <string name="quadpt">象限点</string>
     <string name="crosspt">交点</string>
+    <string name="parallelpt">平行</string>
     <string name="nearpt">线上点</string>
     <string name="perppt">垂足</string>
     <string name="tanpt">切点</string>
