@@ -538,6 +538,11 @@ public class ViewHelperImpl implements IViewHelper {
     }
 
     @Override
+    public boolean savePNG(Bitmap bmp, String filename) {
+        return Snapshot.savePNG(bmp, filename);
+    }
+
+    @Override
     public boolean exportSVG(String filename) {
         return Snapshot.exportSVG(view(), filename);
     }
