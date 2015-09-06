@@ -48,5 +48,6 @@
     <string name="arc">圆弧</string>
     <string name="grid">网格</string>
     <string name="pathshape">路径块</string>
+    <string name="sector">扇形</string>
 
 </resources>
