@@ -8,16 +8,15 @@
 
 package rhcad.touchvg.core;
 
-public class MgCmdManagerFactory {
+public class MgCmdSector extends MgCmdArcCSE {
   private transient long swigCPtr;
-  protected transient boolean swigCMemOwn;
 
-  protected MgCmdManagerFactory(long cPtr, boolean cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+  protected MgCmdSector(long cPtr, boolean cMemoryOwn) {
+    super(touchvgJNI.MgCmdSector_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(MgCmdManagerFactory obj) {
+  protected static long getCPtr(MgCmdSector obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -29,19 +28,23 @@ public class MgCmdManagerFactory {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        touchvgJNI.delete_MgCmdManagerFactory(swigCPtr);
+        touchvgJNI.delete_MgCmdSector(swigCPtr);
       }
       swigCPtr = 0;
     }
+    super.delete();
   }
 
-  public static MgCmdManager create() {
-    long cPtr = touchvgJNI.MgCmdManagerFactory_create();
-    return (cPtr == 0) ? null : new MgCmdManager(cPtr, false);
+  public MgCmdSector(String name) {
+    this(touchvgJNI.new_MgCmdSector__SWIG_0(name), true);
   }
 
-  public MgCmdManagerFactory() {
-    this(touchvgJNI.new_MgCmdManagerFactory(), true);
+  public MgCmdSector() {
+    this(touchvgJNI.new_MgCmdSector__SWIG_1(), true);
+  }
+
+  public boolean initialize(MgMotion sender, MgStorage s) {
+    return touchvgJNI.MgCmdSector_initialize(swigCPtr, this, MgMotion.getCPtr(sender), sender, MgStorage.getCPtr(s), s);
   }
 
 }

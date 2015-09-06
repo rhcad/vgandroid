@@ -6,24 +6,18 @@ package rhcad.touchvg.view.internal;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Picture;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PictureDrawable;
 import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.View;
-
-import com.caverock.androidsvg.SVG;
-import com.caverock.androidsvg.SVGParseException;
 
 //! 图像对象缓存类
 public class ImageCache extends Object {
@@ -190,7 +184,7 @@ public class ImageCache extends Object {
     public final Drawable addSVG(Resources res, int id, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
-        if (drawable == null && id != 0 && USE_SVG) {
+        if (drawable == null && id != 0 && USE_SVG) {/*
             try {
                 final Picture picture = SVG.getFromResource(res, id).renderToPicture();
 
@@ -200,7 +194,7 @@ public class ImageCache extends Object {
                 }
             } catch (SVGParseException e) {
                 Log.e(TAG, "Parse resource fail", e);
-            }
+            }*/
         }
 
         return drawable;
@@ -239,7 +233,7 @@ public class ImageCache extends Object {
     public final Drawable addSVGFile(String filename, String name) {
         Drawable drawable = mCache != null ? mCache.get(name) : null;
 
-        if (drawable == null && name.endsWith(".svg") && USE_SVG) {
+        if (drawable == null && name.endsWith(".svg") && USE_SVG) {/*
             try {
                 final InputStream data = new FileInputStream(new File(filename));
                 final Picture picture = SVG.getFromInputStream(data).renderToPicture();
@@ -255,7 +249,7 @@ public class ImageCache extends Object {
                 Log.e(TAG, "SVG read fail", e);
             } catch (SVGParseException e) {
                 Log.e(TAG, "Parse file fail", e);
-            }
+            }*/
         }
 
         return drawable;
