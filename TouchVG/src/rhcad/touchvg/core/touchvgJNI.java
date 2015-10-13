@@ -1371,6 +1371,7 @@ public class touchvgJNI {
   public final static native int MgSplines_smoothForPoints(long jarg1, MgSplines jarg1_, int jarg2, long jarg3, Point2d jarg3_, long jarg4, Matrix2d jarg4_, float jarg5);
   public final static native void MgSplines_clearVectors(long jarg1, MgSplines jarg1_);
   public final static native int MgShape_Type();
+  public final static native long MgShape_Null();
   public final static native long MgShape_fromHandle(int jarg1);
   public final static native int MgShape_toHandle(long jarg1, MgShape jarg1_);
   public final static native long MgShape_cloneShape(long jarg1, MgShape jarg1_);

@@ -35859,6 +35859,18 @@ SWIGEXPORT jint JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1Type(JNIEnv 
 }
 
 
+SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1Null(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  MgShape *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (MgShape *)MgShape::Null();
+  *(MgShape **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_rhcad_touchvg_core_touchvgJNI_MgShape_1fromHandle(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   long arg1 ;
