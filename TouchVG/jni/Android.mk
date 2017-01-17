@@ -1,7 +1,7 @@
 # Copyright (c) 2013-2014, Zhang Yungui, https://github.com/rhcad/touchvg
 #
 LOCAL_PATH := $(call my-dir)
-CORE_PATH  := ../../../vgcore/android/TouchVGCore/obj/local/$(APP_ABI)
+CORE_PATH  := ../../../vgcore/android/TouchVGCore/obj/local/$(TARGET_ARCH_ABI)
 CORE_INC   := $(LOCAL_PATH)/../../../vgcore/core/include
 
 include $(CLEAR_VARS)
